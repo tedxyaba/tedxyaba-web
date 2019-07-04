@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import './Navbar.scss';
+import TEDXIcon from '../../assets/images/tedx-yaba-full.png'
 
 const mainRoutes = [
   {
@@ -31,13 +32,11 @@ const mainRoutes = [
   }
 ];
 
-const Navbar = (props) => {
-  const title = props.title || 'Tedx Yaba';
-
+const Navbar = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <Link to="/" id="logo-title" className="navbar-brand logo-text">
-        {title}
+    <nav className="navbar navbar-expand-lg navbar-light">
+      <Link to="/" id="app-logo" className="navbar-brand app-logo">
+        <img src={TEDXIcon} alt="logo" />
       </Link>
 
       <button
@@ -55,15 +54,15 @@ const Navbar = (props) => {
         <ul className="navbar-nav ml-auto">
           { !!mainRoutes.length && mainRoutes.map((route, index) => {
             return route.show && (
-               <li key={index} className="nav-item">
-                 <NavLink
-                   to={route.path}
-                   exact={route.exact}
-                   className="nav-link"
-                   activeClassName="active">
-                   {route.name}
-                  </NavLink>
-                </li>
+              <li key={index} className="nav-item">
+                <NavLink
+                  to={route.path}
+                  exact={route.exact}
+                  className="nav-link"
+                  activeClassName="active">
+                  {route.name}
+                </NavLink>
+              </li>
              )
           }) }
         </ul>

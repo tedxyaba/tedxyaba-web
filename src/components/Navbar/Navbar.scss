@@ -1,5 +1,35 @@
 .navbar {
-  &.navbar-light .navbar-nav .nav-link.active {
-    color: #e62b1f;
+  .app-logo {
+    width: 150px;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  &.navbar-light {
+    .navbar-toggler {
+      border-color: transparent;
+
+      &:focus {
+        outline: 1px dotted lighten($color: #e62b1f, $amount: 30);
+      }
+    }
+
+    .navbar-nav {
+      .nav-link {
+        font-size: .75rem;
+        letter-spacing: 1.5px;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        text-align: center;
+        text-transform: uppercase;
+
+        &.active {
+          font-weight: bold;
+          color: #e62b1f;
+        }
+      }
+    }
   }
 }
