@@ -40,8 +40,8 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 * Clone locally `git clone https://github.com/tedxyaba/tedxyaba-web.git`
 * Create a branch for each separate piece of work with format -> `initials-branch-name` e.g. `fa-build-homepage`
 * Push your branch `git push origin initials-branch-name`
-* Create a new Pull Request
-* Merge when approved
+* Create a new Pull Request and add Reviewers
+* Merge when approved and delete branch
 
 ## Learn More
 
