@@ -1,0 +1,37 @@
+$primary-color: #e62b1f;
+
+.navbar {
+  .app-logo {
+    width: 150px;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  &.navbar-light {
+    .navbar-toggler {
+      border-color: transparent;
+
+      &:focus {
+        outline: 1px dotted lighten($color: $primary-color, $amount: 30);
+      }
+    }
+
+    .navbar-nav {
+      .nav-link {
+        font-size: .75rem;
+        letter-spacing: 1.5px;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        text-align: center;
+        text-transform: uppercase;
+
+        &.active {
+          font-weight: bold;
+          color: $primary-color;
+        }
+      }
+    }
+  }
+}
