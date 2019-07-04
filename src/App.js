@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 
 // load pages
 import Home from '../src/pages/Home';
