@@ -14,19 +14,19 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 `npm install` or `yarn install`
 
 ### Run the app
-`npm start` or `yarn start`
+`npm start` or `yarn start` <br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.
 You will also see any lint errors in the console.
 
 ### Run Tests
-`npm test` or `yarn test`
+`npm test` or `yarn test` <br>
 Launches the test runner in the interactive watch mode.
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ### Build for Production
-`npm run build` or `yarn build`
+`npm run build` or `yarn build` <br>
 Builds the app for production to the `build` folder.<br>
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
@@ -45,7 +45,7 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 ## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started). <br>
 To learn React, check out the [React documentation](https://reactjs.org/).
 
 License
