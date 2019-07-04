@@ -12,6 +12,7 @@ class Home extends Component {
     return (
       <div class="page-home">
         <h1>Welcome to TedxYaba!</h1>
+        <p>Independently organised TED event</p>
       </div>
     )
   }
