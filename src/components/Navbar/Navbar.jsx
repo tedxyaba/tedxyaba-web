@@ -9,6 +9,8 @@ const Navbar = (props) => {
       <div>{title}</div>
       <div>
         <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/about">Events</a>
       </div>
     </div>
   )
