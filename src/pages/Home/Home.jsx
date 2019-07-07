@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Home.scss';
+import Carousel from '../../segments/Carousel';
 
 class Home extends Component {
   constructor(props) {
@@ -11,6 +12,8 @@ class Home extends Component {
   render() {
     return (
       <div className="page-home">
+        <Carousel />
+
         <h1>Welcome to TedxYaba!</h1>
         <p>Independently organised TED event</p>
       </div>
