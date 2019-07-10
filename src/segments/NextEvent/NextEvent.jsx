@@ -6,8 +6,39 @@ class NextEvent extends Component {
 
     this.state = {
       position: 0,
-      title: 'Upcoming Event'
+      title: 'Upcoming Event',
+      loading: false,
+      event: [],
+      errors: null
     }
+
+    this._fetchData = this._fetchData.bind(this);
+  }
+
+  componentDidMount() {
+    this._fetchData()
+  }
+
+  _fetchData() {
+    // this.setState({
+    //   loading: true, errors: null
+    // });
+
+    // landingPage.get((success, data) => {
+    //   const { results } = data;
+
+    //   if (success) {
+    //     this.setState({
+    //       loading: false,
+    //       event: results
+    //     })
+    //   } else {
+    //     this.setState({
+    //       loading: false,
+    //       errors: data
+    //     })
+    //   }
+    // })
   }
 
   render() {
