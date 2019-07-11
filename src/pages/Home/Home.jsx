@@ -39,7 +39,7 @@ class Home extends Component {
   }
 
   render() {
-    const { loading } = this.state;
+    const { loading, data } = this.state;
     console.log(this.state);
 
     return (
@@ -48,7 +48,7 @@ class Home extends Component {
           <div className="my-4 text-center">Loading Homepage...</div>
         ) : (
           <div className="page-home-content">
-            <Carousel />
+            <Carousel images={data.carouselImages || []} />
             <NextEvent  />
 
             <h1>Welcome to TedxYaba!</h1>

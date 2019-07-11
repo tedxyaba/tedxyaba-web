@@ -1,6 +1,6 @@
 const TransformHomepageData = (data) => {
   const result = data.results[0];
-  const { tedx_yaba_logo, landing_page_image, current_event_preview } = result.data;
+  const { tedx_yaba_logo, landing_page_images, current_event_preview } = result.data;
 
   const logo = {
       url: tedx_yaba_logo.url,
@@ -9,15 +9,17 @@ const TransformHomepageData = (data) => {
       width: tedx_yaba_logo.dimensions.width
   }
 
-  const carouselImages = [
-      {
-          id: 1,
-          url: landing_page_image.url,
-          alt: landing_page_image.alt || 'landing-image-1',
-          height: landing_page_image.dimensions.height,
-          width: landing_page_image.dimensions.width
-      }
-  ]
+  const carouselImages = landing_page_images.map((lpi, index) => {
+    return {
+      id: index + 1,
+      url: lpi.image.url,
+      alt: lpi.image.alt || 'landing-image-1',
+      height: lpi.image.dimensions.height,
+      width: lpi.image.dimensions.width,
+      slideLabel: 'First slide label',
+      slideText: 'Nulla vitae elit libero, a pharetra augue mollis interdum.'
+    }
+  })
 
   const currentEvent = {
       id: current_event_preview.id,
