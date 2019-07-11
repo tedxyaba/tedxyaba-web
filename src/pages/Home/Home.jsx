@@ -45,14 +45,15 @@ class Home extends Component {
     return (
       <div className="page-home">
         { loading ? (
-          <div className="my-4 text-center">Loading Homepage...</div>
+          <div className="text-center my-5">
+            <div className="spinner-grow text-danger" role="status">
+              <span className="sr-only">Loading Homepage...</span>
+            </div>
+          </div>
         ) : (
           <div className="page-home-content">
             <Carousel images={data.carouselImages || []} />
             <NextEvent  />
-
-            <h1>Welcome to TedxYaba!</h1>
-            <p>Independently organised TED event</p>
           </div>
         ) }
       </div>
