@@ -20,10 +20,6 @@ class NextEvent extends Component {
   }
 
   _fetchData() {
-    // this.setState({
-    //   loading: true, errors: null
-    // });
-
     // landingPage.get((success, data) => {
     //   const { results } = data;
 

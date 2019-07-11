@@ -3,13 +3,14 @@ import './Home.scss';
 import Carousel from '../../segments/Carousel';
 import NextEvent from '../../segments/NextEvent';
 import landingPage from '../../services/landing-page';
+import TransformHomepageData from '../../utils/data-transformers/homepage';
 
 class Home extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      loading: false,
+      loading: true,
       data: [],
       errors: null
     }
@@ -22,17 +23,11 @@ class Home extends Component {
   }
 
   _fetchData() {
-    this.setState({
-      loading: true, errors: null
-    });
-
     landingPage.get((success, data) => {
-      const { results } = data;
-
       if (success) {
         this.setState({
           loading: false,
-          data: results
+          data: TransformHomepageData(data)
         })
       } else {
         this.setState({
@@ -44,15 +39,22 @@ class Home extends Component {
   }
 
   render() {
+    const { loading, data } = this.state;
     console.log(this.state);
 
     return (
       <div className="page-home">
-        <Carousel />
-        <NextEvent />
+        { loading ? (
+          <div className="my-4 text-center">Loading Homepage...</div>
+        ) : (
+          <div className="page-home-content">
+            <Carousel images={data.carouselImages || []} />
+            <NextEvent  />
 
-        <h1>Welcome to TedxYaba!</h1>
-        <p>Independently organised TED event</p>
+            <h1>Welcome to TedxYaba!</h1>
+            <p>Independently organised TED event</p>
+          </div>
+        ) }
       </div>
     )
   }
