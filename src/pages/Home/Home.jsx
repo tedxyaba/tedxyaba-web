@@ -3,6 +3,7 @@ import './Home.scss';
 import Carousel from '../../segments/Carousel';
 import NextEvent from '../../segments/NextEvent';
 import landingPage from '../../services/landing-page';
+import TransformHomepageData from '../../utils/data-transformers/homepage';
 
 class Home extends Component {
   constructor(props) {
@@ -23,12 +24,10 @@ class Home extends Component {
 
   _fetchData() {
     landingPage.get((success, data) => {
-      const { results } = data;
-
       if (success) {
         this.setState({
           loading: false,
-          data: results
+          data: TransformHomepageData(data)
         })
       } else {
         this.setState({
