@@ -11,7 +11,7 @@ class Home extends Component {
 
     this.state = {
       loading: true,
-      data: [],
+      data: {},
       errors: null
     }
 
@@ -40,7 +40,7 @@ class Home extends Component {
 
   render() {
     const { loading, data } = this.state;
-    console.log(this.state);
+    console.log('HOME===> ', this.state);
 
     return (
       <div className="page-home">
@@ -53,7 +53,7 @@ class Home extends Component {
         ) : (
           <div className="page-home-content">
             <Carousel images={data.carouselImages || []} />
-            <NextEvent  />
+            <NextEvent event={data.currentEvent}  />
           </div>
         ) }
       </div>

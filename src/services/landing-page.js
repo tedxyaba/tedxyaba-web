@@ -14,11 +14,7 @@ const landingPage = {
         });
         const resData = await response.json();
     
-        if (response.ok) {
-          cb(response.ok, resData)
-        } else {
-          cb(response.ok, resData)
-        }
+        cb(response.ok, resData)
       })
     } catch (error) {
       console.log(`services.landingPage.get.ERROR: ${error}`)
