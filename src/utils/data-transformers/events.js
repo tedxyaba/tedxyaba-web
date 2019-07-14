@@ -24,10 +24,14 @@ const TransformEventData = (data) => {
 
   const mapSpeakers = speakers.map(speaker => {
     return {
-      name: speaker.speaker_name,
-      title: '',
-      image: speaker.speaker_image.url,
-      linkToBio: ''
+      name: speaker.speaker_name[0].text,
+      title: speaker.role_title[0].text,
+      image: {
+        url: speaker.speaker_image.url,
+        alt: speaker.speaker_image.alt,
+        ...speaker.speaker_image.dimensions
+      },
+      linkToBio: {...speaker.link_to_bio}
     }
   })
 

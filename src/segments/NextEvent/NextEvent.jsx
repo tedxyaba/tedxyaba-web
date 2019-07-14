@@ -108,12 +108,12 @@ class NextEvent extends Component {
                 { speakers.map((speaker, index) => (
                   <div className="px-3" key={index}>
                     <div className="card">
-                      <img src={speaker.image} className="card-img-top" alt={speaker.name} />
+                      <img src={speaker.image.url} className="card-img-top" alt={speaker.name} />
                       <div className="card-body">
                         <h6 className="card-title">
-                          <a href="/" className="card-link">- speaker name -</a>
+                          <a href={speaker.linkToBio.url} target={speaker.linkToBio.target} className="card-link">{ speaker.name }</a>
                         </h6>
-                        <small className="text-muted">- speaker title -</small>
+                        <small className="text-muted">{ speaker.title }</small>
                       </div>
                     </div>
                   </div>
@@ -135,49 +135,65 @@ const dummySpeakers = [
   {
     name: 'Adeola Ade Ojo',
     title: '',
-    image: Img1,
+    image: {
+      url: Img1
+    },
     linkToBio: ''
   },
   {
     name: 'Adewale Ajadi',
     title: 'Country Director, Synergos Nigeria',
-    image: Img2,
+    image: {
+      url: Img2
+    },
     linkToBio: ''
   },
   {
     name: 'Christian Nwamba',
     title: 'Developer Advocate at Cloudinary',
-    image: Img3,
+    image: {
+      url: Img3
+    },
     linkToBio: ''
   },
   {
     name: 'Cobhams Asuquo',
     title: 'Musician, Songwriter & Producer',
-    image: Img4,
+    image: {
+      url: Img4
+    },
     linkToBio: ''
   },
   {
     name: 'Dr Ola Brown',
     title: 'Founder, Flying Doctors Nigeria',
-    image: Img5,
+    image: {
+      url: Img5
+    },
     linkToBio: ''
   },
   {
     name: 'Mike Asukwo',
     title: 'Chief Editorial Artist, BusinessDay Media',
-    image: Img6,
+    image: {
+      url: Img6
+    },
     linkToBio: ''
   },
   {
     name: 'Prince Feyisetan Are',
     title: 'Head Coach, Para Powerlifting in Nigeria',
-    image: Img7,
+    image: {
+      url: Img7
+    },
     linkToBio: ''
   },
   {
     name: 'Segun Awosanya',
     title: 'Realtor, Civil Rights & Institutional Reforms Advocate',
-    image: Img8,
+    image: {
+      url: Img8
+    },
     linkToBio: ''
   }
 ]

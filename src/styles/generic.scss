@@ -17,3 +17,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+a {
+  color: #e62b1f;
+  transition: all ease-in-out .25s;
+}
+
+a:hover {
+  color: #ac1f16;
+  transition: all ease-in-out .25s;
+}
