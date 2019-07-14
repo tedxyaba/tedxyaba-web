@@ -6,11 +6,13 @@ const TransformEventData = (data) => {
     sponsors,
     description,
     event_image,
+    event_venue,
     gallery_images,
     gallery_videos,
     link_to_register,
     event_date_and_time,
-    description_summary
+    description_summary,
+    event_venue_geo_location
   } = result.data;
 
   const image = {
@@ -43,7 +45,9 @@ const TransformEventData = (data) => {
     sponsors,
     gallery_images,
     gallery_videos,
-    link_to_register
+    link_to_register,
+    event_venue,
+    event_venue_geo_location
   }
 }
 

@@ -27,7 +27,7 @@ const apiRoutes = {
   aboutPage: () => {
     return {
       method :'GET',
-      path: '/v2/documents/search',
+      path: searchPath,
       q: ApiHelpers.encode('type', 'about_page')
     }
   }

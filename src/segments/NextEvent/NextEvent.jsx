@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './NextEvent.scss';
-import events from '../../services/events';
+import apiClient from '../../services/api-client';
+import apiRoutes from '../../utils/routes';
 import TransformEventData from '../../utils/data-transformers/events';
 import moment from 'moment';
 import Slider from 'react-slick';
@@ -38,7 +39,9 @@ class NextEvent extends Component {
   }
 
   _fetchData(event) {
-    events.eventById(event.id, (success, data) => {
+    const eventRoute = apiRoutes.documentById(event.id);
+
+    apiClient.get(eventRoute, (success, data) => {
       if (success) {
         this.setState({
           loading: false,
@@ -108,9 +111,9 @@ class NextEvent extends Component {
                       <img src={speaker.image} className="card-img-top" alt={speaker.name} />
                       <div className="card-body">
                         <h6 className="card-title">
-                          <a href="/" className="card-link">{ speaker.name }</a>
+                          <a href="/" className="card-link">- speaker name -</a>
                         </h6>
-                        <small className="text-muted">{ speaker.title }</small>
+                        <small className="text-muted">- speaker title -</small>
                       </div>
                     </div>
                   </div>
