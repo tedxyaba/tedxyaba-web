@@ -3,7 +3,6 @@ import './About.scss';
 import apiClient from '../../services/api-client';
 import TransformAboutpageData from '../../utils/data-transformers/aboutpage';
 import apiRoutes from "../../utils/routes";
-import AboutSection from './AboutSection'
 
 class About extends Component {
   constructor(props) {
@@ -56,7 +55,12 @@ class About extends Component {
             <div className="col-sm">
               {
                 data.aboutSections.map((section, index) => {
-                  return <AboutSection title={section.sectionTitle} description={section.sectionDescription} key={index} />
+                  return (
+                    <div key={index}>
+                      <h4>{section.sectionTitle}</h4>
+                      <p>{section.sectionDescription}</p>
+                    </div>
+                  )
                 })
               }
             </div>
