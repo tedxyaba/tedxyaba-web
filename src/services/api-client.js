@@ -1,19 +1,16 @@
 import fetchApi from "../utils/fetch-api";
-import apiRoutes from "../utils/routes";
 import common from "./common";
 
-const landingPage = {
-  async get(cb) {
+const apiClient = {
+  async get(route, cb) {
     try {
-      const lpRoute = apiRoutes.landingPage();
-
       common.getRef().then(async data => {
-        const response = await fetchApi.getData(lpRoute.path, {
-          q: lpRoute.q,
+        const response = await fetchApi.getData(route.path, {
+          q: route.q,
           ref: data.refs[0].ref
         });
         const resData = await response.json();
-    
+
         if (response.ok) {
           cb(response.ok, resData)
         } else {
@@ -21,9 +18,9 @@ const landingPage = {
         }
       })
     } catch (error) {
-      console.log(`services.landingPage.get.ERROR: ${error}`)
+      console.log(`services.get.ERROR: ${error}, q: ${route.q}`)
     }
   }
 }
 
-export default landingPage
+export default apiClient
