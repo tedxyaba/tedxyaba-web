@@ -10,12 +10,8 @@ const apiClient = {
           ref: data.refs[0].ref
         });
         const resData = await response.json();
-
-        if (response.ok) {
-          cb(response.ok, resData)
-        } else {
-          cb(response.ok, resData)
-        }
+    
+        cb(response.ok, resData)
       })
     } catch (error) {
       console.log(`services.get.ERROR: ${error}, q: ${route.q}`)
