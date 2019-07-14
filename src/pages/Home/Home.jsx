@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import './Home.scss';
 import Carousel from '../../segments/Carousel';
 import NextEvent from '../../segments/NextEvent';
-import landingPage from '../../services/landing-page';
+import apiClient from '../../services/api-client';
 import TransformHomepageData from '../../utils/data-transformers/homepage';
+import apiRoutes from "../../utils/routes";
 
 class Home extends Component {
   constructor(props) {
@@ -23,7 +24,8 @@ class Home extends Component {
   }
 
   _fetchData() {
-    landingPage.get((success, data) => {
+    const lpRoute = apiRoutes.landingPage();
+    const cb = (success, data) => {
       if (success) {
         this.setState({
           loading: false,
@@ -35,7 +37,8 @@ class Home extends Component {
           errors: data
         })
       }
-    })
+    }
+    apiClient.get(lpRoute, cb)
   }
 
   render() {
