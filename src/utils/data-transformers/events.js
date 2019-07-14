@@ -35,6 +35,18 @@ const TransformEventData = (data) => {
     }
   })
 
+  const mapSponsors = sponsors.map(sponsor => {
+    return {
+      name: sponsor.sponsor_name[0].text,
+      image: {
+        url: sponsor.sponsor_image.url,
+        alt: sponsor.sponsor_image.alt,
+        ...sponsor.sponsor_image.dimensions
+      },
+      linkToBio: {...sponsor.link_to_bio}
+    }
+  })
+
   return {
     id: result.id,
     type: result.type,
@@ -46,11 +58,11 @@ const TransformEventData = (data) => {
     description: description.map(d => d.text),
     eventDate: event_date_and_time,
     speakers: mapSpeakers,
-    sponsors,
+    sponsors: mapSponsors,
     gallery_images,
     gallery_videos,
     link_to_register,
-    event_venue,
+    event_venue: event_venue[0].text,
     event_venue_geo_location
   }
 }
