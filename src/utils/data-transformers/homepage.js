@@ -13,7 +13,7 @@ const TransformHomepageData = (data) => {
     return {
       id: index + 1,
       url: lpi.image.url,
-      alt: lpi.image.alt || 'landing-image-1',
+      alt: lpi.image.alt || 'landing-image',
       height: lpi.image.dimensions.height,
       width: lpi.image.dimensions.width,
       slideLabel: 'First slide label',

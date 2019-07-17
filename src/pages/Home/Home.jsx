@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import './Home.scss';
 import Carousel from '../../segments/Carousel';
 import NextEvent from '../../segments/NextEvent';
-import landingPage from '../../services/landing-page';
+import apiClient from '../../services/api-client';
 import TransformHomepageData from '../../utils/data-transformers/homepage';
+import apiRoutes from "../../utils/routes";
 
 class Home extends Component {
   constructor(props) {
@@ -11,7 +12,7 @@ class Home extends Component {
 
     this.state = {
       loading: true,
-      data: [],
+      data: {},
       errors: null
     }
 
@@ -23,7 +24,8 @@ class Home extends Component {
   }
 
   _fetchData() {
-    landingPage.get((success, data) => {
+    const lpRoute = apiRoutes.landingPage();
+    const cb = (success, data) => {
       if (success) {
         this.setState({
           loading: false,
@@ -35,24 +37,26 @@ class Home extends Component {
           errors: data
         })
       }
-    })
+    }
+    apiClient.get(lpRoute, cb)
   }
 
   render() {
     const { loading, data } = this.state;
-    console.log(this.state);
+    console.log('HOME===> ', this.state);
 
     return (
       <div className="page-home">
         { loading ? (
-          <div className="my-4 text-center">Loading Homepage...</div>
+          <div className="text-center my-5">
+            <div className="spinner-grow text-danger" role="status">
+              <span className="sr-only">Loading Homepage...</span>
+            </div>
+          </div>
         ) : (
           <div className="page-home-content">
             <Carousel images={data.carouselImages || []} />
-            <NextEvent  />
-
-            <h1>Welcome to TedxYaba!</h1>
-            <p>Independently organised TED event</p>
+            <NextEvent event={data.currentEvent}  />
           </div>
         ) }
       </div>
