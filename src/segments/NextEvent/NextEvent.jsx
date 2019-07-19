@@ -59,7 +59,7 @@ class NextEvent extends Component {
   render() {
     const { title, event } = this.state;
     const speakers = event.speakers && event.speakers.concat(dummySpeakers);
-    const settings = {
+    const speakersSlideSettings = {
       autoplay: true,
       dots: true,
       infinite: true,
@@ -67,6 +67,14 @@ class NextEvent extends Component {
       slidesToShow: 5,
       slidesToScroll: 1
     };
+    const sponsorsSlideSettings = {
+      autoplay: true,
+      dots: false,
+      infinite: true,
+      speed: 600,
+      slidesToShow: 1,
+      slidesToScroll: 1
+    }
 
     console.log('NXTEVENT===> ', this.state)
 
@@ -83,13 +91,17 @@ class NextEvent extends Component {
                 <h3>{ event.title }</h3>
                 <p>{ event.summary }</p>
 
+                <div className="venue">
+                  <p>{ event.event_venue }</p>
+                </div>
+
                 <div>
                   <p className="event-date">{ moment(event.eventDate).format('Do MMMM YYYY') }</p>
                   <p className="event-date">{ moment(event.eventDate).format('h:mm:ss a') }</p>
                 </div>
 
                 <div className="event-cta">
-                  <button className="btn btn-primary mr-3">Register</button>
+                  <a href={event.link_to_register.url} target={event.link_to_register.target} className="btn btn-primary mr-3">Register Now</a>
                   <button className="btn btn-light">Read More</button>
                 </div>
 
@@ -104,16 +116,16 @@ class NextEvent extends Component {
             </div>
 
             <div className="speakers-slides">
-              <Slider {...settings}>
+              <Slider {...speakersSlideSettings}>
                 { speakers.map((speaker, index) => (
                   <div className="px-3" key={index}>
                     <div className="card">
-                      <img src={speaker.image} className="card-img-top" alt={speaker.name} />
+                      <img src={speaker.image.url} className="card-img-top" alt={speaker.name} />
                       <div className="card-body">
                         <h6 className="card-title">
-                          <a href="/" className="card-link">- speaker name -</a>
+                          <a href={speaker.linkToBio.url} target={speaker.linkToBio.target} className="card-link">{ speaker.name }</a>
                         </h6>
-                        <small className="text-muted">- speaker title -</small>
+                        <small className="text-muted">{ speaker.title }</small>
                       </div>
                     </div>
                   </div>
@@ -122,7 +134,15 @@ class NextEvent extends Component {
             </div>
 
             <div className="sponsors-list">
-              Horizontal list of sponsors
+              <Slider {...sponsorsSlideSettings}>
+                { event.sponsors.map((sponsor, index) => (
+                  <div className="sponsor-image" key={index}>
+                    <a href={sponsor.linkToBio.url} target="_blank">
+                      <img src={sponsor.image.url} alt={sponsor.name} width={sponsor.image.width} />
+                    </a>
+                  </div>
+                ))}
+              </Slider>
             </div>
           </div>
         ) }
@@ -135,49 +155,65 @@ const dummySpeakers = [
   {
     name: 'Adeola Ade Ojo',
     title: '',
-    image: Img1,
+    image: {
+      url: Img1
+    },
     linkToBio: ''
   },
   {
     name: 'Adewale Ajadi',
     title: 'Country Director, Synergos Nigeria',
-    image: Img2,
+    image: {
+      url: Img2
+    },
     linkToBio: ''
   },
   {
     name: 'Christian Nwamba',
     title: 'Developer Advocate at Cloudinary',
-    image: Img3,
+    image: {
+      url: Img3
+    },
     linkToBio: ''
   },
   {
     name: 'Cobhams Asuquo',
     title: 'Musician, Songwriter & Producer',
-    image: Img4,
+    image: {
+      url: Img4
+    },
     linkToBio: ''
   },
   {
     name: 'Dr Ola Brown',
     title: 'Founder, Flying Doctors Nigeria',
-    image: Img5,
+    image: {
+      url: Img5
+    },
     linkToBio: ''
   },
   {
     name: 'Mike Asukwo',
     title: 'Chief Editorial Artist, BusinessDay Media',
-    image: Img6,
+    image: {
+      url: Img6
+    },
     linkToBio: ''
   },
   {
     name: 'Prince Feyisetan Are',
     title: 'Head Coach, Para Powerlifting in Nigeria',
-    image: Img7,
+    image: {
+      url: Img7
+    },
     linkToBio: ''
   },
   {
     name: 'Segun Awosanya',
     title: 'Realtor, Civil Rights & Institutional Reforms Advocate',
-    image: Img8,
+    image: {
+      url: Img8
+    },
     linkToBio: ''
   }
 ]

@@ -24,10 +24,26 @@ const TransformEventData = (data) => {
 
   const mapSpeakers = speakers.map(speaker => {
     return {
-      name: speaker.speaker_name,
-      title: '',
-      image: speaker.speaker_image.url,
-      linkToBio: ''
+      name: speaker.speaker_name[0].text,
+      title: speaker.role_title[0].text,
+      image: {
+        url: speaker.speaker_image.url,
+        alt: speaker.speaker_image.alt,
+        ...speaker.speaker_image.dimensions
+      },
+      linkToBio: {...speaker.link_to_bio}
+    }
+  })
+
+  const mapSponsors = sponsors.map(sponsor => {
+    return {
+      name: sponsor.sponsor_name[0].text,
+      image: {
+        url: sponsor.sponsor_image.url,
+        alt: sponsor.sponsor_image.alt,
+        ...sponsor.sponsor_image.dimensions
+      },
+      linkToBio: {...sponsor.link_to_bio}
     }
   })
 
@@ -42,11 +58,11 @@ const TransformEventData = (data) => {
     description: description.map(d => d.text),
     eventDate: event_date_and_time,
     speakers: mapSpeakers,
-    sponsors,
+    sponsors: mapSponsors,
     gallery_images,
     gallery_videos,
     link_to_register,
-    event_venue,
+    event_venue: event_venue[0].text,
     event_venue_geo_location
   }
 }
