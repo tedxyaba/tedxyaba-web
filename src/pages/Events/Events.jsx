@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
 import './Events.scss';
 import apiClient from '../../services/api-client';
-import TransformEventsListData from '../../utils/data-transformers/eventslist';
 import apiRoutes from "../../utils/routes";
+import moment from 'moment';
+import React, { Component } from 'react';
+import TransformEventsListData from '../../utils/data-transformers/eventslist';
 
 class Events extends Component {
   constructor(props) {
@@ -43,14 +44,20 @@ class Events extends Component {
     const { loading, data } = this.state;
     const EventBox = (props) => {
       return (
-        <div className="px-3 py-5 col-4 text-truncate" key={props.index}>
+        <div className="px-3 py-5 col-md-6 text-truncate">
           <div className="card">
-            <img src={props.image.thumbnail_list_url} className="card-img-top" alt={props.image.alt} />
-            <div className="card-body text-truncate">
-              <h6 className="card-title">
-                <a href={''} target={''} className="card-link">{ props.title }</a>
-              </h6>
-              <small className="text-muted">{ props.summary }</small>
+            <div className="card-body row">
+              <div className="col-4">
+                <img src={props.image.thumbnail_list_url} className="card-img-top" alt={props.image.alt} />
+              </div>
+              <div className="col-8 text-truncate">
+                <h4 className="card-title">{ props.title }</h4>
+                <p className="event-date">{ moment(props.eventDate).format('Do MMMM YYYY') }</p>
+                <small className="text-muted">{ props.summary }</small>
+                <div className="event-cta">
+                  <a href={''} target={''} className="btn btn-primary">View Details</a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
