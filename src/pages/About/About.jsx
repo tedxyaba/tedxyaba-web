@@ -3,6 +3,7 @@ import './About.scss';
 import apiClient from '../../services/api-client';
 import TransformAboutpageData from '../../utils/data-transformers/aboutpage';
 import apiRoutes from "../../utils/routes";
+import Loading from "../components/loading";
 
 class About extends Component {
   constructor(props) {
@@ -45,7 +46,7 @@ class About extends Component {
     return (
       <div className="container-fluid">
         { loading ? (
-          <div className="my-4 text-center">Loading...</div>
+          <Loading/>
         ) : (
           <div className="row">
             <div className="col-sm">
