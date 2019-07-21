@@ -11,13 +11,13 @@ const mainRoutes = [
     show: true
   },
   {
-    name: 'About',
-    path: '/about',
+    name: 'Events',
+    path: '/events',
     show: true
   },
   {
-    name: 'Events',
-    path: '/events',
+    name: 'About',
+    path: '/about',
     show: true
   },
   {
