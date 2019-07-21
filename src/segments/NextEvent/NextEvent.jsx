@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './NextEvent.scss';
 import apiClient from '../../services/api-client';
 import apiRoutes from '../../utils/routes';
-import TransformEventData from '../../utils/data-transformers/events';
+import TransformEventsListData from '../../utils/data-transformers/eventslist';
 import moment from 'moment';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
@@ -45,7 +45,7 @@ class NextEvent extends Component {
       if (success) {
         this.setState({
           loading: false,
-          event: TransformEventData(data)
+          event: TransformEventsListData(data)[0]
         })
       } else {
         this.setState({

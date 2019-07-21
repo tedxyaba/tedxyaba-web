@@ -1,10 +1,10 @@
-const TransformEventData = (data) => {
-  const result = data.results[0];
+const TransformEventData = (event) => {
   const {
     title,
     speakers,
     sponsors,
     description,
+    event_type,
     event_image,
     event_venue,
     gallery_images,
@@ -13,13 +13,14 @@ const TransformEventData = (data) => {
     event_date_and_time,
     description_summary,
     event_venue_geo_location
-  } = result.data;
+  } = event.data;
 
   const image = {
     url: event_image.url,
     alt: event_image.alt || 'Event Image',
     height: event_image.dimensions.height,
-    width: event_image.dimensions.width
+    width: event_image.dimensions.width,
+    thumbnail_list_url: event_image.thumbnail && event_image.thumbnail.url
   }
 
   const mapSpeakers = speakers.map(speaker => {
@@ -48,10 +49,11 @@ const TransformEventData = (data) => {
   })
 
   return {
-    id: result.id,
-    type: result.type,
-    tags: result.tags,
-    slugs: result.slugs,
+    id: event.id,
+    type: event.type,
+    event_type,
+    tags: event.tags,
+    slugs: event.slugs,
     title: title[0].text,
     summary: description_summary,
     image,
