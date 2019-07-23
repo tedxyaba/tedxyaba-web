@@ -18,6 +18,14 @@ import Img6 from '../../assets/images/SpeakerImages/Mike Asukwo.jpg'
 import Img7 from '../../assets/images/SpeakerImages/Prince Feyisetan Are.jpg'
 import Img8 from '../../assets/images/SpeakerImages/Segun Awosanya.jpg'
 
+// dummy image of sponsors
+import Sp1 from '../../assets/images/sponsors/1.jpg'
+import Sp2 from '../../assets/images/sponsors/2.jpg'
+import Sp3 from '../../assets/images/sponsors/3.jpg'
+import Sp4 from '../../assets/images/sponsors/4.jpg'
+import Sp5 from '../../assets/images/sponsors/5.jpg'
+import Sp6 from '../../assets/images/sponsors/6.jpg'
+
 class NextEvent extends Component {
   constructor(props) {
     super(props);
@@ -26,16 +34,53 @@ class NextEvent extends Component {
       title: 'Upcoming Event',
       loading: true,
       event: {},
-      errors: null
+      errors: null,
+      windowWidth: 0,
+      isMobile: false
     }
 
     this._fetchData = this._fetchData.bind(this);
+    this.setViewport = this.setViewport.bind(this);
+    this.varySpeakerSlidesCount = this.varySpeakerSlidesCount.bind(this);
+    this.varySponsorsSlidesCount = this.varySponsorsSlidesCount.bind(this);
   }
 
   componentDidMount() {
+    this.setViewport();
+    window.addEventListener('resize', this.setViewport);
+
     if (this.props.event) {
       this._fetchData(this.props.event)
     }
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.setViewport)
+  }
+
+  setViewport() {
+    if (window !== 'undefined') {
+      this.setState({
+        windowWidth: window.innerWidth,
+        isMobile: window.innerWidth < 768
+      })
+    }
+  }
+
+  varySpeakerSlidesCount() {
+    if (this.state.windowWidth <= 528) return 1
+    if (this.state.windowWidth <= 768) return 2
+    if (this.state.windowWidth <= 1024) return 3
+    if (this.state.windowWidth <= 1440) return 4
+    if (this.state.windowWidth > 1440) return 5
+  }
+
+  varySponsorsSlidesCount() {
+    if (this.state.windowWidth <= 528) return 2
+    if (this.state.windowWidth <= 768) return 3
+    if (this.state.windowWidth <= 1024) return 4
+    if (this.state.windowWidth <= 1440) return 5
+    if (this.state.windowWidth > 1440) return 6
   }
 
   _fetchData(event) {
@@ -59,20 +104,21 @@ class NextEvent extends Component {
   render() {
     const { title, event } = this.state;
     const speakers = event.speakers && event.speakers.concat(dummySpeakers);
+    const sponsors = event.sponsors && event.sponsors.concat(dummySponsors);
     const speakersSlideSettings = {
       autoplay: true,
       dots: true,
       infinite: true,
       speed: 500,
-      slidesToShow: 5,
+      slidesToShow: this.varySpeakerSlidesCount(),
       slidesToScroll: 1
     };
     const sponsorsSlideSettings = {
       autoplay: true,
       dots: false,
       infinite: true,
-      speed: 600,
-      slidesToShow: 1,
+      speed: 1000,
+      slidesToShow: this.varySponsorsSlidesCount(),
       slidesToScroll: 1
     }
 
@@ -135,7 +181,7 @@ class NextEvent extends Component {
 
             <div className="sponsors-list">
               <Slider {...sponsorsSlideSettings}>
-                { event.sponsors.map((sponsor, index) => (
+                { sponsors.map((sponsor, index) => (
                   <div className="sponsor-image" key={index}>
                     <a href={sponsor.linkToBio.url} target="_blank" rel="noopener noreferrer">
                       <img src={sponsor.image.url} alt={sponsor.name} width={sponsor.image.width} />
@@ -215,6 +261,63 @@ const dummySpeakers = [
       url: Img8
     },
     linkToBio: ''
+  }
+]
+
+const dummySponsors = [
+  {
+    name: '',
+    image: {
+      url: Sp1,
+      alt: 'Sp1',
+      width: 100
+    },
+    linkToBio: 'https://www.google.com'
+  },
+  {
+    name: '',
+    image: {
+      url: Sp2,
+      alt: 'Sp2',
+      width: 100
+    },
+    linkToBio: 'https://www.google.com'
+  },
+  {
+    name: '',
+    image: {
+      url: Sp3,
+      alt: 'Sp3',
+      width: 100
+    },
+    linkToBio: 'https://www.google.com'
+  },
+  {
+    name: '',
+    image: {
+      url: Sp4,
+      alt: 'Sp4',
+      width: 100
+    },
+    linkToBio: 'https://www.google.com'
+  },
+  {
+    name: '',
+    image: {
+      url: Sp5,
+      alt: 'Sp5',
+      width: 100
+    },
+    linkToBio: 'https://www.google.com'
+  },
+  {
+    name: '',
+    image: {
+      url: Sp6,
+      alt: 'Sp6',
+      width: 100
+    },
+    linkToBio: 'https://www.google.com'
   }
 ]
 
