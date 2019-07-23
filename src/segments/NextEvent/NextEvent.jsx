@@ -137,7 +137,7 @@ class NextEvent extends Component {
               <Slider {...sponsorsSlideSettings}>
                 { event.sponsors.map((sponsor, index) => (
                   <div className="sponsor-image" key={index}>
-                    <a href={sponsor.linkToBio.url} target="_blank">
+                    <a href={sponsor.linkToBio.url} target="_blank" rel="noopener noreferrer">
                       <img src={sponsor.image.url} alt={sponsor.name} width={sponsor.image.width} />
                     </a>
                   </div>
