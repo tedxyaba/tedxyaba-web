@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Events from './Events';
+import Event from './Event';
 
-it('renders Events without crashing', () => {
+it('renders Event without crashing', () => {
   const div = document.createElement('div');
-  ReactDOM.render(<Events />, div);
+  ReactDOM.render(<Event />, div);
   ReactDOM.unmountComponentAtNode(div);
 });
