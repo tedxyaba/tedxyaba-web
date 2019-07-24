@@ -133,7 +133,7 @@ class NextEvent extends Component {
         { !!Object.keys(event).length && (
           <div>
             <div className="details row">
-              <div className="col-6">
+              <div className="col-12 col-md-6 order-2 order-md-1">
                 <h3>{ event.title }</h3>
                 <p>{ event.summary }</p>
 
@@ -156,8 +156,8 @@ class NextEvent extends Component {
                 )) } */}
               </div>
 
-              <div className="col-6">
-                <img src={event.image.url} alt={event.image.alt} />
+              <div className="col-12 col-md-6 order-1 order-md-2">
+                <img src={event.image.url} alt={event.image.alt} width="100%" />
               </div>
             </div>
 
