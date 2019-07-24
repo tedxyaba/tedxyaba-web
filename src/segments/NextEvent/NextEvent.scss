@@ -4,4 +4,12 @@ section.next-event {
   .sponsors-list {
     padding: 50px;
   }
+
+  @media (max-width: 575.98px) {
+    padding: 20px;
+
+    .sponsors-list {
+      padding: 20px;
+    }
+  }
 }

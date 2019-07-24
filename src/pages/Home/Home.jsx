@@ -6,6 +6,7 @@ import apiClient from '../../services/api-client';
 import TransformHomepageData from '../../utils/data-transformers/homepage';
 import apiRoutes from "../../utils/routes";
 import Loading from "../components/loading";
+import PreviousEvents from '../../segments/PreviousEvents';
 
 class Home extends Component {
   constructor(props) {
@@ -54,6 +55,7 @@ class Home extends Component {
           <div className="page-home-content">
             <Carousel images={data.carouselImages || []} />
             <NextEvent event={data.currentEvent}  />
+            <PreviousEvents />
           </div>
         ) }
       </div>

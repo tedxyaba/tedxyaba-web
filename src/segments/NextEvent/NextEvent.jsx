@@ -122,8 +122,6 @@ class NextEvent extends Component {
       slidesToScroll: 1
     }
 
-    console.log('NXTEVENT===> ', this.state)
-
     return (
       <section id="next-event" className="next-event">
         <h3>

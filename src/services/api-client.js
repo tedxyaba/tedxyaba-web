@@ -7,7 +7,7 @@ const apiClient = {
       common.getRef().then(async data => {
         const response = await fetchApi.getData(route.path, {
           q: route.q,
-          ref: data.refs[0].ref
+          ref: data && data.refs[0].ref
         });
         const resData = await response.json();
     
