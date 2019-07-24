@@ -33,7 +33,7 @@ class Events extends Component {
   }
 
   _fetchData() {
-    const apRoute = apiRoutes.events();
+    const eventsRoute = apiRoutes.events();
     const cb = (success, data) => {
       if (success) {
         const serialized = TransformEventsListData(data)
@@ -48,7 +48,7 @@ class Events extends Component {
         })
       }
     }
-    apiClient.get(apRoute, cb)
+    apiClient.get(eventsRoute, cb)
   }
 
   render() {
@@ -66,7 +66,7 @@ class Events extends Component {
                 <p className="event-date">{ moment(event.eventDate).format('Do MMMM YYYY') }</p>
                 <small className="text-muted">{ event.summary }</small>
                 <div className="event-cta">
-                  <a href={''} target={''} className="btn btn-primary">View Details</a>
+                  <a href={`/events/${event.id}`} target={''} className="btn btn-primary">View Details</a>
                 </div>
               </div>
             </div>
