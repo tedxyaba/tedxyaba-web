@@ -22,10 +22,10 @@ class Carousel extends Component {
             { images && images.map(image => (
               <div key={image.id} className={`carousel-item ${image.id === 1 ? 'active' : ''}`}>
                 <img src={image.url} className="d-block w-100" alt={image.alt} />
-                <div className="carousel-caption d-none d-md-block">
+                {/* <div className="carousel-caption d-none d-md-block">
                   <h5>{ image.slideLabel }</h5>
                   <p>{ image.slideText }</p>
-                </div>
+                </div> */}
               </div>
             ))}
           </div>
