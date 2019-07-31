@@ -5,6 +5,7 @@ import apiRoutes from "../../utils/routes";
 import moment from 'moment';
 import Loading from "../components/loading";
 import TransformEventsListData from '../../utils/data-transformers/eventslist';
+import defaultEventImage from '../../assets/images/defaults/default-event.jpg';
 
 class Events extends Component {
   constructor(props) {
@@ -55,18 +56,19 @@ class Events extends Component {
     const { loading, data } = this.state;
     const EventBox = (event) => {
       return (
-        <div className="px-3 pb-5 col-md-6 text-truncate">
+        <div className="px-3 pb-5 col-md-6">
           <div className="card">
-            <div className="card-body row">
+            <div className="row">
               <div className="col-4">
-                <img src={event.image.thumbnail_list_url} className="card-img-top" alt={event.image.alt} />
+                <img src={event.image.thumbnail_list_url || defaultEventImage} className="card-img-top" alt={event.image.alt} />
               </div>
-              <div className="col-8 text-truncate">
-                <h4 className="card-title">{ event.title }</h4>
-                <p className="event-date">{ moment(event.eventDate).format('Do MMMM YYYY') }</p>
-                <small className="text-muted">{ event.summary }</small>
+              <div className="col-8">
+                <div className="my-0 card-title font-weight-bold">{ event.title }</div>
+                <span className="badge badge-pill badge-light">{event.event_type}</span>
+                <div className="pb-2 event-date">{ moment(event.eventDate).format('Do MMMM YYYY') }</div>
+                <p className="text-muted text-truncate">{ event.summary }</p>
                 <div className="event-cta">
-                  <a href={`/events/${event.id}`} target={''} className="btn btn-primary">View Details</a>
+                  <a href={`/events/${event.id}`} target='_blank'>View More Details</a>
                 </div>
               </div>
             </div>
@@ -100,7 +102,8 @@ class Events extends Component {
         ) : (
           <div>
             {
-              Object.keys(data).map( year => {
+
+              Object.keys(data).sort((a,b) => b - a).map( year => {
                 return <YearlyEvents key={year} year={year} events={data[year]} />
               })
             }
