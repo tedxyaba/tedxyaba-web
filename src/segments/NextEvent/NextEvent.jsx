@@ -93,7 +93,7 @@ class NextEvent extends Component {
   }
 
   render() {
-    const { title, event } = this.state;
+    const { title, event, isMobile } = this.state;
     const sponsors = event.sponsors && event.sponsors.concat(dummySponsors);
     const speakersSlideSettings = {
       autoplay: true,
@@ -117,9 +117,15 @@ class NextEvent extends Component {
         <Section title={this.props.title || title } classNames="next-event">
           <div>
             <div className="details row">
-              <div className="col-12 col-md-6 order-2 order-md-1">
+              <div className={`col-12 col-md-6 order-2 order-md-1 ${isMobile ? 'text-center' : ''}`}>
                 <h3>{ event.title }</h3>
                 <p>{ event.summary }</p>
+
+                <div className="description">
+                  { event.description.map((d, i) => (
+                    <p key={i}>{ d }</p>
+                  )) }
+                </div>
 
                 <div className="venue">
                   <p>{ event.event_venue }</p>
@@ -134,10 +140,6 @@ class NextEvent extends Component {
                   <a href={event.link_to_register.url} target={event.link_to_register.target} className="btn btn-primary mr-3">Register Now</a>
                   <button className="btn btn-light">Read More</button>
                 </div>
-
-                {/* { event.description.map((d, i) => (
-                  <p key={i}>{ d }</p>
-                )) } */}
               </div>
 
               <div className="col-12 col-md-6 order-1 order-md-2">

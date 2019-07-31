@@ -1,9 +1,9 @@
+import React, { Component } from 'react';
 import './Events.scss';
 import apiClient from '../../services/api-client';
 import apiRoutes from "../../utils/routes";
 import moment from 'moment';
 import Loading from "../components/loading";
-import React, { Component } from 'react';
 import TransformEventsListData from '../../utils/data-transformers/eventslist';
 
 class Events extends Component {

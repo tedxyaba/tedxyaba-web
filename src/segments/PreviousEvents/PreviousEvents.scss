@@ -1,7 +1,22 @@
-section.previous-events {
-  padding: 40px;
+.previous-events {
+  a {
+    color: inherit;
 
-  @media (max-width: 575.98px) {
-    padding: 20px;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  .card {
+    border-color: transparent;
+    border-radius: .25rem;
+    box-shadow: 0 5px 20px rgba(0,40,130,.15);
+    transition: all .25s ease-in-out;
+
+    &:hover {
+      cursor: pointer;
+      box-shadow: 0 5px 40px rgba(0,40,130,.25);
+      transition: all .25s ease-in-out;
+    }
   }
 }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import './PreviousEvents.scss';
 import apiClient from '../../services/api-client';
 import apiRoutes from '../../utils/routes';
@@ -52,14 +53,16 @@ class PreviousEvents extends Component {
         <div className="row">
           { previousEvents.map((event, index) => (
             <div className="col-12 col-sm-6 col-md-4 col-lg-3 p-3" key={index}>
-              <div className="card">
-                <img src={event.image.url} className="card-img-top" alt={event.image.alt} width="100%" />
-                <div className="card-body">
-                  <h5 className="card-title">{ event.title }</h5>
-                  <p><small className="text-muted">{ moment(event.eventDate).format('Do MMMM YYYY') }</small></p>
-                  <p className="card-text">{ event.summary }</p>
+              <Link to={`/events/${event.id}`}>
+                <div className="card">
+                  <img src={event.image.url} className="card-img-top" alt={event.image.alt} width="100%" />
+                  <div className="card-body">
+                    <h5 className="card-title">{ event.title }</h5>
+                    <p><small className="text-muted">{ moment(event.eventDate).format('Do MMMM YYYY') }</small></p>
+                    <p className="card-text">{ event.summary }</p>
+                  </div>
                 </div>
-              </div>
+              </Link>
             </div>
           ))}
         </div>
