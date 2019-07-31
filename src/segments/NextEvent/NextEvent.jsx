@@ -146,7 +146,7 @@ class NextEvent extends Component {
 
                 <div className="event-cta">
                   <a href={event.link_to_register.url} target={event.link_to_register.target} className="btn btn-primary mr-3">Register Now</a>
-                  <button className="btn btn-light">Read More</button>
+                  <a href={`/events/${event.id}`} target={''} className="btn btn-light">Read More</a>
                 </div>
 
                 {/* { event.description.map((d, i) => (
