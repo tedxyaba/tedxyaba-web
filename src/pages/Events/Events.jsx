@@ -102,7 +102,8 @@ class Events extends Component {
         ) : (
           <div>
             {
-              Object.keys(data).map( year => {
+
+              Object.keys(data).sort((a,b) => b - a).map( year => {
                 return <YearlyEvents key={year} year={year} events={data[year]} />
               })
             }
