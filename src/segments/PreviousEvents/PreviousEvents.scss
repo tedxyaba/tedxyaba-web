@@ -1,3 +1,5 @@
+$primary: #e62b1f;
+
 .previous-events {
   a {
     color: inherit;
@@ -15,6 +17,7 @@
 
     &:hover {
       cursor: pointer;
+      border-color: rgba($primary,.2);
       box-shadow: 0 5px 40px rgba(0,40,130,.25);
       transition: all .25s ease-in-out;
     }
