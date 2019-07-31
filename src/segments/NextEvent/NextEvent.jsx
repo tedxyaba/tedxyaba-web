@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import './NextEvent.scss';
 import apiClient from '../../services/api-client';
 import apiRoutes from '../../utils/routes';
@@ -8,14 +9,7 @@ import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Section from '../../pages/components/ui/Section';
-
-// dummy image of sponsors
-import Sp1 from '../../assets/images/sponsors/1.jpg'
-import Sp2 from '../../assets/images/sponsors/2.jpg'
-import Sp3 from '../../assets/images/sponsors/3.jpg'
-import Sp4 from '../../assets/images/sponsors/4.jpg'
-import Sp5 from '../../assets/images/sponsors/5.jpg'
-import Sp6 from '../../assets/images/sponsors/6.jpg'
+import Button from '../../pages/components/ui/Button';
 
 class NextEvent extends Component {
   constructor(props) {
@@ -94,7 +88,6 @@ class NextEvent extends Component {
 
   render() {
     const { title, event, isMobile } = this.state;
-    const sponsors = event.sponsors && event.sponsors.concat(dummySponsors);
     const speakersSlideSettings = {
       autoplay: true,
       dots: true,
@@ -117,8 +110,10 @@ class NextEvent extends Component {
         <Section title={this.props.title || title } classNames="next-event">
           <div>
             <div className="details row">
-              <div className={`col-12 col-md-6 order-2 order-md-1 ${isMobile ? 'text-center' : ''}`}>
-                <h3>{ event.title }</h3>
+              <div className={`col-12 col-md-6 order-2 order-md-1 ${isMobile ? 'text-center' : ''} p-5`}>
+                <h3>
+                  <Link to={`/events/${event.id}`}>{ event.title }</Link>
+                </h3>
                 <p>{ event.summary }</p>
 
                 <div className="description">
@@ -137,8 +132,21 @@ class NextEvent extends Component {
                 </div>
 
                 <div className="event-cta">
-                  <a href={event.link_to_register.url} target={event.link_to_register.target} className="btn btn-primary mr-3">Register Now</a>
-                  <button className="btn btn-light">Read More</button>
+                  <Button
+                    type="link"
+                    text="Register Now"
+                    btnType="register"
+                    classNames="mr-2"
+                    href={event.link_to_register.url || "https://www.google.com"}
+                    target={event.link_to_register.target}
+                  />
+                  <Button
+                    type="link-internal"
+                    text="Learn More"
+                    btnType="link"
+                    className=""
+                    linkTo={`/events/${event.id}`}
+                  />
                 </div>
               </div>
 
@@ -170,13 +178,13 @@ class NextEvent extends Component {
               </div>
             )}
 
-            { !!sponsors.length && (
+            { !!event.sponsors.length && (
               <div className="sub-section sponsors-list">
                 <h5 className="sub-section-title">Event Sponsors</h5>
                 <hr />
 
                 <Slider {...sponsorsSlideSettings}>
-                  { sponsors.map((sponsor, index) => (
+                  { event.sponsors.map((sponsor, index) => (
                     <div className="sponsor-image" key={index}>
                       <a href={sponsor.linkToBio.url} target="_blank" rel="noopener noreferrer">
                         <img src={sponsor.image.url} alt={sponsor.name} width={sponsor.image.width} />
@@ -192,62 +200,5 @@ class NextEvent extends Component {
     )
   }
 }
-
-const dummySponsors = [
-  {
-    name: '',
-    image: {
-      url: Sp1,
-      alt: 'Sp1',
-      width: 100
-    },
-    linkToBio: 'https://www.google.com'
-  },
-  {
-    name: '',
-    image: {
-      url: Sp2,
-      alt: 'Sp2',
-      width: 100
-    },
-    linkToBio: 'https://www.google.com'
-  },
-  {
-    name: '',
-    image: {
-      url: Sp3,
-      alt: 'Sp3',
-      width: 100
-    },
-    linkToBio: 'https://www.google.com'
-  },
-  {
-    name: '',
-    image: {
-      url: Sp4,
-      alt: 'Sp4',
-      width: 100
-    },
-    linkToBio: 'https://www.google.com'
-  },
-  {
-    name: '',
-    image: {
-      url: Sp5,
-      alt: 'Sp5',
-      width: 100
-    },
-    linkToBio: 'https://www.google.com'
-  },
-  {
-    name: '',
-    image: {
-      url: Sp6,
-      alt: 'Sp6',
-      width: 100
-    },
-    linkToBio: 'https://www.google.com'
-  }
-]
 
 export default NextEvent
