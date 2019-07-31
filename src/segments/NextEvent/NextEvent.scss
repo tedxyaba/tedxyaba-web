@@ -1,15 +1,17 @@
-section.next-event {
-  padding: 40px;
+.sub-section {
+  margin: 60px auto 10px;
 
-  .sponsors-list {
-    padding: 50px;
+  @media (max-width: 575.98px) {}
+
+  h5.sub-section-title {
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-align: center;
   }
 
-  @media (max-width: 575.98px) {
-    padding: 20px;
-
-    .sponsors-list {
-      padding: 20px;
-    }
+  hr {
+    border-top: 1px solid rgba(0,0,0,.3);
+    margin-bottom: 2rem;
+    width: 80px
   }
 }

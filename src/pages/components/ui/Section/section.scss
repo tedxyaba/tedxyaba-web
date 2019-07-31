@@ -1,0 +1,14 @@
+.t-section {
+  padding: 60px;
+
+  @media (max-width: 575.98px) {
+    padding: 30px;
+  }
+
+  .t-title {
+    letter-spacing: 1.5px;
+    margin: 0 auto 20px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+}

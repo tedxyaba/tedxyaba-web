@@ -7,16 +7,7 @@ import moment from 'moment';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
-// dummy image of speakers
-import Img1 from '../../assets/images/SpeakerImages/Adeola Ade Ojo.jpg'
-import Img2 from '../../assets/images/SpeakerImages/Adewale Ajadi.jpg'
-import Img3 from '../../assets/images/SpeakerImages/Christian Nwamba.jpg'
-import Img4 from '../../assets/images/SpeakerImages/Cobhams Asuquo.jpg'
-import Img5 from '../../assets/images/SpeakerImages/Dr Ola Brown.jpg'
-import Img6 from '../../assets/images/SpeakerImages/Mike Asukwo.jpg'
-import Img7 from '../../assets/images/SpeakerImages/Prince Feyisetan Are.jpg'
-import Img8 from '../../assets/images/SpeakerImages/Segun Awosanya.jpg'
+import Section from '../../pages/components/ui/Section';
 
 // dummy image of sponsors
 import Sp1 from '../../assets/images/sponsors/1.jpg'
@@ -103,7 +94,6 @@ class NextEvent extends Component {
 
   render() {
     const { title, event } = this.state;
-    const speakers = event.speakers && event.speakers.concat(dummySpeakers);
     const sponsors = event.sponsors && event.sponsors.concat(dummySponsors);
     const speakersSlideSettings = {
       autoplay: true,
@@ -123,12 +113,8 @@ class NextEvent extends Component {
     }
 
     return (
-      <section id="next-event" className="next-event">
-        <h3>
-          {this.props.title || title }
-        </h3>
-
-        { !!Object.keys(event).length && (
+      !!Object.keys(event).length && (
+        <Section title={this.props.title || title } classNames="next-event">
           <div>
             <div className="details row">
               <div className="col-12 col-md-6 order-2 order-md-1">
@@ -159,108 +145,51 @@ class NextEvent extends Component {
               </div>
             </div>
 
-            <div className="speakers-slides">
-              <Slider {...speakersSlideSettings}>
-                { speakers.map((speaker, index) => (
-                  <div className="px-3" key={index}>
-                    <div className="card">
-                      <img src={speaker.image.url} className="card-img-top" alt={speaker.name} />
-                      <div className="card-body">
-                        <h6 className="card-title">
-                          <a href={speaker.linkToBio.url} target={speaker.linkToBio.target} className="card-link">{ speaker.name }</a>
-                        </h6>
-                        <small className="text-muted">{ speaker.title }</small>
+            { !!event.speakers.length && (
+              <div className="sub-section speakers-slides">
+                <h5 className="sub-section-title">Speakers</h5>
+                <hr />
+
+                <Slider {...speakersSlideSettings}>
+                  { event.speakers.map((speaker, index) => (
+                    <div className="px-3" key={index}>
+                      <div className="card">
+                        <img src={speaker.image.url} className="card-img-top" alt={speaker.name} />
+                        <div className="card-body">
+                          <h6 className="card-title">
+                            <a href={speaker.linkToBio.url} target={speaker.linkToBio.target} className="card-link">{ speaker.name }</a>
+                          </h6>
+                          <small className="text-muted">{ speaker.title }</small>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                )) }
-              </Slider>
-            </div>
+                  )) }
+                </Slider>
+              </div>
+            )}
 
-            <div className="sponsors-list">
-              <Slider {...sponsorsSlideSettings}>
-                { sponsors.map((sponsor, index) => (
-                  <div className="sponsor-image" key={index}>
-                    <a href={sponsor.linkToBio.url} target="_blank" rel="noopener noreferrer">
-                      <img src={sponsor.image.url} alt={sponsor.name} width={sponsor.image.width} />
-                    </a>
-                  </div>
-                ))}
-              </Slider>
-            </div>
+            { !!sponsors.length && (
+              <div className="sub-section sponsors-list">
+                <h5 className="sub-section-title">Event Sponsors</h5>
+                <hr />
+
+                <Slider {...sponsorsSlideSettings}>
+                  { sponsors.map((sponsor, index) => (
+                    <div className="sponsor-image" key={index}>
+                      <a href={sponsor.linkToBio.url} target="_blank" rel="noopener noreferrer">
+                        <img src={sponsor.image.url} alt={sponsor.name} width={sponsor.image.width} />
+                      </a>
+                    </div>
+                  ))}
+                </Slider>
+              </div>
+            )}
           </div>
-        ) }
-      </section>
+        </Section>
+      )
     )
   }
 }
-
-const dummySpeakers = [
-  {
-    name: 'Adeola Ade Ojo',
-    title: '',
-    image: {
-      url: Img1
-    },
-    linkToBio: ''
-  },
-  {
-    name: 'Adewale Ajadi',
-    title: 'Country Director, Synergos Nigeria',
-    image: {
-      url: Img2
-    },
-    linkToBio: ''
-  },
-  {
-    name: 'Christian Nwamba',
-    title: 'Developer Advocate at Cloudinary',
-    image: {
-      url: Img3
-    },
-    linkToBio: ''
-  },
-  {
-    name: 'Cobhams Asuquo',
-    title: 'Musician, Songwriter & Producer',
-    image: {
-      url: Img4
-    },
-    linkToBio: ''
-  },
-  {
-    name: 'Dr Ola Brown',
-    title: 'Founder, Flying Doctors Nigeria',
-    image: {
-      url: Img5
-    },
-    linkToBio: ''
-  },
-  {
-    name: 'Mike Asukwo',
-    title: 'Chief Editorial Artist, BusinessDay Media',
-    image: {
-      url: Img6
-    },
-    linkToBio: ''
-  },
-  {
-    name: 'Prince Feyisetan Are',
-    title: 'Head Coach, Para Powerlifting in Nigeria',
-    image: {
-      url: Img7
-    },
-    linkToBio: ''
-  },
-  {
-    name: 'Segun Awosanya',
-    title: 'Realtor, Civil Rights & Institutional Reforms Advocate',
-    image: {
-      url: Img8
-    },
-    linkToBio: ''
-  }
-]
 
 const dummySponsors = [
   {

@@ -4,6 +4,7 @@ import apiClient from '../../services/api-client';
 import apiRoutes from '../../utils/routes';
 import TransformEventsListData from '../../utils/data-transformers/eventslist';
 import moment from 'moment';
+import Section from '../../pages/components/ui/Section';
 
 class PreviousEvents extends Component {
   constructor(props) {
@@ -47,11 +48,7 @@ class PreviousEvents extends Component {
     console.log('PreviousEvents===> ', this.state)
 
     return (
-      <section id="previous-events" className="previous-events">
-        <h3>
-          {this.props.title || title }
-        </h3>
-
+      <Section title={this.props.title || title} classNames="previous-events">
         <div className="row">
           { previousEvents.map((event, index) => (
             <div className="col-12 col-sm-6 col-md-4 col-lg-3 p-3" key={index}>
@@ -66,7 +63,7 @@ class PreviousEvents extends Component {
             </div>
           ))}
         </div>
-      </section>
+      </Section>
     )
   }
 }
