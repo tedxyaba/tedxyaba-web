@@ -96,13 +96,16 @@ class Events extends Component {
     }
 
     return (
-      <div className="container-fluid">
+      <div className="container-fluid events">
         { loading ? (
           <Loading />
         ) : (
           <div>
-            {
+            <div className="event-banner">
+              <h3>EVENTS</h3>
+            </div>
 
+            {
               Object.keys(data).sort((a,b) => b - a).map( year => {
                 return <YearlyEvents key={year} year={year} events={data[year]} />
               })

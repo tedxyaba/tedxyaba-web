@@ -7,7 +7,7 @@ import TransformHomepageData from '../../utils/data-transformers/homepage';
 import apiRoutes from "../../utils/routes";
 import Loading from "../components/loading";
 import PreviousEvents from '../../segments/PreviousEvents';
-import Subscribe from '../../segments/Subscribe';
+// import Subscribe from '../../segments/Subscribe';
 import Footer from '../../segments/Footer';
 import Join from '../../segments/Join';
 

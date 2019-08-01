@@ -1,0 +1,21 @@
+$primary: #e62b1f;
+
+.events {
+  .event-banner {
+    // background-color: aqua;
+    background-image: linear-gradient(to bottom right, rgba($primary,0.5), rgba($primary,0)),url(./../../assets/images/carousel/carousel3.jpg);
+    // background-image: url(./../../assets/images/carousel/carousel3.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 3rem;
+
+    &:before {
+      opacity: .2;
+    }
+
+    h3 {
+      color: white;
+    }
+  }
+}
