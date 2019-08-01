@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './Join.scss';
-import Section from '../../pages/components/ui/Section';
 import Button from '../../pages/components/ui/Button';
 
 const Join = props => {

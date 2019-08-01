@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import { Link } from 'react-router-dom';
 import './Subscribe.scss';
 // import apiClient from '../../services/api-client';
 // import apiRoutes from '../../utils/routes';
@@ -17,32 +16,52 @@ class Subscribe extends Component {
       errors: null,
     }
 
+    this.handleChange = this.handleChange.bind(this);
     this._submit = this._submit.bind(this);
   }
 
-  _submit() {
-    console.log('Submit clicked!')
+  handleChange(e) {
+    this.setState({
+      [e.target.name]: e.target.value
+    })
+  }
+
+  _submit(e) {
+    e.preventDefault();
+    console.log('Submit clicked!', this.state)
   }
 
   render() {
-    const title = 'Join our volunteer team';
+    const title = 'Be the first to know';
 
     return (
-      <Section title={this.props.title || title} classNames="subscribe">
+      <Section title={this.props.title || title} classNames="container-fluid subscribe">
         <div className="row justify-content-center">
-          <div className="col-12 col-sm-6 p-5">
-            <form class="form-inline">
-              <div class="form-group mb-2">
-                <label for="staticEmail2" class="sr-only">Email</label>
-                <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="email@example.com" />
+          <form className="subscribe-form">
+            <div className="form-row">
+              <div className="col-sm-4">
+                <div className="form-group mb-2">
+                  <input id="name" type="text" name="name" className="form-control" onChange={this.handleChange} placeholder="Name" />
+                </div>
               </div>
-              <div class="form-group mx-sm-3 mb-2">
-                <label for="inputPassword2" class="sr-only">Password</label>
-                <input type="password" class="form-control" id="inputPassword2" placeholder="Password" />
+
+              <div className="col-sm-4">
+                <div className="form-group mb-2">
+                  <input id="email" type="email" name="email" className="form-control" onChange={this.handleChange} placeholder="Email" />
+                </div>
               </div>
-              <button type="submit" class="btn btn-primary mb-2">Confirm identity</button>
-            </form>
-          </div>
+
+              <div className="col-sm-4">
+                <Button
+                  type="button"
+                  text="Send"
+                  btnType="primary"
+                  classNames="btn-block"
+                  onClick={this._submit}
+                />
+              </div>
+            </div>
+          </form>
         </div>
       </Section>
     )

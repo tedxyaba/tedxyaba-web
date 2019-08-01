@@ -68,7 +68,7 @@ class Events extends Component {
                 <div className="pb-2 event-date">{ moment(event.eventDate).format('Do MMMM YYYY') }</div>
                 <p className="text-muted text-truncate">{ event.summary }</p>
                 <div className="event-cta">
-                  <a href={`/events/${event.id}`} target='_blank'>View More Details</a>
+                  <a href={`/events/${event.id}`} target='_blank' rel="noopener noreferrer">View More Details</a>
                 </div>
               </div>
             </div>
