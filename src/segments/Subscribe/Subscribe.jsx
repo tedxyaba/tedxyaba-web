@@ -4,6 +4,7 @@ import './Subscribe.scss';
 // import apiClient from '../../services/api-client';
 // import apiRoutes from '../../utils/routes';
 import Section from '../../pages/components/ui/Section';
+import Button from '../../pages/components/ui/Button';
 
 class Subscribe extends Component {
   constructor(props) {

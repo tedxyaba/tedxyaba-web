@@ -1,0 +1,13 @@
+$primary: #e62b1f;
+
+.join {
+  border-top: 2px solid $primary;
+  box-shadow: 0 -3px 20px rgba($primary,.15);
+  padding: 2.5rem 0.5rem;
+
+  @media (max-width: 400px) {
+    .btn-register span {
+      font-size: .75rem;
+    }
+  }
+}
