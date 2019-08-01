@@ -48,7 +48,6 @@ class Home extends Component {
 
   render() {
     const { loading, data } = this.state;
-    console.log('HOME===> ', this.state);
 
     return (
       <div className="page-home">
@@ -59,7 +58,7 @@ class Home extends Component {
             <Carousel images={data.carouselImages || []} />
             <NextEvent event={data.currentEvent}  />
             <PreviousEvents />
-            <Join />
+            <Join link={data.link_to_volunteer_form} />
             {/* <Subscribe /> */}
             <Footer />
           </div>

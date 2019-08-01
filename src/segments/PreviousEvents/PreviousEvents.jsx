@@ -46,8 +46,6 @@ class PreviousEvents extends Component {
   render() {
     const { title, previousEvents } = this.state;
 
-    console.log('PreviousEvents===> ', this.state)
-
     return (
       <Section title={this.props.title || title} classNames="previous-events">
         <div className="row">

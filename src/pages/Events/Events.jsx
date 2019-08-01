@@ -89,9 +89,9 @@ class Events extends Component {
           <Section title={props.year} classNames="px-0">
             <div className="row">
               {
-                props.events.map((event, index) => {
-                  return <EventBox key={index} {...event} />
-                })
+                props.events.map((event, index) => (
+                  <EventBox key={index} {...event} />
+                ))
               }
             </div>
           </Section>
@@ -113,9 +113,9 @@ class Events extends Component {
 
             <div className="container">
               {
-                Object.keys(data).sort((a,b) => b - a).map( year => {
-                  return <YearlyEvents key={year} year={year} events={data[year]} />
-                })
+                Object.keys(data).sort((a,b) => b - a).map( year => (
+                  <YearlyEvents key={year} year={year} events={data[year]} />
+                ))
               }
             </div>
 
