@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import './Events.scss';
 import apiClient from '../../services/api-client';
 import apiRoutes from "../../utils/routes";
@@ -6,6 +6,7 @@ import moment from 'moment';
 import Loading from "../components/loading";
 import TransformEventsListData from '../../utils/data-transformers/eventslist';
 import defaultEventImage from '../../assets/images/defaults/default-event.jpg';
+import Section from '../components/ui/Section';
 
 class Events extends Component {
   constructor(props) {
@@ -54,9 +55,10 @@ class Events extends Component {
 
   render() {
     const { loading, data } = this.state;
+
     const EventBox = (event) => {
       return (
-        <div className="px-3 pb-5 col-md-6">
+        <div className="px-3 my-3 col-md-6">
           <div className="card">
             <div className="row">
               <div className="col-4">
@@ -79,8 +81,18 @@ class Events extends Component {
 
     const YearlyEvents = (props) => {
       return (
-        <div className="container">
-          <h5 className='px-3 font-weight-bold' style={{overflow: 'hidden', whiteSpace: 'nowrap'}}>
+        <Fragment>
+          <Section title={props.year} classNames="px-0">
+            <div className="row">
+              {
+                props.events.map((event, index) => {
+                  return <EventBox key={index} {...event} />
+                })
+              }
+            </div>
+          </Section>
+
+          {/* <h5 className='px-3 font-weight-bold' style={{overflow: 'hidden', whiteSpace: 'nowrap'}}>
             {props.year}
             <hr className='my-1' style={{display: 'inline-block', width: '100%'}} />
           </h5>
@@ -90,8 +102,8 @@ class Events extends Component {
                 return <EventBox key={index} {...event} />
               })
             }
-          </div>
-        </div>
+          </div> */}
+        </Fragment>
       )
     }
 
@@ -100,19 +112,21 @@ class Events extends Component {
         { loading ? (
           <Loading />
         ) : (
-          <div>
+          <Fragment>
             <div className="event-banner">
               <div className="overlay">
                 <h3>EVENTS</h3>
               </div>
             </div>
 
-            {
-              Object.keys(data).sort((a,b) => b - a).map( year => {
-                return <YearlyEvents key={year} year={year} events={data[year]} />
-              })
-            }
-          </div>
+            <div className="container">
+              {
+                Object.keys(data).sort((a,b) => b - a).map( year => {
+                  return <YearlyEvents key={year} year={year} events={data[year]} />
+                })
+              }
+            </div>
+          </Fragment>
         ) }
       </div>
     )

@@ -2,6 +2,7 @@ $primary: #e62b1f;
 
 .events {
   .event-banner {
+    background-attachment: fixed;
     background-image: url(./../../assets/images/carousel/carousel3.jpg);
     background-image: linear-gradient(to bottom right, rgba($primary,0.75), rgba($primary,0.1)),url(./../../assets/images/carousel/carousel3.jpg);
     background-position: center center;
@@ -11,7 +12,7 @@ $primary: #e62b1f;
     position: relative;
 
     .overlay {
-      background: rgba(0,0,0,.8);
+      background: rgba(0,0,0,.6);
       height: 100%;
       left: 0;
       position: absolute;
