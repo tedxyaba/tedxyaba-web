@@ -60,7 +60,7 @@ class Home extends Component {
             <NextEvent event={data.currentEvent}  />
             <PreviousEvents />
             <Join />
-            <Subscribe />
+            {/* <Subscribe /> */}
             <Footer />
           </div>
         ) }
