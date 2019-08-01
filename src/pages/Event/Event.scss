@@ -28,11 +28,16 @@ $primary: #e62b1f;
   }
 
   .event-content {
-    padding: 1rem 0;
+    padding-bottom: 1.5rem;
+    padding-top: 1.5rem;
 
     .summary {
       font-size: 1.25rem;
       margin-bottom: 1.5rem;
+    }
+
+    .description {
+      line-height: 1.8;
     }
   }
 }
