@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import './PreviousEvents.scss';
 import apiClient from '../../services/api-client';
 import apiRoutes from '../../utils/routes';
 import TransformEventsListData from '../../utils/data-transformers/eventslist';
 import moment from 'moment';
+import Section from '../../pages/components/ui/Section';
 
 class PreviousEvents extends Component {
   constructor(props) {
@@ -47,26 +49,25 @@ class PreviousEvents extends Component {
     console.log('PreviousEvents===> ', this.state)
 
     return (
-      <section id="previous-events" className="previous-events">
-        <h3>
-          {this.props.title || title }
-        </h3>
-
+      <Section title={this.props.title || title} classNames="previous-events">
         <div className="row">
           { previousEvents.map((event, index) => (
             <div className="col-12 col-sm-6 col-md-4 col-lg-3 p-3" key={index}>
-              <div className="card">
-                <img src={event.image.url} className="card-img-top" alt={event.image.alt} width="100%" />
-                <div className="card-body">
-                  <h5 className="card-title">{ event.title }</h5>
-                  <p><small className="text-muted">{ moment(event.eventDate).format('Do MMMM YYYY') }</small></p>
-                  <p className="card-text">{ event.summary }</p>
+              <Link to={`/events/${event.id}`}>
+                <div className="card">
+                  <img src={event.image.url} className="card-img-top" alt={event.image.alt} width="100%" />
+                  <div className="card-body">
+                    <h5 className="card-title">{ event.title }</h5>
+                    <p><span class="badge badge-pill badge-light">{event.event_type}</span></p>
+                    <p><small className="text-muted">{ moment(event.eventDate).format('Do MMMM YYYY') }</small></p>
+                    <p className="card-text">{ event.summary }</p>
+                  </div>
                 </div>
-              </div>
+              </Link>
             </div>
           ))}
         </div>
-      </section>
+      </Section>
     )
   }
 }

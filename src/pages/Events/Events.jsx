@@ -1,9 +1,9 @@
+import React, { Component } from 'react';
 import './Events.scss';
 import apiClient from '../../services/api-client';
 import apiRoutes from "../../utils/routes";
 import moment from 'moment';
 import Loading from "../components/loading";
-import React, { Component } from 'react';
 import TransformEventsListData from '../../utils/data-transformers/eventslist';
 import defaultEventImage from '../../assets/images/defaults/default-event.jpg';
 
@@ -68,7 +68,7 @@ class Events extends Component {
                 <div className="pb-2 event-date">{ moment(event.eventDate).format('Do MMMM YYYY') }</div>
                 <p className="text-muted text-truncate">{ event.summary }</p>
                 <div className="event-cta">
-                  <a href={`/events/${event.id}`} target='_blank'>View More Details</a>
+                  <a href={`/events/${event.id}`} target='_blank' rel="noopener noreferrer">View More Details</a>
                 </div>
               </div>
             </div>

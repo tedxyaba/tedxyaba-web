@@ -27,3 +27,12 @@ a:hover {
   color: #ac1f16;
   transition: all ease-in-out .25s;
 }
+
+.badge {
+  border: .5px solid rgba(0,0,0,.2);
+  font-size: .75rem;
+  font-weight: normal;
+  padding: .45em 1.4em .3rem;
+  margin-bottom: 5px;
+  margin-right: 5px;
+}
