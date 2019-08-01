@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import { Link } from 'react-router-dom';
 import './Events.scss';
 import apiClient from '../../services/api-client';
 import apiRoutes from "../../utils/routes";
@@ -7,6 +8,8 @@ import Loading from "../components/loading";
 import TransformEventsListData from '../../utils/data-transformers/eventslist';
 import defaultEventImage from '../../assets/images/defaults/default-event.jpg';
 import Section from '../components/ui/Section';
+import Join from '../../segments/Join';
+import Footer from '../../segments/Footer';
 
 class Events extends Component {
   constructor(props) {
@@ -58,23 +61,24 @@ class Events extends Component {
 
     const EventBox = (event) => {
       return (
-        <div className="px-3 my-3 col-md-6">
-          <div className="card">
-            <div className="row">
-              <div className="col-4">
-                <img src={event.image.thumbnail_list_url || defaultEventImage} className="card-img-top" alt={event.image.alt} />
-              </div>
-              <div className="col-8">
-                <div className="my-0 card-title font-weight-bold">{ event.title }</div>
-                <span className="badge badge-pill badge-light">{event.event_type}</span>
-                <div className="pb-2 event-date">{ moment(event.eventDate).format('Do MMMM YYYY') }</div>
-                <p className="text-muted text-truncate">{ event.summary }</p>
-                <div className="event-cta">
-                  <a href={`/events/${event.id}`} target='_blank' rel="noopener noreferrer">View More Details</a>
+        <div className="mb-2 col-md-6 event">
+          <Link to={`/events/${event.id}`} target='_blank' rel="noopener noreferrer">
+            <div className="card mb-3">
+              <div className="row no-gutters">
+                <div className="col-md-4">
+                  <img src={event.image.thumbnail_list_url || defaultEventImage} className="card-img" alt={event.image.alt} />
+                </div>
+                <div className="col-md-8">
+                  <div className="card-body">
+                    <h5 className="card-title text-truncate">{ event.title }</h5>
+                    <p><span className="badge badge-pill badge-light">{event.event_type}</span></p>
+                    <p className="card-text"><small className="text-muted">{ moment(event.eventDate).format('Do MMMM YYYY') }</small></p>
+                    <p className="card-text text-truncate">{ event.summary }</p>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          </Link>
         </div>
       )
     }
@@ -91,18 +95,6 @@ class Events extends Component {
               }
             </div>
           </Section>
-
-          {/* <h5 className='px-3 font-weight-bold' style={{overflow: 'hidden', whiteSpace: 'nowrap'}}>
-            {props.year}
-            <hr className='my-1' style={{display: 'inline-block', width: '100%'}} />
-          </h5>
-          <div className="row">
-            {
-              props.events.map((event, index) => {
-                return <EventBox key={index} {...event} />
-              })
-            }
-          </div> */}
         </Fragment>
       )
     }
@@ -126,6 +118,9 @@ class Events extends Component {
                 })
               }
             </div>
+
+            <Join />
+            <Footer />
           </Fragment>
         ) }
       </div>
