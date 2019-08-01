@@ -8,8 +8,8 @@ import moment from 'moment';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Section from '../../pages/components/ui/Section';
-import Button from '../../pages/components/ui/Button';
+import Section from '../../components/ui/Section';
+import Button from '../../components/ui/Button';
 
 class NextEvent extends Component {
   constructor(props) {

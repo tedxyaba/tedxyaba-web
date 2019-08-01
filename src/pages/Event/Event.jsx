@@ -1,7 +1,7 @@
 import './Event.scss';
 import apiClient from '../../services/api-client';
 import apiRoutes from "../../utils/routes";
-import Loading from "../components/loading";
+import Loading from "../../components/loading";
 import React, { Component } from 'react';
 import TransformEventsListData from '../../utils/data-transformers/eventslist';
 

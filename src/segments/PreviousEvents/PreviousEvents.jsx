@@ -5,7 +5,7 @@ import apiClient from '../../services/api-client';
 import apiRoutes from '../../utils/routes';
 import TransformEventsListData from '../../utils/data-transformers/eventslist';
 import moment from 'moment';
-import Section from '../../pages/components/ui/Section';
+import Section from '../../components/ui/Section';
 
 class PreviousEvents extends Component {
   constructor(props) {

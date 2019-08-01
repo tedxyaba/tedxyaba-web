@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Join.scss';
-import Button from '../../pages/components/ui/Button';
+import Button from '../../components/ui/Button';
 import apiRoutes from '../../utils/routes';
 import TransformHomepageData from '../../utils/data-transformers/homepage';
 import apiClient from '../../services/api-client';

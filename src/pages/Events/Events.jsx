@@ -4,10 +4,10 @@ import './Events.scss';
 import apiClient from '../../services/api-client';
 import apiRoutes from "../../utils/routes";
 import moment from 'moment';
-import Loading from "../components/loading";
+import Loading from "../../components/loading";
 import TransformEventsListData from '../../utils/data-transformers/eventslist';
 import defaultEventImage from '../../assets/images/defaults/default-event.jpg';
-import Section from '../components/ui/Section';
+import Section from '../../components/ui/Section';
 import Join from '../../segments/Join';
 import Footer from '../../segments/Footer';
 
