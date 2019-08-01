@@ -1,0 +1,44 @@
+$primary: #e62b1f;
+
+.about {
+  .about-banner {
+    background-attachment: fixed;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 6rem;
+    position: relative;
+
+    .overlay {
+      background: rgba(0,0,0,.6);
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+
+    h3 {
+      color: white;
+      font-weight: bold;
+      letter-spacing: .5rem;
+      margin: 5rem auto;
+      text-align: center;
+    }
+  }
+
+  .content {
+    margin: 5rem auto;
+
+    .title {
+      font-family: "Helvetica Neue", "AvenirNext", sans-serif;
+      font-size: 2.2rem;
+      font-weight: 200;
+      letter-spacing: 2px;
+    }
+
+    .text {
+      line-height: 2;
+    }
+  }
+}
