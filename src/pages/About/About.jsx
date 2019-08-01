@@ -1,9 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import './About.scss';
 import apiClient from '../../services/api-client';
 import TransformAboutpageData from '../../utils/data-transformers/aboutpage';
 import apiRoutes from "../../utils/routes";
-import Loading from "../components/loading";
+import Loading from '../../components/loading';
+import Join from '../../segments/Join';
+import Footer from '../../segments/Footer';
 
 class About extends Component {
   constructor(props) {
@@ -44,28 +46,42 @@ class About extends Component {
     const { loading, data } = this.state;
 
     return (
-      <div className="container-fluid">
+      <div className="about">
         { loading ? (
-          <Loading/>
+          <Loading />
         ) : (
-          <div className="row">
-            <div className="col-sm">
-              <img src={data.displayImage.url} className="d-block w-100" alt={data.displayImage.alt} />
+          <Fragment>
+            <div
+              style={{
+                backgroundImage: `url(${data.displayImage.url})`,
+                backgroundImage: `linear-gradient(to bottom right, rgba(230,43,31,0.6), rgba(230,43,31,0.1)),url(${data.displayImage.url})`
+              }}
+              className="about-banner">
+              <div className="overlay">
+                <h3>ABOUT TEDx</h3>
+              </div>
             </div>
 
-            <div className="col-sm">
-              {
-                data.aboutSections.map((section, index) => {
-                  return (
-                    <div key={index}>
-                      <h4>{section.sectionTitle}</h4>
-                      <p>{section.sectionDescription}</p>
-                    </div>
-                  )
-                })
-              }
+            <div className="container">
+              <div className="row justify-content-center">
+                <div className="col-12 col-md-6">
+                  {
+                    data.aboutSections.map((section, index) => {
+                      return (
+                        <div key={index} className="content text-center">
+                          <p className="title">{section.sectionTitle}</p>
+                          <p className="text">{section.sectionDescription}</p>
+                        </div>
+                      )
+                    })
+                  }
+                </div>
+              </div>
             </div>
-          </div>
+
+            <Join />
+            <Footer />
+          </Fragment>
         ) }
       </div>
     )
