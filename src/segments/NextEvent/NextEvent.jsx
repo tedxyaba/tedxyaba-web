@@ -139,7 +139,7 @@ class NextEvent extends Component {
                     text="Register Now"
                     btnType="register"
                     classNames="mr-2"
-                    href={event.link_to_register.url || "https://www.google.com"}
+                    href={event.link_to_register.url}
                     target={event.link_to_register.target}
                   />
                   <Button

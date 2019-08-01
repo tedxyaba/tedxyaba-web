@@ -52,11 +52,11 @@ class About extends Component {
         ) : (
           <Fragment>
             <div
+              className="about-banner"
               style={{
-                backgroundImage: `url(${data.displayImage.url})`,
+                // backgroundImage: `url(${data.displayImage.url})`,
                 backgroundImage: `linear-gradient(to bottom right, rgba(230,43,31,0.6), rgba(230,43,31,0.1)),url(${data.displayImage.url})`
-              }}
-              className="about-banner">
+              }}>
               <div className="overlay">
                 <h3>ABOUT TEDx</h3>
               </div>
