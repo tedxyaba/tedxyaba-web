@@ -6,6 +6,10 @@ const ApiHelpers = {
   encode(category, type) {
     const q = `[[at(document.${category},+"${type}")+]]`;
     return encodeURI(q)
+  },
+  encodeComponent(category, type) {
+    const q = `[[at(document.${category}, ["${type}"])]]`;
+    return encodeURIComponent(q)
   }
 };
 

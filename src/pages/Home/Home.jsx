@@ -5,6 +5,11 @@ import NextEvent from '../../segments/NextEvent';
 import apiClient from '../../services/api-client';
 import TransformHomepageData from '../../utils/data-transformers/homepage';
 import apiRoutes from "../../utils/routes";
+import Loading from "../components/loading";
+import PreviousEvents from '../../segments/PreviousEvents';
+import Subscribe from '../../segments/Subscribe';
+import Footer from '../../segments/Footer';
+import Join from '../../segments/Join';
 
 class Home extends Component {
   constructor(props) {
@@ -48,15 +53,15 @@ class Home extends Component {
     return (
       <div className="page-home">
         { loading ? (
-          <div className="text-center my-5">
-            <div className="spinner-grow text-danger" role="status">
-              <span className="sr-only">Loading Homepage...</span>
-            </div>
-          </div>
+          <Loading page="Homepage" />
         ) : (
           <div className="page-home-content">
             <Carousel images={data.carouselImages || []} />
             <NextEvent event={data.currentEvent}  />
+            <PreviousEvents />
+            <Join />
+            {/* <Subscribe /> */}
+            <Footer />
           </div>
         ) }
       </div>

@@ -10,6 +10,13 @@ const apiRoutes = {
       q: ApiHelpers.encode('id', id)
     }
   },
+  documentByTag: (tag) => {
+    return {
+      method: 'GET',
+      path: searchPath,
+      q: ApiHelpers.encodeComponent('tags', tag)
+    }
+  },
   landingPage: () => {
     return {
       method: 'GET',
