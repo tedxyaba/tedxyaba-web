@@ -1,0 +1,38 @@
+$primary: #e62b1f;
+
+.event {
+  .event-banner {
+    background-attachment: fixed;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 7rem;
+    position: relative;
+
+    .overlay {
+      background: rgba(0,0,0,.6);
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+
+    h3 {
+      color: white;
+      font-weight: bold;
+      letter-spacing: .5rem;
+      margin: 6rem auto;
+      text-align: center;
+    }
+  }
+
+  .event-content {
+    padding: 1rem 0;
+
+    .summary {
+      font-size: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+  }
+}
