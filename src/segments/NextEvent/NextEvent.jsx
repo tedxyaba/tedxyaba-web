@@ -8,8 +8,8 @@ import moment from 'moment';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Section from '../../pages/components/ui/Section';
-import Button from '../../pages/components/ui/Button';
+import Section from '../../components/ui/Section';
+import Button from '../../components/ui/Button';
 
 class NextEvent extends Component {
   constructor(props) {
@@ -114,7 +114,7 @@ class NextEvent extends Component {
                 <h3>
                   <Link to={`/events/${event.id}`}>{ event.title }</Link>
                 </h3>
-                <p><span class="badge badge-pill badge-light">{event.event_type}</span></p>
+                <p><span className="badge badge-pill badge-light">{event.event_type}</span></p>
 
                 <p>{ event.summary }</p>
 

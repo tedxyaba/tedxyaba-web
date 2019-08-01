@@ -5,7 +5,7 @@ import apiClient from '../../services/api-client';
 import apiRoutes from '../../utils/routes';
 import TransformEventsListData from '../../utils/data-transformers/eventslist';
 import moment from 'moment';
-import Section from '../../pages/components/ui/Section';
+import Section from '../../components/ui/Section';
 
 class PreviousEvents extends Component {
   constructor(props) {
@@ -46,8 +46,6 @@ class PreviousEvents extends Component {
   render() {
     const { title, previousEvents } = this.state;
 
-    console.log('PreviousEvents===> ', this.state)
-
     return (
       <Section title={this.props.title || title} classNames="previous-events">
         <div className="row">
@@ -55,12 +53,12 @@ class PreviousEvents extends Component {
             <div className="col-12 col-sm-6 col-md-4 col-lg-3 p-3" key={index}>
               <Link to={`/events/${event.id}`}>
                 <div className="card">
-                  <img src={event.image.url} className="card-img-top" alt={event.image.alt} width="100%" />
+                  <img src={event.image.thumbnail_list_url} className="card-img-top" alt={event.image.alt} />
                   <div className="card-body">
-                    <h5 className="card-title">{ event.title }</h5>
-                    <p><span class="badge badge-pill badge-light">{event.event_type}</span></p>
+                    <h5 className="card-title text-truncate">{ event.title }</h5>
+                    <p><span className="badge badge-pill badge-light">{event.event_type}</span></p>
                     <p><small className="text-muted">{ moment(event.eventDate).format('Do MMMM YYYY') }</small></p>
-                    <p className="card-text">{ event.summary }</p>
+                    <p className="card-text text-truncate">{ event.summary }</p>
                   </div>
                 </div>
               </Link>
