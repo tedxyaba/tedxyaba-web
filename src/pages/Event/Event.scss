@@ -18,12 +18,19 @@ $primary: #e62b1f;
       width: 100%;
     }
 
-    h3 {
+    .banner-content {
       color: white;
-      font-weight: bold;
-      letter-spacing: .5rem;
       margin: 6rem auto;
       text-align: center;
+
+      h3 {
+        font-weight: bold;
+        letter-spacing: .5rem;
+      }
+
+      .date {
+        font-size: .75rem;
+      }
     }
   }
 
@@ -38,6 +45,12 @@ $primary: #e62b1f;
 
     .description {
       line-height: 1.8;
+    }
+
+    .venue {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+      text-decoration: underline;
     }
   }
 }

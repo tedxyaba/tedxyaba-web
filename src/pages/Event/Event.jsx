@@ -7,6 +7,7 @@ import TransformEventsListData from '../../utils/data-transformers/eventslist';
 import Join from '../../segments/Join';
 import Footer from '../../segments/Footer';
 import moment from 'moment';
+import Icon from 'react-web-vector-icons';
 
 class Event extends Component {
   constructor(props) {
@@ -69,7 +70,10 @@ class Event extends Component {
                     backgroundImage: `linear-gradient(to bottom right, rgba(230,43,31,0.6), rgba(230,43,31,0.1)),url(${event.image.url})`
                   }}>
                   <div className="overlay">
-                    <h3>{event.title}</h3>
+                    <div className="banner-content">
+                      <h3>{event.title}</h3>
+                      <p className="date">{ moment(event.eventDate).format('Do MMMM YYYY') }</p>
+                    </div>
                   </div>
                 </div>
 
@@ -86,13 +90,17 @@ class Event extends Component {
                         )) }
                       </div>
 
+                      <p>at</p>
+
                       <div className="venue">
-                        <p>{ event.event_venue }</p>
+                        <p>{event.event_venue}</p>
                       </div>
 
-                      <div>
-                        <p className="event-date">{ moment(event.eventDate).format('Do MMMM YYYY') }</p>
-                        <p className="event-date">{ moment(event.eventDate).format('h:mm:ss a') }</p>
+                      <div className="date-time">
+                        <p>Date and Time</p>
+                        <p className="event-date text-muted">
+                          { moment(event.eventDate).format('Do MMMM YYYY') }, { moment(event.eventDate).format('h:mm a') }
+                        </p>
                       </div>
                     </div>
                   </div>
