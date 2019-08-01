@@ -1,9 +1,11 @@
+import React, { Component, Fragment } from 'react';
 import './Event.scss';
 import apiClient from '../../services/api-client';
 import apiRoutes from "../../utils/routes";
 import Loading from "../../components/loading";
-import React, { Component } from 'react';
 import TransformEventsListData from '../../utils/data-transformers/eventslist';
+import Join from '../../segments/Join';
+import Footer from '../../segments/Footer';
 
 class Event extends Component {
   constructor(props) {
@@ -47,13 +49,16 @@ class Event extends Component {
     const { loading, data } = this.state;
 
     return (
-      <div className="container-fluid">
+      <div>
         { loading ? (
           <Loading />
         ) : (
-          <div>
+          <Fragment>
             { data.title }
-          </div>
+
+            <Join />
+            <Footer />
+          </Fragment>
         ) }
       </div>
     )

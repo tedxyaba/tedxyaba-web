@@ -42,7 +42,6 @@ $primary: #e62b1f;
       border-color: transparent;
       border-radius: .25rem;
       box-shadow: 0 5px 20px rgba(0,40,130,.15);
-      // padding: 15px;
       transition: all .25s ease-in-out;
 
       &:hover {
@@ -50,10 +49,6 @@ $primary: #e62b1f;
         border-color: rgba($primary,.2);
         box-shadow: 0 5px 40px rgba(0,40,130,.25);
         transition: all .25s ease-in-out;
-      }
-
-      .body {
-        // padding: 10px 10px 0 0;
       }
     }
   }
