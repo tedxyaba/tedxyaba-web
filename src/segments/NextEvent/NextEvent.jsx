@@ -114,7 +114,7 @@ class NextEvent extends Component {
                 <h3>
                   <Link to={`/events/${event.id}`}>{ event.title }</Link>
                 </h3>
-                <p><span class="badge badge-pill badge-light">{event.event_type}</span></p>
+                <p><span className="badge badge-pill badge-light">{event.event_type}</span></p>
 
                 <p>{ event.summary }</p>
 

@@ -79,7 +79,7 @@ class Events extends Component {
 
     const YearlyEvents = (props) => {
       return (
-        <div>
+        <div className="container">
           <h5 className='px-3 font-weight-bold' style={{overflow: 'hidden', whiteSpace: 'nowrap'}}>
             {props.year}
             <hr className='my-1' style={{display: 'inline-block', width: '100%'}} />
@@ -96,13 +96,15 @@ class Events extends Component {
     }
 
     return (
-      <div className="container-fluid events">
+      <div className="events">
         { loading ? (
           <Loading />
         ) : (
           <div>
             <div className="event-banner">
-              <h3>EVENTS</h3>
+              <div className="overlay">
+                <h3>EVENTS</h3>
+              </div>
             </div>
 
             {

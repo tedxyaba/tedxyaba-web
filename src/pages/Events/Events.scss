@@ -2,20 +2,29 @@ $primary: #e62b1f;
 
 .events {
   .event-banner {
-    // background-color: aqua;
-    background-image: linear-gradient(to bottom right, rgba($primary,0.5), rgba($primary,0)),url(./../../assets/images/carousel/carousel3.jpg);
-    // background-image: url(./../../assets/images/carousel/carousel3.jpg);
+    background-image: url(./../../assets/images/carousel/carousel3.jpg);
+    background-image: linear-gradient(to bottom right, rgba($primary,0.75), rgba($primary,0.1)),url(./../../assets/images/carousel/carousel3.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-    padding: 3rem;
+    padding: 6rem;
+    position: relative;
 
-    &:before {
-      opacity: .2;
+    .overlay {
+      background: rgba(0,0,0,.8);
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
     }
 
     h3 {
       color: white;
+      font-weight: bold;
+      letter-spacing: .5rem;
+      margin: 5rem auto;
+      text-align: center;
     }
   }
 }

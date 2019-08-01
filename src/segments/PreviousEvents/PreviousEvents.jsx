@@ -58,7 +58,7 @@ class PreviousEvents extends Component {
                   <img src={event.image.url} className="card-img-top" alt={event.image.alt} width="100%" />
                   <div className="card-body">
                     <h5 className="card-title">{ event.title }</h5>
-                    <p><span class="badge badge-pill badge-light">{event.event_type}</span></p>
+                    <p><span className="badge badge-pill badge-light">{event.event_type}</span></p>
                     <p><small className="text-muted">{ moment(event.eventDate).format('Do MMMM YYYY') }</small></p>
                     <p className="card-text">{ event.summary }</p>
                   </div>
