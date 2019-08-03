@@ -34,7 +34,7 @@ class Join extends Component {
         const t = TransformHomepageData(data);
 
         this.setState({
-          link: t.link_to_volunteer_form
+          link: t.linkToVolunteerForm
         })
       } else {
         this.setState({

@@ -3,6 +3,7 @@ const TransformHomepageData = (data) => {
   const {
     tedx_yaba_logo,
     landing_page_images,
+    landing_description,
     current_event_preview,
     link_to_volunteer_form
   } = result.data;
@@ -40,7 +41,8 @@ const TransformHomepageData = (data) => {
     logo,
     carouselImages,
     currentEvent,
-    link_to_volunteer_form
+    landingDescription: landing_description,
+    linkToVolunteerForm: link_to_volunteer_form
   }
 }
 
