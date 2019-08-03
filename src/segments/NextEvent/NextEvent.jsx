@@ -118,12 +118,6 @@ class NextEvent extends Component {
 
                 <p>{ event.summary }</p>
 
-                <div className="description">
-                  { event.description.map((d, i) => (
-                    <p key={i}>{ d }</p>
-                  )) }
-                </div>
-
                 <div className="venue">
                   <p>{ event.event_venue }</p>
                 </div>
