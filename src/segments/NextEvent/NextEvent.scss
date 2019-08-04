@@ -1,7 +1,9 @@
 .sub-section {
-  margin: 60px auto 10px;
+  margin: 50px auto 10px;
 
-  @media (max-width: 575.98px) {}
+  @media (max-width: 575.98px) {
+    margin: 20px auto;
+  }
 
   h5.sub-section-title {
     letter-spacing: 1px;
@@ -12,5 +14,21 @@
     border-top: 1px solid rgba(0,0,0,.3);
     margin-bottom: 2rem;
     width: 80px
+  }
+
+  .venue {
+    p {
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-align: center;
+      text-transform: uppercase;
+    }
+  }
+
+  .date-time {
+    p {
+      font-size: 1.25rem;
+      text-align: center;
+    }
   }
 }

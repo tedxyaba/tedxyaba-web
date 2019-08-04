@@ -62,7 +62,7 @@ class Events extends Component {
     const EventBox = (event) => {
       return (
         <div className="mb-2 col-md-6 event">
-          <Link to={`/events/${event.id}`} target='_blank' rel="noopener noreferrer">
+          <Link to={`/events/${event.id}`}>
             <div className="card mb-3">
               <div className="row no-gutters">
                 <div className="col-md-4">

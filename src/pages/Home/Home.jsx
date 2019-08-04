@@ -56,9 +56,10 @@ class Home extends Component {
         ) : (
           <div className="page-home-content">
             <Carousel images={data.carouselImages || []} />
+            <TinyAbout data={data.landingDescription} />
             <NextEvent event={data.currentEvent}  />
             <PreviousEvents />
-            <Join link={data.link_to_volunteer_form} />
+            <Join link={data.linkToVolunteerForm} />
             {/* <Subscribe /> */}
             <Footer />
           </div>
@@ -66,6 +67,26 @@ class Home extends Component {
       </div>
     )
   }
+}
+
+const TinyAbout = ({data}) => {
+  return (
+    <div className="container tiny-about mt-5">
+      <div className="row justify-content-center">
+        <div className="col-12 col-md-7">
+          {
+            data.map((item, index) => {
+              return (
+                <div key={index} className="content text-center">
+                  <p className="text">{item.text}</p>
+                </div>
+              )
+            })
+          }
+        </div>
+      </div>
+    </div>
+  )
 }
 
 export default Home

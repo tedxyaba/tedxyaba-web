@@ -118,21 +118,6 @@ class NextEvent extends Component {
 
                 <p>{ event.summary }</p>
 
-                <div className="description">
-                  { event.description.map((d, i) => (
-                    <p key={i}>{ d }</p>
-                  )) }
-                </div>
-
-                <div className="venue">
-                  <p>{ event.event_venue }</p>
-                </div>
-
-                <div>
-                  <p className="event-date">{ moment(event.eventDate).format('Do MMMM YYYY') }</p>
-                  <p className="event-date">{ moment(event.eventDate).format('h:mm:ss a') }</p>
-                </div>
-
                 <div className="event-cta">
                   <Button
                     type="link"
@@ -154,6 +139,22 @@ class NextEvent extends Component {
 
               <div className="col-12 col-md-6 order-1 order-md-2">
                 <img src={event.image.url} alt={event.image.alt} width="100%" />
+              </div>
+            </div>
+
+            <div className="sub-section">
+              <h5 className="sub-section-title">Location and Time</h5>
+              <hr />
+
+              <div className="venue">
+                <p>{ event.event_venue }</p>
+              </div>
+
+              <div className="date-time">
+                <p>
+                  { moment(event.eventDate).format('dddd, Do MMMM YYYY') },&nbsp;
+                  { moment(event.eventDate).format('h:mm a') }
+                </p>
               </div>
             </div>
 

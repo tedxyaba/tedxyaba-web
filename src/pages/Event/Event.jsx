@@ -135,12 +135,12 @@ class Event extends Component {
 
                 <div className="container event-content">
                   <div className="row justify-content-center">
-                    <div className="col-12 col-md-6 text-center">
+                    <div className="col-12 col-md-7 text-center">
                       <p><span className="badge badge-pill badge-light">{event.event_type}</span></p>
 
-                      <p className="summary">{ event.summary }</p>
+                      <p className="summary text-justify">{ event.summary }</p>
 
-                      <div className="description">
+                      <div className="description text-justify">
                         { event.description.map((d, i) => (
                           <p key={i}>{ d }</p>
                         )) }
