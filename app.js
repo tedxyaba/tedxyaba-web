@@ -9,7 +9,7 @@ app.use(express.static(path.join(__dirname, 'build')));
 // Responds with production build of React app in /build.
 // Run "yarn build" to build for production.
 app.get('*', (req, res) =>{
-  res.sendFile(path.join(__dirname+'/src/index.html'));
+  res.sendFile(path.join(__dirname, '/build/index.html'));
 });
 
 const port = process.env.PORT || 5000;
