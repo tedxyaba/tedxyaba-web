@@ -13,8 +13,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ### Install dependencies
 `npm install` or `yarn install`
 
-### Run the app
-`npm start` or `yarn start` <br>
+### Run the app locally
+`npm run start-dev` or `yarn start-dev` <br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.
@@ -33,13 +33,16 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the hashes.<br>
 Your app is ready to be deployed!
 
+`npm start` or `yarn start` <br>
+Open [http://localhost:5000](http://localhost:5000) to view this production build in the browser.
+
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
 ## Contributing
 
 * Clone locally `git clone https://github.com/tedxyaba/tedxyaba-web.git`
-* Create a branch for each separate piece of work with format -> `initials-branch-name` e.g. `fa-build-homepage`
-* Push your branch `git push origin initials-branch-name`
+* Create a branch for each separate piece of work e.g. `build-homepage`
+* Push your branch `git push origin build-homepage`
 * Create a new Pull Request and add Reviewers
 * Merge when approved and delete branch
 
