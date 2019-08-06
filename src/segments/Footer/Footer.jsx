@@ -36,7 +36,7 @@ const Footer = props => {
       <div className="container">
         <div className="row my-4 text-center justify-content-center">
           <div className="col-12 col-md-6">
-            <p className="title main">TEDx YABA</p>
+            <p className="title main">TEDxYaba</p>
             <p className="title">Follow us on Social Media</p>
 
             <ul className="social-links">
@@ -57,7 +57,7 @@ const Footer = props => {
         </div>
       </div>
 
-      <p className="copyright">&copy; 2019 TEDx Yaba. All rights reserved.</p>
+      <p className="copyright">&copy; 2019 TEDxYaba. All rights reserved.</p>
     </footer>
   )
 }

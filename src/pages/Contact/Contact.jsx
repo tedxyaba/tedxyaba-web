@@ -4,7 +4,7 @@ import './Contact.scss';
 const Contact = (props) => {
   return (
     <div>
-      <h2>Contact TEDx Yaba</h2>
+      <h2>Contact TEDxYaba</h2>
     </div>
   )
 }
