@@ -21,7 +21,8 @@ class NextEvent extends Component {
       event: {},
       errors: null,
       windowWidth: 0,
-      isMobile: false
+      isMobile: false,
+      isInFuture: true
     }
 
     this._fetchData = this._fetchData.bind(this);
@@ -74,11 +75,12 @@ class NextEvent extends Component {
     apiClient.get(eventRoute, (success, data) => {
       if (success) {
         const transformedEvent = TransformEventsListData(data)[0]
-        const newTitle = moment().isAfter(transformedEvent.eventDate) ? 'Latest Event' : 'Upcoming Event'
+        const isInFuture = moment().isBefore(transformedEvent.eventDate)
         this.setState({
           loading: false,
           event: transformedEvent,
-          title: newTitle
+          title: isInFuture ? 'Upcoming Event' : 'Latest Event',
+          isInFuture: isInFuture
         })
       } else {
         this.setState({
@@ -90,7 +92,7 @@ class NextEvent extends Component {
   }
 
   render() {
-    const { title, event, isMobile } = this.state;
+    const { title, event, isMobile, isInFuture } = this.state;
     const speakersSlideSettings = {
       autoplay: true,
       dots: true,
@@ -124,9 +126,9 @@ class NextEvent extends Component {
                 <div className="event-cta">
                   <Button
                     type="link"
-                    text="Register Now"
+                    text={isInFuture ? "Register Now" : "Registration closed"}
                     btnType="register"
-                    classNames="mr-2"
+                    classNames={`mr-2 ${isInFuture ? '' : 'disabled'}`}
                     href={event.link_to_register.url}
                     target={event.link_to_register.target}
                   />
