@@ -73,9 +73,12 @@ class NextEvent extends Component {
 
     apiClient.get(eventRoute, (success, data) => {
       if (success) {
+        const transformedEvent = TransformEventsListData(data)[0]
+        const newTitle = moment().isAfter(transformedEvent.eventDate) ? 'Latest Event' : 'Upcoming Event'
         this.setState({
           loading: false,
-          event: TransformEventsListData(data)[0]
+          event: transformedEvent,
+          title: newTitle
         })
       } else {
         this.setState({
