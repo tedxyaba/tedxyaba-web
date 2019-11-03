@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 const TransformEventData = (event) => {
   const {
     title,
@@ -59,6 +61,7 @@ const TransformEventData = (event) => {
     image,
     description: description.map(d => d.text),
     eventDate: event_date_and_time,
+    isInFuture: moment().isBefore(event_date_and_time),
     speakers: mapSpeakers,
     sponsors: mapSponsors,
     gallery_images,
