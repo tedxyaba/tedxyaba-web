@@ -121,14 +121,14 @@ class NextEvent extends Component {
                 <p>{ event.summary }</p>
 
                 <div className="event-cta">
-                  <Button
+                  { (!event.isInFuture || event.link_to_register.url) && <Button
                     type="link"
                     text={event.isInFuture ? "Register Now" : "Registration closed"}
                     btnType="register"
                     classNames={`mr-2 ${event.isInFuture ? '' : 'disabled'}`}
-                    href={event.link_to_register.url}
+                    href={event.link_to_register.urlksks}
                     target={event.link_to_register.target}
-                  />
+                  /> }
                   <Button
                     type="link-internal"
                     text="Learn More"
