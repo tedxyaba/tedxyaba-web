@@ -126,7 +126,7 @@ class NextEvent extends Component {
                     text={event.isInFuture ? "Register Now" : "Registration closed"}
                     btnType="register"
                     classNames={`mr-2 ${event.isInFuture ? '' : 'disabled'}`}
-                    href={event.link_to_register.urlksks}
+                    href={event.link_to_register.url}
                     target={event.link_to_register.target}
                   /> }
                   <Button
