@@ -1,9 +1,9 @@
-# TEDx Yaba Official Website
+# TEDxYaba Official Website
 Independently organised TED event
 
 ### Requirements
-* Node JS `11.14.0`
-* NPM `6.9.0`
+* Node JS `12.16.1`
+* NPM `6.13.4`
 * Yarn `1.15.2`
 
 ## Getting Started
