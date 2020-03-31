@@ -1,6 +1,6 @@
-@import "./styles/generic.scss";
+/* @import "./styles/generic.scss"; */
 
-@font-face {
+/* @font-face {
   font-family: 'AvenirNext';
   font-style: normal;
   font-weight: normal;
@@ -12,7 +12,7 @@
   font-style: italic;
   font-weight: normal;
   src: url(./assets/fonts/AvenirNext/AvenirNextLTPro-It.otf) format('opentype');
-}
+} */
 
 /* css font-face for all react-web-vector-icons fonts */
 @font-face{font-family:AntDesign;font-style:normal;font-weight:400;src:url(../node_modules/react-web-vector-icons/fonts/AntDesign.ttf) format('truetype')}
