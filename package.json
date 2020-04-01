@@ -1,8 +1,7 @@
 {
   "name": "tedxyaba-web",
-  "version": "0.1.0",
-  "main": "app.js",
-  "homepage": "/build",
+  "version": "2.0.0",
+  "homepage": "/",
   "private": true,
   "dependencies": {
     "bootstrap": "^4.3.1",
