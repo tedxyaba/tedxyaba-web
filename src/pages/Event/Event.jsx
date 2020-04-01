@@ -160,14 +160,14 @@ class Event extends Component {
                       </div>
 
                       <div className="event-cta">
-                        <Button
+                        { (!event.isInFuture || event.link_to_register.url) && <Button
                           type="link"
-                          text={event.link_to_register.url ? "Register Now" : "Registration Closed"}
-                          btnType={event.link_to_register.url ? "register" : "default"}
-                          classNames="mr-2"
+                          text={event.isInFuture ? "Register Now" : "Registration Closed"}
+                          btnType={event.isInFuture ? "register" : "default"}
+                          classNames={`mr-2 ${event.isInFuture ? '' : 'disabled'}`}
                           href={event.link_to_register.url}
                           target={event.link_to_register.target}
-                        />
+                        /> }
                       </div>
                     </div>
                   </div>

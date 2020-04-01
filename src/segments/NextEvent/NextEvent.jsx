@@ -73,9 +73,11 @@ class NextEvent extends Component {
 
     apiClient.get(eventRoute, (success, data) => {
       if (success) {
+        const transformedEvent = TransformEventsListData(data)[0]
         this.setState({
           loading: false,
-          event: TransformEventsListData(data)[0]
+          event: transformedEvent,
+          title: transformedEvent.isInFuture ? 'Upcoming Event' : 'Latest Event'
         })
       } else {
         this.setState({
@@ -119,14 +121,14 @@ class NextEvent extends Component {
                 <p>{ event.summary }</p>
 
                 <div className="event-cta">
-                  <Button
+                  { (!event.isInFuture || event.link_to_register.url) && <Button
                     type="link"
-                    text="Register Now"
+                    text={event.isInFuture ? "Register Now" : "Registration closed"}
                     btnType="register"
-                    classNames="mr-2"
+                    classNames={`mr-2 ${event.isInFuture ? '' : 'disabled'}`}
                     href={event.link_to_register.url}
                     target={event.link_to_register.target}
-                  />
+                  /> }
                   <Button
                     type="link-internal"
                     text="Learn More"
