@@ -1,0 +1,56 @@
+$primary-color: #af0000;
+
+.navbar {
+  padding: 0 6rem;
+
+  @media screen and (max-width: 767px) {
+    padding: 0 1.5rem;
+  }
+
+  .app-logo {
+    width: 150px;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  &.navbar-dark {
+    background-color: #000000;
+
+    .navbar-toggler {
+      border-color: transparent;
+      padding: .25rem .2rem;
+
+      &:focus {
+        outline: 1px dotted lighten($color: $primary-color, $amount: 30);
+      }
+    }
+
+    .navbar-nav {
+      .nav-item {
+        .active-bar {
+          background-color: #ffffff;
+          border-radius: 1.5px;
+          height: 3px;
+          margin: 0 auto;
+          width: 70px;
+
+          // Make this transparent so the navbar maintain it's height on the homepage.
+          &.quiet {
+            background-color: transparent;
+          }
+        }
+
+        .nav-link {
+          color: #ffffff;
+          font-size: 1rem;
+          padding: 1.2rem 1rem;
+          text-align: center;
+          text-transform: uppercase;
+          transition: all .2s ease;
+        }
+      }
+    }
+  }
+}

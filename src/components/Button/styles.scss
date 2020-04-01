@@ -1,0 +1,38 @@
+$color: rgba(0,0,0,.75);
+$primary: #af0000;
+$white: #fff;
+
+.btn {
+  padding: 0.75rem 2rem;
+  
+  &.btn-primary {
+    background-color: $primary;
+    border: 1px solid $primary;
+    border-radius: 5px;
+    color: $white;
+    font-weight: 500;
+    transition: all .2s ease;
+
+    &:hover,
+    &:active,
+    &:not(:disabled):not(.disabled):active {
+      background-color: darken($color: $primary, $amount: 4);
+      border: 1px solid darken($color: $primary, $amount: 4);
+      transition: all .2s ease;
+    }
+
+    &:focus {
+      box-shadow: none;
+      outline: 1px dotted $primary;
+    }
+
+    &.disabled {
+      background-color: grey;
+      border-color: grey;
+    }
+  }
+
+  &.btn-link {
+    color: $primary;
+  }
+}
