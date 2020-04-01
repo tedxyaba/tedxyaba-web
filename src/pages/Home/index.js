@@ -1,11 +1,10 @@
 import React from 'react';
 import './styles.scss';
 import { connect } from 'react-redux';
+import Button from '../../components/Button';
 
 const Home = props => {
   const { about, socials } = props;
-
-  console.log(about)
 
   return (
     <div className="page-container">
@@ -17,7 +16,13 @@ const Home = props => {
             <div>
               <h3 className="title">{item.title}</h3>
               <p className="multiline-text">{item.content}</p>
-              <button>Learn More</button>
+
+              <Button
+                type="link"
+                text="Learn More"
+                linkTo="/about"
+                btnType="primary"
+              />
             </div>
           </div>
         )) }
