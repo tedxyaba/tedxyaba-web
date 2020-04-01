@@ -19,13 +19,13 @@ import Home from '../src/pages/Home';
 // import NotFound from './pages/NotFound';
 
 // load components
-// import Navbar from './components/Navbar';
+import Navbar from './components/Navbar';
 
 function App() {
   return (
     <div className="App">
       <Router>
-        {/* <Navbar /> */}
+        <Navbar />
 
         <Switch>
           <Route path="/" exact component={Home} />
