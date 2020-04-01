@@ -27,3 +27,41 @@
 @font-face{font-family:Octicons;font-style:normal;font-weight:400;src:url(../node_modules/react-web-vector-icons/fonts/Octicons.ttf) format('truetype')}
 @font-face{font-family:SimpleLineIcons;font-style:normal;font-weight:400;src:url(../node_modules/react-web-vector-icons/fonts/SimpleLineIcons.ttf) format('truetype')}
 @font-face{font-family:Zocial;font-style:normal;font-weight:400;src:url(../node_modules/react-web-vector-icons/fonts/Zocial.ttf) format('truetype')}
+
+html,
+body {
+  font-size: 16px;
+}
+
+body {
+  color: rgba(0,0,0,.75);
+  /* font-family: "AvenirNext", "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif; */
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+a {
+  color: #e62b1f;
+  transition: all ease-in-out .25s;
+}
+
+a:hover {
+  color: #ac1f16;
+  transition: all ease-in-out .25s;
+}
+
+.title {
+  color: #000000;
+}
+
+.multiline-text {
+  white-space: pre-wrap;
+}
