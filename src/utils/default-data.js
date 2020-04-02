@@ -71,19 +71,25 @@ const socials = [
     id: 'twitter',
     url: 'https://twitter.com/tedxyaba',
     icon_name: 'twitter',
-    font: 'Entypo'
+    font: 'Entypo',
+    color: '#03a9f4',
+    size: 15,
   },
   {
     id: 'instagram',
     url: 'https://www.instagram.com/tedxyaba/',
     icon_name: 'social-instagram',
-    font: 'SimpleLineIcons'
+    font: 'SimpleLineIcons',
+    color: '#ffffff',
+    size: 11,
   },
   {
     id: 'facebook',
     url: 'https://web.facebook.com/TEDxYaba/',
     icon_name: 'facebook',
-    font: 'Entypo'
+    font: 'FontAwesome',
+    color: '#ffffff',
+    size: 12,
   },
 ];
 
