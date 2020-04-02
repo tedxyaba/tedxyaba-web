@@ -36,7 +36,7 @@ const App = ({ socials }) => {
           {/* <Route component={NotFound} /> */}
         </Switch>
 
-        <Footer />
+        <Footer data={socials} />
       </Router>
     </div>
   );

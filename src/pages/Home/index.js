@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Button from '../../components/Button';
 
 const Home = props => {
-  const { about, socials } = props;
+  const { about } = props;
 
   return (
     <div className="page-container">
@@ -31,10 +31,9 @@ const Home = props => {
   )
 }
 
-const mapStateToProps = ({ about, socials }) => {
+const mapStateToProps = ({ about }) => {
   return {
     about,
-    socials,
   }
 }
 

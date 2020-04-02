@@ -1,28 +1,7 @@
 // TOP SOCIAL BAR
 .social-bar {
-  align-items: center;
   background-color: #1a1a1a;
   display: flex;
   justify-content: center;
   padding: .35rem 0;
-
-  a {
-    margin: 0 .5rem;
-
-    &.instagram i {
-      background: linear-gradient(49.12deg, #FFDD55 6.62%, #FF543E 50.06%, #C837AB 93.5%);
-      border-radius: 4px;
-      padding: 2px;
-    }
-
-    &.facebook i {
-      background-color: #4267b2;
-      border-radius: 1px;
-      padding: 2px 2px 0 6px;
-    }
-
-    &:hover {
-      text-decoration: none;
-    }
-  }
 }

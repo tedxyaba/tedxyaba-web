@@ -1,9 +1,9 @@
 import React from 'react';
 import './styles.scss';
 import { Link } from 'react-router-dom';
-import Icon from 'react-web-vector-icons';
 import moment from 'moment';
 import { navbarLogo } from '../../utils/images';
+import SocialIcons from '../SocialIcons';
 
 const Footer = ({ data }) => {
   return (
@@ -24,7 +24,8 @@ const Footer = ({ data }) => {
         </div>
 
         <div className="col-md-3">
-          <p className="row-title">SOCIALS</p>
+          <p className="row-title">SOCIAL</p>
+          <SocialIcons data={data} size={2} />
         </div>
       </div>
 
