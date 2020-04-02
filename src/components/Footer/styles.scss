@@ -4,6 +4,16 @@ footer {
   color: rgba(255,255,255,.9);
   padding: 2.4rem 6rem 2rem;
 
+  @media screen and (max-width: 1000px) {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+
+  @media screen and (max-width: 821px) {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
   .content {
     margin-bottom: 6rem;
     
@@ -23,6 +33,23 @@ footer {
     .join {
       p.join-text {
         font-size: 1.25rem;
+      }
+
+      form.form-inline {
+        .form-control-overides {
+          background-color: #000;
+          background-clip: padding-box;
+          border-radius: 0;
+          border: none;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.75);
+          color: rgba(255, 255, 255, 0.75);
+          height: 50px;
+          padding: .375rem .75rem;
+
+          &:focus {
+            box-shadow: none;
+          }
+        }
       }
     }
 
