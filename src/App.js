@@ -22,6 +22,7 @@ import Home from '../src/pages/Home';
 // load components
 import Navbar from './components/Navbar';
 import SocialBar from './components/SocialBar';
+import Footer from './components/Footer';
 
 const App = ({ socials }) => {
   return (
@@ -34,6 +35,8 @@ const App = ({ socials }) => {
           <Route path="/" exact component={Home} />
           {/* <Route component={NotFound} /> */}
         </Switch>
+
+        <Footer />
       </Router>
     </div>
   );
