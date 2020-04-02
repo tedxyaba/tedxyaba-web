@@ -1,0 +1,45 @@
+// SOCIAL MEDIA ICONS
+.social-icons {
+  align-items: center;
+  display: flex;
+
+  a {
+    margin: 0 .6rem;
+
+    &.instagram {
+      i {
+        background: linear-gradient(49.12deg, #ffdd55 6.62%, #ff543e 40.06%, #c837ab 93.5%);
+      }
+
+      &.s1 i {
+        border-radius: 4px;
+        padding: 2px;
+      }
+
+      &.s2 i {
+        border-radius: 8px;
+        padding: 4px;
+      }
+    }
+
+    &.facebook {
+      i {
+        background-color: #4267b2;
+      }
+
+      &.s1 i {
+        border-radius: 1px;
+        padding: 2px 2px 0 6px;
+      }
+
+      &.s2 i {
+        border-radius: 2px;
+        padding: 4px 4px 0 12px;
+      }
+    }
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}

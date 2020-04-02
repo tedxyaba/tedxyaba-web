@@ -1,5 +1,6 @@
 $primary-color: #af0000;
 
+// NAVBAR
 .navbar {
   padding: 0 6rem;
 
@@ -44,8 +45,8 @@ $primary-color: #af0000;
 
         .nav-link {
           color: #ffffff;
-          font-size: 1rem;
-          padding: 1.2rem 1rem;
+          font-size: .94rem;
+          padding: 1.4rem 1rem;
           text-align: center;
           text-transform: uppercase;
           transition: all .2s ease;

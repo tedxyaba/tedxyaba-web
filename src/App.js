@@ -4,6 +4,7 @@ import {
   Switch,
   BrowserRouter as Router,
 } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 // load pages
 import Home from '../src/pages/Home';
@@ -20,20 +21,31 @@ import Home from '../src/pages/Home';
 
 // load components
 import Navbar from './components/Navbar';
+import SocialBar from './components/SocialBar';
+import Footer from './components/Footer';
 
-function App() {
+const App = ({ socials }) => {
   return (
     <div className="App">
       <Router>
+        <SocialBar data={socials} />
         <Navbar />
 
         <Switch>
           <Route path="/" exact component={Home} />
           {/* <Route component={NotFound} /> */}
         </Switch>
+
+        <Footer data={socials} />
       </Router>
     </div>
   );
 }
 
-export default App;
+const mapStateToProps = ({ socials }) => {
+  return {
+    socials,
+  }
+};
+
+export default connect(mapStateToProps)(App);

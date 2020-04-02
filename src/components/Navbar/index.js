@@ -12,12 +12,12 @@ const mainRoutes = [
   {
     name: 'Blog',
     path: '/blog',
-    show: false
+    show: true
   },
   {
     name: 'Get Involved',
     path: '/get-involved',
-    show: false
+    show: true
   },
   {
     name: 'Partners',
