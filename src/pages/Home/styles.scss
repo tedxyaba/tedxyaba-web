@@ -1,1 +1,44 @@
 // HOME
+
+section.about {
+  background-color: #f5f5f5;
+  padding: 6rem;
+
+  // Large devices (desktops, less than 1200px)
+  @media (max-width: 1199.98px) { padding: 5rem; }
+
+  // Medium devices (tablets, less than 992px)
+  @media (max-width: 991.98px) { padding: 4rem; }
+
+  // Small devices (landscape phones, less than 768px)
+  @media (max-width: 767.98px) { padding: 2rem; }
+
+  // Extra small devices (portrait phones, less than 576px)
+  @media (max-width: 575.98px) { padding: 1.5rem; }
+
+  .ted-about-image {
+    align-items: center;
+    background: #fff;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    padding: 8rem 5rem;
+
+    @media screen and (max-width: 1000px) {
+      padding: 6rem 3rem;
+    }
+
+    @media screen and (max-width: 767px) {
+      padding: 5rem 2rem;
+    }
+  }
+
+  .ted-about-content {
+    align-items: center;
+    display: flex;
+
+    :first-child {
+      margin: 1rem auto;
+    }
+  }
+}

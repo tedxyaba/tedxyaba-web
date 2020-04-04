@@ -2,18 +2,24 @@ import React from 'react';
 import './styles.scss';
 import { connect } from 'react-redux';
 import Button from '../../components/Button';
+import { TEDxYabaLogo } from '../../utils/images';
 
 const Home = props => {
   const { about } = props;
 
   return (
-    <div className="page-container">
+    <div className="page-container container-fluid">
       Welcome back home!
 
-      <section>
-        { about.filter(i => i.id === 'tedxyaba').map(item => (
-          <div key={item.id}>
-            <div>
+      <section className="row about">
+        <div className="col-md-6">
+          <div className="ted-about-image">
+            <TEDxYabaLogo />
+          </div>
+        </div>
+        <div className="col-md-6 ted-about-content">
+          { about.filter(i => i.id === 'tedxyaba').map(item => (
+            <div key={item.id}>
               <h3 className="title">{item.title}</h3>
               <p className="multiline-text">{item.content}</p>
 
@@ -24,8 +30,8 @@ const Home = props => {
                 btnType="primary"
               />
             </div>
-          </div>
-        )) }
+          )) }
+        </div>
       </section>
     </div>
   )
