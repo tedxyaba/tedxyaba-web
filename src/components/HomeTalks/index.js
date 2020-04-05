@@ -1,12 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './styles.scss';
 import Section from '../layout/Section';
 import Select from 'react-select';
 import YoutubeEmbed, { YoutubeThumbnail } from '../YoutubeEmbed';
+import moment from 'moment';
 
 const HomeTalks = ({ talks }) => {
   const [sortTalks, setSortTalks] = useState(null);
   const [activeTalk, setActiveTalk] = useState({});
+
+  useEffect(() => {
+    setActiveTalk(talks[0])
+  }, [talks])
+
   const sortSelectData = [
     {value: 'most-popular', label: 'Most Popular'},
     {value: 'date', label: 'Date'}
@@ -32,13 +38,21 @@ const HomeTalks = ({ talks }) => {
 
       <div className="content">
         <div className="main-talk row">
-          <div className="right-highlight col-12">TEDxYaba 2019</div>
+          <div className="right-highlight col-12">TEDxYaba { activeTalk.date ? moment(activeTalk.date).year() : moment().year() }</div>
+
           <div className="col-12">
-            <YoutubeEmbed
-              height="700"
-              width="100%"
-              url={activeTalk.video_url || ''}
-            />
+            <div className="talk-col">
+              <YoutubeEmbed
+                height="700"
+                width="100%"
+                url={activeTalk.video_url || ''}
+                className="video-embedded"
+              />
+              <div class="title-and-date">
+                { activeTalk.date ? <p className="date">{ moment(activeTalk.date).format('LL') }</p> : null }
+                <p className="title">{ activeTalk.topic }</p>
+              </div>
+            </div>
           </div>
         </div>
         <div className="talks-list row">

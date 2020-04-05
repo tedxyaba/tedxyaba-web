@@ -1,3 +1,5 @@
+// HOME TALKS SECTION
+
 section.home-talks {
   .sortby {
     align-items: center;
@@ -50,7 +52,53 @@ section.home-talks {
   }
 
   .content {
-    .main-talk {}
+    .main-talk {
+      margin-top: 2rem;
+      position: relative;
+
+      .right-highlight {
+        background: #343434;
+        border-radius: 4px;
+        color: #fff;
+        padding: 0.625rem 1.25rem;
+        position: absolute;
+        right: 0;
+        top: -15px;
+        width: 200px;
+        z-index: 100;
+      }
+
+      .talk-col {
+        position: relative;
+
+        .video-embedded {
+          border-radius: 10px;
+        }
+
+        .title-and-date {
+          background: rgba(0, 0, 0, 0.6);
+          backdrop-filter: blur(4px);
+          border-radius: 10px;
+          padding: 1rem 2rem;
+          position: absolute;
+          bottom: 7px;
+          left: 0;
+          right: 0;
+
+          .date {
+            color: rgba(255, 255, 255, 0.5);
+            margin: 0;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+          }
+
+          .title {
+            color: #fff;
+            font-size: 1.75rem;
+          }
+        }
+      }
+    }
 
     .talks-list {
       .talk-item {
@@ -73,7 +121,7 @@ section.home-talks {
           }
 
           .overlay {
-            background: rgba(0,0,0,0.5);
+            background: rgba(0,0,0,0.6);
             border-radius: 10px;
             position: absolute;
             top: 0;
