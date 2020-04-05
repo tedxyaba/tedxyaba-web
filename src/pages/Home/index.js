@@ -1,39 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './styles.scss';
 import { connect } from 'react-redux';
 import Button from '../../components/Button';
 import { TEDxYabaLogo } from '../../utils/images';
 import Section from '../../components/layout/Section';
-import Select from 'react-select';
-import YoutubeEmbed from '../../components/YoutubeEmbed';
+import HomeTalks from '../../components/HomeTalks';
 
-const Home = ({ about }) => {
-  const [sortTalks, setSortTalks] = useState(null);
-  const sortSelectData = [
-    {value: 'most-popular', label: 'Most Popular'},
-    {value: 'date', label: 'Date'}
-  ]
-
+const Home = ({ about, talks }) => {
   return (
     <div className="page-container container-fluid">
-      Welcome back home!
-
-      <Section className="home-talks">
-        <div className="sortby">
-          <p>Sort by</p>
-          <Select
-            id="sortby-select"
-            className="sortby-select"
-            classNamePrefix="sortby"
-            value={sortTalks}
-            options={sortSelectData}
-            onChange={setSortTalks}
-            placeholder="Select..."
-            isSearchable={false}
-            width="200px"
-          />
-        </div>
-      </Section>
+      <HomeTalks talks={talks} />
 
       <Section className="row home-about">
         <>
@@ -63,9 +39,10 @@ const Home = ({ about }) => {
   )
 }
 
-const mapStateToProps = ({ about }) => {
+const mapStateToProps = ({ about, talks }) => {
   return {
     about,
+    talks,
   }
 }
 
