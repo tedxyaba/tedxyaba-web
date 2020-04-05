@@ -8,10 +8,23 @@ import moment from 'moment';
 const HomeTalks = ({ talks }) => {
   const [sortTalks, setSortTalks] = useState(null);
   const [activeTalk, setActiveTalk] = useState({});
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 767);
+
+  const checkViewport = () => {
+    setIsMobile(window.innerWidth < 767)
+  }
 
   useEffect(() => {
     setActiveTalk(talks[0])
   }, [talks])
+
+  useEffect(() => {
+    window.addEventListener('resize', checkViewport)
+
+    return () => {
+      window.removeEventListener('resize', checkViewport)
+    }
+  })
 
   const sortSelectData = [
     {value: 'most-popular', label: 'Most Popular'},
@@ -43,12 +56,12 @@ const HomeTalks = ({ talks }) => {
           <div className="col-12">
             <div className="talk-col">
               <YoutubeEmbed
-                height="700"
+                height={isMobile ? 400 : 700}
                 width="100%"
                 url={activeTalk.video_url || ''}
                 className="video-embedded"
               />
-              <div class="title-and-date">
+              <div className="title-and-date">
                 { activeTalk.date ? <p className="date">{ moment(activeTalk.date).format('LL') }</p> : null }
                 <p className="title">{ activeTalk.topic }</p>
               </div>
