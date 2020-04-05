@@ -30,12 +30,26 @@ const events = [
 
 const talks = [
   {
-    id: 'talk-id',
-    speaker_name: '',
-    topic: '',
-    video_url: '',
-    date: '',
-  }    
+    id: 'talk-id-01',
+    speaker_name: 'Seni Sulyman',
+    topic: 'Africa can lead the world. But, will we?',
+    video_url: 'https://youtu.be/4U6nOfSvg28',
+    date: '2017-10-10',
+  },
+  {
+    id: 'talk-id-02',
+    speaker_name: 'TY Bello',
+    topic: 'Beauty does have a place',
+    video_url: 'https://youtu.be/JAszBCAwGyo',
+    date: '2017-10-10',
+  },
+  {
+    id: 'talk-id-03',
+    speaker_name: 'Folakunle Oshun',
+    topic: 'The hidden truth about Jollof rice',
+    video_url: 'https://youtu.be/V5W8Qlde3NQ?list=PLRd2t2SwL985QpMxh31E2i1A-oOS1gyUh',
+    date: '2017-08-10',
+  }
 ];
 
 const blog = [];
