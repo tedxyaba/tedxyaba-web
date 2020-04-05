@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import YouTube from 'react-youtube';
 
 const extractVideoID = (url) => {
-  const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
+  const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#]*).*/;
   const match = url.match(regExp);
   
   if ( match && match[7].length === 11 ) {
@@ -14,11 +14,12 @@ const extractVideoID = (url) => {
 }
 
 export const YoutubeThumbnail = ({ url }) => {
-  return <img src={`http://img.youtube.com/vi/${extractVideoID(url)}/0.jpg`} />
+  return <img src={`http://img.youtube.com/vi/${extractVideoID(url)}/0.jpg`} alt="" />
 }
 
-const YoutubeEmbed = ({ url, height, width, className }) => {
+const YoutubeEmbed = ({ url, height, width, className, onPlay, onPause }) => {
   const _onReady = (event) => {
+    console.log('on readyyy')
     event.target.pauseVideo();
   }
 
@@ -40,12 +41,25 @@ const YoutubeEmbed = ({ url, height, width, className }) => {
       className={className}
       opts={opts}
       onReady={_onReady}
+      onPlay={onPlay}
+      onPause={onPause}
     />
   )
 };
 
 YoutubeEmbed.propTypes = {
   url: PropTypes.string.isRequired,
+  height: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string
+  ]),
+  width: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string
+  ]),
+  className: PropTypes.string,
+  onPlay: PropTypes.func,
+  onPause: PropTypes.func,
 };
 
 export default YoutubeEmbed;

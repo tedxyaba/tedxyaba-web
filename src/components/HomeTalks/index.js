@@ -4,11 +4,13 @@ import Section from '../layout/Section';
 import Select from 'react-select';
 import YoutubeEmbed, { YoutubeThumbnail } from '../YoutubeEmbed';
 import moment from 'moment';
+import Icon from 'react-web-vector-icons';
 
 const HomeTalks = ({ talks }) => {
   const [sortTalks, setSortTalks] = useState(null);
   const [activeTalk, setActiveTalk] = useState({});
   const [isMobile, setIsMobile] = useState(window.innerWidth < 767);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   const checkViewport = () => {
     setIsMobile(window.innerWidth < 767)
@@ -60,11 +62,34 @@ const HomeTalks = ({ talks }) => {
                 width="100%"
                 url={activeTalk.video_url || ''}
                 className="video-embedded"
+                onPlay={() => setIsPlaying(true)}
+                onPause={() => setIsPlaying(false)}
               />
-              <div className="title-and-date">
-                { activeTalk.date ? <p className="date">{ moment(activeTalk.date).format('LL') }</p> : null }
-                <p className="title">{ activeTalk.topic }</p>
+
+              <div className="prev-icon">
+                <Icon
+                  font="MaterialCommunityIcons"
+                  name="chevron-left-circle"
+                  color="rgba(255,255,255,0.7)"
+                  size={40}
+                />
               </div>
+
+              <div className="next-icon">
+                <Icon
+                  font="MaterialCommunityIcons"
+                  name="chevron-right-circle"
+                  color="rgba(255,255,255,0.7)"
+                  size={40}
+                />
+              </div>
+
+              { isPlaying || (
+                <div className="title-and-date">
+                  { activeTalk.date ? <p className="date">{ moment(activeTalk.date).format('LL') }</p> : null }
+                  <p className="title">{ activeTalk.topic }</p>
+                </div>
+              ) }
             </div>
           </div>
         </div>

@@ -97,6 +97,32 @@ section.home-talks {
             font-size: 1.75rem;
           }
         }
+
+        .next-icon,
+        .prev-icon {
+          position: absolute;
+          top: 45%;
+          transition: all ease-in-out 0.25s;
+          z-index: 200;
+
+          &:hover {
+            cursor: pointer;
+            transition: all ease-in-out 0.25s;
+
+            i {
+              color: #fff !important;
+              transition: all ease-in-out 0.25s;
+            }
+          }
+        }
+
+        .prev-icon {
+          left: -5px;
+        }
+
+        .next-icon {
+          right: -5px;
+        }
       }
     }
 

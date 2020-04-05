@@ -47,7 +47,7 @@ const talks = [
     id: 'talk-id-03',
     speaker_name: 'Folakunle Oshun',
     topic: 'The hidden truth about Jollof rice',
-    video_url: 'https://youtu.be/V5W8Qlde3NQ?list=PLRd2t2SwL985QpMxh31E2i1A-oOS1gyUh',
+    video_url: 'https://youtu.be/V5W8Qlde3NQ',
     date: '2018-08-10',
   }
 ];
