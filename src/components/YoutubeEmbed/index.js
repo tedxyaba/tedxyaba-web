@@ -13,14 +13,18 @@ const extractVideoID = (url) => {
   }
 }
 
-const YoutubeEmbed = ({ url }) => {
+export const YoutubeThumbnail = ({ url }) => {
+  return <img src={`http://img.youtube.com/vi/${extractVideoID(url)}/0.jpg`} />
+}
+
+const YoutubeEmbed = ({ url, height, width }) => {
   const _onReady = (event) => {
     event.target.pauseVideo();
   }
 
   const opts = {
-    height: '390',
-    width: '640',
+    height,
+    width,
     playerVars: {
       // https://developers.google.com/youtube/player_parameters
       autoplay: 0,

@@ -80,4 +80,41 @@ section.home-talks {
       }
     }
   }
+
+  .content {
+    .main-talk {}
+
+    .talks-list {
+      .talk-item {
+        border-color: transparent;
+        margin-bottom: 1rem;
+        transition: all ease-in-out 0.25s;
+
+        &:hover {
+          border: 2px dotted transparent;
+          cursor: pointer;
+          transition: all ease-in-out 0.25s;
+        }
+
+        .talk-details {
+          position: relative;
+
+          img {
+            border-radius: 10px;
+            width: 100%;
+          }
+
+          .overlay {
+            background: rgba(0,0,0,0.5);
+            border-radius: 10px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+          }
+        }
+      }
+    }
+  }
 }
