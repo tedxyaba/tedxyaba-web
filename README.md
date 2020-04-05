@@ -4,7 +4,7 @@ Independently organised TED event
 ### Requirements
 * Node JS `12.16.1`
 * NPM `6.13.4`
-* Yarn `1.15.2`
+* Yarn `1.22.4`
 
 ## Getting Started
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
