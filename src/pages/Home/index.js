@@ -3,6 +3,7 @@ import './styles.scss';
 import { connect } from 'react-redux';
 import Button from '../../components/Button';
 import { TEDxYabaLogo } from '../../utils/images';
+import Section from '../../components/layout/Section';
 
 const Home = props => {
   const { about } = props;
@@ -11,7 +12,7 @@ const Home = props => {
     <div className="page-container container-fluid">
       Welcome back home!
 
-      <section className="row about">
+      <Section className="row about">
         <div className="col-md-6">
           <div className="ted-about-image">
             <TEDxYabaLogo />
@@ -32,7 +33,7 @@ const Home = props => {
             </div>
           )) }
         </div>
-      </section>
+      </Section>
     </div>
   )
 }
