@@ -1,0 +1,143 @@
+.watch {
+  .sorts-and-filters {
+    .row .col-md-4 {
+      margin: .5rem auto;
+    }
+
+    .watch-sort-by {
+      @media (min-width: 767.98px) {
+        display: flex;
+        justify-content: flex-end;
+      }
+    }
+
+    .form-control.search-input-control {
+      background: #F5F5F5;
+      border: 0.5px solid rgba(16, 16, 16, 0.2);
+      box-sizing: border-box;
+      border-radius: 4px;
+      height: 40px;
+      padding: .375rem .75rem;
+      transition: all ease-in-out 0.25s;
+
+      &:hover {
+        border-color: #565656;
+        transition: all ease-in-out 0.25s;
+      }
+
+      &:focus {
+        border-color: #565656;
+        box-shadow: none;
+      }
+    }
+  }
+
+  .filter-years {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    .year-item {
+      &:hover {
+        cursor: pointer;
+      }
+
+      .year-text {
+        color: rgba(0, 0, 0, 0.5);
+        font-weight: 300;
+        margin-bottom: 17px;
+        margin-top: 20px;
+
+        &.active {
+          color: rgba(0, 0, 0, 0.75);
+          font-weight: 500;
+        }
+      }
+
+      .active-year-bar {
+        background: rgba(0, 0, 0, 0.75);
+        border-radius: 1.5px;
+        height: 3px;
+        margin: 0 auto;
+        width: 40px;
+      }
+    }
+  }
+
+  .all-talks {
+    .col-md-4 {
+      margin: 1rem 0;
+      border-color: transparent;
+      transition: all ease-in-out 0.25s;
+
+      &:hover {
+        border: 2px solid transparent;
+        transition: all ease-in-out 0.25s;
+      }
+    }
+
+    .talk-item {
+      position: relative;
+      text-decoration: none;
+
+      .top-bar {
+        align-items: center;
+        background: #010101;
+        border-radius: 10px;
+        color: #fff;
+        display: flex;
+        font-size: 1.25rem;
+        justify-content: space-between;
+        padding: 0rem 1.25rem;
+        position: absolute;
+        left: 0;
+        right: 0;
+        z-index: 101;
+      }
+
+      img {
+        border-radius: 10px;
+        width: 100%;
+      }
+
+      .overlay {
+        align-items: flex-start;
+        background: linear-gradient(180deg, rgba(1, 1, 1, 0) -16.5%, #010101 85%);
+        color: #fff;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 1rem;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        top: 0;
+        z-index: 99;
+
+        p {
+          margin-bottom: .5rem;
+
+          &.name {
+            font-size: .875rem;
+            font-weight: 500;
+            text-transform: uppercase;
+
+            .date-year {
+              color: rgba(255, 255, 255, 0.5);
+              font-weight: normal;
+            }
+          }
+
+          &.topic {
+            @media (min-width: 767.98px) {
+              font-size: 1.25rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}

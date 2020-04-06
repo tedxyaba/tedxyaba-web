@@ -51,10 +51,6 @@ a:hover {
   transition: all ease-in-out .25s;
 }
 
-.title {
-  color: #000000;
-}
-
 .multiline-text {
   white-space: pre-wrap;
 }

@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 // load pages
 import Home from '../src/pages/Home';
 // import Event from './pages/Event';
-// import Watch from '../src/pages/Watch';
+import Watch from '../src/pages/Watch';
 // import Blog from '../src/pages/Blog';
 // import GetInvolved from '../src/pages/GetInvolved';
 // import Partners from '../src/pages/Partners';
@@ -33,6 +33,7 @@ const App = ({ socials }) => {
 
         <Switch>
           <Route path="/" exact component={Home} />
+          <Route path="/watch" component={Watch} />
           {/* <Route component={NotFound} /> */}
         </Switch>
 
