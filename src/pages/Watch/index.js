@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from '../../components/layout/Header';
 import SubHeader from '../../components/layout/SubHeader';
+import SortBy from '../../components/SortBy';
 
 const Watch = () => {
+  const [currentSort, setCurrentSort] = useState(null);
+
+  const talksSortData = [
+    {value: 'all-categories', label: 'All Categories'},
+    {value: 'date-uploaded', label: 'Date Uploaded'},
+  ];
+
   return (
     <div className="watch">
       <Header
@@ -11,7 +19,12 @@ const Watch = () => {
       />
 
       <SubHeader className="sorts-and-filters">
-        <div>Wake up!</div>
+        <div>
+          <SortBy
+            data={talksSortData}
+            onSelect={setCurrentSort}
+          />
+        </div>
       </SubHeader>
     </div>
   )

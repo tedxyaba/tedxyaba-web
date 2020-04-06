@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import './styles.scss';
 import { Link } from 'react-router-dom';
 import Section from '../layout/Section';
-import Select from 'react-select';
 import YoutubeEmbed, { YoutubeThumbnail } from '../YoutubeEmbed';
 import moment from 'moment';
 import Icon from 'react-web-vector-icons';
+import SortBy from '../SortBy';
 
 const HomeTalks = ({ talks }) => {
   const [sortTalks, setSortTalks] = useState(null);
@@ -50,20 +50,10 @@ const HomeTalks = ({ talks }) => {
   return (
     <Section className="home-talks">
       <>
-      <div className="sortby">
-        <p>Sort by</p>
-        <Select
-          id="sortby-select"
-          className="sortby-select"
-          classNamePrefix="sortby"
-          value={sortTalks}
-          options={sortSelectData}
-          onChange={setSortTalks}
-          placeholder="Select..."
-          isSearchable={false}
-          width="200px"
-        />
-      </div>
+      <SortBy
+        data={sortSelectData}
+        onSelect={setSortTalks}
+      />
 
       <div className="content">
         <div className="main-talk row">
