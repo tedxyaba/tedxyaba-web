@@ -1,0 +1,35 @@
+.partners {
+  .partners-sub-text {
+    text-align: center;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  .partners-data {
+    .content-title {
+      border-bottom: 1px solid rgba(0,0,0,.25);
+
+      p {
+        font-size: 1.25rem;
+        margin-bottom: 5px;
+        text-transform: uppercase;
+      }
+    }
+
+    .partner {
+      margin: 1rem 0;
+
+      .details {
+        align-items: center;
+        background: #f4f4f4;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+      }
+    }
+  }
+}

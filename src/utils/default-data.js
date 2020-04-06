@@ -64,10 +64,16 @@ const blog = [];
 const partners = [
   {
     id: 'partner-id',
-    category: '',
-    partner_name: '',
+    category: 'event',
+    partner_name: 'Oriental',
     thumbnail_url: '',
-  }  
+  },
+  {
+    id: 'community-id',
+    category: 'community',
+    partner_name: 'Andela',
+    thumbnail_url: '',
+  } 
 ];
 
 const team = [
