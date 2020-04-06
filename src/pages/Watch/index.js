@@ -8,6 +8,7 @@ const Watch = () => {
   const [currentSort, setCurrentSort] = useState(null);
   const [sortEvent, setSortEvent] = useState(null);
   const [searchText, setSearchText] = useState('');
+  const [yearFilter, setYearFilter] = useState('2020');
 
   const talksSortData = [
     {value: 'all-categories', label: 'All Categories'},
@@ -18,6 +19,8 @@ const Watch = () => {
     {value: 'all-events', label: 'All Events'},
     {value: 'bold-brilliant', label: 'Bold + Brilliant'},
   ];
+
+  const years = ['2020', '2019', '2018', '2017', '2016', '2015', '2014', '2013', '2012', '2011', '2010']
 
   return (
     <div className="watch">
@@ -54,6 +57,21 @@ const Watch = () => {
             />
           </div>
         </div>
+      </SubHeader>
+
+      <SubHeader className="filter-years container-fluid mt-3 p-0 text-center">
+        <>
+        { years.map(item => {
+          const active = yearFilter === item;
+
+          return (
+            <div key={item} className="year-item mx-3" onClick={() => setYearFilter(item)}>
+              <div className={`year-text ${active && 'active'}`}>{ item }</div>
+              {active && <div className="active-year-bar" /> }
+            </div>
+          )
+        }) }
+        </>
       </SubHeader>
     </div>
   )

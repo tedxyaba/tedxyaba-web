@@ -31,4 +31,37 @@
       }
     }
   }
+
+  .filter-years {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    .year-item {
+      &:hover {
+        cursor: pointer;
+      }
+
+      .year-text {
+        color: rgba(0, 0, 0, 0.5);
+        font-weight: 300;
+        margin-bottom: 17px;
+        margin-top: 20px;
+
+        &.active {
+          color: rgba(0, 0, 0, 0.75);
+          font-weight: 500;
+        }
+      }
+
+      .active-year-bar {
+        background: rgba(0, 0, 0, 0.75);
+        border-radius: 1.5px;
+        height: 3px;
+        margin: 0 auto;
+        width: 40px;
+      }
+    }
+  }
 }
