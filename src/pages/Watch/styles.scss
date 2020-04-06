@@ -1,0 +1,34 @@
+.watch {
+  .sorts-and-filters {
+    .row .col-md-4 {
+      margin: .5rem auto;
+    }
+
+    .watch-sort-by {
+      @media (min-width: 767.98px) {
+        display: flex;
+        justify-content: flex-end;
+      }
+    }
+
+    .form-control.search-input-control {
+      background: #F5F5F5;
+      border: 0.5px solid rgba(16, 16, 16, 0.2);
+      box-sizing: border-box;
+      border-radius: 4px;
+      height: 40px;
+      padding: .375rem .75rem;
+      transition: all ease-in-out 0.25s;
+
+      &:hover {
+        border-color: #565656;
+        transition: all ease-in-out 0.25s;
+      }
+
+      &:focus {
+        border-color: #565656;
+        box-shadow: none;
+      }
+    }
+  }
+}
