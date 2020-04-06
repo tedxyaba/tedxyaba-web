@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
 import './styles.scss';
+import { connect } from 'react-redux';
 import Header from '../../components/layout/Header';
 import SubHeader from '../../components/layout/SubHeader';
 import SelectDropdown from '../../components/SelectDropdown';
+import Section from '../../components/layout/Section';
+import { YoutubeThumbnail } from '../../components/YoutubeEmbed';
+import Icon from 'react-web-vector-icons';
+import moment from 'moment';
 
-const Watch = () => {
+const Watch = ({ talks }) => {
   const [currentSort, setCurrentSort] = useState(null);
   const [sortEvent, setSortEvent] = useState(null);
   const [searchText, setSearchText] = useState('');
@@ -73,8 +78,41 @@ const Watch = () => {
         }) }
         </>
       </SubHeader>
+
+      <Section className="container-fluid all-talks">
+        <div className="row">
+          { talks.map(talk => (
+            <a href={talk.video_url} target="_blank" key={talk.id} className="col-md-4">
+              <div className="talk-item">
+                <div className="top-bar">
+                  <Icon
+                    font="AntDesign"
+                    name="youtube"
+                    color="white"
+                    size={43}
+                  />
+                  <div>{moment(talk.date).format('H:mm')}</div>
+                </div>
+
+                <YoutubeThumbnail url={talk.video_url} />
+
+                <div className="overlay">
+                  <p className="name">{talk.speaker_name} - <span className="date-year">{moment(talk.date).year()}</span></p>
+                  <p className="topic">{talk.topic}</p>
+                </div>
+              </div>
+            </a>
+          )) }
+        </div>
+      </Section>
     </div>
   )
 };
 
-export default Watch;
+const mapStateToProps = ({ talks }) => {
+  return {
+    talks,
+  }
+}
+
+export default connect(mapStateToProps)(Watch);

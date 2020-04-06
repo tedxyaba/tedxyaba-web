@@ -4,7 +4,7 @@ import './styles.scss';
 
 const Section = ({ children, className }) => {
   return (
-    <section className={`page-section ${className}`}>
+    <section className={`page-section ${className || ''}`}>
       {children}
     </section>
   )

@@ -34,21 +34,28 @@ const talks = [
     speaker_name: 'Seni Sulyman',
     topic: 'Africa can lead the world. But, will we?',
     video_url: 'https://youtu.be/4U6nOfSvg28',
-    date: '2017-10-10',
+    date: '2017-10-10T08:02:17',
   },
   {
     id: 'talk-id-02',
     speaker_name: 'TY Bello',
     topic: 'Beauty does have a place',
     video_url: 'https://youtu.be/JAszBCAwGyo',
-    date: '2017-10-10',
+    date: '2017-10-10T15:59:59',
   },
   {
     id: 'talk-id-03',
     speaker_name: 'Folakunle Oshun',
     topic: 'The hidden truth about Jollof rice',
     video_url: 'https://youtu.be/V5W8Qlde3NQ',
-    date: '2018-08-10',
+    date: '2018-08-10T12:02:17',
+  },
+  {
+    id: 'talk-id-04',
+    speaker_name: 'Ade Balogun',
+    topic: 'The Hair Revolution',
+    video_url: 'https://youtu.be/HfuNka7ErIs',
+    date: '2016-10-11T09:41:17',
   }
 ];
 
