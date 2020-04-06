@@ -47,5 +47,23 @@
         }
       }
     }
+
+    &.transparent {
+      .tedxyaba-dropdown__control {
+        background: transparent;
+        border-color: rgba(16, 16, 16, 0.2);
+        color: rgba(0,0,0,0.75);
+
+        &:hover,
+        &.tedxyaba-dropdown__control--is-focused {
+          border: 1px solid #565656;
+          box-shadow: none;
+        }
+
+        .tedxyaba-dropdown__single-value {
+          color: rgba(0,0,0,0.75);
+        }
+      }
+    }
   }
 }

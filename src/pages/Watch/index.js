@@ -50,6 +50,7 @@ const Watch = () => {
               data={eventsSortData}
               onSelect={setSortEvent}
               placeholder="Events"
+              mode="transparent"
             />
           </div>
         </div>
