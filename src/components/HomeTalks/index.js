@@ -5,7 +5,7 @@ import Section from '../layout/Section';
 import YoutubeEmbed, { YoutubeThumbnail } from '../YoutubeEmbed';
 import moment from 'moment';
 import Icon from 'react-web-vector-icons';
-import SortBy from '../SortBy';
+import SelectDropdown from '../SelectDropdown';
 
 const HomeTalks = ({ talks }) => {
   const [sortTalks, setSortTalks] = useState(null);
@@ -50,7 +50,8 @@ const HomeTalks = ({ talks }) => {
   return (
     <Section className="home-talks">
       <>
-      <SortBy
+      <SelectDropdown
+        label="Sort by"
         data={sortSelectData}
         onSelect={setSortTalks}
       />

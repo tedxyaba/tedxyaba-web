@@ -3,7 +3,7 @@ import './styles.scss';
 import PropTypes from 'prop-types';
 import Select from 'react-select';
 
-const SortBy = ({ data, onSelect, placeholder }) => {
+const SelectDropdown = ({ data, onSelect, label, placeholder, isSearchable }) => {
   const [selected, setSelected] = useState(null);
 
   const handleOnSelect = item => {
@@ -12,26 +12,33 @@ const SortBy = ({ data, onSelect, placeholder }) => {
   }
 
   return (
-    <div className="sortby">
-      <p>Sort by</p>
+    <div className="tedxyaba-dropdown">
+      { label && <p>{label}</p> }
+
       <Select
-        id="sortby-select"
-        className="sortby-select"
-        classNamePrefix="sortby"
+        id="tedxyaba-dropdown-select"
+        className="tedxyaba-dropdown-select"
+        classNamePrefix="tedxyaba-dropdown"
         value={selected}
         options={data}
         onChange={handleOnSelect}
         placeholder={placeholder || 'Select...'}
-        isSearchable={false}
+        isSearchable={isSearchable}
       />
     </div>
   )
 };
 
-SortBy.propTypes = {
+SelectDropdown.propTypes = {
   data: PropTypes.array.isRequired,
   onSelect: PropTypes.func.isRequired,
+  label: PropTypes.string,
   placeholder: PropTypes.string,
+  isSearchable: PropTypes.bool,
 };
 
-export default SortBy;
+SelectDropdown.defaultProps = {
+  isSearchable: false
+}
+
+export default SelectDropdown;
