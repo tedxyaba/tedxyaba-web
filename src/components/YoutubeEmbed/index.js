@@ -17,10 +17,10 @@ export const YoutubeThumbnail = ({ url }) => {
   return <img src={`http://img.youtube.com/vi/${extractVideoID(url)}/0.jpg`} alt="" />
 }
 
-const YoutubeEmbed = ({ url, height, width, className, onPlay, onPause }) => {
+const YoutubeEmbed = ({ url, height, width, className, onReady, onPlay, onPause }) => {
   const _onReady = (event) => {
-    console.log('on readyyy')
     event.target.pauseVideo();
+    onReady()
   }
 
   const opts = {
@@ -58,6 +58,7 @@ YoutubeEmbed.propTypes = {
     PropTypes.string
   ]),
   className: PropTypes.string,
+  onReady: PropTypes.func,
   onPlay: PropTypes.func,
   onPause: PropTypes.func,
 };
