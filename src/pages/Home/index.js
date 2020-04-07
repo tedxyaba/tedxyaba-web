@@ -5,10 +5,13 @@ import Button from '../../components/Button';
 import { TEDxYabaLogo } from '../../utils/images';
 import Section from '../../components/layout/Section';
 import HomeTalks from '../../components/HomeTalks';
+import HomeEvents from '../../components/HomeEvents';
 
-const Home = ({ about, talks }) => {
+const Home = ({ about, events, talks }) => {
   return (
     <div className="page-container container-fluid">
+      <HomeEvents events={events} />
+
       <HomeTalks talks={talks} />
 
       <Section className="row home-about">
@@ -39,9 +42,10 @@ const Home = ({ about, talks }) => {
   )
 }
 
-const mapStateToProps = ({ about, talks }) => {
+const mapStateToProps = ({ about, events, talks }) => {
   return {
     about,
+    events,
     talks,
   }
 }

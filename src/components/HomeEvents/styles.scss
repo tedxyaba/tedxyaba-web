@@ -1,0 +1,75 @@
+// HOME TALKS SECTION
+
+section.home-events {
+  background: #101010;
+  margin-left: -15px;
+  margin-right: -15px;
+
+  header {
+    .main {
+      color: #fff;
+      margin: 3rem auto;
+      text-align: center;
+
+      .main-title {
+        font-size: 5rem;
+        font-weight: bold;
+        margin: 0 auto;
+      }
+
+      .main-category {
+        color: #ebebeb;
+        font-size: 1.5rem;
+        font-weight: 300;
+        margin: 0 auto;
+      }
+    }
+  }
+
+  .events-list {
+    .event-item {
+      border-color: transparent;
+      margin-bottom: 1rem;
+      transition: all ease-in-out 0.25s;
+
+      &:hover {
+        border: 2px dotted transparent;
+        cursor: pointer;
+        transition: all ease-in-out 0.25s;
+      }
+
+      a:hover {
+        text-decoration: none;
+      }
+
+      .event-details {
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 10px;
+        color: #fff;
+
+        &.more-events {
+          align-items: center;
+          background: rgba(255, 255, 255, 0.15);
+          border-radius: 10px;
+          color: #fff;
+          display: flex;
+          height: 100%;
+          justify-content: center;
+          padding: 10px;
+          transition: all ease-in-out 0.25s;
+
+          &:hover {
+            background: rgba(0,0,0,0.6);
+            transition: all ease-in-out 0.25s;
+          }
+
+          p {
+            margin: 0;
+
+            @media (max-width: 767.98px) { font-size: .86rem; }
+          }
+        }
+      }
+    }
+  }
+}
