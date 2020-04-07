@@ -73,7 +73,7 @@ const partners = [
     category: 'community',
     partner_name: 'Andela',
     thumbnail_url: '',
-  } 
+  }
 ];
 
 const team = [
@@ -83,14 +83,23 @@ const team = [
     content: 'TEDxYaba’s core organizing committee is a group of passionate volunteers from a variety of disciplines who are dedicated to the TED mission of giving voice to ideas worth spreading.\n\nClick on the images to learn more about each team member.'
   },
   {
-    id: 'team-id',
-    name: '',
-    role: '',
+    id: 'team-id-01',
+    name: 'Florence Dairo',
+    role: 'Digital Product Designer',
     image_url: '',
     linkedin_url: '',
     twitter_url: '',
     bio: '',
-  }    
+  },
+  {
+    id: 'team-id-02',
+    name: 'Fiyin Adebayo',
+    role: 'Senior Software Engineer',
+    image_url: '',
+    linkedin_url: '',
+    twitter_url: '',
+    bio: '',
+  },
 ];
 
 const socials = [

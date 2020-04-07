@@ -1,11 +1,68 @@
 .about {
   .about-list {
     .about-item {
+      margin-bottom: 1rem;
+
       .details {
         .about-title {
           color: #000;
           font-size: 1.25rem;
           font-weight: 500;
+        }
+      }
+    }
+  }
+
+  .team-list {
+    .team-item {
+      margin-bottom: 1rem;
+
+      &:not(.intro) {
+        border-color: transparent;
+        transition: all ease-in-out 0.25s;
+
+        &:hover {
+          border: 2px solid transparent;
+          cursor: pointer;
+          transition: all ease-in-out 0.25s;
+        }
+      }
+
+      .details {
+        position: relative;
+
+        .team-title {
+          color: #000;
+          font-size: 1.25rem;
+          font-weight: 500;
+        }
+
+        img {
+          border-radius: 10px;
+          width: 100%;
+        }
+
+        .overlay {
+          background: linear-gradient(178.21deg, rgba(16, 16, 16, 0) 10.98%, #101010 99.98%);
+          border-radius: 10px;
+          color: #fff;
+          padding: 3rem 1rem 1rem;
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+
+          p {
+            margin: 0;
+          }
+
+          .item-name {
+            font-size: 1.25rem;
+          }
+
+          .item-role {
+            font-size: .875rem;
+          }
         }
       }
     }
