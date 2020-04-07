@@ -67,4 +67,66 @@
       }
     }
   }
+
+  .modal {
+    .modal-dialog {
+      .modal-content {
+        .modal-body {
+          .person-image {
+            background: #1a1a1a;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+
+            img {
+              width: 50%;
+              z-index: 1;
+            }
+          }
+
+          .person-n-r {
+            margin: 2.5rem auto 1rem;
+
+            p {
+              margin: 0 auto;
+            }
+
+            .p-name {
+              color: #000;
+              font-size: 2rem;
+            }
+
+            .p-role {
+              font-size: 1.25rem;
+              font-weight: 300;
+            }
+          }
+
+          .person-social-links {
+            margin-bottom: 1rem;
+
+            a {
+              &:hover {
+                text-decoration: none;
+              }
+
+              i {
+                background: #f4f4f4;
+                border-radius: 5px;
+                border: 1px solid transparent;
+                margin-right: 1.15rem;
+                padding: 2px;
+                transition: all ease-in-out 0.25s;
+
+                &:hover {
+                  border-color: #aaa;
+                  transition: all ease-in-out 0.25s;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
