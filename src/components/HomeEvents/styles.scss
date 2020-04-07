@@ -15,6 +15,10 @@ section.home-events {
         font-size: 5rem;
         font-weight: bold;
         margin: 0 auto;
+
+        @media (max-width: 991.98px) { font-size: 4rem; }
+        @media (max-width: 767.98px) { font-size: 3rem; }
+        @media (max-width: 575.98px) { font-size: 2rem; }
       }
 
       .main-category {
@@ -22,19 +26,30 @@ section.home-events {
         font-size: 1.5rem;
         font-weight: 300;
         margin: 0 auto;
+
+        @media (max-width: 767.98px) { font-size: 1rem; }
       }
     }
   }
 
   .events-list {
+    .list-head {
+      margin-bottom: 5px;
+
+      p {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+        color: #ebebeb;
+        margin: 0 auto;
+        text-transform: uppercase;
+      }
+    }
+
     .event-item {
-      border-color: transparent;
-      margin-bottom: 1rem;
       transition: all ease-in-out 0.25s;
 
       &:hover {
-        border: 2px dotted transparent;
         cursor: pointer;
+        opacity: .6;
         transition: all ease-in-out 0.25s;
       }
 
@@ -46,6 +61,28 @@ section.home-events {
         background: rgba(255, 255, 255, 0.15);
         border-radius: 10px;
         color: #fff;
+        padding: 3rem .5rem;
+        text-align: center;
+
+        &.active {
+          background: #1a1a1a;
+        }
+
+        p {
+          margin: 0 auto;
+        }
+
+        .event-title {
+          font-size: 1.25rem;
+          font-weight: bold;
+          overflow: hidden;
+          white-space: nowrap;
+        }
+
+        .event-category {
+          font-size: .625rem;
+          font-weight: 300;
+        }
 
         &.more-events {
           align-items: center;

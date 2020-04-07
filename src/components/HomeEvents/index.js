@@ -21,19 +21,22 @@ const HomeEvents = ({ events }) => {
           <Button
             type="link"
             text="Learn More"
-            linkTo="/events"
+            linkTo={`/events/${currentEvent.id}`}
             btnType="secondary"
             className="my-5"
           />
         </div>
 
         <div className="events-list row">
+          <div className="list-head col-12">
+            <p>Past Events</p>
+          </div>
+
           { events.slice(0,5).map(event => (
             <div key={event.id} className="event-item col-sm-2" onClick={() => setCurrentEvent(event)}>
-              <div className="event-details">
-                <p>{event.id}</p>
-                <p>{event.title}</p>
-                <p>{event.category}</p>
+              <div className={`event-details ${ (currentEvent && currentEvent.id === event.id) ? 'active' : '' }`}>
+                <p className="event-title">{event.title}</p>
+                <p className="event-category">{event.category}</p>
               </div>
             </div>
           )) }
