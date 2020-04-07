@@ -13,7 +13,7 @@ import Watch from '../src/pages/Watch';
 // import Blog from '../src/pages/Blog';
 // import GetInvolved from '../src/pages/GetInvolved';
 import Partners from '../src/pages/Partners';
-// import About from './pages/About';
+import About from '../src//pages/About';
 // import Contact from './pages/Contact';
 // import PrivacyPolicy from './pages/PrivacyPolicy';
 // import Faqs from './pages/Faqs';
@@ -35,6 +35,7 @@ const App = ({ socials }) => {
           <Route path="/" exact component={Home} />
           <Route path="/watch" component={Watch} />
           <Route path="/partners" component={Partners} />
+          <Route path="/about" component={About} />
           {/* <Route component={NotFound} /> */}
         </Switch>
 

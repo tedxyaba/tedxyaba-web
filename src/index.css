@@ -54,3 +54,12 @@ a:hover {
 .multiline-text {
   white-space: pre-wrap;
 }
+
+.modal-backdrop.show {
+  backdrop-filter: blur(200px);
+  opacity: .8;
+}
+
+.modal .modal-content .modal-controls {
+  padding: 1rem;
+}

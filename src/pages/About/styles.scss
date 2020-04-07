@@ -1,0 +1,132 @@
+.about {
+  .about-list {
+    .about-item {
+      margin-bottom: 1rem;
+
+      .details {
+        .about-title {
+          color: #000;
+          font-size: 1.25rem;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+
+  .team-list {
+    .team-item {
+      margin-bottom: 1rem;
+
+      &:not(.intro) {
+        border-color: transparent;
+        transition: all ease-in-out 0.25s;
+
+        &:hover {
+          border: 2px solid transparent;
+          cursor: pointer;
+          transition: all ease-in-out 0.25s;
+        }
+      }
+
+      .details {
+        position: relative;
+
+        .team-title {
+          color: #000;
+          font-size: 1.25rem;
+          font-weight: 500;
+        }
+
+        img {
+          border-radius: 10px;
+          width: 100%;
+        }
+
+        .overlay {
+          background: linear-gradient(178.21deg, rgba(16, 16, 16, 0) 10.98%, #101010 99.98%);
+          border-radius: 10px;
+          color: #fff;
+          padding: 3rem 1rem 1rem;
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+
+          p {
+            margin: 0;
+          }
+
+          .item-name {
+            font-size: 1.25rem;
+          }
+
+          .item-role {
+            font-size: .875rem;
+          }
+        }
+      }
+    }
+  }
+
+  .modal {
+    .modal-dialog {
+      .modal-content {
+        .modal-body {
+          .person-image {
+            background: #1a1a1a;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+
+            img {
+              width: 50%;
+              z-index: 1;
+            }
+          }
+
+          .person-n-r {
+            margin: 2.5rem auto 1rem;
+
+            p {
+              margin: 0 auto;
+            }
+
+            .p-name {
+              color: #000;
+              font-size: 2rem;
+            }
+
+            .p-role {
+              font-size: 1.25rem;
+              font-weight: 300;
+            }
+          }
+
+          .person-social-links {
+            margin-bottom: 1rem;
+
+            a {
+              &:hover {
+                text-decoration: none;
+              }
+
+              i {
+                background: #f4f4f4;
+                border-radius: 5px;
+                border: 1px solid transparent;
+                margin-right: 1.15rem;
+                padding: 2px;
+                transition: all ease-in-out 0.25s;
+
+                &:hover {
+                  border-color: #aaa;
+                  transition: all ease-in-out 0.25s;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
