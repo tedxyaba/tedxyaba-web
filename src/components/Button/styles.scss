@@ -11,6 +11,10 @@ $white: #fff;
   &:hover {
     transition: all .2s ease;
   }
+
+  .icon {
+    margin-right: 1rem;
+  }
   
   &.btn-primary {
     background-color: $primary;
@@ -45,6 +49,44 @@ $white: #fff;
     &:focus {
       box-shadow: none;
       outline: 1px dotted #fff;
+    }
+  }
+
+  &.btn-calendar {
+    background-color: #3462cf;
+    border: 1px solid #3462cf;
+    color: $white;
+    font-weight: normal;
+
+    &:hover,
+    &:active,
+    &:not(:disabled):not(.disabled):active {
+      background-color: darken($color: #3462cf, $amount: 4);
+      border-color: darken($color: #3462cf, $amount: 4);
+    }
+
+    &:focus {
+      box-shadow: none;
+      outline: 1px dotted #3462cf;
+    }
+  }
+
+  &.btn-map {
+    background-color: #006517;
+    border: 1px solid #006517;
+    color: $white;
+    font-weight: normal;
+
+    &:hover,
+    &:active,
+    &:not(:disabled):not(.disabled):active {
+      background-color: darken($color: #006517, $amount: 4);
+      border-color: darken($color: #006517, $amount: 4);
+    }
+
+    &:focus {
+      box-shadow: none;
+      outline: 1px dotted #006517;
     }
   }
 
