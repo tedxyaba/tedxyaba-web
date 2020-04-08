@@ -90,6 +90,17 @@
   }
 
   .event-section-two {
+    .e-share {
+      .icons {
+        align-items: center;
+        display: flex;
+
+        .share {
+          margin-left: .6rem;
+        }
+      }
+    }
+
     .e-date-location {
       .use-lara {
         align-items: center;

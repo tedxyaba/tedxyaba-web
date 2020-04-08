@@ -3,8 +3,9 @@ import {ReactComponent as TEDxYabaLogo} from '../assets/images/TEDxYaba/TEDxYaba
 import {ReactComponent as AndelaLogo} from '../assets/images/andela.svg';
 import teamSamplePhoto from '../assets/images/team-sample-photo.png';
 import {ReactComponent as LaraNg} from '../assets/images/lara-ng.svg';
-import GMapPin from '../assets/images/google-map-pin.png';
-import GCalendar from '../assets/images/google-calendar.png';
+import gMapPin from '../assets/images/google-map-pin.png';
+import gCalendar from '../assets/images/google-calendar.png';
+import shareIcon from '../assets/images/share-icon.png';
 
 export {
   navbarLogo,
@@ -12,6 +13,7 @@ export {
   AndelaLogo,
   teamSamplePhoto,
   LaraNg,
-  GMapPin,
-  GCalendar,
+  gMapPin,
+  gCalendar,
+  shareIcon,
 }
