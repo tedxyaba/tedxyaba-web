@@ -1,0 +1,40 @@
+.event {
+  .event-section-one {
+    .e-title-cat {
+      background: #101010;
+      border-radius: 15px;
+      color: #fff;
+      padding: 5rem .5rem;
+
+      text-align: center;
+
+      .event-title {
+        font-size: 5rem;
+        font-weight: bold;
+        margin: 0 auto;
+
+        @media (max-width: 991.98px) { font-size: 4rem; }
+        @media (max-width: 767.98px) { font-size: 3rem; }
+        @media (max-width: 575.98px) { font-size: 2rem; }
+      }
+
+      .event-category {
+        color: #ebebeb;
+        font-size: 1.5rem;
+        font-weight: 300;
+        margin: 0 auto;
+
+        @media (max-width: 767.98px) { font-size: 1rem; }
+      }
+    }
+  }
+
+  .row-divider {
+    padding-bottom: 0;
+    padding-top: 0;
+
+    hr {
+      border-color: rgba(0,0,0,0.15);
+    }
+  }
+}

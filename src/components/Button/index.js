@@ -12,9 +12,9 @@ const Button = props => {
     linkTo,
     btnType,
     onClick,
-    classNames
+    className
   } = props;
-  const classes = `btn btn-${btnType} ${classNames ? classNames : ''}`;
+  const classes = `btn btn-${btnType} ${className ? className : ''}`;
 
   switch (type) {
     case 'button':
@@ -54,7 +54,8 @@ Button.propTypes = {
   target: PropTypes.string,
   onClick: PropTypes.func,
   btnType: PropTypes.string,
-  linkTo: PropTypes.string
+  linkTo: PropTypes.string,
+  className: PropTypes.string,
 };
 
 Button.defaultProps = {
