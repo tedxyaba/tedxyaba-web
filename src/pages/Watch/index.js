@@ -82,7 +82,7 @@ const Watch = ({ talks }) => {
       <Section className="container-fluid all-talks">
         <div className="row">
           { talks.map(talk => (
-            <a href={talk.video_url} target="_blank" key={talk.id} className="col-md-4">
+            <a href={talk.video_url} target="_blank" rel="noopener noreferrer" key={talk.id} className="col-md-4">
               <div className="talk-item">
                 <div className="top-bar">
                   <Icon

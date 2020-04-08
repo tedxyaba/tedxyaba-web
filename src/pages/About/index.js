@@ -80,7 +80,7 @@ const Partners = ({ about, team }) => {
 
               <div className="person-social-links">
                 { person.linkedin_url && person.linkedin_url.length ? (
-                  <a href={person.linkedin_url} target="_blank">
+                  <a href={person.linkedin_url} target="_blank" rel="noopener noreferrer">
                     <Icon
                       name="linkedin-box"
                       font="MaterialCommunityIcons"
@@ -91,7 +91,7 @@ const Partners = ({ about, team }) => {
                 ) : null }
 
                 { person.twitter_url && person.twitter_url.length ? (
-                  <a href={person.twitter_url} target="_blank">
+                  <a href={person.twitter_url} target="_blank" rel="noopener noreferrer">
                     <Icon
                       name="twitter-box"
                       font="MaterialCommunityIcons"

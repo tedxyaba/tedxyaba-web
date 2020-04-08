@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Section from '../../components/layout/Section';
 import Button from '../../components/Button';
 import moment from 'moment';
-import { LaraNg, GCalendar, GMapPin } from '../../utils/images';
+import { LaraNg, gCalendar, gMapPin, shareIcon } from '../../utils/images';
 import SocialIcons from '../../components/SocialIcons';
 
 const Event = ({ event, socials }) => {
@@ -60,7 +60,10 @@ const Event = ({ event, socials }) => {
 
           <div className="e-share my-5">
             <p className="e-page-title">SHARE WITH FRIENDS</p>
-            <SocialIcons data={socials} size={2} />
+            <div className="icons">
+              <SocialIcons data={socials} size={2} />
+              <img src={shareIcon} alt="" className="share" />
+            </div>
           </div>
         </div>
         
@@ -75,7 +78,7 @@ const Event = ({ event, socials }) => {
               text="Add to Calendar"
               onClick={() => console.log('Add to calendar')}
               btnType="calendar"
-              icon={<img src={GCalendar} alt="" className="icon" />}
+              icon={<img src={gCalendar} alt="" className="icon" />}
             />
           </div>
 
@@ -88,7 +91,7 @@ const Event = ({ event, socials }) => {
               text="View Map"
               onClick={() => console.log('Add to calendar')}
               btnType="map"
-              icon={<img src={GMapPin} alt="" className="icon" />}
+              icon={<img src={gMapPin} alt="" className="icon" />}
             />
 
             <div className="my-3 use-lara">
