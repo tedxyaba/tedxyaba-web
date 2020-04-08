@@ -5,6 +5,7 @@ import './styles.scss';
 
 const Button = props => {
   const {
+    icon,
     type,
     text,
     href,
@@ -40,6 +41,15 @@ const Button = props => {
           {text}
         </a>
       )
+    case 'button-icon':
+      return (
+        <button
+          className={classes}
+          onClick={onClick}>
+          {icon}
+          {text}
+        </button>
+      )
     default:
       return (
         <div>{text}</div>
@@ -56,6 +66,7 @@ Button.propTypes = {
   btnType: PropTypes.string,
   linkTo: PropTypes.string,
   className: PropTypes.string,
+  icon: PropTypes.element,
 };
 
 Button.defaultProps = {
