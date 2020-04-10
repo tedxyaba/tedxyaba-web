@@ -19,6 +19,7 @@ const Partners = ({ partners }) => {
       </SubHeader>
 
       <Section className="partners-data container-fluid">
+        <>
         <div className="content-title">
           <p>COMMUNITY PARTNERS</p>
         </div>
@@ -32,9 +33,11 @@ const Partners = ({ partners }) => {
             </div>
           )) }
         </div>
+        </>
       </Section>
 
       <Section className="partners-data container-fluid">
+        <>
         <div className="content-title">
           <p>EVENT PARTNERS</p>
         </div>
@@ -48,6 +51,7 @@ const Partners = ({ partners }) => {
             </div>
           )) }
         </div>
+        </>
       </Section>
     </div>
   )

@@ -13,11 +13,11 @@ import Watch from '../src/pages/Watch';
 // import Blog from '../src/pages/Blog';
 // import GetInvolved from '../src/pages/GetInvolved';
 import Partners from '../src/pages/Partners';
-import About from '../src//pages/About';
+import About from '../src/pages/About';
 // import Contact from './pages/Contact';
 // import PrivacyPolicy from './pages/PrivacyPolicy';
 // import Faqs from './pages/Faqs';
-// import NotFound from './pages/NotFound';
+import NotFound from '../src/pages/NotFound';
 
 // load components
 import Navbar from './components/Navbar';
@@ -37,7 +37,7 @@ const App = ({ socials }) => {
           <Route path="/partners" component={Partners} />
           <Route path="/about" component={About} />
           <Route path="/events/:id" component={Event} />
-          {/* <Route component={NotFound} /> */}
+          <Route component={NotFound} />
         </Switch>
 
         <Footer data={socials} />
