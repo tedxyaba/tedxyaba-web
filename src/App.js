@@ -5,6 +5,8 @@ import {
   BrowserRouter as Router,
 } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { handleInitialData } from './actions';
+import LoadingBar from 'react-redux-loading-bar';
 
 // load pages
 import Home from '../src/pages/Home';
@@ -23,7 +25,6 @@ import NotFound from '../src/pages/NotFound';
 import Navbar from './components/Navbar';
 import SocialBar from './components/SocialBar';
 import Footer from './components/Footer';
-import { handleInitialData } from './actions';
 
 const App = ({ socials, dispatch }) => {
   useEffect(() => {
@@ -33,6 +34,7 @@ const App = ({ socials, dispatch }) => {
   return (
     <div className="App">
       <Router>
+        <LoadingBar className="loading-bar" />
         <SocialBar data={socials} />
         <Navbar />
 
