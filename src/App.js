@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Route,
   Switch,
@@ -23,8 +23,13 @@ import NotFound from '../src/pages/NotFound';
 import Navbar from './components/Navbar';
 import SocialBar from './components/SocialBar';
 import Footer from './components/Footer';
+import { handleInitialData } from './actions';
 
-const App = ({ socials }) => {
+const App = ({ socials, dispatch }) => {
+  useEffect(() => {
+    dispatch(handleInitialData())
+  })
+
   return (
     <div className="App">
       <Router>
