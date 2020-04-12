@@ -16,63 +16,6 @@ const about = [
   }
 ];
 
-const events = [
-  {
-    id: 'event-id-01',
-    title: 'Bold + Brilliant',
-    category: 'TEDxYabaWomen',
-    event_date: '2020-03-14',
-    event_time: '10:00 am WAT',
-    description: 'The 2019 TEDxYabaWomen event in line with the global TEDWomen2019 is themed Bold+Brilliant. We believe this is our year to be bold and brilliant – without apology.\n\nAt the TEDxYabaWomen 2019, we will be shining a spotlight on dazzling ideas from some of Nigeria’s most extraordinary risk-takers and innovators. Women who are making power moves, brilliant people who are just getting started and those like you, who tirelessly show up as allies and advocates in your industry. It is going to be a magical moment of celebration, sharing of thought-provoking stories and connection',
-    event_location: 'Itanna Accelerator, 2 Abebe Village Rd, Iganmu, Surulere. Lagos',
-  },
-  {
-    id: 'event-id-02',
-    title: 'Forecasts: Stomachs & Infrastructure',
-    category: 'TEDxYabaSalon',
-    event_date: '2019-11-02',
-    event_time: '11:00 am WAT',
-    description: 'On 2nd November, 2019 the final TEDxYabaSalon event for the year will attempt to address the topic of sustainability and viability of Nigeria’s agricultural sector which in recent times has been touted as the answer to reviving the nation’s failing economy.',
-    event_location: 'Hub One, Yaba',
-  },
-  {
-    id: 'event-id-03',
-    title: 'Forecasts: The Future of Money',
-    category: 'TEDxYabaSalon',
-    event_date: '2019-09-27',
-    event_time: '1:00 pm WAT',
-    description: "This is the September 2019 edition of TEDxYabaSalon generally themed 'Forecasts'",
-    event_location: 'Yaba, Lagos',
-  },
-  {
-    id: 'event-id-04',
-    title: 'TEDxYabaWomen 2018 - Showing UP',
-    category: 'TEDxYabaWomen',
-    event_date: '2018-12-09',
-    event_time: '1:00 pm WAT',
-    description: 'For our second event in 2018, we hosted our first ever TEDxYabaWomen event with the theme “Showing up”.',
-    event_location: 'Itanna Accelerator, 2 Abebe Village Rd, Iganmu, Surulere. Lagos',
-  },
-  {
-    id: 'event-id-05',
-    title: 'TEDxYaba 2018 - Reboot',
-    category: 'Main Event',
-    event_date: '2018-12-08',
-    event_time: '10:00 am WAT',
-    description: 'reboot verb​ /ˌriːˈbuːt/ a) (of a computer) to switch off and then start again immediately, or to make a computer do this b) to start something again or do something again, in a way that is new and interesting',
-    event_location: 'Nikoms Event Centre, Yaba',
-  },
-  {
-    id: 'event-id-06',
-    title: 'Bold + Brilliant',
-    category: 'TEDxYabaWomen',
-    event_date: '2020-03-14',
-    event_time: '10:00 am WAT',
-    description: 'The 2019 TEDxYabaWomen event in line with the global TEDWomen2019 is themed Bold+Brilliant. We believe this is our year to be bold and brilliant – without apology.\n\nAt the TEDxYabaWomen 2019, we will be shining a spotlight on dazzling ideas from some of Nigeria’s most extraordinary risk-takers and innovators. Women who are making power moves, brilliant people who are just getting started and those like you, who tirelessly show up as allies and advocates in your industry. It is going to be a magical moment of celebration, sharing of thought-provoking stories and connection',
-    event_location: 'Itanna Accelerator, 2 Abebe Village Rd, Iganmu, Surulere. Lagos',
-  },
-];
-
 const talks = [
   {
     id: 'talk-id-01',
@@ -185,7 +128,6 @@ const socials = [
 
 export default {
   about,
-  events,
   talks,
   blog,
   partners,

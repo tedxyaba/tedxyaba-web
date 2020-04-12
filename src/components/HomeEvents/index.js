@@ -9,49 +9,53 @@ const HomeEvents = ({ events }) => {
 
   useEffect(() => {
     setCurrentEvent(events[0])
-  }, [events])
+  }, [events]);
 
-  return (
-    <Section className="home-events">
-      <header>
-        <div className="main">
-          <p className="main-title">{currentEvent.title}</p>
-          <p className="main-category">{currentEvent.category}</p>
-          
-          <Button
-            type="link"
-            text="Learn More"
-            linkTo={`/events/${currentEvent.id}`}
-            btnType="secondary"
-            className="my-5"
-          />
-        </div>
+  if (currentEvent && Object.keys(currentEvent).length > 0) {
+    return (
+      <Section className="home-events">
+        <header>
+          <div className="main">
+            <p className="main-title">{currentEvent.title}</p>
+            <p className="main-category">{currentEvent.category}</p>
 
-        <div className="events-list row">
-          <div className="list-head col-12">
-            <p>Past Events</p>
+            <Button
+              type="link"
+              text="Learn More"
+              linkTo={`/events/${currentEvent.id}`}
+              btnType="secondary"
+              className="my-5"
+            />
           </div>
 
-          { events.slice(0,5).map(event => (
-            <div key={event.id} className="event-item col-sm-2" onClick={() => setCurrentEvent(event)}>
-              <div className={`event-details ${ (currentEvent && currentEvent.id === event.id) ? 'active' : '' }`}>
-                <p className="event-title">{event.title}</p>
-                <p className="event-category">{event.category}</p>
-              </div>
+          <div className="events-list row">
+            <div className="list-head col-12">
+              <p>Past Events</p>
             </div>
-          )) }
 
-          <div className="event-item col-sm-2">
-            <Link to="/events">
-              <div className="event-details more-events">
-                <p>More Events...</p>
+            { events.slice(0,5).map(event => (
+              <div key={event.id} className="event-item col-sm-2" onClick={() => setCurrentEvent(event)}>
+                <div className={`event-details ${ (currentEvent && currentEvent.id === event.id) ? 'active' : '' }`}>
+                  <p className="event-title">{event.title}</p>
+                  <p className="event-category">{event.category || <span>&nbsp;</span>}</p>
+                </div>
               </div>
-            </Link>
+            )) }
+
+            { events.length > 5 && <div className="event-item col-sm-2">
+              <Link to="/events">
+                <div className="event-details more-events">
+                  <p>More Events...</p>
+                </div>
+              </Link>
+            </div>}
           </div>
-        </div>
-      </header>
-    </Section>
-  )
+        </header>
+      </Section>
+    )
+  } else {
+    return null
+  }
 }
 
 export default HomeEvents;

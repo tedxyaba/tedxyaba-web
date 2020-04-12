@@ -14,9 +14,10 @@ import * as serviceWorker from './serviceWorker';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import reducers from './reducers';
+import middleware from './middleware';
 import defaultData from './utils/default-data';
 
-const store = createStore(reducers, defaultData);
+const store = createStore(reducers, defaultData, middleware);
 
 console.log("store:: ", store.getState())
 

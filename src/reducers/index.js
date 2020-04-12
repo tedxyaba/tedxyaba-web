@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import { loadingBarReducer } from 'react-redux-loading-bar';
 import about from './about';
 import events from './events';
 import talks from './talks';
@@ -8,6 +9,7 @@ import team from './team';
 import socials from './socials';
 
 export default combineReducers({
+  loadingBar: loadingBarReducer,
   about,
   events,
   talks,

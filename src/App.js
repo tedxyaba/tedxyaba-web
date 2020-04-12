@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Route,
   Switch,
   BrowserRouter as Router,
 } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { handleInitialData } from './actions';
+import LoadingBar from 'react-redux-loading-bar';
 
 // load pages
 import Home from '../src/pages/Home';
@@ -13,21 +15,26 @@ import Watch from '../src/pages/Watch';
 // import Blog from '../src/pages/Blog';
 // import GetInvolved from '../src/pages/GetInvolved';
 import Partners from '../src/pages/Partners';
-import About from '../src//pages/About';
+import About from '../src/pages/About';
 // import Contact from './pages/Contact';
 // import PrivacyPolicy from './pages/PrivacyPolicy';
 // import Faqs from './pages/Faqs';
-// import NotFound from './pages/NotFound';
+import NotFound from '../src/pages/NotFound';
 
 // load components
 import Navbar from './components/Navbar';
 import SocialBar from './components/SocialBar';
 import Footer from './components/Footer';
 
-const App = ({ socials }) => {
+const App = ({ socials, dispatch }) => {
+  useEffect(() => {
+    dispatch(handleInitialData())
+  })
+
   return (
     <div className="App">
       <Router>
+        <LoadingBar className="loading-bar" />
         <SocialBar data={socials} />
         <Navbar />
 
@@ -37,7 +44,7 @@ const App = ({ socials }) => {
           <Route path="/partners" component={Partners} />
           <Route path="/about" component={About} />
           <Route path="/events/:id" component={Event} />
-          {/* <Route component={NotFound} /> */}
+          <Route component={NotFound} />
         </Switch>
 
         <Footer data={socials} />

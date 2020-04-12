@@ -14,7 +14,7 @@ const extractVideoID = (url) => {
 }
 
 export const YoutubeThumbnail = ({ url }) => {
-  return <img src={`http://img.youtube.com/vi/${extractVideoID(url)}/0.jpg`} alt="" />
+  return <img src={`https://img.youtube.com/vi/${extractVideoID(url)}/0.jpg`} alt="" />
 }
 
 const YoutubeEmbed = ({ url, height, width, className, onReady, onPlay, onPause }) => {

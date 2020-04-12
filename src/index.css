@@ -63,3 +63,11 @@ a:hover {
 .modal .modal-content .modal-controls {
   padding: 1rem;
 }
+
+.loading-bar {
+  background-color: #af0000;
+  border-radius: 1.5px;
+  height: 3px;
+  position: fixed;
+  z-index: 1000;
+}
