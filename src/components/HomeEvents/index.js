@@ -17,7 +17,7 @@ const HomeEvents = ({ events }) => {
         <header>
           <div className="main">
             <p className="main-title">{currentEvent.title}</p>
-            <p className="main-category">{currentEvent.category}</p>
+            <p className="main-category">{currentEvent.category || <span>&nbsp;</span>}</p>
 
             <Button
               type="link"

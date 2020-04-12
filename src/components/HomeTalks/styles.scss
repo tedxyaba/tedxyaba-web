@@ -18,12 +18,9 @@ section.home-talks {
         z-index: 0;
       }
 
-      .col-12 {
-        z-index: -1;
-      }
-
       .talk-col {
         position: relative;
+        z-index: -1;
 
         .video-embedded {
           border-radius: 10px;
