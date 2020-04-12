@@ -36,7 +36,7 @@ const HomeEvents = ({ events }) => {
             <div key={event.id} className="event-item col-sm-2" onClick={() => setCurrentEvent(event)}>
               <div className={`event-details ${ (currentEvent && currentEvent.id === event.id) ? 'active' : '' }`}>
                 <p className="event-title">{event.title}</p>
-                <p className="event-category">{event.category}</p>
+                <p className="event-category">{event.category || <span>&nbsp;</span>}</p>
               </div>
             </div>
           )) }

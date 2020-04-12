@@ -1,5 +1,5 @@
 import {
-  RECEIVE_EVENTS
+  RECEIVE_EVENTS,
 } from './constants';
 
 export function receiveEvents (events) {

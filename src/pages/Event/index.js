@@ -7,7 +7,15 @@ import moment from 'moment';
 import { LaraNg, gCalendar, gMapPin, shareIcon } from '../../utils/images';
 import SocialIcons from '../../components/SocialIcons';
 
-const Event = ({ event, socials }) => {
+const Event = ({ event, socials, loadingBar }) => {
+  if (!event || loadingBar.default > 0) {
+    return (
+      <Section className="event text-center">
+        <p className="loading-text">Loading...</p>
+      </Section>
+    )
+  }
+
   return (
     <div className="event container-fluid">
       <Section className="event-section-one row">
@@ -21,8 +29,8 @@ const Event = ({ event, socials }) => {
         
         <div className="col-md-4">
           <div className="e-date">
-            <p className="month">{moment(event.event_date).format('MMM')}</p>
-            <p className="day">{moment(event.event_date).format('DD')}</p>
+            <p className="month">{moment(event.datetime).format('MMM')}</p>
+            <p className="day">{moment(event.datetime).format('DD')}</p>
           </div>
 
           <div className="e-title">
@@ -70,8 +78,8 @@ const Event = ({ event, socials }) => {
         <div className="col-md-4">
           <div className="e-date-time">
             <p className="e-page-title">DATE AND TIME</p>
-            <p className="event-date">{moment(event.event_date).format('ddd, MMMM D, YYYY')}</p>
-            <p className="event-time">{event.event_time}</p>
+            <p className="event-date">{moment(event.datetime).format('ddd, MMMM D, YYYY')}</p>
+            <p className="event-time">{moment(event.datetime).format('h:mm a')}</p>
 
             <Button
               type="button-icon"
@@ -84,7 +92,7 @@ const Event = ({ event, socials }) => {
 
           <div className="e-date-location mt-5">
             <p className="e-page-title">LOCATION</p>
-            <p className="event-location">{event.event_location}</p>
+            <p className="event-location">{event.venue}</p>
 
             <Button
               type="button-icon"
@@ -105,10 +113,13 @@ const Event = ({ event, socials }) => {
   )
 };
 
-const mapStateToProps = ({ events, socials }, { match }) => {
+const mapStateToProps = ({ events, socials, loadingBar }, { match }) => {
+  const { id } = match.params;
+
   return {
-    event: events.find(e => e.id === match.params.id),
+    event: events.find(e => e.id == id),
     socials,
+    loadingBar,
   }
 }
 
