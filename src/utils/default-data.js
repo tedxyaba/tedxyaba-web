@@ -16,48 +16,6 @@ const about = [
   }
 ];
 
-const events = [
-  // [
-  //   {
-  //     "id": 1,
-  //     "title": "Dummy first event",
-  //     "venue": "telegram web",
-  //     "datetime": "2020-04-15T12:00:00.000Z",
-  //     "description": "rocking and rolling the old wild wild west way.",
-  //     "category": null,
-  //     "created_at": "2020-04-05T20:20:03.209Z",
-  //     "updated_at": "2020-04-05T20:20:03.209Z",
-  //     "url": "https://tedxyaba.herokuapp.com/events/1.json"
-  //   }
-  // ]
-
-
-  {
-    id: 'event-id-01',
-    title: 'Bold + Brilliant',
-    category: 'TEDxYabaWomen',
-    datetime: "2020-03-14T10:00:00.000Z",
-    description: 'The 2019 TEDxYabaWomen event in line with the global TEDWomen2019 is themed Bold+Brilliant. We believe this is our year to be bold and brilliant – without apology.\n\nAt the TEDxYabaWomen 2019, we will be shining a spotlight on dazzling ideas from some of Nigeria’s most extraordinary risk-takers and innovators. Women who are making power moves, brilliant people who are just getting started and those like you, who tirelessly show up as allies and advocates in your industry. It is going to be a magical moment of celebration, sharing of thought-provoking stories and connection',
-    venue: 'Itanna Accelerator, 2 Abebe Village Rd, Iganmu, Surulere. Lagos',
-  },
-  {
-    id: 'event-id-02',
-    title: 'Forecasts: Stomachs & Infrastructure',
-    category: 'TEDxYabaSalon',
-    datetime: "2019-11-02T11:00:00.000Z",
-    description: 'On 2nd November, 2019 the final TEDxYabaSalon event for the year will attempt to address the topic of sustainability and viability of Nigeria’s agricultural sector which in recent times has been touted as the answer to reviving the nation’s failing economy.',
-    venue: 'Hub One, Yaba',
-  },
-  {
-    id: 'event-id-03',
-    title: 'Forecasts: The Future of Money',
-    category: 'TEDxYabaSalon',
-    datetime: "2019-09-27T13:00:00.000Z",
-    description: "This is the September 2019 edition of TEDxYabaSalon generally themed 'Forecasts'",
-    venue: 'Yaba, Lagos',
-  },
-];
-
 const talks = [
   {
     id: 'talk-id-01',
@@ -170,7 +128,6 @@ const socials = [
 
 export default {
   about,
-  events,
   talks,
   blog,
   partners,

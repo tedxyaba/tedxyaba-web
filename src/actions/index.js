@@ -14,7 +14,7 @@ export const handleInitialData = () => {
       dispatch(receiveEvents(eventsData))
     } catch (error) {
       dispatch(hideLoading());
-      alert('Error Occurred!, An error occured while loading some resources. Kindly reload.')
+      alert(`Error Occurred!, ${error}`)
     }
   }
 }
