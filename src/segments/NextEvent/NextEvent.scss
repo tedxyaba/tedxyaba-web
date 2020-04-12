@@ -17,12 +17,10 @@
   }
 
   .venue {
-    p {
-      font-size: 1.5rem;
-      font-weight: bold;
-      text-align: center;
-      text-transform: uppercase;
-    }
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
   }
 
   .date-time {
@@ -31,4 +29,8 @@
       text-align: center;
     }
   }
+}
+
+.sub-section.venue-section{
+  text-align: center;
 }

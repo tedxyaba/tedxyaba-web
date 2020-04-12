@@ -14,14 +14,15 @@ const TransformEventData = (event) => {
     link_to_register,
     event_date_and_time,
     description_summary,
-    event_venue_geo_location
+    event_venue_geo_location,
+    livestream_link
   } = event.data;
 
   const image = {
     url: event_image.url,
     alt: event_image.alt || 'Event Image',
-    height: event_image.dimensions.height,
-    width: event_image.dimensions.width,
+    height: event_image.dimensions && event_image.dimensions.height,
+    width: event_image.dimensions && event_image.dimensions.width,
     thumbnail_list_url: event_image.thumbnail && event_image.thumbnail.url
   }
 
@@ -68,7 +69,8 @@ const TransformEventData = (event) => {
     gallery_videos,
     link_to_register,
     event_venue: event_venue[0].text,
-    event_venue_geo_location
+    event_venue_geo_location,
+    livestreamLink: livestream_link
   }
 }
 
