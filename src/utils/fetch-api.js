@@ -41,11 +41,13 @@ export const fetchInitialData = () => {
   return Promise.all([
     fetchApi.getData('/events'),
     fetchApi.getData('/teams'),
+    fetchApi.getData('/partners'),
   ])
-  .then(([events, teams]) => {
+  .then(([events, teams, partners]) => {
     return {
       events,
       teams,
+      partners,
     }
   })
 }

@@ -45,7 +45,7 @@ const Partners = ({ about, team }) => {
               ) : (
                 <div className="details default-image" style={{backgroundImage:`url(${defaultPerson})`}}>
                   <img
-                    src={item.image_url}
+                    src={item.image_url || defaultPerson}
                     alt=""
                     className={`person-image ${imageLoadedClass}`}
                     onLoad={() => setImageLoadedClass('fade-in')}

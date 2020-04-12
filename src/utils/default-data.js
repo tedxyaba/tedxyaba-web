@@ -66,23 +66,6 @@ const talks = [
   }
 ];
 
-const blog = [];
-
-const partners = [
-  {
-    id: 'partner-id',
-    category: 'event',
-    partner_name: 'Oriental',
-    thumbnail_url: '',
-  },
-  {
-    id: 'community-id',
-    category: 'community',
-    partner_name: 'Andela',
-    thumbnail_url: '',
-  }
-];
-
 const team = [
   {
     id: 'intro',
@@ -132,8 +115,6 @@ export default {
   about,
   // events,
   talks,
-  blog,
-  partners,
   team,
   socials,
 }
