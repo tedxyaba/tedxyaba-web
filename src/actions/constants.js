@@ -1,1 +1,2 @@
 export const RECEIVE_EVENTS = 'RECEIVE_EVENTS';
+export const RECEIVE_TEAMS = 'RECEIVE_TEAMS';

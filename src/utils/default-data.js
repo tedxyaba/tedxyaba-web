@@ -91,30 +91,13 @@ const team = [
   },
   {
     id: 'team-id-01',
-    name: 'Florence Dairo',
-    role: 'Digital Product Designer',
-    image_url: '',
-    linkedin_url: '',
-    twitter_url: 'https://twitter.com/FloxDairo',
-    bio: 'Florence is a Product Designer. She currently works with Toptal. She is also the digital design experience expert at TEDxYaba and has worked with other African led organisations. In her spare time she loves to travel and experience new cities.',
-  },
-  {
-    id: 'team-id-02',
-    name: 'Sunday Adefila',
+    first_name: 'Sunday',
+    last_name: 'Adefila',
     role: 'Senior Backend Engineer',
     image_url: '',
     linkedin_url: '',
-    twitter_url: '',
+    twitter_handle: '',
     bio: 'Call me, geng leader.',
-  },
-  {
-    id: 'team-id-03',
-    name: 'Fiyin Adebayo',
-    role: 'Senior Software Engineer',
-    image_url: '',
-    linkedin_url: 'https://www.linkedin.com/in/fiyinadebayo',
-    twitter_url: '',
-    bio: 'Simply put, I am me!',
   },
 ];
 

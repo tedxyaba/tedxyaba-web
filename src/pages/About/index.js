@@ -4,11 +4,12 @@ import { connect } from 'react-redux';
 import Header from '../../components/layout/Header';
 import SubHeader from '../../components/layout/SubHeader';
 import Section from '../../components/layout/Section';
-import { teamSamplePhoto } from '../../utils/images';
+import { defaultPerson } from '../../utils/images';
 import Icon from 'react-web-vector-icons';
 
 const Partners = ({ about, team }) => {
   const [person, setPerson] = useState({});
+  const [imageLoadedClass, setImageLoadedClass] = useState('');
 
   return (
     <div className="about">
@@ -42,10 +43,15 @@ const Partners = ({ about, team }) => {
                   <p className="multiline-text">{ item.content }</p>
                 </div>
               ) : (
-                <div className="details">
-                  <img src={teamSamplePhoto} alt="team-img" />
+                <div className="details default-image" style={{backgroundImage:`url(${defaultPerson})`}}>
+                  <img
+                    src={item.image_url}
+                    alt=""
+                    className={`person-image ${imageLoadedClass}`}
+                    onLoad={() => setImageLoadedClass('fade-in')}
+                  />
                   <div className="overlay">
-                    <p className="item-name">{item.name}</p>
+                    <p className="item-name">{item.first_name} {item.last_name}</p>
                     <p className="item-role">{item.role}</p>
                   </div>
                 </div>
@@ -70,11 +76,14 @@ const Partners = ({ about, team }) => {
             </div>
             <div className="modal-body">
               <div className="person-image">
-                <img src={teamSamplePhoto} alt="team-img" />
+                <img
+                  src={person.image_url || defaultPerson}
+                  alt="team-img"
+                />
               </div>
 
               <div className="person-n-r">
-                <p className="p-name">{ person.name }</p>
+                <p className="p-name">{ person.first_name } { person.last_name }</p>
                 <p className="p-role">{ person.role }</p>
               </div>
 
@@ -90,8 +99,8 @@ const Partners = ({ about, team }) => {
                   </a>
                 ) : null }
 
-                { person.twitter_url && person.twitter_url.length ? (
-                  <a href={person.twitter_url} target="_blank" rel="noopener noreferrer">
+                { person.twitter_handle && person.twitter_handle.length ? (
+                  <a href={person.twitter_handle} target="_blank" rel="noopener noreferrer">
                     <Icon
                       name="twitter-box"
                       font="MaterialCommunityIcons"
