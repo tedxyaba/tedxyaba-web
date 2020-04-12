@@ -176,19 +176,21 @@ class NextEvent extends Component {
                 <h5 className="sub-section-title">Speakers</h5>
                 <hr />
 
-                { event.speakers.map((speaker, index) => (
-                  <div className="col-12 col-sm-6 col-md-4 col-lg-3 p-3" key={index}>
-                    <div className="card">
-                      <img src={speaker.image.url} className="card-img-top" alt={speaker.name} />
-                      <div className="card-body">
-                        <h6 className="card-title">
-                          <a href={speaker.linkToBio.url} target={speaker.linkToBio.target} className="card-link">{ speaker.name }</a>
-                        </h6>
-                        <small className="text-muted">{ speaker.title }</small>
+                <div className="row">
+                  { event.speakers.map((speaker, index) => (
+                    <div className="col-12 col-sm-6 col-md-4 col-lg-3 p-3" key={index}>
+                      <div className="card">
+                        <img src={speaker.image.url} className="card-img-top" alt={speaker.name} />
+                        <div className="card-body">
+                          <h6 className="card-title">
+                            <a href={speaker.linkToBio.url} target={speaker.linkToBio.target} className="card-link">{ speaker.name }</a>
+                          </h6>
+                          <small className="text-muted">{ speaker.title }</small>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                )) }
+                  )) }
+                </div>
               </div>
             )}
 
@@ -197,13 +199,15 @@ class NextEvent extends Component {
                 <h5 className="sub-section-title">Event Sponsors</h5>
                 <hr />
 
-                { event.sponsors.map((sponsor, index) => (
-                  <div className="col-12 col-sm-6 col-md-4 col-lg-3 p-3" key={index}>
-                    <a href={sponsor.linkToBio.url} target="_blank" rel="noopener noreferrer">
-                      <img src={sponsor.image.url} alt={sponsor.name} width={sponsor.image.width} />
-                    </a>
-                  </div>
-                ))}
+                <div className="row">
+                  { event.sponsors.map((sponsor, index) => (
+                    <div className="col-12 col-sm-6 col-md-4 col-lg-3 p-3" key={index}>
+                      <a href={sponsor.linkToBio.url} target="_blank" rel="noopener noreferrer">
+                        <img src={sponsor.image.url} alt={sponsor.name} width={sponsor.image.width} />
+                      </a>
+                    </div>
+                  ))}
+                </div>
               </div>
             )}
           </div>
