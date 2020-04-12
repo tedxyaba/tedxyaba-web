@@ -8,6 +8,13 @@ import { LaraNg, gCalendar, gMapPin, shareIcon } from '../../utils/images';
 import SocialIcons from '../../components/SocialIcons';
 
 const Event = ({ event, socials, loadingBar }) => {
+  const openGoogleMap = venue => {
+    const formatVenue = venue.replace(/\s/g, '+');
+    const url = `https://www.google.com/maps/place/${formatVenue}`;
+
+    window.open(url, '_blank')
+  };
+
   if (!event || loadingBar.default > 0) {
     return (
       <Section className="event text-center">
@@ -97,13 +104,13 @@ const Event = ({ event, socials, loadingBar }) => {
             <Button
               type="button-icon"
               text="View Map"
-              onClick={() => console.log('Add to calendar')}
+              onClick={() => openGoogleMap(event.venue)}
               btnType="map"
               icon={<img src={gMapPin} alt="" className="icon" />}
             />
 
             <div className="my-3 use-lara">
-              <LaraNg /> <a href="#">Use Lara.ng</a>
+              <LaraNg /> <a href="https://lara.ng/" target="_blank" rel="noopener noreferrer">Use Lara.ng</a>
             </div>
           </div>
         </div>

@@ -31,15 +31,29 @@
       .details {
         position: relative;
 
+        &.default-image {
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          background-size: 100% 100%;
+          border-radius: 10px;
+        }
+
         .team-title {
           color: #000;
           font-size: 1.25rem;
           font-weight: 500;
         }
 
-        img {
+        .person-image {
           border-radius: 10px;
+          opacity: 0;
           width: 100%;
+          transition: all ease 1s;
+
+          &.fade-in {
+            opacity: 1;
+          }
         }
 
         .overlay {

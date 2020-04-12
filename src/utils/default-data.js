@@ -16,6 +16,25 @@ const about = [
   }
 ];
 
+const events = [
+  // {
+  //   id: 'event-id-01',
+  //   title: 'Bold + Brilliant',
+  //   category: 'TEDxYabaWomen',
+  //   datetime: "2020-03-14T10:00:00.000Z",
+  //   description: 'The 2019 TEDxYabaWomen event in line with the global TEDWomen2019 is themed Bold+Brilliant. We believe this is our year to be bold and brilliant – without apology.\n\nAt the TEDxYabaWomen 2019, we will be shining a spotlight on dazzling ideas from some of Nigeria’s most extraordinary risk-takers and innovators. Women who are making power moves, brilliant people who are just getting started and those like you, who tirelessly show up as allies and advocates in your industry. It is going to be a magical moment of celebration, sharing of thought-provoking stories and connection',
+  //   venue: 'Itanna Accelerator, 2 Abebe Village Rd, Iganmu, Surulere. Lagos',
+  // },
+  // {
+  //   id: 'event-id-02',
+  //   title: 'Forecasts: Stomachs & Infrastructure',
+  //   category: 'TEDxYabaSalon',
+  //   datetime: "2019-11-02T11:00:00.000Z",
+  //   description: 'On 2nd November, 2019 the final TEDxYabaSalon event for the year will attempt to address the topic of sustainability and viability of Nigeria’s agricultural sector which in recent times has been touted as the answer to reviving the nation’s failing economy.',
+  //   venue: '10, Hughes Avenue, Off Herbert Macaulay Way, Yaba 101212, Lagos',
+  // },
+];
+
 const talks = [
   {
     id: 'talk-id-01',
@@ -47,23 +66,6 @@ const talks = [
   }
 ];
 
-const blog = [];
-
-const partners = [
-  {
-    id: 'partner-id',
-    category: 'event',
-    partner_name: 'Oriental',
-    thumbnail_url: '',
-  },
-  {
-    id: 'community-id',
-    category: 'community',
-    partner_name: 'Andela',
-    thumbnail_url: '',
-  }
-];
-
 const team = [
   {
     id: 'intro',
@@ -72,30 +74,13 @@ const team = [
   },
   {
     id: 'team-id-01',
-    name: 'Florence Dairo',
-    role: 'Digital Product Designer',
-    image_url: '',
-    linkedin_url: '',
-    twitter_url: 'https://twitter.com/FloxDairo',
-    bio: 'Florence is a Product Designer. She currently works with Toptal. She is also the digital design experience expert at TEDxYaba and has worked with other African led organisations. In her spare time she loves to travel and experience new cities.',
-  },
-  {
-    id: 'team-id-02',
-    name: 'Sunday Adefila',
+    first_name: 'Sunday',
+    last_name: 'Adefila',
     role: 'Senior Backend Engineer',
     image_url: '',
     linkedin_url: '',
-    twitter_url: '',
+    twitter_handle: '',
     bio: 'Call me, geng leader.',
-  },
-  {
-    id: 'team-id-03',
-    name: 'Fiyin Adebayo',
-    role: 'Senior Software Engineer',
-    image_url: '',
-    linkedin_url: 'https://www.linkedin.com/in/fiyinadebayo',
-    twitter_url: '',
-    bio: 'Simply put, I am me!',
   },
 ];
 
@@ -128,9 +113,8 @@ const socials = [
 
 export default {
   about,
+  // events,
   talks,
-  blog,
-  partners,
   team,
   socials,
 }

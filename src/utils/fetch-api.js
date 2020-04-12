@@ -40,10 +40,14 @@ const buildUrl = (base, endpoint, params = {}) => {
 export const fetchInitialData = () => {
   return Promise.all([
     fetchApi.getData('/events'),
+    fetchApi.getData('/teams'),
+    fetchApi.getData('/partners'),
   ])
-  .then(([events]) => {
+  .then(([events, teams, partners]) => {
     return {
       events,
+      teams,
+      partners,
     }
   })
 }

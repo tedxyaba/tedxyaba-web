@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import Header from '../../components/layout/Header';
 import SubHeader from '../../components/layout/SubHeader';
 import Section from '../../components/layout/Section';
-import { AndelaLogo } from '../../utils/images';
 
 const Partners = ({ partners }) => {
   return (
@@ -25,28 +24,10 @@ const Partners = ({ partners }) => {
         </div>
 
         <div className="row">
-          { partners.filter(p => p.category === 'community').map(partner => (
+          { partners.map(partner => (
             <div className="col-md-4 partner community">
               <div className="details">
-                <AndelaLogo />
-              </div>
-            </div>
-          )) }
-        </div>
-        </>
-      </Section>
-
-      <Section className="partners-data container-fluid">
-        <>
-        <div className="content-title">
-          <p>EVENT PARTNERS</p>
-        </div>
-
-        <div className="row">
-          { partners.filter(p => p.category === 'event').map(partner => (
-            <div className="col-md-4 partner event">
-              <div className="details">
-                <AndelaLogo />
+                <img src={partner.logo_url} alt="" />
               </div>
             </div>
           )) }
