@@ -8,6 +8,7 @@ import Section from '../../components/layout/Section';
 import { YoutubeThumbnail } from '../../components/YoutubeEmbed';
 import Icon from 'react-web-vector-icons';
 import moment from 'moment';
+import withScrollToTop from '../withScrollToTop';
 
 const Watch = ({ talks }) => {
   const [currentSort, setCurrentSort] = useState(null);
@@ -31,7 +32,7 @@ const Watch = ({ talks }) => {
     <div className="watch">
       <Header
         title="Watch"
-        subtitle="We're excited to share talks from previous events. They can search"
+        subtitle="We're excited to share talks from previous events."
       />
 
       <SubHeader className="sorts-and-filters container-fluid">
@@ -115,4 +116,4 @@ const mapStateToProps = ({ talks }) => {
   }
 }
 
-export default connect(mapStateToProps)(Watch);
+export default withScrollToTop(connect(mapStateToProps)(Watch));

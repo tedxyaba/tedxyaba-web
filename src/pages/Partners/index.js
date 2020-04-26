@@ -25,7 +25,7 @@ const Partners = ({ partners }) => {
 
         <div className="row">
           { partners.map(partner => (
-            <div className="col-md-4 partner community">
+            <div key={partner.partner_name} className="col-md-4 partner community">
               <div className="details">
                 <img src={partner.logo_url} alt="" />
               </div>
