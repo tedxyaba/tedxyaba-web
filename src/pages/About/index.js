@@ -6,8 +6,9 @@ import SubHeader from '../../components/layout/SubHeader';
 import Section from '../../components/layout/Section';
 import { defaultPerson } from '../../utils/images';
 import Icon from 'react-web-vector-icons';
+import withScrollToTop from '../withScrollToTop';
 
-const Partners = ({ about, team }) => {
+const About = ({ about, team }) => {
   const [person, setPerson] = useState({});
   const [imageLoadedClass, setImageLoadedClass] = useState('');
 
@@ -127,4 +128,4 @@ const mapStateToProps = ({ about, team }) => {
   }
 }
 
-export default connect(mapStateToProps)(Partners);
+export default withScrollToTop(connect(mapStateToProps)(About));

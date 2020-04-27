@@ -6,6 +6,8 @@ import Button from '../../components/Button';
 import moment from 'moment';
 import { LaraNg, gCalendar, gMapPin, shareIcon } from '../../utils/images';
 import SocialIcons from '../../components/SocialIcons';
+import withScrollToTop from '../withScrollToTop';
+import { withRouter } from 'react-router-dom';
 
 const Event = ({ event, socials, loadingBar }) => {
   const openGoogleMap = venue => {
@@ -130,4 +132,4 @@ const mapStateToProps = ({ events, socials, loadingBar }, { match }) => {
   }
 }
 
-export default connect(mapStateToProps)(Event);
+export default withScrollToTop(withRouter(connect(mapStateToProps)(Event)));

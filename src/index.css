@@ -23,6 +23,10 @@
 @font-face{font-family:SimpleLineIcons;font-style:normal;font-weight:400;src:url(../node_modules/react-web-vector-icons/fonts/SimpleLineIcons.ttf) format('truetype')}
 @font-face{font-family:Zocial;font-style:normal;font-weight:400;src:url(../node_modules/react-web-vector-icons/fonts/Zocial.ttf) format('truetype')}
 
+html {
+  scroll-behavior: smooth;
+}
+
 html,
 body {
   font-size: 16px;
