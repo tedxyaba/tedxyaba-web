@@ -82,8 +82,10 @@ const Watch = ({ talks }) => {
 
       <Section className="container-fluid all-talks">
         <div className="row">
-          { talks.map(talk => (
-            <a href={talk.video_url} target="_blank" rel="noopener noreferrer" key={talk.id} className="col-md-4">
+          {/* TODO: Change key back to talk.id when api is updated to return talk id. NB: using "index" is not performant. */}
+
+          { talks.map((talk, index) => (
+            <a href={talk.video_url} target="_blank" rel="noopener noreferrer" key={index} className="col-md-4">
               <div className="talk-item">
                 <div className="top-bar">
                   <Icon
@@ -92,13 +94,13 @@ const Watch = ({ talks }) => {
                     color="white"
                     size={43}
                   />
-                  <div>{moment(talk.date).format('H:mm')}</div>
+                  <div>{talk.duration}</div>
                 </div>
 
                 <YoutubeThumbnail url={talk.video_url} />
 
                 <div className="overlay">
-                  <p className="name">{talk.speaker_name} - <span className="date-year">{moment(talk.date).year()}</span></p>
+                  <p className="name">{talk.speaker && talk.speaker.name} - <span className="date-year">{moment(talk.date).year()}</span></p>
                   <p className="topic">{talk.topic}</p>
                 </div>
               </div>
