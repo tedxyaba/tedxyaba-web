@@ -110,21 +110,22 @@ const HomeTalks = ({ talks }) => {
           </div>
         </div>
         <div className="talks-list row">
-          { talks.slice(0,5).map(talk => (
-            <div key={talk.id} className="talk-item col-sm-2" onClick={() => setActiveTalk(talk)}>
+          {/* TODO: Change key back to talk.id when api is updated to return talk id. NB: using "index" is not performant. */}
+          { talks.slice(0,5).map((talk, index) => (
+            <div key={index} className="talk-item col-sm-2" onClick={() => setActiveTalk(talk)}>
               <div className="talk-details">
                 <YoutubeThumbnail url={talk.video_url} />
                 { activeTalk && activeTalk.id !== talk.id && <div className="overlay" /> }
               </div>
             </div>
           )) }
-          <div className="talk-item col-sm-2">
+          { talks.length > 5 && <div className="talk-item col-sm-2">
             <Link to="/watch">
               <div className="talk-details more-talks">
                 <p>More Talks...</p>
               </div>
             </Link>
-          </div>
+          </div> }
         </div>
       </div>
       </>

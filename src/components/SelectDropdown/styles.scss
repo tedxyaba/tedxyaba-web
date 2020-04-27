@@ -33,6 +33,8 @@
     }
 
     .tedxyaba-dropdown__menu {
+      z-index: 5;
+
       .tedxyaba-dropdown__menu-list {
         .tedxyaba-dropdown__option {
           &:hover,
