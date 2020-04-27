@@ -82,10 +82,8 @@ const Watch = ({ talks }) => {
 
       <Section className="container-fluid all-talks">
         <div className="row">
-          {/* TODO: Change key back to talk.id when api is updated to return talk id. NB: using "index" is not performant. */}
-
-          { talks.map((talk, index) => (
-            <a href={talk.video_url} target="_blank" rel="noopener noreferrer" key={index} className="col-md-4">
+          { talks.map(talk => (
+            <a href={talk.video_url} target="_blank" rel="noopener noreferrer" key={talk.id} className="col-md-4">
               <div className="talk-item">
                 <div className="top-bar">
                   <Icon
