@@ -30,21 +30,26 @@ section.home-talks {
           background: rgba(0, 0, 0, 0.6);
           backdrop-filter: blur(4px);
           border-radius: 10px;
+          color: #fff;
           padding: 1rem 2rem;
           position: absolute;
           bottom: 7px;
           left: 0;
           right: 0;
 
-          .date {
-            color: rgba(255, 255, 255, 0.5);
+          .name-date {
+            font-weight: 500;
             margin: 0;
             margin-bottom: 5px;
             text-transform: uppercase;
+
+            .date-year {
+              color: rgba(255, 255, 255, 0.5);
+              font-weight: normal;
+            }
           }
 
           .title {
-            color: #fff;
             font-size: 1.75rem;
 
             @media (max-width: 767.98px) { font-size: 1rem; }

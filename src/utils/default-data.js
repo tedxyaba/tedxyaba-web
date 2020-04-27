@@ -58,7 +58,7 @@ const talks = [
       linkedin_url: ''
     },
     topic: 'Beauty does have a place',
-    video_url: 'https://youtu.be/JAszBCAwGyo',
+    video_url: 'https://youtu.be/JAszBCAwGyo&t=6s',
     duration: '15:59',
     date: '2017-10-10',
   },

@@ -101,7 +101,7 @@ const HomeTalks = ({ talks }) => {
                 ) }
 
                 <div className="title-and-date">
-                  { activeTalk.date ? <p className="date">{ moment(activeTalk.date).format('LL') }</p> : null }
+                  { activeTalk.date ? <p className="name-date">{activeTalk.speaker && activeTalk.speaker.name} - <span className="date-year">{moment(activeTalk.date).year()}</span></p> : null }
                   <p className="title">{ activeTalk.topic }</p>
                 </div>
                 </>
@@ -110,9 +110,8 @@ const HomeTalks = ({ talks }) => {
           </div>
         </div>
         <div className="talks-list row">
-          {/* TODO: Change key back to talk.id when api is updated to return talk id. NB: using "index" is not performant. */}
-          { talks.slice(0,5).map((talk, index) => (
-            <div key={index} className="talk-item col-sm-2" onClick={() => setActiveTalk(talk)}>
+          { talks.slice(0,5).map(talk => (
+            <div key={talk.id} className="talk-item col-sm-2" onClick={() => setActiveTalk(talk)}>
               <div className="talk-details">
                 <YoutubeThumbnail url={talk.video_url} />
                 { activeTalk && activeTalk.id !== talk.id && <div className="overlay" /> }

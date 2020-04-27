@@ -8,6 +8,8 @@ const extractVideoID = (url) => {
   
   if ( match && match[7].length === 11 ) {
     return match[7]
+  } else if (match && match[7].length > 11) {
+    return match[7].split('&')[0]
   } else {
     return url
   }
