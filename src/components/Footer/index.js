@@ -5,13 +5,30 @@ import moment from 'moment';
 import { navbarLogo } from '../../utils/images';
 import SocialIcons from '../SocialIcons';
 import Button from '../Button';
+import { connect } from 'react-redux';
+import fetchApi from '../../utils/fetch-api';
+import { showLoading, hideLoading } from 'react-redux-loading-bar';
 
-const Footer = ({ data }) => {
+const Footer = ({ data, dispatch }) => {
   const [email, setEmail] = useState('');
+  const [response, setResponse] = useState(null);
+  const statusText = response === 201 ? 'Thank you for joining our newsletter!' : response;
 
-  const submitForm = event => {
+  const submitForm = async event => {
     event.preventDefault();
-    console.log('email: ', email)
+
+    dispatch(showLoading());
+
+    try {
+      const response = await fetchApi.postData('post', '/newsletter_subscriptions', {email});
+      setResponse(response.status);
+      setEmail('');
+
+      dispatch(hideLoading());
+    } catch (error) {
+      dispatch(hideLoading());
+      setResponse('Subscription to newsletter failed, please try again.')
+    }
   }
 
   return (
@@ -21,24 +38,31 @@ const Footer = ({ data }) => {
           <p className="row-title">JOIN OUR NEWSLETTER</p>
           <p className="join-text">Sign up to hear about new talks, meetups, and the latest TEDxYaba news.</p>
 
-          <form name="newsletter-form" className="form-inline" onSubmit={submitForm}>
-            <div className="form-group mr-sm-3">
-              <label htmlFor="email" className="sr-only">Email</label>
-              <input
-                type="email"
-                id="email"
-                placeholder="Email address"
-                className="form-control form-control-overides"
-                value={email}
-                onChange={e => setEmail(e.target.value)}
-              />
-            </div>
+          <form name="newsletter-form" className="newsletter-form" onSubmit={submitForm}>
+            <div className="form-row">
+              <div className="col-md-8">
+                <div className="form-group mr-sm-3">
+                  <label htmlFor="email" className="sr-only">Email</label>
+                  <input
+                    type="email"
+                    id="email"
+                    placeholder="Email address"
+                    className="form-control form-control-overides"
+                    value={email}
+                    onChange={e => setEmail(e.target.value)}
+                  />
+                </div>
+                { statusText && <small>{ statusText }</small>}
+              </div>
 
-            <Button
-              type="button"
-              text="Submit"
-              btnType="primary"
-            />
+              <div className="col-md-4">
+                <Button
+                  type="button"
+                  text="Submit"
+                  btnType="primary"
+                />
+              </div>
+            </div>
           </form>
         </div>
 
@@ -70,4 +94,4 @@ const Footer = ({ data }) => {
   )
 };
 
-export default Footer;
+export default connect()(Footer);

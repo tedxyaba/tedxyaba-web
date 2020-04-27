@@ -1,4 +1,4 @@
-import { fetchInitialData } from '../utils/fetch-api';
+import fetchApi, { fetchInitialData } from '../utils/fetch-api';
 import { receiveEvents } from './events';
 import { receiveTeams } from './teams';
 import { receivePartners } from './partners';

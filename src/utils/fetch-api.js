@@ -11,12 +11,11 @@ const fetchApi = {
       headers: headers
     })
   },
-  sendData(method, endpoint = '', params = {}, payload={}) {
+  postData(method, endpoint = '', payload={}, params = {}) {
     return fetch(buildUrl(BASE_URL, endpoint, params), {
-      method: method,
+      method: method.toUpperCase(),
       mode: "cors",// no-cors, cors, *same-origin
       cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-      credentials: "include", // include, same-origin, *omit
       headers: headers,
       body: JSON.stringify(payload)
     })
