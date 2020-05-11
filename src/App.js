@@ -12,13 +12,8 @@ import LoadingBar from 'react-redux-loading-bar';
 import Home from '../src/pages/Home';
 import Event from './pages/Event';
 import Watch from '../src/pages/Watch';
-// import Blog from '../src/pages/Blog';
-// import GetInvolved from '../src/pages/GetInvolved';
 import Partners from '../src/pages/Partners';
 import About from '../src/pages/About';
-// import Contact from './pages/Contact';
-// import PrivacyPolicy from './pages/PrivacyPolicy';
-// import Faqs from './pages/Faqs';
 import NotFound from '../src/pages/NotFound';
 
 // load components
