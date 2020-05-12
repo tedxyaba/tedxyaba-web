@@ -30,7 +30,7 @@ const Footer = ({ data, dispatch }) => {
       const response = await fetchApi.postData('post', '/newsletter_subscriptions', {email});
       const data = await response.json();
 
-      if (response.status === 201) {
+      if (response.status < 300) {
         setResponse(['success', 'Thank you. You’ve been added to the list!']);
         setEmail('');
       } else {
@@ -50,7 +50,6 @@ const Footer = ({ data, dispatch }) => {
     <footer>
       <div className="content row">
         <div className="col-md-6 join">
-          <p className="row-title">JOIN OUR NEWSLETTER</p>
           <p className="join-text">Sign up to hear about new talks, meetups, and the latest TEDxYaba news.</p>
 
           <form name="newsletter-form" className="newsletter-form" onSubmit={submitForm}>
@@ -73,7 +72,7 @@ const Footer = ({ data, dispatch }) => {
               <div className="col-md-4">
                 <Button
                   type="button"
-                  text="Submit"
+                  text="Subscribe"
                   btnType="primary"
                 />
               </div>
@@ -86,7 +85,6 @@ const Footer = ({ data, dispatch }) => {
           <ul>
             <li><Link to="/">Contact</Link></li>
             <li><Link to="/">Privacy Policy</Link></li>
-            <li><Link to="/">F.A.Q</Link></li>
           </ul>
         </div>
 

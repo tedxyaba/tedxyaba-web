@@ -10,8 +10,6 @@ import HomeEvents from '../../components/HomeEvents';
 const Home = ({ about, events, talks }) => {
   return (
     <div className="page-container container-fluid">
-      <HomeEvents events={events} />
-
       <HomeTalks talks={talks} />
 
       <Section className="row home-about">
