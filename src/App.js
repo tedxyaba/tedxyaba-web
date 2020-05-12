@@ -27,7 +27,7 @@ function App() {
           <Route path="/events" component={Events} />
           <Route path="/innovation-lounge" component={InnovationLounge} />
           <Route path="/contact" component={Contact} />
-          <Route path="/openmic" component={CustomRoute} />
+          <Route path="/register" component={CustomRoute} />
           <Route component={NotFound} />
         </Switch>
       </BrowserRouter>
