@@ -16,14 +16,14 @@ export const handleInitialData = () => {
       const teamsData = await teams.json();
       const partnersData = await partners.json();
 
-      dispatch(hideLoading());
       dispatch(receiveEvents(eventsData));
       dispatch(receiveTalks(talksData));
       dispatch(receiveTeams(teamsData));
       dispatch(receivePartners(partnersData));
+      dispatch(hideLoading());
     } catch (error) {
       dispatch(hideLoading());
-      alert(`Error Occurred!, ${error}`)
+      console.log(`Error Occurred!, ${error}`)
     }
   }
 }

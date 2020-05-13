@@ -11,23 +11,38 @@ import { showLoading, hideLoading } from 'react-redux-loading-bar';
 
 const Footer = ({ data, dispatch }) => {
   const [email, setEmail] = useState('');
+  const [formInvalid, setFormInvalid] = useState({
+    email: false
+  })
   const [response, setResponse] = useState(null);
-  const statusText = response === 201 ? 'Thank you for joining our newsletter!' : response;
 
   const submitForm = async event => {
     event.preventDefault();
+
+    if (!email) {
+      setFormInvalid(state => ({...state, email: true}));
+      return;
+    }
 
     dispatch(showLoading());
 
     try {
       const response = await fetchApi.postData('post', '/newsletter_subscriptions', {email});
-      setResponse(response.status);
-      setEmail('');
+      const data = await response.json();
+
+      if (response.status < 300) {
+        setResponse(['success', 'Thank you. You’ve been added to the list!']);
+        setEmail('');
+      } else {
+        // setResponse(['fail', data[0]])
+        setResponse(['fail', `"${email}" is already subscribed to our list`]);
+        setFormInvalid(state => ({...state, email: true}));
+      }
 
       dispatch(hideLoading());
     } catch (error) {
       dispatch(hideLoading());
-      setResponse('Subscription to newsletter failed, please try again.')
+      setResponse(['fail', 'Subscription to newsletter failed, please try again.'])
     }
   }
 
@@ -35,7 +50,6 @@ const Footer = ({ data, dispatch }) => {
     <footer>
       <div className="content row">
         <div className="col-md-6 join">
-          <p className="row-title">JOIN OUR NEWSLETTER</p>
           <p className="join-text">Sign up to hear about new talks, meetups, and the latest TEDxYaba news.</p>
 
           <form name="newsletter-form" className="newsletter-form" onSubmit={submitForm}>
@@ -46,19 +60,19 @@ const Footer = ({ data, dispatch }) => {
                   <input
                     type="email"
                     id="email"
-                    placeholder="Email address"
-                    className="form-control form-control-overides"
+                    placeholder="Your email address"
+                    className={`form-control form-control-overides ${formInvalid.email ? 'invalid' : 'valid'}`}
                     value={email}
                     onChange={e => setEmail(e.target.value)}
                   />
                 </div>
-                { statusText && <small>{ statusText }</small>}
+                { response && <small className={response[0]}>{ response[1] }</small>}
               </div>
 
               <div className="col-md-4">
                 <Button
                   type="button"
-                  text="Submit"
+                  text="Subscribe"
                   btnType="primary"
                 />
               </div>
@@ -71,7 +85,6 @@ const Footer = ({ data, dispatch }) => {
           <ul>
             <li><Link to="/">Contact</Link></li>
             <li><Link to="/">Privacy Policy</Link></li>
-            <li><Link to="/">F.A.Q</Link></li>
           </ul>
         </div>
 

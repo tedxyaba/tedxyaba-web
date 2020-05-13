@@ -5,8 +5,13 @@ import { navbarLogo } from '../../utils/images';
 
 const mainRoutes = [
   {
-    name: 'Watch',
-    path: '/watch',
+    name: 'Home',
+    path: '/',
+    show: true
+  },
+  {
+    name: 'Events',
+    path: '/events',
     show: true
   },
   {
@@ -63,8 +68,8 @@ const Navbar = () => {
                   activeClassName="active">
                   {route.name}
                 </NavLink>
-                { (route.path === pathname || pathname === '/') &&
-                  <div className={`active-bar ${pathname === '/' ? 'quiet' : ''}`}></div>
+                { (route.path === pathname) &&
+                  <div className="active-bar"></div>
                 }
               </li>
              )

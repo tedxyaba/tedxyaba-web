@@ -11,14 +11,10 @@ import LoadingBar from 'react-redux-loading-bar';
 // load pages
 import Home from '../src/pages/Home';
 import Event from './pages/Event';
+import Events from './pages/Events';
 import Watch from '../src/pages/Watch';
-// import Blog from '../src/pages/Blog';
-// import GetInvolved from '../src/pages/GetInvolved';
 import Partners from '../src/pages/Partners';
 import About from '../src/pages/About';
-// import Contact from './pages/Contact';
-// import PrivacyPolicy from './pages/PrivacyPolicy';
-// import Faqs from './pages/Faqs';
 import NotFound from '../src/pages/NotFound';
 
 // load components
@@ -44,6 +40,7 @@ const App = ({ socials, dispatch }) => {
           <Route path="/partners" component={Partners} />
           <Route path="/about" component={About} />
           <Route path="/events/:id" component={Event} />
+          <Route path="/events" component={Events} />
           <Route component={NotFound} />
         </Switch>
 

@@ -3,9 +3,11 @@ $primary: #af0000;
 $white: #fff;
 
 .btn {
-  border-radius: 5px;
+  border-radius: 25px;
+  font-size: .875rem;
   font-weight: 500;
-  padding: 0.75rem 2rem;
+  letter-spacing: 1.25px;
+  padding: 0.84rem 3.3rem;
   transition: all .2s ease;
 
   &:hover {
@@ -20,6 +22,7 @@ $white: #fff;
     background-color: $primary;
     border: 1px solid $primary;
     color: $white;
+    text-transform: uppercase;
 
     &:hover,
     &:active,
@@ -38,6 +41,7 @@ $white: #fff;
     background-color: #fff;
     border: 1px solid #fff;
     color: $primary;
+    text-transform: uppercase;
 
     &:hover,
     &:active,

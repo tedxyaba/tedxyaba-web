@@ -1,3 +1,5 @@
+@import '../../styles/colors.scss';
+
 // FOOTER
 footer {
   background: #000000;
@@ -39,17 +41,34 @@ footer {
 
       form.newsletter-form {
         .form-control-overides {
-          background-color: #000;
+          background: $input-bg;
           background-clip: padding-box;
-          border-radius: 0;
-          border: none;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.75);
-          color: rgba(255, 255, 255, 0.75);
+          border: 1px solid transparent;
+          border-radius: 4px;
+          box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.15);
+          color: $input-text;
+          font-size: .875rem;
           height: 50px;
+          letter-spacing: 0.1px;
           padding: .375rem .75rem;
 
           &:focus {
             box-shadow: none;
+          }
+
+          &.invalid {
+            color: $danger;
+            border-color: $danger;
+          }
+        }
+
+        small {
+          &.success {
+            color: $success;
+          }
+
+          &.fail {
+            color: $danger;
           }
         }
       }
