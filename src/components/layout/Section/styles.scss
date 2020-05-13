@@ -1,14 +1,14 @@
 section.page-section {
-  padding: 6rem;
+  padding: 5rem;
 
   // Large devices (desktops, less than 1200px)
-  @media (max-width: 1199.98px) { padding: 5rem; }
+  @media (max-width: 1199.98px) { padding: 4rem; }
 
   // Medium devices (tablets, less than 992px)
-  @media (max-width: 991.98px) { padding: 4rem; }
+  @media (max-width: 991.98px) { padding: 3rem; }
 
   // Small devices (landscape phones, less than 768px)
-  @media (max-width: 767.98px) { padding: 2rem; }
+  @media (max-width: 767.98px) { padding: 1.5rem; }
 
   // Extra small devices (portrait phones, less than 576px)
   @media (max-width: 575.98px) { padding: 1.5rem; }

@@ -5,11 +5,17 @@ import Button from '../../components/Button';
 import { TEDxYabaLogo } from '../../utils/images';
 import Section from '../../components/layout/Section';
 import HomeTalks from '../../components/HomeTalks';
-import HomeEvents from '../../components/HomeEvents';
+import Header from '../../components/layout/Header';
 
-const Home = ({ about, events, talks }) => {
+const Home = ({ about, talks }) => {
   return (
     <div className="page-container container-fluid">
+      <Header
+        title="Welcome to TEDxYaba"
+        subtitle="Enjoy all our talks from inception"
+        className="on-home"
+      />
+
       <HomeTalks talks={talks} />
 
       <Section className="row home-about">
@@ -40,10 +46,9 @@ const Home = ({ about, events, talks }) => {
   )
 }
 
-const mapStateToProps = ({ about, events, talks }) => {
+const mapStateToProps = ({ about, talks }) => {
   return {
     about,
-    events,
     talks,
   }
 }

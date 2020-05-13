@@ -1,15 +1,56 @@
+@import '../../../styles/colors';
+@import '../../../styles/typography';
+
 .page-header {
-  background: #101010;
+  background: $header-bg;
   color: #fff;
+  position: relative;
   text-align: center;
 
   .title {
-    font-size: 2rem;
-    font-weight: normal;
+    @include headline-2-medium;
     text-transform: uppercase;
   }
 
   .sub-title {
-    font-size: 1.25rem;
+    @include subtitle;
+  }
+
+  &.on-home {
+    padding: 0;
+    padding-left: 2rem;
+    text-align: left;
+
+    .content {
+      margin: 5rem auto;
+      z-index: 10;
+
+      @media (max-width: 1199.98px) { margin: 4rem auto; }
+      @media (max-width: 991.98px) { margin: 3rem auto; }
+      @media (max-width: 767.98px) { margin: 1.5rem auto; }
+      @media (max-width: 575.98px) { margin: 1.5rem auto; }
+    }
+
+    .title {
+      @include headline-1;
+      text-transform: none;
+    }
+
+    .sub-title {
+      font-size: 1rem;
+    }
+
+    .on-home-x {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      top: 0;
+      z-index: 0;
+
+      svg {
+        height: 100%;
+        width: 100%;
+      }
+    }
   }
 }
