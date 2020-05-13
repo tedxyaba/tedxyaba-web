@@ -1,15 +1,20 @@
+@import '../../styles/colors';
+@import '../../styles/typography';
+
 // HOME TALKS SECTION
 
-section.home-talks {
+section.talks-player {
+  background-color: $bg-f5;
   .content {
     .main-talk {
       margin-top: 2rem;
       position: relative;
 
       .right-highlight {
-        background: #343434;
+        @include subtitle-medium;
+        background: $primary;
         border-radius: 4px;
-        color: #fff;
+        color: $white;
         padding: 0.625rem 1.25rem;
         position: absolute;
         right: 0;
@@ -38,28 +43,23 @@ section.home-talks {
           right: 0;
 
           .name-date {
-            font-weight: 500;
+            @include subtitle;
+            color: $gray-text;
             margin: 0;
             margin-bottom: 5px;
-            text-transform: uppercase;
-
-            .date-year {
-              color: rgba(255, 255, 255, 0.5);
-              font-weight: normal;
-            }
           }
 
           .title {
-            font-size: 1.75rem;
-
-            @media (max-width: 767.98px) { font-size: 1rem; }
+            @include headline-2;
           }
         }
 
         .next-icon,
         .prev-icon {
+          background-color: #fff;
+          padding: 5px 10px;
           position: absolute;
-          top: 45%;
+          top: 46%;
           transition: all ease-in-out 0.25s;
           z-index: 200;
 
@@ -68,18 +68,18 @@ section.home-talks {
             transition: all ease-in-out 0.25s;
 
             i {
-              color: #fff !important;
+              color: #000 !important;
               transition: all ease-in-out 0.25s;
             }
           }
         }
 
         .prev-icon {
-          left: 5px;
+          left: 0px;
         }
 
         .next-icon {
-          right: 5px;
+          right: 0px;
         }
       }
     }
