@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 // import Section from '../../components/layout/Section';
 import TalksPlayer from '../../components/TalksPlayer';
 import Header from '../../components/layout/Header';
+import Talks from '../../components/Talks';
 
 const Home = ({ about, talks }) => {
   return (
@@ -16,7 +17,9 @@ const Home = ({ about, talks }) => {
         className="on-home"
       />
 
-      <TalksPlayer talks={talks} />
+      {/* <TalksPlayer talks={talks} /> */}
+
+      <Talks talks={talks} />
 
       {/* <Section className="row home-about">
         <>

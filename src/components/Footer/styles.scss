@@ -1,4 +1,6 @@
-@import '../../styles/colors.scss';
+@import '../../styles/colors';
+@import '../../styles/mixins';
+@import '../../styles/typography';
 
 // FOOTER
 footer {
@@ -6,16 +8,9 @@ footer {
   color: rgba(255,255,255,.9);
   padding: 2.4rem 6rem 2rem;
 
-  // Large devices (desktops, less than 1200px)
   @media (max-width: 1199.98px) { padding: 2.4rem 5rem 2rem; }
-
-  // Medium devices (tablets, less than 992px)
   @media (max-width: 991.98px) { padding: 2.4rem 4rem 2rem ; }
-
-  // Small devices (landscape phones, less than 768px)
   @media (max-width: 767.98px) { padding: 2.4rem 2rem 2rem; }
-
-  // Extra small devices (portrait phones, less than 576px)
   @media (max-width: 575.98px) { padding: 2.4rem 1.5rem 2rem; }
 
   .content {
@@ -41,25 +36,8 @@ footer {
 
       form.newsletter-form {
         .form-control-overides {
-          background: $input-bg;
-          background-clip: padding-box;
-          border: 1px solid transparent;
-          border-radius: 4px;
-          box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.15);
-          color: $input-text;
-          font-size: .875rem;
+          @include input-form-control;
           height: 50px;
-          letter-spacing: 0.1px;
-          padding: .375rem .75rem;
-
-          &:focus {
-            box-shadow: none;
-          }
-
-          &.invalid {
-            color: $danger;
-            border-color: $danger;
-          }
         }
 
         small {
