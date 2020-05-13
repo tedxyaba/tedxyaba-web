@@ -4,6 +4,7 @@ import apiClient from '../../services/api-client';
 import apiRoutes from "../../utils/routes";
 import Loading from "../../components/loading";
 import TransformEventsListData from '../../utils/data-transformers/eventslist';
+import defaultManImage from '../../assets/images/defaults/default-man.jpeg';
 import Join from '../../segments/Join';
 import Footer from '../../segments/Footer';
 import moment from 'moment';
@@ -194,7 +195,7 @@ class Event extends Component {
                           { event.speakers.map((speaker, index) => (
                             <div className="col-12 col-sm-6 col-md-4 col-lg-3 p-3" key={index}>
                               <div className="card">
-                                <img src={speaker.image.url} className="card-img-top" alt={speaker.name} />
+                                <img src={speaker.image.url || defaultManImage} className="card-img-top" alt={speaker.name} />
                                 <div className="card-body">
                                   <h6 className="card-title">
                                     <a href={speaker.linkToBio.url} target={speaker.linkToBio.target} className="card-link">{ speaker.name }</a>
