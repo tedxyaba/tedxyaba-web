@@ -6,9 +6,9 @@ import { BackgroundX } from '../../../utils/images';
 
 const Header = ({ title, subtitle, className }) => {
   return (
-    <Section className={`page-header row ${className}`}>
+    <Section className={`page-header ${className}`}>
       <>
-      <div className="col-12 content">
+      <div className="content">
         <h1 className="title">{ title }</h1>
         <p className="sub-title">{ subtitle }</p>
       </div>

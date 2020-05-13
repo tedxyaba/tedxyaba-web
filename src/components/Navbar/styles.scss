@@ -32,7 +32,7 @@
       padding: .25rem .2rem;
 
       &:focus {
-        outline: 1px dotted lighten($color: $primary-color, $amount: 30);
+        outline: 1px dotted lighten($color: $primary, $amount: 30);
       }
     }
 

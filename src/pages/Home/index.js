@@ -1,24 +1,24 @@
 import React from 'react';
 import './styles.scss';
 import { connect } from 'react-redux';
-import Button from '../../components/Button';
-import { TEDxYabaLogo } from '../../utils/images';
-import Section from '../../components/layout/Section';
-import HomeTalks from '../../components/HomeTalks';
+// import Button from '../../components/Button';
+// import { TEDxYabaLogo } from '../../utils/images';
+// import Section from '../../components/layout/Section';
+import TalksPlayer from '../../components/TalksPlayer';
 import Header from '../../components/layout/Header';
 
 const Home = ({ about, talks }) => {
   return (
-    <div className="page-container container-fluid">
+    <div className="page-container">
       <Header
         title="Welcome to TEDxYaba"
         subtitle="Enjoy all our talks from inception"
         className="on-home"
       />
 
-      <HomeTalks talks={talks} />
+      <TalksPlayer talks={talks} />
 
-      <Section className="row home-about">
+      {/* <Section className="row home-about">
         <>
         <div className="col-md-6">
           <div className="ted-about-image">
@@ -41,7 +41,7 @@ const Home = ({ about, talks }) => {
           )) }
         </div>
         </>
-      </Section>
+      </Section> */}
     </div>
   )
 }

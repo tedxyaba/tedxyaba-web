@@ -17,18 +17,11 @@
   }
 
   &.on-home {
-    padding: 0;
-    padding-left: 2rem;
     text-align: left;
 
     .content {
-      margin: 5rem auto;
+      position: relative;
       z-index: 10;
-
-      @media (max-width: 1199.98px) { margin: 4rem auto; }
-      @media (max-width: 991.98px) { margin: 3rem auto; }
-      @media (max-width: 767.98px) { margin: 1.5rem auto; }
-      @media (max-width: 575.98px) { margin: 1.5rem auto; }
     }
 
     .title {
