@@ -30,7 +30,6 @@ const App = ({ socials, dispatch }) => {
     <div className="App">
       <Router>
         <LoadingBar className="loading-bar" />
-        <SocialBar data={socials} />
         <Navbar />
 
         <Switch>
