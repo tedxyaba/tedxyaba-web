@@ -3,7 +3,7 @@ import './styles.scss';
 import PropTypes from 'prop-types';
 import Select from 'react-select';
 
-const SelectDropdown = ({ data, onSelect, label, placeholder, isSearchable, mode }) => {
+const SelectDropdown = ({ data, onSelect, label, placeholder, isSearchable, mode, preSelected }) => {
   const [selected, setSelected] = useState(null);
 
   const handleOnSelect = item => {
@@ -19,7 +19,7 @@ const SelectDropdown = ({ data, onSelect, label, placeholder, isSearchable, mode
         id="tedxyaba-dropdown-select"
         className={`tedxyaba-dropdown-select ${mode}`}
         classNamePrefix="tedxyaba-dropdown"
-        value={selected}
+        value={selected || preSelected}
         options={data}
         onChange={handleOnSelect}
         placeholder={placeholder || 'Select...'}
@@ -35,7 +35,7 @@ SelectDropdown.propTypes = {
   label: PropTypes.string,
   placeholder: PropTypes.string,
   isSearchable: PropTypes.bool,
-  mode: PropTypes.oneOf(['dark', 'transparent']),
+  mode: PropTypes.oneOf(['dark', 'white', 'transparent']),
 };
 
 SelectDropdown.defaultProps = {

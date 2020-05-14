@@ -1,0 +1,42 @@
+@mixin input-form-control {
+  @include subtitle;
+  background: $input-bg;
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.15);
+  color: $primary-text;
+  height: 40px;
+  padding: .375rem .75rem;
+  transition: all ease-in-out 0.25s;
+
+  &:hover {
+    border-color: #565656;
+    transition: all ease-in-out 0.25s;
+  }
+
+  &:focus {
+    border-color: #565656;
+    box-shadow: none;
+  }
+
+  &.invalid {
+    color: $danger;
+    border-color: $danger;
+  }
+
+  &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: $gray-text;
+  }
+
+  &::-moz-placeholder { /* Firefox 19+ */
+    color: pink;
+  }
+
+  &:-ms-input-placeholder { /* IE 10+ */
+    color: pink;
+  }
+
+  &:-moz-placeholder { /* Firefox 18- */
+    color: pink;
+  }
+}

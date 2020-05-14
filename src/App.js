@@ -12,7 +12,6 @@ import LoadingBar from 'react-redux-loading-bar';
 import Home from '../src/pages/Home';
 import Event from './pages/Event';
 import Events from './pages/Events';
-import Watch from '../src/pages/Watch';
 import Partners from '../src/pages/Partners';
 import About from '../src/pages/About';
 import NotFound from '../src/pages/NotFound';
@@ -36,7 +35,6 @@ const App = ({ socials, dispatch }) => {
 
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/watch" component={Watch} />
           <Route path="/partners" component={Partners} />
           <Route path="/about" component={About} />
           <Route path="/events/:id" component={Event} />

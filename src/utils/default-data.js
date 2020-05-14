@@ -46,7 +46,7 @@ const talks = [
     },
     topic: 'Africa can lead the world. But, will we?',
     video_url: 'https://youtu.be/4U6nOfSvg28',
-    duration: '8:02',
+    video_duration: "PT8M02S",
     date: '2017-10-10',
   },
   {
@@ -59,7 +59,7 @@ const talks = [
     },
     topic: 'Beauty does have a place',
     video_url: 'https://youtu.be/JAszBCAwGyo&t=6s',
-    duration: '15:59',
+    video_duration: "PT15M59S",
     date: '2017-10-10',
   },
   {
@@ -72,7 +72,7 @@ const talks = [
     },
     topic: 'The hidden truth about Jollof rice',
     video_url: 'https://youtu.be/V5W8Qlde3NQ',
-    duration: '12:03',
+    video_duration: "PT16M22S",
     date: '2018-08-10',
   },
   {
@@ -85,7 +85,7 @@ const talks = [
     },
     topic: 'The Hair Revolution',
     video_url: 'https://youtu.be/HfuNka7ErIs',
-    duration: '9:41',
+    video_duration: "",
     date: '2016-10-11',
   }
 ];

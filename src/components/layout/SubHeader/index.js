@@ -4,7 +4,7 @@ import './styles.scss';
 
 const SubHeader = ({ children, className }) => {
   return (
-    <div className={`page-sub-header ${className}`}>
+    <div className={`page-sub-header container-fluid ${className}`}>
       { children }
     </div>
   )

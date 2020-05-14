@@ -1,67 +1,40 @@
-.watch {
+@import '../../styles/colors';
+@import '../../styles/typography';
+@import '../../styles/mixins';
+
+.talks {
   .sorts-and-filters {
-    .row .col-md-4 {
-      margin: .5rem auto;
+    background-color: $primary;
+    color: $white;
+
+    .row .columns {
+      @media (min-width: 767.98px) {
+        align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+
+        .category,
+        .years {
+          flex-grow: 1;
+        }
+
+        .search {
+          flex-grow: 2;
+        }
+      }
     }
 
-    .watch-sort-by {
-      @media (min-width: 767.98px) {
-        display: flex;
-        justify-content: flex-end;
+    .row .columns {
+      .category,
+      .years,
+      .search {
+        margin: .5rem auto;
       }
     }
 
     .form-control.search-input-control {
-      background: #F5F5F5;
-      border: 0.5px solid rgba(16, 16, 16, 0.2);
-      box-sizing: border-box;
-      border-radius: 4px;
-      height: 40px;
-      padding: .375rem .75rem;
-      transition: all ease-in-out 0.25s;
-
-      &:hover {
-        border-color: #565656;
-        transition: all ease-in-out 0.25s;
-      }
-
-      &:focus {
-        border-color: #565656;
-        box-shadow: none;
-      }
-    }
-  }
-
-  .filter-years {
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-
-    .year-item {
-      &:hover {
-        cursor: pointer;
-      }
-
-      .year-text {
-        color: rgba(0, 0, 0, 0.5);
-        font-weight: 300;
-        margin-bottom: 17px;
-        margin-top: 20px;
-
-        &.active {
-          color: rgba(0, 0, 0, 0.75);
-          font-weight: 500;
-        }
-      }
-
-      .active-year-bar {
-        background: rgba(0, 0, 0, 0.75);
-        border-radius: 1.5px;
-        height: 3px;
-        margin: 0 auto;
-        width: 40px;
-      }
+      @include input-form-control;
     }
   }
 
@@ -83,7 +56,7 @@
 
       .top-bar {
         align-items: center;
-        background: #010101;
+        background: transparent;
         border-radius: 10px;
         color: #fff;
         display: flex;
@@ -93,7 +66,7 @@
         position: absolute;
         left: 0;
         right: 0;
-        z-index: 101;
+        z-index: 2;
       }
 
       img {
@@ -115,7 +88,7 @@
         left: 0;
         right: 0;
         top: 0;
-        z-index: 99;
+        z-index: 1;
 
         p {
           margin-bottom: .5rem;
