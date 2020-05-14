@@ -9,6 +9,7 @@ import {ReactComponent as LaraNg} from '../assets/images/lara-ng.svg';
 import gMapPin from '../assets/images/google-map-pin.png';
 import gCalendar from '../assets/images/google-calendar.png';
 import shareIcon from '../assets/images/share-icon.png';
+import {ReactComponent as YoutubeLogo} from '../assets/images/youtube-logo.svg';
 
 export {
   navbarLogo,
@@ -22,4 +23,5 @@ export {
   gMapPin,
   gCalendar,
   shareIcon,
+  YoutubeLogo,
 }

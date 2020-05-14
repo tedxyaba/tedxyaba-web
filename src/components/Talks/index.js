@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import './styles.scss';
-import Header from '../layout/Header';
 import SubHeader from '../layout/SubHeader';
 import SelectDropdown from '../SelectDropdown';
 import Section from '../layout/Section';
 import { YoutubeThumbnail } from '../YoutubeEmbed';
-import Icon from 'react-web-vector-icons';
 import moment from 'moment';
+import { YoutubeLogo } from '../../utils/images';
 
 const Talks = ({ talks }) => {
   const [categorySort, setCategorySort] = useState(null);
@@ -26,8 +25,6 @@ const Talks = ({ talks }) => {
     {value: '2019', label: '2019'},
     {value: '2018', label: '2018'},
     {value: '2017', label: '2017'},
-    {value: '2016', label: '2016'},
-    {value: '2015', label: '2015'},
   ];
 
   return (
@@ -67,25 +64,20 @@ const Talks = ({ talks }) => {
         </div>
       </SubHeader>
 
-      <Section className="container-fluid all-talks">
+      <Section className="all-talks">
         <div className="row">
           { talks.map(talk => (
             <a href={talk.video_url} target="_blank" rel="noopener noreferrer" key={talk.id} className="col-md-4">
               <div className="talk-item">
                 <div className="top-bar">
-                  <Icon
-                    font="Ionicons"
-                    name="logo-youtube"
-                    color="#af0000"
-                    size={30}
-                  />
+                  <YoutubeLogo />
                   <div>{talk.video_duration && talk.video_duration.match(/\d+/g).join(':')}</div>
                 </div>
 
                 <YoutubeThumbnail url={talk.video_url} />
 
                 <div className="overlay">
-                  <p className="name">
+                  <p className="name-date">
                     {talk.speaker && talk.speaker.name}
                     { talk.date && <span className="date-year"> - {moment(talk.date).year()}</span> }
                   </p>

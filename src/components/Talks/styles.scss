@@ -60,9 +60,9 @@
         border-radius: 10px;
         color: #fff;
         display: flex;
-        font-size: 1.25rem;
+        font-weight: 500;
         justify-content: space-between;
-        padding: 0rem 1.25rem;
+        padding: 1rem;
         position: absolute;
         left: 0;
         right: 0;
@@ -93,21 +93,16 @@
         p {
           margin-bottom: .5rem;
 
-          &.name {
-            font-size: .875rem;
-            font-weight: 500;
+          &.name-date {
+            @include subtitle;
             text-transform: uppercase;
-
-            .date-year {
-              color: rgba(255, 255, 255, 0.5);
-              font-weight: normal;
-            }
           }
 
           &.topic {
-            @media (min-width: 767.98px) {
-              font-size: 1.25rem;
-            }
+            @include headline-2-medium;
+            // @media (min-width: 767.98px) {
+              // font-size: 1.25rem;
+            // }
           }
         }
       }
