@@ -17,7 +17,7 @@ const Home = ({ about, talks }) => {
         className="on-home"
       />
 
-      {/* <TalksPlayer talks={talks} /> */}
+      <TalksPlayer talks={talks} />
 
       <Talks talks={talks} />
 

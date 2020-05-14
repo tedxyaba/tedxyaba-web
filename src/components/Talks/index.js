@@ -74,18 +74,21 @@ const Talks = ({ talks }) => {
               <div className="talk-item">
                 <div className="top-bar">
                   <Icon
-                    font="AntDesign"
-                    name="youtube"
-                    color="white"
-                    size={43}
+                    font="Ionicons"
+                    name="logo-youtube"
+                    color="#af0000"
+                    size={30}
                   />
-                  <div>{talk.duration}</div>
+                  <div>{talk.video_duration && talk.video_duration.match(/\d+/g).join(':')}</div>
                 </div>
 
                 <YoutubeThumbnail url={talk.video_url} />
 
                 <div className="overlay">
-                  <p className="name">{talk.speaker && talk.speaker.name} - <span className="date-year">{moment(talk.date).year()}</span></p>
+                  <p className="name">
+                    {talk.speaker && talk.speaker.name}
+                    { talk.date && <span className="date-year"> - {moment(talk.date).year()}</span> }
+                  </p>
                   <p className="topic">{talk.topic}</p>
                 </div>
               </div>
