@@ -104,16 +104,6 @@ const team = [
     title: 'Our Team',
     content: 'TEDxYaba’s core organizing committee is a group of passionate volunteers from a variety of disciplines who are dedicated to the TED mission of giving voice to ideas worth spreading.\n\nClick on the images to learn more about each team member.'
   },
-  {
-    id: 'team-id-01',
-    first_name: 'Sunday',
-    last_name: 'Adefila',
-    role: 'Senior Backend Engineer',
-    image_url: '',
-    linkedin_url: '',
-    twitter_handle: '',
-    bio: 'Call me, geng leader.',
-  },
 ];
 
 const socials = [
