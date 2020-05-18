@@ -12,13 +12,11 @@ import LoadingBar from 'react-redux-loading-bar';
 import Home from '../src/pages/Home';
 import Event from './pages/Event';
 import Events from './pages/Events';
-import Partners from '../src/pages/Partners';
 import About from '../src/pages/About';
 import NotFound from '../src/pages/NotFound';
 
 // load components
 import Navbar from './components/Navbar';
-import SocialBar from './components/SocialBar';
 import Footer from './components/Footer';
 
 const App = ({ socials, dispatch }) => {
@@ -34,7 +32,6 @@ const App = ({ socials, dispatch }) => {
 
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/partners" component={Partners} />
           <Route path="/about" component={About} />
           <Route path="/events/:id" component={Event} />
           <Route path="/events" component={Events} />

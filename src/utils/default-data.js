@@ -33,6 +33,14 @@ const events = [
   //   description: 'On 2nd November, 2019 the final TEDxYabaSalon event for the year will attempt to address the topic of sustainability and viability of Nigeria’s agricultural sector which in recent times has been touted as the answer to reviving the nation’s failing economy.',
   //   venue: '10, Hughes Avenue, Off Herbert Macaulay Way, Yaba 101212, Lagos',
   // },
+  // {
+  //   id: 'event-id-03',
+  //   title: 'Bold And Amazing',
+  //   category: 'Salon',
+  //   datetime: "2020-03-14T10:00:00.000Z",
+  //   description: 'The 2019 TEDxYabaWomen event in line with the global TEDWomen2019 is themed Bold+Brilliant. We believe this is our year to be bold and brilliant – without apology.\n\nAt the TEDxYabaWomen 2019, we will be shining a spotlight on dazzling ideas from some of Nigeria’s most extraordinary risk-takers and innovators. Women who are making power moves, brilliant people who are just getting started and those like you, who tirelessly show up as allies and advocates in your industry. It is going to be a magical moment of celebration, sharing of thought-provoking stories and connection',
+  //   venue: 'Itanna Accelerator, 2 Abebe Village Rd, Iganmu, Surulere. Lagos',
+  // }
 ];
 
 const talks = [
@@ -137,7 +145,7 @@ const socials = [
 
 export default {
   about,
-  // events,
+  events,
   talks,
   team,
   socials,
