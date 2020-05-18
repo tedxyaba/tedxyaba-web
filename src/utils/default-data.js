@@ -33,61 +33,69 @@ const events = [
   //   description: 'On 2nd November, 2019 the final TEDxYabaSalon event for the year will attempt to address the topic of sustainability and viability of Nigeria’s agricultural sector which in recent times has been touted as the answer to reviving the nation’s failing economy.',
   //   venue: '10, Hughes Avenue, Off Herbert Macaulay Way, Yaba 101212, Lagos',
   // },
+  // {
+  //   id: 'event-id-03',
+  //   title: 'Bold And Amazing',
+  //   category: 'Salon',
+  //   datetime: "2020-03-14T10:00:00.000Z",
+  //   description: 'The 2019 TEDxYabaWomen event in line with the global TEDWomen2019 is themed Bold+Brilliant. We believe this is our year to be bold and brilliant – without apology.\n\nAt the TEDxYabaWomen 2019, we will be shining a spotlight on dazzling ideas from some of Nigeria’s most extraordinary risk-takers and innovators. Women who are making power moves, brilliant people who are just getting started and those like you, who tirelessly show up as allies and advocates in your industry. It is going to be a magical moment of celebration, sharing of thought-provoking stories and connection',
+  //   venue: 'Itanna Accelerator, 2 Abebe Village Rd, Iganmu, Surulere. Lagos',
+  // }
 ];
 
 const talks = [
-  {
-    id: 'talk-id-01',
-    event_id: 2,
-    speaker: {
-      name: 'Seni Sulyman',
-      twitter_handle: '',
-      linkedin_url: ''
-    },
-    topic: 'Africa can lead the world. But, will we?',
-    video_url: 'https://youtu.be/4U6nOfSvg28',
-    video_duration: "PT8M02S",
-    date: '2017-10-10',
-  },
-  {
-    id: 'talk-id-02',
-    event_id: 2,
-    speaker: {
-      name: 'TY Bello',
-      twitter_handle: '',
-      linkedin_url: ''
-    },
-    topic: 'Beauty does have a place',
-    video_url: 'https://youtu.be/JAszBCAwGyo&t=6s',
-    video_duration: "PT15M59S",
-    date: '2017-10-10',
-  },
-  {
-    id: 'talk-id-03',
-    event_id: 1,
-    speaker: {
-      name: 'Folakunle Oshun',
-      twitter_handle: '',
-      linkedin_url: ''
-    },
-    topic: 'The hidden truth about Jollof rice',
-    video_url: 'https://youtu.be/V5W8Qlde3NQ',
-    video_duration: "PT16M22S",
-    date: '2018-08-10',
-  },
-  {
-    id: 'talk-id-04',
-    event_id: 3,
-    speaker: {
-      name: 'Ade Balogun',
-      twitter_handle: '',
-      linkedin_url: ''
-    },
-    topic: 'The Hair Revolution',
-    video_url: 'https://youtu.be/HfuNka7ErIs',
-    video_duration: "",
-    date: '2016-10-11',
-  }
+  // {
+  //   id: 'talk-id-01',
+  //   event_id: 2,
+  //   speaker: {
+  //     name: 'Seni Sulyman',
+  //     twitter_handle: '',
+  //     linkedin_url: ''
+  //   },
+  //   topic: 'Africa can lead the world. But, will we?',
+  //   video_url: 'https://youtu.be/4U6nOfSvg28',
+  //   video_duration: "PT8M02S",
+  //   date: '2017-10-10',
+  // },
+  // {
+  //   id: 'talk-id-02',
+  //   event_id: 2,
+  //   speaker: {
+  //     name: 'TY Bello',
+  //     twitter_handle: '',
+  //     linkedin_url: ''
+  //   },
+  //   topic: 'Beauty does have a place',
+  //   video_url: 'https://youtu.be/JAszBCAwGyo&t=6s',
+  //   video_duration: "PT15M59S",
+  //   date: '2017-10-10',
+  // },
+  // {
+  //   id: 'talk-id-03',
+  //   event_id: 1,
+  //   speaker: {
+  //     name: 'Folakunle Oshun',
+  //     twitter_handle: '',
+  //     linkedin_url: ''
+  //   },
+  //   topic: 'The hidden truth about Jollof rice',
+  //   video_url: 'https://youtu.be/V5W8Qlde3NQ',
+  //   video_duration: "PT16M22S",
+  //   date: '2018-08-10',
+  // },
+  // {
+  //   id: 'talk-id-04',
+  //   event_id: 3,
+  //   speaker: {
+  //     name: 'Ade Balogun',
+  //     twitter_handle: '',
+  //     linkedin_url: ''
+  //   },
+  //   topic: 'The Hair Revolution',
+  //   video_url: 'https://youtu.be/HfuNka7ErIs',
+  //   video_duration: "",
+  //   date: '2016-10-11',
+  // }
 ];
 
 const team = [
@@ -137,7 +145,7 @@ const socials = [
 
 export default {
   about,
-  // events,
+  events,
   talks,
   team,
   socials,

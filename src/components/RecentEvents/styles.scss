@@ -1,0 +1,158 @@
+@import '../../styles/colors';
+@import '../../styles/typography';
+
+// RECENT EVENTS SECTION
+
+header.recent-events {
+  background: #101010;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+
+  .big-x {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    top: 0;
+    z-index: 0;
+
+    svg {
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  .main {
+    color: #fff;
+
+    .content {
+      height: calc(100vh - 70px);
+      margin: 0 30px;
+      padding: 150px 20px 250px;
+      width: 50%;
+    }
+
+    &.row {
+      .col-md-6 {
+        padding: 0;
+      }
+
+      .col-md-6:first-child {
+        margin: 0 30px;
+      }
+    }
+
+    .main-title {
+      @include headline-1;
+      margin: 0 auto;
+    }
+
+    .main-category {
+      @include subtitle-medium;
+      color: $gray-text;
+      margin: 0 auto;
+
+      @media (max-width: 767.98px) { font-size: 1rem; }
+    }
+
+    .main-description {
+      @include headline-2;
+      color: $gray-text;
+
+      @media (max-width: 767.98px) { font-size: 1rem; }
+    }
+  }
+
+  .events-list {
+    position: absolute;
+    bottom: 0;
+    left: 30px;
+    right: 30px;
+    margin: 0 30px;
+
+    .list-head {
+      margin-bottom: 5px;
+      padding: 0 5px;
+
+      p {
+        @include headline-2;
+        color: #ebebeb;
+        margin: 0 auto;
+        text-transform: uppercase;
+      }
+    }
+
+    .event-item {
+      margin-bottom: 1rem;
+      padding: 0 5px;
+      transition: all ease-in-out 0.25s;
+
+      &:hover {
+        cursor: pointer;
+        transition: all ease-in-out 0.25s;
+      }
+
+      a:hover {
+        text-decoration: none;
+      }
+
+      .event-details {
+        align-items: center;
+        background: #0a0a0a;
+        border: 1px solid #474350;
+        border-radius: 10px;
+        color: #fff;
+        display: flex;
+        height: 100%;
+        justify-content: center;
+        padding: 3rem 1rem;
+        text-align: center;
+        transition: all ease-in-out 0.25s;
+
+        &:hover {
+          border-color: #212121;
+        }
+
+        &.active {
+          border: 5px solid $primary;
+        }
+
+        p {
+          margin: 0 auto;
+        }
+
+        .event-title {
+          @include headline-2-medium;
+        }
+
+        .event-category {
+          @include subtitle;
+          color: $gray-text;
+        }
+
+        &.more-events {
+          align-items: center;
+          background: rgba(255, 255, 255, 0.15);
+          border-radius: 10px;
+          color: #fff;
+          display: flex;
+          height: 100%;
+          justify-content: center;
+          padding: 10px;
+          transition: all ease-in-out 0.25s;
+
+          &:hover {
+            background: rgba(0,0,0,0.6);
+            transition: all ease-in-out 0.25s;
+          }
+
+          p {
+            margin: 0;
+
+            @media (max-width: 767.98px) { font-size: .86rem; }
+          }
+        }
+      }
+    }
+  }
+}

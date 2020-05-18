@@ -27,7 +27,7 @@ const mainRoutes = [
   {
     name: 'Partners',
     path: '/partners',
-    show: true
+    show: false
   },
   {
     name: 'About',

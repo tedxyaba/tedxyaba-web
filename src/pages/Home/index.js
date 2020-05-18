@@ -8,7 +8,7 @@ import TalksPlayer from '../../components/TalksPlayer';
 import Header from '../../components/layout/Header';
 import Talks from '../../components/Talks';
 
-const Home = ({ about, talks }) => {
+const Home = ({ loading, about, talks }) => {
   return (
     <div className="page-container">
       <Header
@@ -17,9 +17,12 @@ const Home = ({ about, talks }) => {
         className="on-home"
       />
 
-      <TalksPlayer talks={talks} />
-
-      <Talks talks={talks} />
+      { loading ? null : (
+          <>
+          <TalksPlayer talks={talks} />
+          <Talks talks={talks} />
+          </>
+        )}
 
       {/* <Section className="row home-about">
         <>
@@ -49,8 +52,9 @@ const Home = ({ about, talks }) => {
   )
 }
 
-const mapStateToProps = ({ about, talks }) => {
+const mapStateToProps = ({ loadingBar, about, talks }) => {
   return {
+    loading: loadingBar.default > 0,
     about,
     talks,
   }
