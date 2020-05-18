@@ -11,7 +11,7 @@ import gMapPin from '../assets/images/google-map-pin.png';
 import gCalendar from '../assets/images/google-calendar.png';
 import shareIcon from '../assets/images/share-icon.png';
 import {ReactComponent as YoutubeLogo} from '../assets/images/youtube-logo.svg';
-import eventBg1 from '../assets/images/event-bg-1.png';
+import eventBg1 from '../assets/images/event-bg-1.jpg';
 import eventBg2 from '../assets/images/event-bg-2.png';
 
 export {
