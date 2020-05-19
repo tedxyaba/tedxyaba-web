@@ -1,12 +1,10 @@
+@import '../../styles/colors';
+@import '../../styles/typography';
+
 .event {
   .loading-text {
-    font-size: 4rem;
-    font-weight: bold;
+    @include headline-1;
     margin: 0 auto;
-
-    @media (max-width: 991.98px) { font-size: 3rem; }
-    @media (max-width: 767.98px) { font-size: 2rem; }
-    @media (max-width: 575.98px) { font-size: 1rem; }
   }
 
   .e-page-title {

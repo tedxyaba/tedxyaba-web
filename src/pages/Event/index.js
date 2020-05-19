@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './styles.scss';
 import { connect } from 'react-redux';
 import Section from '../../components/layout/Section';
@@ -8,8 +8,31 @@ import { LaraNg, gCalendar, gMapPin, shareIcon } from '../../utils/images';
 import SocialIcons from '../../components/SocialIcons';
 import withScrollToTop from '../withScrollToTop';
 import { withRouter } from 'react-router-dom';
+import { showLoading, hideLoading } from 'react-redux-loading-bar';
+import fetchApi from '../../utils/fetch-api';
 
-const Event = ({ event, socials, loadingBar }) => {
+const Event = ({ eventFromStore, socials, loadingBar, dispatch }) => {
+  const [event, setEvent] = useState({});
+
+  useEffect(() => {
+    if (eventFromStore && eventFromStore.id) {
+      async function fetchEvent () {
+        dispatch(showLoading());
+
+        try {
+          const response = await fetchApi.getData(`/events/${eventFromStore.id}`)
+          const data = await response.json();
+          setEvent(data);
+          dispatch(hideLoading());
+        } catch (error) {
+          dispatch(hideLoading());
+          console.log('Error fetching event with id:', eventFromStore.id)
+        }
+      }
+      fetchEvent()
+    }
+  }, [eventFromStore])
+
   const openGoogleMap = venue => {
     const formatVenue = venue.replace(/\s/g, '+');
     const url = `https://www.google.com/maps/place/${formatVenue}`;
@@ -17,7 +40,15 @@ const Event = ({ event, socials, loadingBar }) => {
     window.open(url, '_blank')
   };
 
-  if (!event || loadingBar.default > 0) {
+  if (!Object.keys(event).length && loadingBar.default === 0) {
+    return (
+      <Section className="event text-center">
+        <p className="loading-text">Nothing To See Here</p>
+      </Section>
+    )
+  }
+
+  if (!Object.keys(event).length || loadingBar.default > 0) {
     return (
       <Section className="event text-center">
         <p className="loading-text">Loading...</p>
@@ -126,7 +157,7 @@ const mapStateToProps = ({ events, socials, loadingBar }, { match }) => {
   const { slug } = match.params;
 
   return {
-    event: events.find(e => e.slug === slug),
+    eventFromStore: events.find(e => e.slug === slug),
     socials,
     loadingBar,
   }
