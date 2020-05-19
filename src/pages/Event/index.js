@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Section from '../../components/layout/Section';
 import Button from '../../components/Button';
 import moment from 'moment-timezone';
-import { LaraNg, gCalendar, gMapPin, shareIcon, eventBg1 } from '../../utils/images';
+import { LaraNg, gCalendar, gMapPin, shareIcon, eventBg1, YoutubeLogo } from '../../utils/images';
 import SocialIcons from '../../components/SocialIcons';
 import withScrollToTop from '../withScrollToTop';
 import { withRouter } from 'react-router-dom';
@@ -13,6 +13,7 @@ import fetchApi from '../../utils/fetch-api';
 import { BackgroundX } from '../../utils/images';
 import PersonModal from '../../components/Modals/PersonModal';
 import PartnersModal from '../../components/Modals/PartnersModal';
+import { YoutubeThumbnail } from '../../components/YoutubeEmbed';
 
 const Event = ({ eventFromStore, socials, loadingBar, dispatch }) => {
   const [event, setEvent] = useState({});
@@ -36,7 +37,15 @@ const Event = ({ eventFromStore, socials, loadingBar, dispatch }) => {
       }
       fetchEvent()
     }
-  }, [eventFromStore])
+  }, [eventFromStore]);
+
+  const isNext = () => {
+    const formattedDate = moment(event.datetime).format('YYYY-MM-DD');
+    const sameOrAfter = moment(formattedDate).isSameOrAfter(moment().format('YYYY-MM-DD'))
+    
+    if (sameOrAfter && event.registration_link) return true;
+    return false;
+  }
 
   const openGoogleMap = venue => {
     const formatVenue = venue.replace(/\s/g, '+');
@@ -88,7 +97,7 @@ const Event = ({ eventFromStore, socials, loadingBar, dispatch }) => {
           </div>
 
           <div className="cta-button">
-            { event.registration_link ? (
+            { isNext() ? (
               <Button
                 type="link-external"
                 text="Register"
@@ -142,7 +151,36 @@ const Event = ({ eventFromStore, socials, loadingBar, dispatch }) => {
               </div>
             ) }
 
-            { event.partners.length > 0 && (
+            { isNext() || (event.talks.length > 0 && (
+              <div className="e-event-talks">
+                <p className="e-page-title">TALKS FROM THIS EVENT</p>
+
+                <div className="event-talks-list row">
+                  { event.talks.map(talk => (
+                    <a href={talk.video_url} target="_blank" rel="noopener noreferrer" key={talk.id} className="col-lg-6">
+                      <div className="talk-item">
+                        <div className="top-bar">
+                          <YoutubeLogo />
+                          <div>{talk.video_duration && talk.video_duration.match(/\d+/g).join(':')}</div>
+                        </div>
+
+                        <YoutubeThumbnail url={talk.video_url} />
+
+                        <div className="overlay">
+                          <p className="name-date">
+                            {talk.speaker_name}
+                            { talk.date && <span className="date-year"> - {moment(talk.date).year()}</span> }
+                          </p>
+                          <p className="topic">{talk.topic}</p>
+                        </div>
+                      </div>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )) }
+
+            { isNext() && event.partners.length > 0 && (
               <div className="e-partners">
                 <p className="e-page-title">SPONSORS & PARTNERS</p>
 
@@ -170,36 +208,66 @@ const Event = ({ eventFromStore, socials, loadingBar, dispatch }) => {
           <div className="col-md-1" />
           
           <div className="col-md-4">
-            <div className="e-date-time">
-              <p className="e-page-title">Date And Time</p>
-              <p className="event-date">{moment(event.datetime).format('ddd, D MMMM, YYYY')}</p>
-              <p className="event-time">{moment.tz(event.datetime, 'Africa/Lagos').format('h:mm a z')}</p>
+            { isNext() && (
+              <div className="e-date-time">
+                <p className="e-page-title">Date And Time</p>
+                <p className="event-date">{moment(event.datetime).format('ddd, D MMMM, YYYY')}</p>
+                <p className="event-time">{moment.tz(event.datetime, 'Africa/Lagos').format('h:mm a z')}</p>
 
-              <Button
-                type="button-icon"
-                text="Add to Calendar"
-                onClick={() => console.log('Add to calendar')}
-                btnType="calendar"
-                icon={<img src={gCalendar} alt="" className="icon" />}
-              />
-            </div>
+                <Button
+                  type="button-icon"
+                  text="Add to Calendar"
+                  onClick={() => console.log('Add to calendar')}
+                  btnType="calendar"
+                  icon={<img src={gCalendar} alt="" className="icon" />}
+                />
+              </div>
+            ) }
 
-            <div className="e-date-location">
+            <div className="e-location">
               <p className="e-page-title">LOCATION</p>
               <p className="event-location">{event.venue}</p>
 
-              <Button
-                type="button-icon"
-                text="View Map"
-                onClick={() => openGoogleMap(event.venue)}
-                btnType="map"
-                icon={<img src={gMapPin} alt="" className="icon" />}
-              />
+              { isNext() && (
+                <>
+                <Button
+                  type="button-icon"
+                  text="View Map"
+                  onClick={() => openGoogleMap(event.venue)}
+                  btnType="map"
+                  icon={<img src={gMapPin} alt="" className="icon" />}
+                />
 
-              <div className="my-3 use-lara">
-                <LaraNg /> <a href="https://lara.ng/" target="_blank" rel="noopener noreferrer">Use Lara.ng</a>
-              </div>
+                <div className="my-3 use-lara">
+                  <LaraNg /> <a href="https://lara.ng/" target="_blank" rel="noopener noreferrer">Use Lara.ng</a>
+                </div>
+                </>
+              )}
             </div>
+
+            { isNext() || (event.partners.length > 0 && (
+              <div className="e-partners">
+                <p className="e-page-title">SPONSORS & PARTNERS</p>
+
+                <div className="partners-list">
+                  { event.partners.map(partner => (
+                    <div key={partner.partner_name} className="partner-details" onClick={() => setPartner(partner)} data-toggle="modal" data-target="#eventPartnersSponsors">
+                      <div className="partner-image" style={{backgroundImage: `url(${partner.logo_url ? partner.logo_url : ''})`}} />
+                      <p className="speaker-name">{partner.partner_name}</p>
+                    </div>
+                  ))}
+                </div>
+
+                <PartnersModal
+                  id="eventPartnersSponsors"
+                  data={{
+                    image_url: partner.logo_url,
+                    url: partner.partner_link,
+                    bio: partner.partner_bio
+                  }}
+                />
+              </div>
+            )) }
 
             <div className="e-share">
               <p className="e-page-title">SHARE WITH FRIENDS</p>

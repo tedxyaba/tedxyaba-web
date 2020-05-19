@@ -152,6 +152,79 @@
       }
     }
 
+    .e-event-talks {
+      margin-top: 4rem;
+
+      .event-talks-list {
+        .col-lg-6 {
+          margin: 1rem 0;
+          transition: all ease-in-out 0.5s;
+
+          &:hover {
+            cursor: pointer;
+            -webkit-transform: scale(1.05);
+            -ms-transform: scale(1.05);
+            transform: scale(1.05);
+          }
+        }
+
+        .talk-item {
+          position: relative;
+          text-decoration: none;
+
+          .top-bar {
+            align-items: center;
+            background: transparent;
+            border-radius: 10px;
+            color: #fff;
+            display: flex;
+            font-weight: 500;
+            justify-content: space-between;
+            padding: 1rem;
+            position: absolute;
+            left: 0;
+            right: 0;
+            z-index: 2;
+          }
+
+          img {
+            border-radius: 10px;
+            width: 100%;
+          }
+
+          .overlay {
+            align-items: flex-start;
+            background: rgba(26, 26, 26, 0.5);
+            backdrop-filter: blur(4px);
+            color: #fff;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 1rem;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 1;
+
+            p {
+              margin-bottom: .5rem;
+
+              &.name-date {
+                @include subtitle;
+                text-transform: uppercase;
+              }
+
+              &.topic {
+                @include headline-2-medium;
+              }
+            }
+          }
+        }
+      }
+    }
+
     .e-partners {
       margin-top: 4rem;
 
@@ -211,9 +284,11 @@
       }
     }
 
-    .e-date-location {
-      margin-top: 4rem;
+    .e-date-time {
+      margin-bottom: 4rem;
+    }
 
+    .e-location {
       .use-lara {
         align-items: center;
         display: flex;
