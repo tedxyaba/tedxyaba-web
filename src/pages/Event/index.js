@@ -58,80 +58,40 @@ const Event = ({ eventFromStore, socials, loadingBar, dispatch }) => {
   }
 
   return (
-    <div className="event container-fluid">
-      <Section className="header-section row">
-        <div className="col-12">
-          <div className="details-wrapper" style={{backgroundImage: `url(${event.theme_banner ? event.theme_banner : eventBg1})`}}>
-            {/* <div className="overlay" /> */}
-            <div className="details">
-              <p className="event-category">{event.category}</p>
-              <p className="event-title">{event.title}</p>
-              <p className="event-datetime">{moment.tz(event.datetime, 'Africa/Lagos').format("D MMMM YYYY, h:mm A z")}</p>
+    <div className="event">
+      <Section className="header-section">
+        <div className="row">
+          <div className="col-12">
+            <div className="details-wrapper" style={{backgroundImage: `url(${event.theme_banner ? event.theme_banner : eventBg1})`}}>
+              {/* <div className="overlay" /> */}
+              <div className="details">
+                <p className="event-category">{event.category}</p>
+                <p className="event-title">{event.title}</p>
+                <p className="event-datetime">{moment.tz(event.datetime, 'Africa/Lagos').format("D MMMM YYYY, h:mm A z")}</p>
+              </div>
+              <div className="left-x"><BackgroundX /></div>
+              <div className="right-x"><BackgroundX /></div>
             </div>
-            <div className="left-x"><BackgroundX /></div>
-            <div className="right-x"><BackgroundX /></div>
           </div>
         </div>
       </Section>
 
-      <Section className="event-section-one row">
-        <>
-        <div className="col-md-8">
-          <div className="e-title-cat mb-2">
-            <p className="event-title">{event.title}</p>
-            <p className="event-category">{event.category}</p>
-          </div>
-        </div>
-        
-        <div className="col-md-4">
-          <div className="e-date">
-            <p className="month">{moment(event.datetime).format('MMM')}</p>
-            <p className="day">{moment(event.datetime).format('DD')}</p>
-          </div>
-
-          <div className="e-title">
-            <h3>{event.title}</h3>
-
-            <div className="e-labels">
-              <span className="free">FREE</span>
-              <span className="tedxy">TEDxYaba</span>
-              <span className="categ">{event.category}</span>
-            </div>
-
-            <Button
-              type="link"
-              text="Register"
-              linkTo="/"
-              btnType="primary"
-              className="mt-5"
-            />
-          </div>
-        </div>
-        </>
-      </Section>
-
-      <Section className="event-section-two row">
-        <>
-        <div className="col-md-8">
+      <Section className="event-section-one">
+        <div className="row">
+        <div className="col-md-7">
           <div className="e-description">
-            <p className="e-page-title">DESCRIPTION</p>
+            <p className="e-page-title">ABOUT THIS EVENT</p>
             <p className="event-description multiline-text">{event.description}</p>
           </div>
-
-          <div className="e-share my-5">
-            <p className="e-page-title">SHARE WITH FRIENDS</p>
-            <div className="icons">
-              <SocialIcons data={socials} size={2} />
-              <img src={shareIcon} alt="" className="share" />
-            </div>
-          </div>
         </div>
+
+        <div className="col-md-1" />
         
         <div className="col-md-4">
           <div className="e-date-time">
-            <p className="e-page-title">DATE AND TIME</p>
+            <p className="e-page-title">Date And Time</p>
             <p className="event-date">{moment(event.datetime).format('ddd, MMMM D, YYYY')}</p>
-            <p className="event-time">{moment(event.datetime).format('h:mm a')}</p>
+            <p className="event-time">{moment.tz(event.datetime, 'Africa/Lagos').format('h:mm a z')}</p>
 
             <Button
               type="button-icon"
@@ -142,7 +102,7 @@ const Event = ({ eventFromStore, socials, loadingBar, dispatch }) => {
             />
           </div>
 
-          <div className="e-date-location mt-5">
+          <div className="e-date-location">
             <p className="e-page-title">LOCATION</p>
             <p className="event-location">{event.venue}</p>
 
@@ -158,8 +118,27 @@ const Event = ({ eventFromStore, socials, loadingBar, dispatch }) => {
               <LaraNg /> <a href="https://lara.ng/" target="_blank" rel="noopener noreferrer">Use Lara.ng</a>
             </div>
           </div>
+
+          <div className="e-share">
+            <p className="e-page-title">SHARE WITH FRIENDS</p>
+            <div className="icons">
+              <SocialIcons data={socials} size={2} />
+              <img src={shareIcon} alt="" className="share" />
+            </div>
+          </div>
+
+          <div className="e-title">
+            
+            <Button
+              type="link"
+              text="Register"
+              linkTo="/"
+              btnType="primary"
+              className="mt-5"
+            />
+          </div>
         </div>
-        </>
+        </div>
       </Section>
     </div>
   )
