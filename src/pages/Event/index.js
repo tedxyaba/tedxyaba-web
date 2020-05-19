@@ -3,13 +3,14 @@ import './styles.scss';
 import { connect } from 'react-redux';
 import Section from '../../components/layout/Section';
 import Button from '../../components/Button';
-import moment from 'moment';
-import { LaraNg, gCalendar, gMapPin, shareIcon } from '../../utils/images';
+import moment from 'moment-timezone';
+import { LaraNg, gCalendar, gMapPin, shareIcon, eventBg1 } from '../../utils/images';
 import SocialIcons from '../../components/SocialIcons';
 import withScrollToTop from '../withScrollToTop';
 import { withRouter } from 'react-router-dom';
 import { showLoading, hideLoading } from 'react-redux-loading-bar';
 import fetchApi from '../../utils/fetch-api';
+import { BackgroundX } from '../../utils/images';
 
 const Event = ({ eventFromStore, socials, loadingBar, dispatch }) => {
   const [event, setEvent] = useState({});
@@ -58,6 +59,21 @@ const Event = ({ eventFromStore, socials, loadingBar, dispatch }) => {
 
   return (
     <div className="event container-fluid">
+      <Section className="header-section row">
+        <div className="col-12">
+          <div className="details-wrapper" style={{backgroundImage: `url(${event.theme_banner ? event.theme_banner : eventBg1})`}}>
+            {/* <div className="overlay" /> */}
+            <div className="details">
+              <p className="event-category">{event.category}</p>
+              <p className="event-title">{event.title}</p>
+              <p className="event-datetime">{moment.tz(event.datetime, 'Africa/Lagos').format("D MMMM YYYY, h:mm A z")}</p>
+            </div>
+            <div className="left-x"><BackgroundX /></div>
+            <div className="right-x"><BackgroundX /></div>
+          </div>
+        </div>
+      </Section>
+
       <Section className="event-section-one row">
         <>
         <div className="col-md-8">
@@ -92,10 +108,6 @@ const Event = ({ eventFromStore, socials, loadingBar, dispatch }) => {
           </div>
         </div>
         </>
-      </Section>
-
-      <Section className="row-divider">
-        <hr />
       </Section>
 
       <Section className="event-section-two row">
