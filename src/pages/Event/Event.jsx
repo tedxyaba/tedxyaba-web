@@ -10,7 +10,6 @@ import Footer from '../../segments/Footer';
 import moment from 'moment';
 // import Icon from 'react-web-vector-icons';
 import Button from '../../components/ui/Button';
-import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -95,22 +94,6 @@ class Event extends Component {
 
   render() {
     const { loading, event } = this.state;
-    const speakersSlideSettings = {
-      autoplay: true,
-      dots: true,
-      infinite: true,
-      speed: 500,
-      slidesToShow: this.varySpeakerSlidesCount(),
-      slidesToScroll: 1
-    };
-    const sponsorsSlideSettings = {
-      autoplay: true,
-      dots: false,
-      infinite: true,
-      speed: 1000,
-      slidesToShow: this.varySponsorsSlidesCount(),
-      slidesToScroll: 1
-    }
 
     if (loading)
       return <Loading />

@@ -5,7 +5,6 @@ import apiClient from '../../services/api-client';
 import apiRoutes from '../../utils/routes';
 import TransformEventsListData from '../../utils/data-transformers/eventslist';
 import moment from 'moment';
-import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Section from '../../components/ui/Section';
@@ -90,22 +89,6 @@ class NextEvent extends Component {
 
   render() {
     const { title, event, isMobile } = this.state;
-    const speakersSlideSettings = {
-      autoplay: true,
-      dots: true,
-      infinite: true,
-      speed: 500,
-      slidesToShow: this.varySpeakerSlidesCount(),
-      slidesToScroll: 1
-    };
-    const sponsorsSlideSettings = {
-      autoplay: true,
-      dots: false,
-      infinite: true,
-      speed: 1000,
-      slidesToShow: this.varySponsorsSlidesCount(),
-      slidesToScroll: 1
-    }
 
     return (
       !!Object.keys(event).length && (
