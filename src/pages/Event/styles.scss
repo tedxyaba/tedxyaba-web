@@ -77,6 +77,42 @@
   }
 
   .event-section-one {
+    .e-speakers {
+      margin-top: 4rem;
+
+      .speakers-list {
+        align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+
+        .speaker-details {
+          margin-bottom: 2rem;
+          margin-right: 2rem;
+          text-align: center;
+
+          .speaker-image {
+            background-color: #c4c4c4;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            border-radius: 50px;
+            height: 100px;
+            margin: 0 auto 10px;
+            width: 100px;
+
+            img {
+              border-radius: 50px;
+              width: 100%;
+            }
+          }
+        }
+
+        .speaker-name {
+          @include subtitle;
+        }
+      }
+    }
+
     .e-share {
       margin-top: 4rem;
 

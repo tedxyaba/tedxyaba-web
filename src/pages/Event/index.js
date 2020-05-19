@@ -78,66 +78,81 @@ const Event = ({ eventFromStore, socials, loadingBar, dispatch }) => {
 
       <Section className="event-section-one">
         <div className="row">
-        <div className="col-md-7">
-          <div className="e-description">
-            <p className="e-page-title">ABOUT THIS EVENT</p>
-            <p className="event-description multiline-text">{event.description}</p>
-          </div>
-        </div>
+          <div className="col-md-7">
+            <div className="e-description">
+              <p className="e-page-title">ABOUT THIS EVENT</p>
+              <p className="event-description multiline-text">{event.description}</p>
+            </div>
 
-        <div className="col-md-1" />
-        
-        <div className="col-md-4">
-          <div className="e-date-time">
-            <p className="e-page-title">Date And Time</p>
-            <p className="event-date">{moment(event.datetime).format('ddd, MMMM D, YYYY')}</p>
-            <p className="event-time">{moment.tz(event.datetime, 'Africa/Lagos').format('h:mm a z')}</p>
+            { event.talks.length > 0 && (
+              <div className="e-speakers">
+                <p className="e-page-title">SPEAKERS</p>
 
-            <Button
-              type="button-icon"
-              text="Add to Calendar"
-              onClick={() => console.log('Add to calendar')}
-              btnType="calendar"
-              icon={<img src={gCalendar} alt="" className="icon" />}
-            />
+                <div className="speakers-list">
+                  { event.talks.map(talk => (
+                    <div key={talk.id} className="speaker-details">
+                      <div className="speaker-image" style={{backgroundImage: `url(${talk.image_url ? talk.image_url : ''})`}} />
+                      <p className="speaker-name">{talk.speaker_name}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ) }
           </div>
 
-          <div className="e-date-location">
-            <p className="e-page-title">LOCATION</p>
-            <p className="event-location">{event.venue}</p>
+          <div className="col-md-1" />
+          
+          <div className="col-md-4">
+            <div className="e-date-time">
+              <p className="e-page-title">Date And Time</p>
+              <p className="event-date">{moment(event.datetime).format('ddd, MMMM D, YYYY')}</p>
+              <p className="event-time">{moment.tz(event.datetime, 'Africa/Lagos').format('h:mm a z')}</p>
 
-            <Button
-              type="button-icon"
-              text="View Map"
-              onClick={() => openGoogleMap(event.venue)}
-              btnType="map"
-              icon={<img src={gMapPin} alt="" className="icon" />}
-            />
+              <Button
+                type="button-icon"
+                text="Add to Calendar"
+                onClick={() => console.log('Add to calendar')}
+                btnType="calendar"
+                icon={<img src={gCalendar} alt="" className="icon" />}
+              />
+            </div>
 
-            <div className="my-3 use-lara">
-              <LaraNg /> <a href="https://lara.ng/" target="_blank" rel="noopener noreferrer">Use Lara.ng</a>
+            <div className="e-date-location">
+              <p className="e-page-title">LOCATION</p>
+              <p className="event-location">{event.venue}</p>
+
+              <Button
+                type="button-icon"
+                text="View Map"
+                onClick={() => openGoogleMap(event.venue)}
+                btnType="map"
+                icon={<img src={gMapPin} alt="" className="icon" />}
+              />
+
+              <div className="my-3 use-lara">
+                <LaraNg /> <a href="https://lara.ng/" target="_blank" rel="noopener noreferrer">Use Lara.ng</a>
+              </div>
+            </div>
+
+            <div className="e-share">
+              <p className="e-page-title">SHARE WITH FRIENDS</p>
+              <div className="icons">
+                <SocialIcons data={socials} size={2} />
+                <img src={shareIcon} alt="" className="share" />
+              </div>
+            </div>
+
+            <div className="e-title">
+              
+              <Button
+                type="link"
+                text="Register"
+                linkTo="/"
+                btnType="primary"
+                className="mt-5"
+              />
             </div>
           </div>
-
-          <div className="e-share">
-            <p className="e-page-title">SHARE WITH FRIENDS</p>
-            <div className="icons">
-              <SocialIcons data={socials} size={2} />
-              <img src={shareIcon} alt="" className="share" />
-            </div>
-          </div>
-
-          <div className="e-title">
-            
-            <Button
-              type="link"
-              text="Register"
-              linkTo="/"
-              btnType="primary"
-              className="mt-5"
-            />
-          </div>
-        </div>
         </div>
       </Section>
     </div>
