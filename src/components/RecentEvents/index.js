@@ -25,7 +25,7 @@ const RecentEvents = ({ events }) => {
             <Button
               type="link"
               text="Learn More"
-              linkTo={`/events/${currentEvent.id}`}
+              linkTo={`/events/${currentEvent.slug}`}
               btnType="secondary"
               className="my-5"
             />

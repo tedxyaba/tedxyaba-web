@@ -1,15 +1,39 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './styles.scss';
 import { connect } from 'react-redux';
 import Section from '../../components/layout/Section';
 import Button from '../../components/Button';
-import moment from 'moment';
-import { LaraNg, gCalendar, gMapPin, shareIcon } from '../../utils/images';
+import moment from 'moment-timezone';
+import { LaraNg, gCalendar, gMapPin, shareIcon, eventBg1 } from '../../utils/images';
 import SocialIcons from '../../components/SocialIcons';
 import withScrollToTop from '../withScrollToTop';
 import { withRouter } from 'react-router-dom';
+import { showLoading, hideLoading } from 'react-redux-loading-bar';
+import fetchApi from '../../utils/fetch-api';
+import { BackgroundX } from '../../utils/images';
 
-const Event = ({ event, socials, loadingBar }) => {
+const Event = ({ eventFromStore, socials, loadingBar, dispatch }) => {
+  const [event, setEvent] = useState({});
+
+  useEffect(() => {
+    if (eventFromStore && eventFromStore.id) {
+      async function fetchEvent () {
+        dispatch(showLoading());
+
+        try {
+          const response = await fetchApi.getData(`/events/${eventFromStore.id}`)
+          const data = await response.json();
+          setEvent(data);
+          dispatch(hideLoading());
+        } catch (error) {
+          dispatch(hideLoading());
+          console.log('Error fetching event with id:', eventFromStore.id)
+        }
+      }
+      fetchEvent()
+    }
+  }, [eventFromStore])
+
   const openGoogleMap = venue => {
     const formatVenue = venue.replace(/\s/g, '+');
     const url = `https://www.google.com/maps/place/${formatVenue}`;
@@ -17,7 +41,15 @@ const Event = ({ event, socials, loadingBar }) => {
     window.open(url, '_blank')
   };
 
-  if (!event || loadingBar.default > 0) {
+  if (!Object.keys(event).length && loadingBar.default === 0) {
+    return (
+      <Section className="event text-center">
+        <p className="loading-text">Nothing To See Here</p>
+      </Section>
+    )
+  }
+
+  if (!Object.keys(event).length || loadingBar.default > 0) {
     return (
       <Section className="event text-center">
         <p className="loading-text">Loading...</p>
@@ -27,6 +59,21 @@ const Event = ({ event, socials, loadingBar }) => {
 
   return (
     <div className="event container-fluid">
+      <Section className="header-section row">
+        <div className="col-12">
+          <div className="details-wrapper" style={{backgroundImage: `url(${event.theme_banner ? event.theme_banner : eventBg1})`}}>
+            {/* <div className="overlay" /> */}
+            <div className="details">
+              <p className="event-category">{event.category}</p>
+              <p className="event-title">{event.title}</p>
+              <p className="event-datetime">{moment.tz(event.datetime, 'Africa/Lagos').format("D MMMM YYYY, h:mm A z")}</p>
+            </div>
+            <div className="left-x"><BackgroundX /></div>
+            <div className="right-x"><BackgroundX /></div>
+          </div>
+        </div>
+      </Section>
+
       <Section className="event-section-one row">
         <>
         <div className="col-md-8">
@@ -61,10 +108,6 @@ const Event = ({ event, socials, loadingBar }) => {
           </div>
         </div>
         </>
-      </Section>
-
-      <Section className="row-divider">
-        <hr />
       </Section>
 
       <Section className="event-section-two row">
@@ -123,10 +166,10 @@ const Event = ({ event, socials, loadingBar }) => {
 };
 
 const mapStateToProps = ({ events, socials, loadingBar }, { match }) => {
-  const { id } = match.params;
+  const { slug } = match.params;
 
   return {
-    event: events.find(e => e.id == id),
+    eventFromStore: events.find(e => e.slug === slug),
     socials,
     loadingBar,
   }

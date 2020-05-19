@@ -1,45 +1,77 @@
+@import '../../styles/colors';
+@import '../../styles/typography';
+
 .event {
   .loading-text {
-    font-size: 4rem;
-    font-weight: bold;
+    @include headline-1;
     margin: 0 auto;
-
-    @media (max-width: 991.98px) { font-size: 3rem; }
-    @media (max-width: 767.98px) { font-size: 2rem; }
-    @media (max-width: 575.98px) { font-size: 1rem; }
   }
 
   .e-page-title {
     font-size: 1.3rem;
   }
 
-  .event-section-one {
-    .e-title-cat {
-      background: #101010;
+  .header-section {
+    .details-wrapper {
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
       border-radius: 15px;
       color: #fff;
-      padding: 5.5rem .5rem;
+      padding: 5rem .5rem;
+      position: relative;
       text-align: center;
+      overflow: hidden;
 
-      .event-title {
-        font-size: 5rem;
-        font-weight: bold;
-        margin: 0 auto;
+      .left-x,
+      .right-x {
+        bottom: 0;
+        position: absolute;
+        top: 0;
 
-        @media (max-width: 991.98px) { font-size: 4rem; }
-        @media (max-width: 767.98px) { font-size: 3rem; }
-        @media (max-width: 575.98px) { font-size: 2rem; }
+        svg {
+          height: 100%;
+          width: 100%;
+        }
       }
 
-      .event-category {
-        color: #ebebeb;
-        font-size: 1.5rem;
-        font-weight: 300;
-        margin: 0 auto;
+      .left-x {
+        left: -60px;
+        transform: rotateY(180deg);
+      }
 
-        @media (max-width: 767.98px) { font-size: 1rem; }
+      .right-x {
+        right: -60px;
+      }
+
+      .overlay {
+        background-color: rgba($dark-bg, .4);
+        border-radius: 15px;
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 0;
+      }
+
+      .details {
+        z-index: 5;
+
+        .event-title {
+          @include headline-1;
+          font-weight: 500;
+        }
+  
+        .event-category,
+        .event-datetime {
+          color: $gray-text;
+        }
       }
     }
+  }
+
+  .event-section-one {
 
     .e-date {
       .month {
@@ -87,15 +119,6 @@
           }
         }
       }
-    }
-  }
-
-  .row-divider {
-    padding-bottom: 0;
-    padding-top: 0;
-
-    hr {
-      border-color: rgba(0,0,0,0.15);
     }
   }
 
