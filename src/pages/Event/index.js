@@ -11,9 +11,11 @@ import { withRouter } from 'react-router-dom';
 import { showLoading, hideLoading } from 'react-redux-loading-bar';
 import fetchApi from '../../utils/fetch-api';
 import { BackgroundX } from '../../utils/images';
+import PersonModal from '../../components/PersonModal';
 
 const Event = ({ eventFromStore, socials, loadingBar, dispatch }) => {
   const [event, setEvent] = useState({});
+  const [speaker, setSpeaker] = useState({})
 
   useEffect(() => {
     if (eventFromStore && eventFromStore.id) {
@@ -90,12 +92,23 @@ const Event = ({ eventFromStore, socials, loadingBar, dispatch }) => {
 
                 <div className="speakers-list">
                   { event.talks.map(talk => (
-                    <div key={talk.id} className="speaker-details">
+                    <div key={talk.id} className="speaker-details" onClick={() => setSpeaker(talk)} data-toggle="modal" data-target="#eventSpeakerProfile">
                       <div className="speaker-image" style={{backgroundImage: `url(${talk.image_url ? talk.image_url : ''})`}} />
                       <p className="speaker-name">{talk.speaker_name}</p>
                     </div>
                   ))}
                 </div>
+
+                <PersonModal
+                  id="eventSpeakerProfile"
+                  person={{
+                    image_url: speaker.image_url,
+                    name: speaker.speaker_name,
+                    linkedin_url: speaker.speaker_linkedin_url,
+                    twitter_handle: speaker.speaker_twitter_handle,
+                    bio: speaker.speaker_bio
+                  }}
+                />
               </div>
             ) }
           </div>
@@ -105,7 +118,7 @@ const Event = ({ eventFromStore, socials, loadingBar, dispatch }) => {
           <div className="col-md-4">
             <div className="e-date-time">
               <p className="e-page-title">Date And Time</p>
-              <p className="event-date">{moment(event.datetime).format('ddd, MMMM D, YYYY')}</p>
+              <p className="event-date">{moment(event.datetime).format('ddd, D MMMM, YYYY')}</p>
               <p className="event-time">{moment.tz(event.datetime, 'Africa/Lagos').format('h:mm a z')}</p>
 
               <Button

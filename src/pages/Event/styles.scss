@@ -86,9 +86,18 @@
         flex-wrap: wrap;
 
         .speaker-details {
+          cursor: pointer;
           margin-bottom: 2rem;
           margin-right: 2rem;
           text-align: center;
+          transition: all ease-in-out .5s;
+
+          &:hover {
+            cursor: pointer;
+            -webkit-transform: scale(1.05);
+            -ms-transform: scale(1.05);
+            transform: scale(1.05);
+          }
 
           .speaker-image {
             background-color: #c4c4c4;
