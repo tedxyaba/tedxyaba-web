@@ -123,10 +123,10 @@ const Event = ({ event, socials, loadingBar }) => {
 };
 
 const mapStateToProps = ({ events, socials, loadingBar }, { match }) => {
-  const { id } = match.params;
+  const { slug } = match.params;
 
   return {
-    event: events.find(e => e.id == id),
+    event: events.find(e => e.slug === slug),
     socials,
     loadingBar,
   }

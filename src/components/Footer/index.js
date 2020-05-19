@@ -28,7 +28,7 @@ const Footer = ({ data, dispatch }) => {
 
     try {
       const response = await fetchApi.postData('post', '/newsletter_subscriptions', {email});
-      const data = await response.json();
+      // const data = await response.json();
 
       if (response.status < 300) {
         setResponse(['success', 'Thank you. You’ve been added to the list!']);

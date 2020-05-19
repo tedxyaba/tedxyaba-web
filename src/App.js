@@ -33,7 +33,7 @@ const App = ({ socials, dispatch }) => {
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/about" component={About} />
-          <Route path="/events/:id" component={Event} />
+          <Route path="/events/:slug" component={Event} />
           <Route path="/events" component={Events} />
           <Route component={NotFound} />
         </Switch>
