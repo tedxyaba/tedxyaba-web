@@ -52,7 +52,9 @@ const Button = props => {
       )
     default:
       return (
-        <div>{text}</div>
+        <button className="btn btn-default">
+          {text}
+        </button>
       )
   }
 };
@@ -67,6 +69,7 @@ Button.propTypes = {
   linkTo: PropTypes.string,
   className: PropTypes.string,
   icon: PropTypes.element,
+  disabled: PropTypes.bool,
 };
 
 Button.defaultProps = {

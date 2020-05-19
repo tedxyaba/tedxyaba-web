@@ -80,6 +80,34 @@ const Event = ({ eventFromStore, socials, loadingBar, dispatch }) => {
         </div>
       </Section>
 
+      <Section className="event-cta">
+        <div className="cta-row">
+          <div className="cta-title">
+            <p className="cta-date">{moment.tz(event.datetime, 'Africa/Lagos').format("D MMMM YYYY • h:mm A z")}</p>
+            <p className="cta-title-text">{event.category}: {event.title}</p>
+          </div>
+
+          <div className="cta-button">
+            { event.registration_link ? (
+              <Button
+                type="link-external"
+                text="Register"
+                href={event.registration_link}
+                target="_blank"
+                rel="noopener noreferrer"
+                btnType="primary"
+              />
+            ) : (
+              <Button
+                type="default"
+                text="Sold Out"
+                btnType="default"
+              />
+            ) }
+          </div>
+        </div>
+      </Section>
+
       <Section className="event-section-one">
         <div className="row">
           <div className="col-md-7">
@@ -131,8 +159,8 @@ const Event = ({ eventFromStore, socials, loadingBar, dispatch }) => {
                   id="eventPartnersSponsors"
                   data={{
                     image_url: partner.logo_url,
-                    url: partner.website || 'https://andela.com',
-                    bio: partner.bio
+                    url: partner.partner_link,
+                    bio: partner.partner_bio
                   }}
                 />
               </div>
@@ -179,17 +207,6 @@ const Event = ({ eventFromStore, socials, loadingBar, dispatch }) => {
                 <SocialIcons data={socials} size={2} />
                 <img src={shareIcon} alt="" className="share" />
               </div>
-            </div>
-
-            <div className="e-title">
-              
-              <Button
-                type="link"
-                text="Register"
-                linkTo="/"
-                btnType="primary"
-                className="mt-5"
-              />
             </div>
           </div>
         </div>
