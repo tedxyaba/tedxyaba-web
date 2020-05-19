@@ -25,7 +25,7 @@ const PersonModal = ({ id, person }) => {
             <div className="person-image">
               <img
                 src={person.image_url || defaultPerson}
-                alt="team-img"
+                alt="person-img"
               />
             </div>
           </div>

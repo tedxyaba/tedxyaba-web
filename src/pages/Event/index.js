@@ -11,11 +11,13 @@ import { withRouter } from 'react-router-dom';
 import { showLoading, hideLoading } from 'react-redux-loading-bar';
 import fetchApi from '../../utils/fetch-api';
 import { BackgroundX } from '../../utils/images';
-import PersonModal from '../../components/PersonModal';
+import PersonModal from '../../components/Modals/PersonModal';
+import PartnersModal from '../../components/Modals/PartnersModal';
 
 const Event = ({ eventFromStore, socials, loadingBar, dispatch }) => {
   const [event, setEvent] = useState({});
-  const [speaker, setSpeaker] = useState({})
+  const [speaker, setSpeaker] = useState({});
+  const [partner, setPartner] = useState({});
 
   useEffect(() => {
     if (eventFromStore && eventFromStore.id) {
@@ -107,6 +109,30 @@ const Event = ({ eventFromStore, socials, loadingBar, dispatch }) => {
                     linkedin_url: speaker.speaker_linkedin_url,
                     twitter_handle: speaker.speaker_twitter_handle,
                     bio: speaker.speaker_bio
+                  }}
+                />
+              </div>
+            ) }
+
+            { event.partners.length > 0 && (
+              <div className="e-partners">
+                <p className="e-page-title">SPONSORS & PARTNERS</p>
+
+                <div className="partners-list">
+                  { event.partners.map(partner => (
+                    <div key={partner.partner_name} className="partner-details" onClick={() => setPartner(partner)} data-toggle="modal" data-target="#eventPartnersSponsors">
+                      <div className="partner-image" style={{backgroundImage: `url(${partner.logo_url ? partner.logo_url : ''})`}} />
+                      <p className="speaker-name">{partner.partner_name}</p>
+                    </div>
+                  ))}
+                </div>
+
+                <PartnersModal
+                  id="eventPartnersSponsors"
+                  data={{
+                    image_url: partner.logo_url,
+                    url: partner.website || 'https://andela.com',
+                    bio: partner.bio
                   }}
                 />
               </div>

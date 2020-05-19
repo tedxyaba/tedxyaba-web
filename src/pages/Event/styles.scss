@@ -122,6 +122,52 @@
       }
     }
 
+    .e-partners {
+      margin-top: 4rem;
+
+      .partners-list {
+        align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+
+        .partner-details {
+          cursor: pointer;
+          margin-bottom: 2rem;
+          margin-right: 2rem;
+          text-align: center;
+          transition: all ease-in-out .5s;
+
+          &:hover {
+            cursor: pointer;
+            -webkit-transform: scale(1.05);
+            -ms-transform: scale(1.05);
+            transform: scale(1.05);
+          }
+
+          .partner-image {
+            background-color: #ffffff;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            border-radius: 50px;
+            box-shadow: 2px 4px 10px rgba(158, 170, 191, 0.15);
+            height: 100px;
+            margin: 0 auto 10px;
+            width: 100px;
+
+            img {
+              border-radius: 50px;
+              width: 100%;
+            }
+          }
+        }
+
+        .partner-name {
+          @include subtitle;
+        }
+      }
+    }
+
     .e-share {
       margin-top: 4rem;
 

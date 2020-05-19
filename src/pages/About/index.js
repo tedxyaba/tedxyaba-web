@@ -6,7 +6,7 @@ import SubHeader from '../../components/layout/SubHeader';
 import Section from '../../components/layout/Section';
 import { defaultPerson } from '../../utils/images';
 import withScrollToTop from '../withScrollToTop';
-import PersonModal from '../../components/PersonModal';
+import PersonModal from '../../components/Modals/PersonModal';
 
 const About = ({ about, team }) => {
   const [person, setPerson] = useState({});
