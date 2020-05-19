@@ -1,5 +1,9 @@
+@import '../../styles/colors';
+
 .about {
   .about-list {
+    background-color: $bg-f5;
+
     .about-item {
       margin-bottom: 1rem;
 

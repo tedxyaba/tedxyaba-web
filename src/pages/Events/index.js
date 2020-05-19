@@ -5,6 +5,7 @@ import RecentEvents from '../../components/RecentEvents';
 import Section from '../../components/layout/Section';
 import Button from '../../components/Button';
 import withScrollToTop from '../withScrollToTop';
+import SearchAndFilters from '../../components/SearchAndFilters';
 
 const Events = ({ loading, events }) => {
   return (
@@ -12,6 +13,8 @@ const Events = ({ loading, events }) => {
       { loading ? null : (
         <>
         <RecentEvents events={events} />
+
+        <SearchAndFilters data={events} searchPlaceholder="Search events..." />
 
         {/* <Section className="event-section-one row">
         </Section> */}

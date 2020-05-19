@@ -1,0 +1,39 @@
+@import '../../styles/colors';
+@import '../../styles/typography';
+@import '../../styles/mixins';
+
+// SEARCH AND FILTERS MODULE
+.sorts-and-filters {
+  background-color: $primary;
+  color: $white;
+
+  .row .columns {
+    @media (min-width: 767.98px) {
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+
+      .category,
+      .years {
+        flex-grow: 1;
+      }
+
+      .search {
+        flex-grow: 2;
+      }
+    }
+  }
+
+  .row .columns {
+    .category,
+    .years,
+    .search {
+      margin: .5rem auto;
+    }
+  }
+
+  .form-control.search-input-control {
+    @include input-form-control;
+  }
+}
