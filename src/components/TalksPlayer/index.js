@@ -51,6 +51,12 @@ const TalksPlayer = ({ talks }) => {
     setOnPause(true);
   }
 
+  if (!activeTalk) return null;
+
+  if (Object.keys(activeTalk).length <= 0) {
+    return null
+  }
+
   return (
     <Section className="talks-player">
       <div className="content">

@@ -37,7 +37,7 @@ const Event = ({ eventFromStore, socials, loadingBar, dispatch }) => {
       }
       fetchEvent()
     }
-  }, [eventFromStore]);
+  }, []);
 
   const isNext = () => {
     const formattedDate = moment(event.datetime).format('YYYY-MM-DD');
