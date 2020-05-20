@@ -5,7 +5,7 @@ import { BigX, eventBg1 } from '../../utils/images';
 
 const RecentEvents = ({ events }) => {
   const [currentEvent, setCurrentEvent] = useState({});
-  const headerBg = currentEvent.theme_banner ? currentEvent.theme_banner : eventBg1;
+  const headerBg = currentEvent && currentEvent.theme_banner ? currentEvent.theme_banner : eventBg1;
 
   useEffect(() => {
     setCurrentEvent(events[0])

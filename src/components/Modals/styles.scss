@@ -1,0 +1,174 @@
+@import '../../styles/colors';
+@import '../../styles/typography';
+
+.tedxyaba-modal {
+  .modal-dialog {
+    .modal-content {
+      background-color: #fefefe;
+      border-radius: 12px;
+
+      .modal-header {
+        background-color: $dark-bg;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-radius: 10px 10px 0px 0px;
+        padding: 0;
+        position: relative;
+        z-index: 0;
+
+        .m-h-overlay {
+          background-color: rgba($dark-bg, .9);
+          border-radius: 10px 10px 0px 0px;
+          bottom: 0;
+          left: 0;
+          position: absolute;
+          right: 0;
+          top: 0;
+          z-index: 1;
+        }
+
+        .modal-controls {
+          position: absolute;
+          right: 0;
+          z-index: 2;
+        }
+
+        .person-image {
+          display: flex;
+          justify-content: center;
+          width: 100%;
+
+          img {
+            width: 40%;
+            z-index: 5;
+          }
+        }
+      }
+
+      .modal-body {
+        padding: 2rem;
+        text-align: center;
+
+        .person-n-r {
+          margin: 1rem auto;
+
+          p {
+            margin: 0 auto;
+          }
+
+          .p-name {
+            @include headline-2-medium;
+            color: $dark-bg;
+          }
+
+          .p-role {
+            @include subtitle;
+            color: $header-bg
+          }
+
+          .p-bio {
+            @include subtitle;
+            margin-top: 1rem;
+          }
+        }
+
+        .person-social-links {
+          margin-bottom: 1rem;
+
+          a {
+            &:hover {
+              text-decoration: none;
+            }
+
+            i {
+              background: #f4f4f4;
+              border-radius: 5px;
+              border: 1px solid transparent;
+              margin-left: .6rem;
+              margin-right: .6rem;
+              padding: 2px;
+              transition: all ease-in-out 0.25s;
+
+              &:hover {
+                border-color: #aaa;
+                transition: all ease-in-out 0.25s;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.tedxyaba-partners-modal {
+  .modal-dialog {
+    .modal-content {
+      background-color: #fefefe;
+      border-radius: 12px;
+
+      .modal-header {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 2px 4px 10px rgba(158, 170, 191, 0.15);
+        margin: 1rem;
+        position: relative;
+        z-index: 0;
+
+        .modal-controls {
+          position: absolute;
+          right: 0;
+          z-index: 2;
+        }
+
+        .partner-image {
+          display: flex;
+          justify-content: center;
+          padding-bottom: 2rem;
+          padding-top: 2rem;
+          width: 100%;
+
+          img {
+            width: 40%;
+            z-index: 5;
+          }
+        }
+      }
+
+      .modal-body {
+        padding: 2rem;
+        text-align: center;
+
+        .p-bio {
+          @include subtitle;
+          margin-top: 1rem;
+        }
+
+        .partner-links {
+          margin-bottom: 1rem;
+
+          a {
+            &:hover {
+              text-decoration: none;
+            }
+
+            i {
+              background: #fff;
+              box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+              border-radius: 5px;
+              border: 1px solid transparent;
+              padding: 10px;
+              transition: all ease-in-out 0.25s;
+
+              &:hover {
+                border-color: #aaa;
+                transition: all ease-in-out 0.25s;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
