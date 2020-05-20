@@ -4,20 +4,27 @@
 
 .talks {
   .all-talks {
-    .col-md-4 {
+    .item-col {
       margin: 1rem 0;
       border-color: transparent;
-      transition: all ease-in-out 0.25s;
+      transition: all ease-in-out 0.5s;
 
       &:hover {
-        border: 2px solid transparent;
-        transition: all ease-in-out 0.25s;
+        cursor: pointer;
+        -webkit-transform: scale(1.05);
+        -ms-transform: scale(1.05);
+        transform: scale(1.05);
       }
     }
 
     .talk-item {
+      height: 100%;
       position: relative;
       text-decoration: none;
+
+      @media (min-width: 991.98px) and (max-width: 1199.98px) { height: 300px; }
+      @media (min-width: 575.98px) and (max-width: 767.98px) { height: 300px; }
+      @media (max-width: 399.98px) { height: 300px; }
 
       .top-bar {
         align-items: center;

@@ -14,7 +14,7 @@ const Talks = ({ talks }) => {
       <Section className="all-talks">
         <div className="row">
           { talks.map(talk => (
-            <a href={talk.video_url} target="_blank" rel="noopener noreferrer" key={talk.id} className="col-md-4">
+            <a href={talk.video_url} target="_blank" rel="noopener noreferrer" key={talk.id} className="item-col col-sm-6 col-md-6 col-lg-4">
               <div className="talk-item">
                 <div className="top-bar">
                   <YoutubeLogo />
