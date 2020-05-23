@@ -4,16 +4,16 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import RecentEvents from '../../components/RecentEvents';
 import Section from '../../components/layout/Section';
-import Button from '../../components/Button';
 import withScrollToTop from '../withScrollToTop';
 import SearchAndFilters from '../../components/SearchAndFilters';
 import moment from 'moment';
 import { eventBg1 } from '../../utils/images';
+import Loading from '../../components/Loading';
 
 const Events = ({ loading, events }) => {
   return (
     <div className="events">
-      { loading ? null : (
+      { loading ? <Loading /> : (
         <>
         <RecentEvents events={events} />
 

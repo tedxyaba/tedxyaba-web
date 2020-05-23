@@ -10,7 +10,6 @@ import PersonModal from '../../components/Modals/PersonModal';
 
 const About = ({ about, team }) => {
   const [person, setPerson] = useState({});
-  const [imageLoadedClass, setImageLoadedClass] = useState('');
 
   return (
     <div className="about">

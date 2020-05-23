@@ -1,0 +1,11 @@
+@import '../../styles/colors';
+@import '../../styles/typography';
+
+.loading-text {
+  @include headline-1;
+  margin: 0 auto;
+}
+
+.spinner-grow {
+  color: $primary;
+}

@@ -14,6 +14,7 @@ import { BackgroundX } from '../../utils/images';
 import PersonModal from '../../components/Modals/PersonModal';
 import PartnersModal from '../../components/Modals/PartnersModal';
 import { YoutubeThumbnail } from '../../components/YoutubeEmbed';
+import Loading from '../../components/Loading';
 
 const Event = ({ eventFromStore, socials, loadingBar, dispatch }) => {
   const [event, setEvent] = useState({});
@@ -37,7 +38,7 @@ const Event = ({ eventFromStore, socials, loadingBar, dispatch }) => {
       }
       fetchEvent()
     }
-  }, []);
+  }, [eventFromStore, dispatch]);
 
   const isNext = () => {
     const formattedDate = moment(event.datetime).format('YYYY-MM-DD');
@@ -54,7 +55,7 @@ const Event = ({ eventFromStore, socials, loadingBar, dispatch }) => {
     window.open(url, '_blank')
   };
 
-  if (!Object.keys(event).length && loadingBar.default === 0) {
+  if (loadingBar.default === 0 && !Object.keys(event).length) {
     return (
       <Section className="event text-center">
         <p className="loading-text">Nothing To See Here</p>
@@ -62,11 +63,9 @@ const Event = ({ eventFromStore, socials, loadingBar, dispatch }) => {
     )
   }
 
-  if (!Object.keys(event).length || loadingBar.default > 0) {
+  if (loadingBar.default > 0 || !Object.keys(event).length) {
     return (
-      <Section className="event text-center">
-        <p className="loading-text">Loading...</p>
-      </Section>
+      <Loading />
     )
   }
 
@@ -228,7 +227,7 @@ const Event = ({ eventFromStore, socials, loadingBar, dispatch }) => {
               <p className="e-page-title">LOCATION</p>
               <p className="event-location">{event.venue}</p>
 
-              { isNext() && (
+              { (isNext() && event.venue && event.venue.toLowerCase() !== 'virtual' ) && (
                 <>
                 <Button
                   type="button-icon"
