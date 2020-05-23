@@ -8,11 +8,12 @@ import withScrollToTop from '../withScrollToTop';
 import SearchAndFilters from '../../components/SearchAndFilters';
 import moment from 'moment';
 import { eventBg1 } from '../../utils/images';
+import Loading from '../../components/Loading';
 
 const Events = ({ loading, events }) => {
   return (
     <div className="events">
-      { loading ? null : (
+      { loading ? <Loading /> : (
         <>
         <RecentEvents events={events} />
 

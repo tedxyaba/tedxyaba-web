@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import TalksPlayer from '../../components/TalksPlayer';
 import Header from '../../components/layout/Header';
 import Talks from '../../components/Talks';
+import Loading from '../../components/Loading';
 
 const Home = ({ loading, about, talks }) => {
   return (
@@ -17,7 +18,7 @@ const Home = ({ loading, about, talks }) => {
         className="on-home"
       />
 
-      { loading ? null : (
+      { loading ? <Loading text=" " /> : (
           <>
           <TalksPlayer talks={talks} />
           <Talks talks={talks} />
