@@ -16,8 +16,8 @@ const mainRoutes = [
   },
   {
     name: 'Blog',
-    path: '/blog',
-    show: false
+    path: 'https://medium.com/tedxyaba',
+    show: true
   },
   {
     name: 'Get Involved',
@@ -61,13 +61,25 @@ const Navbar = () => {
           { !!mainRoutes.length && mainRoutes.map((route, index) => {
             return route.show && (
               <li key={index} className="nav-item">
-                <NavLink
-                  to={route.path}
-                  exact={route.exact}
-                  className="nav-link"
-                  activeClassName="active">
-                  {route.name}
-                </NavLink>
+                { route.path.startsWith('http') ? (
+                  <a
+                    href={route.path}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="nav-link"
+                    activeclassname="active">
+                    {route.name}
+                  </a>
+                ) : (
+                  <NavLink
+                    to={route.path}
+                    exact={route.exact}
+                    className="nav-link"
+                    activeClassName="active">
+                    {route.name}
+                  </NavLink>
+                ) }
+
                 { (route.path === pathname) &&
                   <div className="active-bar"></div>
                 }
