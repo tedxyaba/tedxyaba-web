@@ -55,7 +55,7 @@ const Event = ({ eventFromStore, socials, loadingBar, dispatch }) => {
     window.open(url, '_blank')
   };
 
-  if (!Object.keys(event).length && loadingBar.default === 0) {
+  if (loadingBar.default === 0 && !Object.keys(event).length) {
     return (
       <Section className="event text-center">
         <p className="loading-text">Nothing To See Here</p>
@@ -63,7 +63,7 @@ const Event = ({ eventFromStore, socials, loadingBar, dispatch }) => {
     )
   }
 
-  if (!Object.keys(event).length || loadingBar.default > 0) {
+  if (loadingBar.default > 0 || !Object.keys(event).length) {
     return (
       <Loading />
     )
