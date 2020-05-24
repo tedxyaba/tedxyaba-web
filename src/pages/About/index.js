@@ -36,14 +36,14 @@ const About = ({ about, team }) => {
       <Section className="team-list container-fluid">
         <div className="row">
           { team.map(item => (
-            <div key={item.id} className={`col-sm-6 col-md-6 col-lg-4 col-xl-3 team-item ${item.id}`} onClick={() => setPerson(item)} data-toggle="modal" data-target="#teamProfileModal">
+            <div key={item.id} className={`col-sm-6 col-md-6 col-lg-4 col-xl-3 team-item ${item.id}`}>
               { item.id === 'intro' ? (
                 <div className="details">
                   <p className="team-title">{ item.title }</p>
                   <p className="multiline-text">{ item.content }</p>
                 </div>
               ) : (
-                <div className="details default-image" style={{backgroundImage:`url(${item.image_url || defaultPerson})`}}>
+                <div className="details default-image" style={{backgroundImage:`url(${item.image_url || defaultPerson})`}} onClick={() => setPerson(item)} data-toggle="modal" data-target="#teamProfileModal">
                   <div className="overlay">
                     <p className="item-name">{item.first_name} {item.last_name}</p>
                     <p className="item-role">{item.role}</p>

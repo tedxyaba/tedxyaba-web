@@ -47,6 +47,16 @@ code {
     monospace;
 }
 
+.App {
+  padding-top: 69.78px;
+}
+
+@media (max-width: 767.98px) {
+  .App {
+    padding-top: 51.75px;
+  }
+}
+
 a {
   color: #af0000;
   transition: all ease-in-out .25s;

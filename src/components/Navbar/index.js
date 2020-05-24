@@ -40,7 +40,7 @@ const Navbar = () => {
   const { pathname } = useLocation();
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark">
+    <nav className="navbar fixed-top navbar-expand-md navbar-dark">
       <Link to="/" id="app-logo" className="navbar-brand app-logo">
         <img src={navbarLogo} alt="logo" />
       </Link>

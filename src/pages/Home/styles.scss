@@ -1,5 +1,11 @@
 // HOME
 
+section.page-header.on-home {
+  overflow: hidden;
+
+  @media (max-width: 767.98px) { padding: 2.5rem 1rem; }
+}
+
 section.home-about {
   background-color: #f5f5f5;
 
