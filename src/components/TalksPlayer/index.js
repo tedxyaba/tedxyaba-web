@@ -29,9 +29,9 @@ const TalksPlayer = ({ talks }) => {
     }
   })
 
-  const currentIndex = () => {
-    return talks.findIndex(item => item.id === activeTalk.id)
-  }
+  const sliceTalks = () => talks.slice(0,6);
+
+  const currentIndex = () => talks.findIndex(item => item.id === activeTalk.id);
 
   const onSetActiveTalk = (talk) => {
     setOnPause(false);
@@ -92,7 +92,7 @@ const TalksPlayer = ({ talks }) => {
                   </div>
                 ) }
 
-                { currentIndex() < talks.length-1 && (
+                { currentIndex() < sliceTalks().length-1 && (
                   <div className="next-icon" onClick={playNext}>
                     <Icon
                       font="Entypo"
@@ -106,6 +106,10 @@ const TalksPlayer = ({ talks }) => {
                 { onPause || <div className="title-and-date">
                   { activeTalk.date ? <p className="name-date">{activeTalk.speaker && activeTalk.speaker.name} - {moment(activeTalk.date).year()}</p> : null }
                   <p className="title">{ activeTalk.topic }</p>
+
+                  <div className="talks-list-dots">
+                    { sliceTalks().map(t => <div className={`talk-dot ${activeTalk && activeTalk.id === t.id ? 'active' : ''}`} key={t.id} />)}
+                  </div>
                 </div> }
                 </>
               ) }
@@ -113,7 +117,7 @@ const TalksPlayer = ({ talks }) => {
           </div>
         </div>
         <div className="talks-list row">
-          { talks.slice(0,6).map(talk => (
+          { sliceTalks().map(talk => (
             <div key={talk.id} className="talk-item col-sm-2" onClick={() => onSetActiveTalk(talk)}>
               <div className="talk-details">
                 <YoutubeThumbnail url={talk.video_url} />
@@ -122,7 +126,7 @@ const TalksPlayer = ({ talks }) => {
             </div>
           )) }
           { false && <div className="talk-item col-sm-2">
-            <Link to="/watch">
+            <Link to="/">
               <div className="talk-details more-talks">
                 <p>More Talks...</p>
               </div>
