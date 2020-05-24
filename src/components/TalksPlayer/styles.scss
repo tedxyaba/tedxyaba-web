@@ -21,6 +21,8 @@ section.talks-player {
         top: -15px;
         width: 200px;
         z-index: 1;
+
+        @media (max-width: 767.98px) { width: auto; }
       }
 
       .talk-col {
@@ -37,7 +39,7 @@ section.talks-player {
           backdrop-filter: blur(4px);
           border-radius: 10px;
           color: #fff;
-          padding: 1rem 2rem;
+          padding: 1rem 1.5rem;
           position: absolute;
           bottom: 7px;
           left: 0;
@@ -83,9 +85,29 @@ section.talks-player {
           right: 0px;
         }
       }
+
+      .talks-list-dots {
+        display: flex;
+
+        @media (min-width: 767.98px) { display: none; }
+
+        .talk-dot {
+          background-color: #fff;
+          border-radius: 5px;
+          height: 10px;
+          margin-right: 10px;
+          width: 10px;
+
+          &.active {
+            background-color: $primary;
+          }
+        }
+      }
     }
 
     .talks-list {
+      @media (max-width: 767.98px) { display: none; }
+
       .talk-item {
         border-color: transparent;
         margin-bottom: 1rem;
