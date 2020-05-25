@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './styles.scss';
+import PropTypes from 'prop-types';
 import SubHeader from '../layout/SubHeader';
 import SelectDropdown from '../SelectDropdown';
 import fetchApi from '../../utils/fetch-api';
@@ -37,11 +38,18 @@ const SearchAndFilters = ({ categories, type, onFilter, searchPlaceholder }) => 
   const filterData = async (search, year, category) => {
     setSearching(true);
 
-    const filters = cleanData({
-      'event_year': year && year.value,
-      'category': category && category.value,
-      'query': search
-    });
+    const params = {
+      event_year: year && year.value,
+      category: category && category.value
+    };
+
+    if (type === 'events') {
+      params.event_title = search
+    } else {
+      params.query = search
+    }
+
+    const filters = cleanData(params);
 
     try {
       const response = await fetchApi.getData(`/${type}`, {filters});
@@ -110,6 +118,13 @@ const SearchAndFilters = ({ categories, type, onFilter, searchPlaceholder }) => 
       </div>
     </SubHeader>
   )
+};
+
+SearchAndFilters.propTypes = {
+  categories: PropTypes.array.isRequired,
+  type: PropTypes.string.isRequired,
+  onFilter: PropTypes.func.isRequired,
+  searchPlaceholder: PropTypes.string,
 };
 
 const mapStateToProps = ({ events }) => {
