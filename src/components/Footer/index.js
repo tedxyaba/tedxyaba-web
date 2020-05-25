@@ -50,11 +50,10 @@ const Footer = ({ data, dispatch }) => {
     <footer>
       <div className="content row">
         <div className="col-md-6 join">
-          <p className="join-text">Sign up to hear about new talks, meetups, and the latest TEDxYaba news.</p>
-
           <form name="newsletter-form" className="newsletter-form" onSubmit={submitForm}>
-            <div className="form-row">
-              <div className="col-md-8">
+            <div className="form-roww">
+              <div>
+                <p className="join-text">Sign up to hear about new talks, meetups, and the latest TEDxYaba news.</p>
                 <div className="form-group mr-sm-3">
                   <label htmlFor="email" className="sr-only">Email</label>
                   <input
@@ -69,7 +68,7 @@ const Footer = ({ data, dispatch }) => {
                 { response && <small className={response[0]}>{ response[1] }</small>}
               </div>
 
-              <div className="col-md-4">
+              <div>
                 <Button
                   type="button"
                   text="Subscribe"
