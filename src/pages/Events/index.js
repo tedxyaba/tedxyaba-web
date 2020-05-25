@@ -37,7 +37,7 @@ const Events = ({ loading, events }) => {
           <div className="row">
           { (filtered && filtered.length === 0) && (
             <div className="col-md-12 no-results">
-              <p>No events found for your filtered criteria.</p>
+              <p>No events found for your filters criteria.</p>
             </div>
           ) }
 

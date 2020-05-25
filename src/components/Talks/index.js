@@ -29,7 +29,7 @@ const Talks = ({ talks }) => {
         <div className="row">
           { (filtered && filtered.length === 0) && (
             <div className="col-md-12 no-results">
-              <p>No talks found for your filtered criteria.</p>
+              <p>No talks found for your filters criteria.</p>
             </div>
           ) }
 

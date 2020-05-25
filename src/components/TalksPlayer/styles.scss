@@ -132,7 +132,7 @@ section.talks-player {
           }
 
           .overlay {
-            background: rgba(0,0,0,0.6);
+            background-color: rgba($overlay, .85);
             border-radius: 10px;
             position: absolute;
             top: 0;

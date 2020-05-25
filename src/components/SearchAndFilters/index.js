@@ -78,7 +78,7 @@ const SearchAndFilters = ({ categories, type, onFilter, searchPlaceholder }) => 
   return (
     <SubHeader className="sorts-and-filters">
       <div className="row justify-content-center">
-        <div className="columns col-md-12 col-lg-10">
+        <div className="columns col-md-12 col-lg-9 col-xl-8">
           <div className="category">
             <SelectDropdown
               label="Sort by"
