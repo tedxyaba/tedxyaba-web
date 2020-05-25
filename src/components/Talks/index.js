@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './styles.scss';
 import Section from '../layout/Section';
 import { YoutubeThumbnail } from '../YoutubeEmbed';
@@ -7,13 +7,33 @@ import { YoutubeLogo } from '../../utils/images';
 import SearchAndFilters from '../SearchAndFilters';
 
 const Talks = ({ talks }) => {
+  const [filtered, setFiltered] = useState(null);
+
+  const filterArrays = () => {
+    if (filtered === null) return talks;
+
+    return talks.filter(talk => {
+      return filtered.findIndex(f => f.id === talk.id) >= 0;
+    })
+  };
+
   return (
     <div className="talks">
-      <SearchAndFilters data={talks} searchPlaceholder="Search talks..." />
+      <SearchAndFilters
+        type="talks"
+        onFilter={setFiltered}
+        searchPlaceholder="Search talks..."
+      />
 
       <Section className="all-talks">
         <div className="row">
-          { talks.map(talk => (
+          { (filtered && filtered.length === 0) && (
+            <div className="col-md-12 no-results">
+              <p>No talks found for your filtered criteria.</p>
+            </div>
+          ) }
+
+          { filterArrays().map(talk => (
             <a href={talk.video_url} target="_blank" rel="noopener noreferrer" key={talk.id} className="item-col col-sm-6 col-md-6 col-lg-4">
               <div className="talk-item">
                 <div className="top-bar">

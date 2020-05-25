@@ -4,6 +4,14 @@
 
 .talks {
   .all-talks {
+    .no-results {
+      text-align: center;
+
+      p {
+        color: gray;
+      }
+    }
+
     .item-col {
       margin: 1rem 0;
       border-color: transparent;

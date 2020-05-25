@@ -36,4 +36,10 @@
   .form-control.search-input-control {
     @include input-form-control;
   }
+
+  .is-searching {
+    color: #0a0a0a;
+    display: block;
+    margin: 10px auto 0;
+  }
 }
