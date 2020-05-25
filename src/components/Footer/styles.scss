@@ -15,6 +15,10 @@ footer {
 
   .content {
     margin-bottom: 6rem;
+
+    @media (max-width: 767.98px) {
+      margin-bottom: 3rem;
+    }
     
     :not(:first-child) {
       .row-title {
@@ -24,17 +28,31 @@ footer {
 
     .row-title {
       color: rgba(255,255,255,.75);
-      margin-top: 2rem;
       padding-bottom: 5px;
       text-transform: uppercase;
+
+      @media (max-width: 767.98px) {
+        margin-top: 3rem;
+      }
     }
 
     .join {
       p.join-text {
-        font-size: 1.25rem;
+        color: rgba(255,255,255,.9);
       }
 
       form.newsletter-form {
+        @media (min-width: 575.98px) and (max-width: 767.98px), (min-width: 1199.98px) {
+          .form-roww {
+            align-items: flex-end;
+            display: flex;
+
+            .form-group {
+              margin: 0;
+            }
+          }
+        }
+
         .form-control-overides {
           @include input-form-control;
           height: 50px;
@@ -83,10 +101,6 @@ footer {
     justify-content: space-between;
     padding-top: 10px;
 
-    @media screen and (max-width: 700px) {
-      justify-content: center;
-    }
-
     .footer-logo {
       width: 143px;
   
@@ -101,7 +115,7 @@ footer {
         font-weight: 300;
         margin: 0;
 
-        @media screen and (max-width: 700px) {
+        @media screen and (max-width: 575.98px) {
           margin-top: 1rem;
         }
       }

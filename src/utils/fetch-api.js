@@ -28,7 +28,8 @@ const buildUrl = (base, endpoint, params = {}) => {
   if (Object.keys(params).length > 0) {
     for(let key in params) {
       if (params.hasOwnProperty(key)) {
-        query += !query ? `?${key}=${params[key]}` : `&${key}=${params[key]}`
+        const value = JSON.stringify(params[key]);
+        query += !query ? `?${key}=${value}` : `&${key}=${value}`;
       }
     }
   }

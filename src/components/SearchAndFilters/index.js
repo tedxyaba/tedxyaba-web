@@ -1,18 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './styles.scss';
+import PropTypes from 'prop-types';
 import SubHeader from '../layout/SubHeader';
 import SelectDropdown from '../SelectDropdown';
+import fetchApi from '../../utils/fetch-api';
+import { connect } from 'react-redux';
 
-const SearchAndFilters = ({ data, searchPlaceholder }) => {
-  const [categorySort, setCategorySort] = useState(null);
+const SearchAndFilters = ({ categories, type, onFilter, searchPlaceholder }) => {
+  const [searching, setSearching] = useState(false);
+  const [sortCategory, setSortCategory] = useState(null);
   const [sortYear, setSortYear] = useState(null);
   const [searchText, setSearchText] = useState('');
 
   const categoriesSortData = [
     {value: 'all', label: 'ALL'},
-    {value: 'salon', label: 'Salon Series'},
-    {value: 'virtual', label: 'Virtual Series'},
-    {value: 'uncategorized', label: 'Uncategorized'},
+    ...categories.map(c => ({value: c, label: c}))
   ];
 
   const yearsSortData = [
@@ -23,16 +25,66 @@ const SearchAndFilters = ({ data, searchPlaceholder }) => {
     {value: '2017', label: '2017'},
   ];
 
+  const cleanData = (data) => {
+    Object.keys(data).forEach(key => {
+      if (data[key] === '' || data[key] === 'all' || data[key] === null || data[key] === undefined) {
+        delete data[key]
+      }
+    });
+
+    return data
+  };
+
+  const filterData = async (search, year, category) => {
+    setSearching(true);
+
+    const params = {
+      event_year: year && year.value,
+      category: category && category.value
+    };
+
+    if (type === 'events') {
+      params.event_title = search
+    } else {
+      params.query = search
+    }
+
+    const filters = cleanData(params);
+
+    try {
+      const response = await fetchApi.getData(`/${type}`, {filters});
+      const data = await response.json();
+      if (onFilter) onFilter(data);
+      setSearching(false);
+    } catch (error) {
+      setSearching(false);
+      console.log(`Error filtering ${type}.`, error)
+    }
+  };
+
+  const onSearchKeyDown = (e) => {
+    setSearchText(e.target.value);
+    if (e.key === 'Enter') {
+      filterData(searchText, sortYear, sortCategory)
+    }
+  }
+
+  useEffect(() => {
+    if (sortCategory || sortYear) {
+      filterData(searchText, sortYear, sortCategory)
+    }
+  }, [sortCategory, sortYear])
+
   return (
     <SubHeader className="sorts-and-filters">
       <div className="row justify-content-center">
-        <div className="columns col-md-12 col-lg-10">
+        <div className="columns col-md-12 col-lg-9 col-xl-8">
           <div className="category">
             <SelectDropdown
               label="Sort by"
               preSelected={categoriesSortData[0]}
               data={categoriesSortData}
-              onSelect={setCategorySort}
+              onSelect={setSortCategory}
               mode="white"
             />
           </div>
@@ -53,14 +105,34 @@ const SearchAndFilters = ({ data, searchPlaceholder }) => {
               type="text"
               className="form-control search-input-control"
               value={searchText}
-              onChange={e => setSearchText(e.target.value)}
+              onChange={onSearchKeyDown}
+              onKeyDown={onSearchKeyDown}
               placeholder={searchPlaceholder}
             />
           </div>
         </div>
+
+        { searching && <div className="col-md-12">
+          <div className="is-searching spinner-grow" role="status" />
+        </div>}
       </div>
     </SubHeader>
   )
 };
 
-export default SearchAndFilters;
+SearchAndFilters.propTypes = {
+  categories: PropTypes.array.isRequired,
+  type: PropTypes.string.isRequired,
+  onFilter: PropTypes.func.isRequired,
+  searchPlaceholder: PropTypes.string,
+};
+
+const mapStateToProps = ({ events }) => {
+  const allCategories = events.map(event => event.category);
+
+  return {
+    categories: [...new Set(allCategories)]
+  }
+};
+
+export default connect(mapStateToProps)(SearchAndFilters);
