@@ -139,8 +139,9 @@ class Event extends Component {
 
                       { (event.livestreamLink && event.livestreamLink.url) && <Button
                         type="link"
-                        text="LIVESTREAM"
+                        text="VIEW LIVE STREAM"
                         btnType="link"
+                        classNames='venue'
                         href={event.livestreamLink.url}
                         target={event.livestreamLink.target}
                       /> }

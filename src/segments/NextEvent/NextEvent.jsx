@@ -139,9 +139,9 @@ class NextEvent extends Component {
 
               { (event.livestreamLink && event.livestreamLink.url) && <Button
                 type="link"
-                text="LIVESTREAM"
+                text="VIEW LIVE STREAM"
                 btnType="link"
-                classNames={`venue ${event.isInFuture ? 'disabled' : ''}`}
+                classNames='venue'
                 href={event.livestreamLink.url}
                 target={event.livestreamLink.target}
               /> }
