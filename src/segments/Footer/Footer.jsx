@@ -53,6 +53,7 @@ const Footer = props => {
                 </li>
               ))}
             </ul>
+            <p className='title'>Subscribe to our <a href='https://us15.list-manage.com/subscribe?u=ccbb003d134759017967873fa&id=fecf976acb' target='_blank'>newsletter</a></p>
           </div>
         </div>
       </div>
