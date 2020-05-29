@@ -1,17 +1,34 @@
-import React, { Component } from 'react';
+import React from 'react';
+import './CustomRoute.scss';
+import Button from '../../components/ui/Button';
+import Footer from '../../segments/Footer';
 
-class CustomRoute extends Component {
-  constructor(props) {
-    super(props)
-  }
+const LiveStreamLink = () => {
+  return (
+    <Button
+      type="link"
+      text="VIEW LIVE STREAM"
+      btnType="link"
+      classNames='vsenue'
+      href='/live'
+    />
+  )
+}
 
-  render() {
-    return (
-      <div className="custom text-center">
-        <iframe title="registration-form" src="https://docs.google.com/forms/d/e/1FAIpQLSepkebSBA-g-pMO7DRoNxFIJHAmm1IsFdMc6JFdQhPvXuN7lw/viewform?embedded=true" width="640" height="568" frameBorder="0" marginHeight="0" marginWidth="0">Loading…</iframe>
+const CustomRoute = () => {
+  return (
+    <div className="">
+      <div className='container'>
+        <h1 class='mt-4 pb-3'>Registration closed.</h1>
+        <h4 class='pb-3'>You can follow the event by going to our livestream page</h4>
+        <LiveStreamLink />
       </div>
-    )
-  }
+
+      <div className='cust-footer'>
+        <Footer />
+      </div>
+    </div>
+  )
 }
 
 export default CustomRoute
