@@ -50,7 +50,13 @@ const LiveStream = () => {
               <li>Speaker 4 &#8594; Andrew Nevin</li>
               <li>Speaker 5 &#8594; Dr Charles Omole</li>
               <li>Speaker 6 &#8594; Lola Omolola (interviewed by Abosede George-Ogan)</li>
-              <li>Breakout session</li>
+              <li>Breakout session
+                <ul>
+                  <li><a href='https://tedxyaba.zoom.us/j/98125039425' target='_blank'>Breakout room 4</a> &#8594; First there were MDGs, now there are SDGs. What’s next? (Andrew S. Nevin)</li>
+                  <li><a href='https://tedxyaba.zoom.us/j/93647575804' target='_blank'>Breakout room 5</a> &#8594; Is a Pan African Security commission a myth? (Dr Charles Omole)</li>
+                  <li><a href='https://tedxyaba.zoom.us/j/97965166920' target='_blank'>Breakout room 6</a> &#8594; The FAQs in building sustainable communities (Lola Omolola)</li>
+                </ul>
+              </li>
             </ul>
           </li>
           <li>2:55PM - 3:00PM WAT - Closing</li>
