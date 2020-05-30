@@ -35,7 +35,13 @@ const LiveStream = () => {
               <li>Speaker 1 &#8594; Dr Lawal Bakare</li>
               <li>Speaker 2 &#8594; Bright Simons</li>
               <li>Speaker 3 &#8594; Astrid Haas</li>
-              <li>Breakout session</li>
+              <li>Breakout session
+                <ul>
+                  <li><a href='https://tedxyaba.zoom.us/j/98997517428' target='_blank'>Breakout room 1</a> &#8594; Fighting off Pandemics: Community Defense vs Herd Immunity (Dr Lawal Bakare)</li>
+                  <li><a href='https://tedxyaba.zoom.us/j/94687921485' target='_blank'>Breakout room 2</a> &#8594; Trust and entrepreneurship in Africa (Bright Simons)</li>
+                  <li><a href='https://tedxyaba.zoom.us/j/93576740090' target='_blank'>Breakout room 3</a> &#8594; Do Rural spaces need to continue to shrink for Urbanisation? (Astrid Haas)</li>
+                </ul>
+              </li>
             </ul>
           </li>
           <li>
