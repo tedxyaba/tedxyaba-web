@@ -48,7 +48,7 @@ const LiveStream = () => {
             1:35PM - 2:55PM WAT - Session 2
             <ul>
               <li>Speaker 4 &#8594; Andrew Nevin</li>
-              <li>Speaker 5 &#8594; Dr Charles Omole</li>
+              <li>Speaker 5 &#8594; Dr Charles Omole (<a href={TalkHighlights} download>download highlights</a>)</li>
               <li>Speaker 6 &#8594; Lola Omolola (interviewed by Abosede George-Ogan)</li>
               <li>Breakout session
                 <ul>
