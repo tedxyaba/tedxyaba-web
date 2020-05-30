@@ -7,6 +7,8 @@ import PremiumTimes from '../../assets/images/sponsors/premium_times.png';
 import YNaija from '../../assets/images/sponsors/ynaija.jpg';
 import Zikoko from '../../assets/images/sponsors/zikoko.png';
 import Zoom from '../../assets/images/sponsors/zoom.png';
+import Brochure from '../../assets/downloadableFiles/Convergence-Event-Brochure.pdf';
+import TalkHighlights from '../../assets/downloadableFiles/ConvergenceTalkHighlights.pdf'
 
 const LiveStream = () => {
   return (
@@ -21,6 +23,7 @@ const LiveStream = () => {
           <p><b>A Conversation On Africa’s Collective Future</b></p>
           <p>CONVERGENCE is the 2020 edition of TEDxYaba, an independently organized TED event inspired by its strong roots in Yaba, Lagos -  the centre of Africa’s largest technology ecosystem. In a discourse about Africa’s future, this conference is bringing together some of the finest thinkers and innovators involved in creating impact within Africa to spotlight on how technology can help Africa take advantage of its multi-diversity for better collaboration.</p>
         </div>
+        <p><b>You can <a href={Brochure} download>click here to download</a> the digital brochure for the event.</b></p>
         <h4 className='pt-3'>Schedule for the day:</h4>
         <hr align='left' className='mt-0' />
 
