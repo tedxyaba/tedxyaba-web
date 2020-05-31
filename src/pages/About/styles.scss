@@ -4,6 +4,47 @@
   .about-list {
     background-color: $bg-f5;
 
+    #aboutAccordion {
+      .a-card {
+        border: none;
+        margin: 1rem auto;
+
+        .about-card-header {
+          align-items: center;
+          display: flex;
+          justify-content: space-between;
+          padding: 0 1rem;
+
+          .action-icon {
+            transition: all .5s;
+          }
+
+          &.is-open {
+            .action-icon {
+              transition: all .5s;
+              -webkit-transform: rotate(180deg);
+              -moz-transform: rotate(180deg);
+              transform: rotate(180deg);
+            }
+          }
+        }
+
+        .about-card-body {
+          padding: 1rem;
+        }
+      }
+
+      @media (min-width: 767.98px) {
+        display: none;
+      }
+    }
+
+    #aboutRow {
+      @media (max-width: 767.98px) {
+        display: none;
+      }
+    }
+
     .about-item {
       margin-bottom: 1rem;
 
