@@ -6,6 +6,8 @@
 .sorts-and-filters {
   background-color: $primary;
   color: $white;
+  padding-bottom: .5rem !important;
+  padding-top: .5rem !important;
 
   .row .columns {
     @media (min-width: 767.98px) {
@@ -29,7 +31,7 @@
     .category,
     .years,
     .search {
-      margin: .5rem auto;
+      margin: 2rem auto;
     }
   }
 
