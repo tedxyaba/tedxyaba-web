@@ -4,13 +4,14 @@ import PropTypes from 'prop-types';
 import SubHeader from '../layout/SubHeader';
 import SelectDropdown from '../SelectDropdown';
 import fetchApi from '../../utils/fetch-api';
-import { connect } from 'react-redux';
 
-const SearchAndFilters = ({ categories, type, onFilter, searchPlaceholder }) => {
+const SearchAndFilters = ({type, onFilter, searchPlaceholder }) => {
   const [searching, setSearching] = useState(false);
   const [sortCategory, setSortCategory] = useState(null);
   const [sortYear, setSortYear] = useState(null);
   const [searchText, setSearchText] = useState('');
+
+  const categories = ['Main Event', 'TEDxYabaSalon', 'TEDxYabaTeen', 'TEDxYabaWomen', 'TEDxYabaYouth'];
 
   const categoriesSortData = [
     {value: 'all', label: 'ALL'},
@@ -127,12 +128,4 @@ SearchAndFilters.propTypes = {
   searchPlaceholder: PropTypes.string,
 };
 
-const mapStateToProps = ({ events }) => {
-  const allCategories = events.map(event => event.category);
-
-  return {
-    categories: [...new Set(allCategories)]
-  }
-};
-
-export default connect(mapStateToProps)(SearchAndFilters);
+export default SearchAndFilters;
