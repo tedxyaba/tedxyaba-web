@@ -124,15 +124,15 @@ const Event = ({ eventFromStore, socials, loadingBar, dispatch }) => {
               <p className="event-description multiline-text">{event.description}</p>
             </div>
 
-            { event.talks.length > 0 && (
+            { event.speakers.length > 0 && (
               <div className="e-speakers">
                 <p className="e-page-title">SPEAKERS</p>
 
                 <div className="speakers-list">
-                  { event.talks.map(talk => (
-                    <div key={talk.id} className="speaker-details" onClick={() => setSpeaker(talk)} data-toggle="modal" data-target="#eventSpeakerProfile">
-                      <div className="speaker-image" style={{backgroundImage: `url(${talk.image_url ? talk.image_url : ''})`}} />
-                      <p className="speaker-name">{talk.speaker_name}</p>
+                  { event.speakers.map(speaker => (
+                    <div key={speaker.id} className="speaker-details" onClick={() => setSpeaker(speaker)} data-toggle="modal" data-target="#eventSpeakerProfile">
+                      <div className="speaker-image" style={{backgroundImage: `url(${speaker.image_url ? speaker.image_url : ''})`}} />
+                      <p className="speaker-name">{speaker.speaker_name}</p>
                     </div>
                   ))}
                 </div>
