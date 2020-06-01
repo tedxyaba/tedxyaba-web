@@ -48,12 +48,12 @@ code {
 }
 
 .App {
-  padding-top: 69.78px;
+  padding-top: 68.78px;
 }
 
 @media (max-width: 767.98px) {
   .App {
-    padding-top: 51.75px;
+    padding-top: 67.75px;
   }
 }
 

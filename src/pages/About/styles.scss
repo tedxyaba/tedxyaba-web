@@ -4,6 +4,8 @@
   .about-list {
     background-color: $bg-f5;
 
+    @media (max-width: 767.98px) { padding: 0; }
+
     #aboutAccordion {
       .a-card {
         border: none;

@@ -35,53 +35,55 @@ const About = ({ about, team }) => {
       />
 
       <SubHeader className="about-list container-fluid">
-        <>
-        <div id="aboutAccordion">
-          { about.map(item => (
-            <div key={item.id} className="a-card card">
-              <div
-                className="about-card-header"
-                id={`heading-${item.id}`}
-                data-toggle="collapse"
-                data-target={`#collapse-${item.id}`}
-                aria-expanded="true"
-                aria-controls={`collapse-${item.id}`}
-                onClick={() => setAccordionId(item.id)}>
+        <Section>
+          <>
+          <div id="aboutAccordion">
+            { about.map(item => (
+              <div key={item.id} className="a-card card">
+                <div
+                  className="about-card-header"
+                  id={`heading-${item.id}`}
+                  data-toggle="collapse"
+                  data-target={`#collapse-${item.id}`}
+                  aria-expanded="true"
+                  aria-controls={`collapse-${item.id}`}
+                  onClick={() => setAccordionId(item.id)}>
 
-                <h5 className="mb-0">
-                  { item.title }
-                </h5>
+                  <h5 className="mb-0">
+                    { item.title }
+                  </h5>
 
-                <div className="action-icon">
-                  <Icon
-                    font="Feather"
-                    name="chevron-down"
-                    color="#474350"
-                    size={30}
-                  />
+                  <div className="action-icon">
+                    <Icon
+                      font="Feather"
+                      name="chevron-down"
+                      color="#474350"
+                      size={30}
+                    />
+                  </div>
+                </div>
+
+                <div id={`collapse-${item.id}`} className="about-collapse collapse" aria-labelledby={`heading-${item.id}`} data-parent="#aboutAccordion">
+                  <div className="about-card-body multiline-text">
+                  { item.content }
+                  </div>
                 </div>
               </div>
+            )) }
+          </div>
 
-              <div id={`collapse-${item.id}`} className="about-collapse collapse" aria-labelledby={`heading-${item.id}`} data-parent="#aboutAccordion">
-                <div className="about-card-body multiline-text">
-                { item.content }
+          <div id="aboutRow" className="row">
+            { about.map(item => (
+              <div key={item.id} className="col-md-4 about-item">
+                <div className="details">
+                  <p className="about-title">{ item.title }</p>
+                  <p className="multiline-text">{ item.content }</p>
                 </div>
               </div>
-            </div>
-          )) }
-        </div>
-
-        <div id="aboutRow" className="row">
-          { about.map(item => (
-            <div key={item.id} className="col-md-4 about-item">
-              <div className="details">
-                <p className="about-title">{ item.title }</p>
-                <p className="multiline-text">{ item.content }</p>
-              </div>
-            </div>
-          )) }
-        </div>
-        </>
+            )) }
+          </div>
+          </>
+        </Section>
       </SubHeader>
 
       <Section className="team-list container-fluid">
