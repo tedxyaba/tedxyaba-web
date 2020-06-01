@@ -7,16 +7,15 @@ import PremiumTimes from '../../assets/images/sponsors/premium_times.png';
 import YNaija from '../../assets/images/sponsors/ynaija.jpg';
 import Zikoko from '../../assets/images/sponsors/zikoko.png';
 import Zoom from '../../assets/images/sponsors/zoom.png';
+import ThankYou from '../../assets/images/thanks.jpg';
 import Brochure from '../../assets/downloadableFiles/Convergence-Event-Brochure.pdf';
 import TalkHighlights from '../../assets/downloadableFiles/ConvergenceTalkHighlights.pdf'
 
 const LiveStream = () => {
   return (
     <div className="">
+      <img src={ThankYou} width="100%" />
       <div className="container">
-        <h2 class='pb-3'>TEDxYaba Convergence Live Stream</h2>
-        <iframe title='live-vid' width="100%" height="500" src="https://www.youtube.com/embed/RU_BQApFf04" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
         <h4 className='pt-5'>About Convergence</h4>
         <hr align='left' className='mt-0' />
         <div>
