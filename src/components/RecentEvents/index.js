@@ -5,16 +5,43 @@ import { BigX, eventBg1 } from '../../utils/images';
 
 const RecentEvents = ({ events }) => {
   const [currentEvent, setCurrentEvent] = useState({});
+  const [listSettings, setListSettings] = useState({count: 6, col: 'col-md-2'});
+  const [width, setWidth] = useState();
   const headerBg = currentEvent && currentEvent.theme_banner ? currentEvent.theme_banner : eventBg1;
+
+  const checkViewport = () => {
+    setWidth(window.innerWidth)
+  }
 
   useEffect(() => {
     setCurrentEvent(events[0])
+    checkViewport()
   }, [events]);
+
+  useEffect(() => {
+    window.addEventListener('resize', checkViewport);
+    return () => window.removeEventListener('resize', checkViewport);
+  });
+
+  useEffect(() => {
+    switch (true) {
+      case (width >= 767.98 && width < 1024):
+        setListSettings({count: 3, col: 'col-md-4'})
+        return;
+      case (width >= 1024 && width < 1200):
+        setListSettings({count: 4, col: 'col-md-3'})
+        return;
+      default:
+        setListSettings({count: 6, col: 'col-md-2'})
+        return;
+    }
+  }, [width]);
 
   if (currentEvent && Object.keys(currentEvent).length > 0) {
     return (
       <header className="recent-events container-fluid" style={{backgroundImage: `url(${headerBg})`}}>
-        <div className={`big-x`}><BigX /></div>
+        <div className="big-x"><BigX /></div>
+        <div className="event-top-overlay" />
 
         <div className="main">
           <div className="content">
@@ -26,7 +53,7 @@ const RecentEvents = ({ events }) => {
               type="link"
               text="Learn More"
               linkTo={`/events/${currentEvent.slug}`}
-              btnType="secondary"
+              btnType="primary"
               className="my-5"
             />
           </div>
@@ -37,8 +64,8 @@ const RecentEvents = ({ events }) => {
             <p>Past Events</p>
           </div>
 
-          { events.slice(0,6).map(event => (
-            <div key={event.id} className="event-item col-md-2" onClick={() => setCurrentEvent(event)}>
+          { events.slice(0,listSettings.count).map(event => (
+            <div key={event.id} className={`event-item ${listSettings.col}`} onClick={() => setCurrentEvent(event)}>
               <div className={`event-details ${ (currentEvent && currentEvent.id === event.id) ? 'active' : '' }`}>
                 <div className="position-details">
                   <p className="event-title">{event.title}</p>

@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import './styles.scss';
 import { navbarLogo } from '../../utils/images';
+import Icon from 'react-web-vector-icons';
 
 const mainRoutes = [
   {
     name: 'Home',
     path: '/',
+    exact: true,
     show: true
   },
   {
@@ -38,6 +40,7 @@ const mainRoutes = [
 
 const Navbar = () => {
   const { pathname } = useLocation();
+  const [collapsed, setCollapsed] = useState(false);
 
   return (
     <nav className="navbar fixed-top navbar-expand-md navbar-dark">
@@ -52,12 +55,18 @@ const Navbar = () => {
         data-target="#navbarNavMobileDropdown"
         aria-controls="navbarNavMobileDropdown"
         aria-expanded="false"
-        aria-label="Toggle navigation">
-        <span className="navbar-toggler-icon"></span>
+        aria-label="Toggle navigation"
+        onClick={() => setCollapsed(!collapsed)}>
+        <Icon
+          font="Feather"
+          name={collapsed ? 'x' : 'menu'}
+          color="#ffffff"
+          size={28}
+        />
       </button>
 
       <div className="collapse navbar-collapse" id="navbarNavMobileDropdown">
-        <ul className="navbar-nav ml-auto">
+        <ul className="navbar-nav ml-auto links-desktop">
           { !!mainRoutes.length && mainRoutes.map((route, index) => {
             return route.show && (
               <li key={index} className="nav-item">
@@ -83,6 +92,33 @@ const Navbar = () => {
                 { (route.path === pathname) &&
                   <div className="active-bar"></div>
                 }
+              </li>
+             )
+          }) }
+        </ul>
+
+        <ul className="navbar-nav ml-auto links-mobile">
+          { !!mainRoutes.length && mainRoutes.map((route, index) => {
+            return route.show && (
+              <li key={index} className="nav-item" data-toggle="collapse" data-target="#navbarNavMobileDropdown" onClick={() => setCollapsed(!collapsed)}>
+                { route.path.startsWith('http') ? (
+                  <a
+                    href={route.path}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="nav-link"
+                    activeclassname="active">
+                    {route.name}
+                  </a>
+                ) : (
+                  <NavLink
+                    to={route.path}
+                    exact={route.exact}
+                    className="nav-link"
+                    activeClassName="active">
+                    {route.name}
+                  </NavLink>
+                ) }
               </li>
              )
           }) }

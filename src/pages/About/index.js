@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './styles.scss';
+import $ from 'jquery';
 import { connect } from 'react-redux';
 import Header from '../../components/layout/Header';
 import SubHeader from '../../components/layout/SubHeader';
@@ -7,9 +8,24 @@ import Section from '../../components/layout/Section';
 import { defaultPerson } from '../../utils/images';
 import withScrollToTop from '../withScrollToTop';
 import PersonModal from '../../components/Modals/PersonModal';
+import Icon from 'react-web-vector-icons';
 
 const About = ({ about, team }) => {
   const [person, setPerson] = useState({});
+  const [accordionId, setAccordionId] = useState('');
+
+  const addClass = () => {
+    $(`#heading-${accordionId}`).addClass('is-open');
+  };
+
+  const removeClass = () => {
+    $(`#heading-${accordionId}`).removeClass('is-open');
+  };
+
+  useEffect(() => {
+    $(`#collapse-${accordionId}`).on('show.bs.collapse', addClass)
+    $(`#collapse-${accordionId}`).on('hide.bs.collapse', removeClass)
+  }, [accordionId]);
 
   return (
     <div className="about">
@@ -20,7 +36,43 @@ const About = ({ about, team }) => {
 
       <SubHeader className="about-list container-fluid">
         <Section>
-          <div className="row">
+          <>
+          <div id="aboutAccordion">
+            { about.map(item => (
+              <div key={item.id} className="a-card card">
+                <div
+                  className="about-card-header"
+                  id={`heading-${item.id}`}
+                  data-toggle="collapse"
+                  data-target={`#collapse-${item.id}`}
+                  aria-expanded="true"
+                  aria-controls={`collapse-${item.id}`}
+                  onClick={() => setAccordionId(item.id)}>
+
+                  <h5 className="mb-0">
+                    { item.title }
+                  </h5>
+
+                  <div className="action-icon">
+                    <Icon
+                      font="Feather"
+                      name="chevron-down"
+                      color="#474350"
+                      size={30}
+                    />
+                  </div>
+                </div>
+
+                <div id={`collapse-${item.id}`} className="about-collapse collapse" aria-labelledby={`heading-${item.id}`} data-parent="#aboutAccordion">
+                  <div className="about-card-body multiline-text">
+                  { item.content }
+                  </div>
+                </div>
+              </div>
+            )) }
+          </div>
+
+          <div id="aboutRow" className="row">
             { about.map(item => (
               <div key={item.id} className="col-md-4 about-item">
                 <div className="details">
@@ -30,6 +82,7 @@ const About = ({ about, team }) => {
               </div>
             )) }
           </div>
+          </>
         </Section>
       </SubHeader>
 

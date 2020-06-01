@@ -122,7 +122,6 @@ const SearchAndFilters = ({type, onFilter, searchPlaceholder }) => {
 };
 
 SearchAndFilters.propTypes = {
-  categories: PropTypes.array.isRequired,
   type: PropTypes.string.isRequired,
   onFilter: PropTypes.func.isRequired,
   searchPlaceholder: PropTypes.string,
