@@ -75,7 +75,6 @@ const Event = ({ eventFromStore, socials, loadingBar, dispatch }) => {
         <div className="row">
           <div className="col-12">
             <div className="details-wrapper" style={{backgroundImage: `url(${event.theme_banner ? event.theme_banner : eventBg1})`}}>
-              {/* <div className="overlay" /> */}
               <div className="details">
                 <p className="event-category">{event.category}</p>
                 <p className="event-title">{event.title}</p>
@@ -87,6 +86,18 @@ const Event = ({ eventFromStore, socials, loadingBar, dispatch }) => {
           </div>
         </div>
       </Section>
+
+      <section className="header-mobile-section">
+        <div className="details-wrapper" style={{backgroundImage: `url(${event.theme_banner ? event.theme_banner : eventBg1})`}}>
+          <div className="overlay" />
+          <div className="details">
+            <p className="event-category">{event.category}</p>
+            <p className="event-title">{event.title}</p>
+            <p className="event-datetime">{moment.tz(event.datetime, 'Africa/Lagos').format("D MMMM YYYY, h:mm A z")}</p>
+          </div>
+          <div className="right-x"><BackgroundX /></div>
+        </div>
+      </section>
 
       <Section className="event-cta">
         <div className="cta-row">
