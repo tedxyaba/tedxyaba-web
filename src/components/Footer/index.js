@@ -82,8 +82,8 @@ const Footer = ({ data, dispatch }) => {
         <div className="col-md-3 other-links">
           <p className="row-title">OTHER LINKS</p>
           <ul>
-            <li><Link to="/">Contact</Link></li>
             <li><Link to="/">Privacy Policy</Link></li>
+            <li><Link to="/">Partners</Link></li>
           </ul>
         </div>
 
