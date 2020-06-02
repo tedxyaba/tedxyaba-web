@@ -83,7 +83,7 @@ const Footer = ({ data, dispatch }) => {
           <p className="row-title">OTHER LINKS</p>
           <ul>
             <li><Link to="/">Privacy Policy</Link></li>
-            <li><Link to="/">Partners</Link></li>
+            <li><a href="mailto:info@tedxyaba.com">Contact</a></li>
           </ul>
         </div>
 
