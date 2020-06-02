@@ -33,10 +33,23 @@
     .search {
       margin: 2rem auto;
     }
+
+    .search {
+      align-items: center;
+      display: flex;
+
+      &::after {
+        color: #ced0ce;
+        content: "\f002";
+        font-family: FontAwesome;
+        margin-left: -25px;
+      }
+    }
   }
 
   .form-control.search-input-control {
     @include input-form-control;
+    padding-right: 30px;
   }
 
   .is-searching {
