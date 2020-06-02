@@ -133,9 +133,7 @@
     z-index: 100;
 
     .cta-row {
-      align-items: center;
-      display: flex;
-      justify-content: space-between;
+      text-align: center;
 
       .cta-title {
         p { margin: 0; }
@@ -149,10 +147,25 @@
           @include headline-2-medium;
         }
       }
+
+      .cta-button {
+        margin-top: 1.25rem;
+      }
+
+      @media (min-width: 767.98px) {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        text-align: inherit;
+
+        .cta-button {
+          margin-top: 0;
+        }
+      }
     }
   }
 
-  .event-section-one {
+  .event-section {
     .e-speakers {
       margin-top: 4rem;
 
@@ -332,6 +345,24 @@
 
     .e-date-time {
       margin-bottom: 4rem;
+
+      .spacer {
+        display: none;
+      }
+
+      @media (max-width: 767.98px) {
+        text-align: center;
+
+        .e-dt-group {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+
+          .spacer {
+            display: inherit;
+          }
+        }
+      }
     }
 
     .e-location {
@@ -350,6 +381,16 @@
           &:hover {
             text-decoration: none;
           }
+        }
+      }
+
+      @media (max-width: 767.98px) {
+        text-align: center;
+
+        .e-loc-group {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-around;
         }
       }
     }

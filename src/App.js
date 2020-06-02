@@ -25,20 +25,23 @@ const App = ({ socials, dispatch }) => {
   })
 
   return (
-    <div className="App">
+    <div>
       <Router>
         <LoadingBar className="loading-bar" />
-        <Navbar />
 
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/about" component={About} />
-          <Route path="/events/:slug" component={Event} />
-          <Route path="/events" component={Events} />
-          <Route component={NotFound} />
-        </Switch>
+        <div className="App">
+          <Navbar />
 
-        <Footer data={socials} />
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/about" component={About} />
+            <Route path="/events/:slug" component={Event} />
+            <Route path="/events" component={Events} />
+            <Route component={NotFound} />
+          </Switch>
+
+          <Footer data={socials} />
+        </div>
       </Router>
     </div>
   );
