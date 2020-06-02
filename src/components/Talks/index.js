@@ -1,15 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './styles.scss';
 import Section from '../layout/Section';
 import { YoutubeThumbnail } from '../YoutubeEmbed';
 import moment from 'moment';
 import { YoutubeLogo } from '../../utils/images';
 import SearchAndFilters from '../SearchAndFilters';
+import Button from '../Button'
 
 const Talks = ({ talks }) => {
   const [filtered, setFiltered] = useState(null);
+  const [showCount, setShowCount] = useState(6);
 
-  const filterArrays = () => {
+  const checkViewport = () => {
+    if (window.innerWidth < 768) {
+      setShowCount(4)
+    } else {
+      setShowCount(6)
+    }
+  };
+
+  useEffect(() => {
+    checkViewport();
+  }, [])
+
+  useEffect(() => {
+    window.addEventListener('resize', checkViewport);
+    return () => window.removeEventListener('resize', checkViewport);
+  });
+
+  const filterTalks = (data) => {
+    checkViewport();
+    setFiltered(data);
+  };
+
+  const loadMore = () => {
+    const increment = window.innerWidth < 768 ? 4 : 6;
+    setShowCount(showCount + increment);
+  };
+
+  const filteredArrays = () => {
     if (filtered === null) return talks;
 
     return talks.filter(talk => {
@@ -21,7 +50,7 @@ const Talks = ({ talks }) => {
     <div className="talks">
       <SearchAndFilters
         type="talks"
-        onFilter={setFiltered}
+        onFilter={filterTalks}
         searchPlaceholder="Search talks..."
       />
 
@@ -33,7 +62,7 @@ const Talks = ({ talks }) => {
             </div>
           ) }
 
-          { filterArrays().map(talk => (
+          { filteredArrays().slice(0,showCount).map(talk => (
             <a href={talk.video_url} target="_blank" rel="noopener noreferrer" key={talk.id} className="item-col col-sm-6 col-md-6 col-lg-4">
               <div className="talk-item">
                 <div className="top-bar">
@@ -53,6 +82,17 @@ const Talks = ({ talks }) => {
               </div>
             </a>
           )) }
+
+          { (filteredArrays().length > 0 && showCount < filteredArrays().length) && (
+            <div className="col-12 mt-5 text-center">
+              <Button
+                type="button"
+                text="Load Past Talks"
+                btnType="primary"
+                onClick={loadMore}
+              />
+            </div>
+          )}
         </div>
       </Section>
     </div>
