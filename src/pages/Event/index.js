@@ -127,9 +127,9 @@ const Event = ({ eventFromStore, socials, loadingBar, dispatch }) => {
         </div>
       </Section>
 
-      <Section className="event-section-one">
+      <Section className="event-section">
         <div className="row">
-          <div className="col-md-7">
+          <div className="col-md-7 order-md-1 order-3">
             <div className="e-description">
               <p className="e-page-title">ABOUT THIS EVENT</p>
               <p className="event-description multiline-text">{event.description}</p>
@@ -191,7 +191,7 @@ const Event = ({ eventFromStore, socials, loadingBar, dispatch }) => {
             )) }
 
             { isNext() && event.partners.length > 0 && (
-              <div className="e-partners">
+              <div className="e-partners d-none d-md-block">
                 <p className="e-page-title">SPONSORS & PARTNERS</p>
 
                 <div className="partners-list">
@@ -215,14 +215,18 @@ const Event = ({ eventFromStore, socials, loadingBar, dispatch }) => {
             ) }
           </div>
 
-          <div className="col-md-1" />
+          <div className="col-md-1 order-md-2 order-2 mt-5" />
           
-          <div className="col-md-4">
+          <div className="col-md-4 order-md-3 order-1">
             { isNext() && (
               <div className="e-date-time">
                 <p className="e-page-title">Date And Time</p>
-                <p className="event-date">{moment(event.datetime).format('ddd, D MMMM, YYYY')}</p>
-                <p className="event-time">{moment.tz(event.datetime, 'Africa/Lagos').format('h:mm a z')}</p>
+
+                <div className="e-dt-group">
+                  <p className="event-date">{moment(event.datetime).format('ddd, D MMMM, YYYY')}</p>
+                  <p className="spacer">;&nbsp;</p>
+                  <p className="event-time">{moment.tz(event.datetime, 'Africa/Lagos').format('h:mm a z')}</p>
+                </div>
 
                 <Button
                   type="button-icon"
@@ -238,25 +242,25 @@ const Event = ({ eventFromStore, socials, loadingBar, dispatch }) => {
               <p className="e-page-title">LOCATION</p>
               <p className="event-location">{event.venue}</p>
 
-              { (isNext() && event.venue && event.venue.toLowerCase() !== 'virtual' ) && (
-                <>
-                <Button
-                  type="button-icon"
-                  text="View Map"
-                  onClick={() => openGoogleMap(event.venue)}
-                  btnType="map"
-                  icon={<img src={gMapPin} alt="" className="icon" />}
-                />
+              { (event.venue && event.venue.toLowerCase() !== 'virtual' ) && (
+                <div className="e-loc-group">
+                  <Button
+                    type="button-icon"
+                    text="View Map"
+                    onClick={() => openGoogleMap(event.venue)}
+                    btnType="map"
+                    icon={<img src={gMapPin} alt="" className="icon" />}
+                  />
 
-                <div className="my-3 use-lara">
-                  <LaraNg /> <a href="https://lara.ng/" target="_blank" rel="noopener noreferrer">Use Lara.ng</a>
+                  <div className="my-3 use-lara">
+                    <LaraNg /> <a href="https://lara.ng/" target="_blank" rel="noopener noreferrer">Use Lara.ng</a>
+                  </div>
                 </div>
-                </>
               )}
             </div>
 
             { isNext() || (event.partners.length > 0 && (
-              <div className="e-partners">
+              <div className="e-partners d-none d-md-block">
                 <p className="e-page-title">SPONSORS & PARTNERS</p>
 
                 <div className="partners-list">
@@ -278,6 +282,44 @@ const Event = ({ eventFromStore, socials, loadingBar, dispatch }) => {
                 />
               </div>
             )) }
+
+            <div className="e-share d-none d-md-block">
+              <p className="e-page-title">SHARE WITH FRIENDS</p>
+              <div className="icons">
+                <SocialIcons data={socials} size={2} />
+                <img src={shareIcon} alt="" className="share" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </Section>
+
+      <Section className="event-section d-block d-md-none">
+        <div className="row">
+          <div className="col-12">
+            { event.partners.length > 0 && (
+              <div className="e-partners">
+                <p className="e-page-title">SPONSORS & PARTNERS</p>
+
+                <div className="partners-list">
+                  { event.partners.map(partner => (
+                    <div key={partner.partner_name} className="partner-details" onClick={() => setPartner(partner)} data-toggle="modal" data-target="#eventPartnersSponsors">
+                      <div className="partner-image" style={{backgroundImage: `url(${partner.logo_url ? partner.logo_url : ''})`}} />
+                      <p className="speaker-name">{partner.partner_name}</p>
+                    </div>
+                  ))}
+                </div>
+
+                <PartnersModal
+                  id="eventPartnersSponsors"
+                  data={{
+                    image_url: partner.logo_url,
+                    url: partner.partner_link,
+                    bio: partner.partner_bio
+                  }}
+                />
+              </div>
+            ) }
 
             <div className="e-share">
               <p className="e-page-title">SHARE WITH FRIENDS</p>
