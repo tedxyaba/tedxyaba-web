@@ -14,8 +14,10 @@ import TalkHighlights from '../../assets/downloadableFiles/ConvergenceTalkHighli
 const LiveStream = () => {
   return (
     <div className="">
-      <img src={ThankYou} width="100%" />
       <div className="container">
+        <h2 class='pb-3'>TEDxYaba Convergence Live Stream</h2>
+        <iframe title='live-vid' width="100%" height="500" src="https://www.youtube.com/embed/nUsX2c0I_S8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
         <h4 className='pt-5'>About Convergence</h4>
         <hr align='left' className='mt-0' />
         <div>
