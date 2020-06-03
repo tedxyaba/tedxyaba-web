@@ -9,11 +9,12 @@ import { handleInitialData } from './actions';
 import LoadingBar from 'react-redux-loading-bar';
 
 // load pages
-import Home from '../src/pages/Home';
+import Home from './pages/Home';
 import Event from './pages/Event';
 import Events from './pages/Events';
-import About from '../src/pages/About';
-import NotFound from '../src/pages/NotFound';
+import About from './pages/About';
+import Register from './pages/Register';
+import NotFound from './pages/NotFound';
 
 // load components
 import Navbar from './components/Navbar';
@@ -37,6 +38,7 @@ const App = ({ socials, dispatch }) => {
             <Route path="/about" component={About} />
             <Route path="/events/:slug" component={Event} />
             <Route path="/events" component={Events} />
+            <Route path="/register" component={Register} />
             <Route component={NotFound} />
           </Switch>
 
