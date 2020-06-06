@@ -31,7 +31,7 @@ const About = ({ about, team }) => {
     <div className="about">
       <Header
         title="About"
-        subtitle="What is TEDxYaba? | Largest Technology Ecosystem | Inspiring Yaba Since 20??"
+        subtitle="What is TEDxYaba? | Largest Technology Ecosystem | Inspiring Yaba Since 2017"
       />
 
       <SubHeader className="about-list container-fluid">

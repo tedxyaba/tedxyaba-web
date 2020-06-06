@@ -5,17 +5,20 @@ import { YoutubeThumbnail } from '../YoutubeEmbed';
 import moment from 'moment';
 import { YoutubeLogo } from '../../utils/images';
 import SearchAndFilters from '../SearchAndFilters';
-import Button from '../Button'
+import Button from '../Button';
 
 const Talks = ({ talks }) => {
+  const desktop = 9;
+  const mobile = 6;
+
   const [filtered, setFiltered] = useState(null);
-  const [showCount, setShowCount] = useState(6);
+  const [showCount, setShowCount] = useState(desktop);
 
   const checkViewport = () => {
     if (window.innerWidth < 768) {
-      setShowCount(4)
+      setShowCount(mobile)
     } else {
-      setShowCount(6)
+      setShowCount(desktop)
     }
   };
 
@@ -34,7 +37,7 @@ const Talks = ({ talks }) => {
   };
 
   const loadMore = () => {
-    const increment = window.innerWidth < 768 ? 4 : 6;
+    const increment = window.innerWidth < 768 ? mobile : desktop;
     setShowCount(showCount + increment);
   };
 
