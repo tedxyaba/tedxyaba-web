@@ -14,7 +14,8 @@ const Home = ({ loading, about, talks }) => {
     <div className="page-container">
       <Header
         title="Welcome to TEDxYaba"
-        subtitle="Enjoy all our talks from inception"
+        subtitle="At Convergence, we had an opportunity to curate conversations that have the potential to catalyse change on the continent. Thank you for attending. Enjoy all the talks and more!"
+        // subtitle="Enjoy all our talks from inception"
         className="on-home"
       />
 
