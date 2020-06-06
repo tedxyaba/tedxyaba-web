@@ -228,13 +228,13 @@ const Event = ({ eventFromStore, socials, loadingBar, dispatch }) => {
                   <p className="event-time">{moment.tz(event.datetime, 'Africa/Lagos').format('h:mm a z')}</p>
                 </div>
 
-                <Button
+                {/* "Hide now till the functionality is done" <Button
                   type="button-icon"
                   text="Add to Calendar"
                   onClick={() => console.log('Add to calendar')}
                   btnType="calendar"
                   icon={<img src={gCalendar} alt="" className="icon" />}
-                />
+                /> */}
               </div>
             ) }
 

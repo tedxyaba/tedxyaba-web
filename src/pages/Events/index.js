@@ -12,14 +12,17 @@ import Loading from '../../components/Loading';
 import Button from '../../components/Button';
 
 const Events = ({ loading, events }) => {
+  const desktop = 9;
+  const mobile = 5;
+
   const [filtered, setFiltered] = useState(null);
-  const [showCount, setShowCount] = useState(9);
+  const [showCount, setShowCount] = useState(desktop);
 
   const checkViewport = () => {
     if (window.innerWidth < 768) {
-      setShowCount(3)
+      setShowCount(mobile)
     } else {
-      setShowCount(9)
+      setShowCount(desktop)
     }
   };
 
@@ -38,7 +41,7 @@ const Events = ({ loading, events }) => {
   };
 
   const loadMore = () => {
-    const increment = window.innerWidth < 768 ? 3 : 9;
+    const increment = window.innerWidth < 768 ? mobile : desktop;
     setShowCount(showCount + increment);
   };
 
