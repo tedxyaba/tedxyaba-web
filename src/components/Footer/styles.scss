@@ -42,6 +42,10 @@ footer {
       }
 
       form.newsletter-form {
+        .form-roww {
+          .form-status { display: none; }
+        }
+
         @media (min-width: 575.98px) and (max-width: 767.98px), (min-width: 1199.98px) {
           .form-roww {
             align-items: flex-end;
@@ -50,6 +54,9 @@ footer {
             .form-group {
               margin: 0;
             }
+
+            .form-status-wrapped { display: none; }
+            .form-status { display: block; }
           }
         }
 

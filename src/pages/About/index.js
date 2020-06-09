@@ -14,17 +14,14 @@ const About = ({ about, team }) => {
   const [person, setPerson] = useState({});
   const [accordionId, setAccordionId] = useState('');
 
-  const addClass = () => {
-    $(`#heading-${accordionId}`).addClass('is-open');
-  };
-
-  const removeClass = () => {
-    $(`#heading-${accordionId}`).removeClass('is-open');
-  };
-
   useEffect(() => {
-    $(`#collapse-${accordionId}`).on('show.bs.collapse', addClass)
-    $(`#collapse-${accordionId}`).on('hide.bs.collapse', removeClass)
+    $(`#collapse-${accordionId}`).on('show.bs.collapse', () => {
+      $(`#heading-${accordionId}`).addClass('is-open');
+    });
+
+    $(`#collapse-${accordionId}`).on('hide.bs.collapse', () => {
+      $(`#heading-${accordionId}`).removeClass('is-open');
+    });
   }, [accordionId]);
 
   return (

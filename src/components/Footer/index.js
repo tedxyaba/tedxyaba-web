@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './styles.scss';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import moment from 'moment';
 import { navbarLogo } from '../../utils/images';
 import SocialIcons from '../SocialIcons';
@@ -65,7 +65,9 @@ const Footer = ({ data, dispatch }) => {
                     onChange={e => setEmail(e.target.value)}
                   />
                 </div>
-                { response && <small className={response[0]}>{ response[1] }</small>}
+                <div className="form-status-wrapped mb-3">
+                  { response && <small className={response[0]}>{ response[1] }</small>}
+                </div>
               </div>
 
               <div>
@@ -74,6 +76,12 @@ const Footer = ({ data, dispatch }) => {
                   text="Subscribe"
                   btnType="primary"
                 />
+              </div>
+            </div>
+
+            <div className="form-roww mt-3">
+              <div className="form-status">
+                { response && <small className={response[0]}>{ response[1] }</small>}
               </div>
             </div>
           </form>
