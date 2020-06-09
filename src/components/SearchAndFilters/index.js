@@ -36,18 +36,18 @@ const SearchAndFilters = ({type, onFilter, searchPlaceholder }) => {
     return data
   };
 
-  const filterData = async (search, year, category) => {
+  const filterData = async () => {
     setSearching(true);
 
     const params = {
-      event_year: year && year.value,
-      category: category && category.value
+      event_year: sortYear && sortYear.value,
+      category: sortCategory && sortCategory.value
     };
 
     if (type === 'events') {
-      params.event_title = search
+      params.event_title = searchText
     } else {
-      params.query = search
+      params.query = searchText
     }
 
     const filters = cleanData(params);
@@ -66,13 +66,13 @@ const SearchAndFilters = ({type, onFilter, searchPlaceholder }) => {
   const onSearchKeyDown = (e) => {
     setSearchText(e.target.value);
     if (e.key === 'Enter') {
-      filterData(searchText, sortYear, sortCategory)
+      filterData()
     }
-  }
+  };
 
   useEffect(() => {
     if (sortCategory || sortYear) {
-      filterData(searchText, sortYear, sortCategory)
+      filterData()
     }
   }, [sortCategory, sortYear])
 
