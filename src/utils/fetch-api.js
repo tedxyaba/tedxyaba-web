@@ -3,6 +3,7 @@ const BASE_URL = 'https://tedxyaba.herokuapp.com';
 let headers = new Headers();
 
 headers.append('Accept', 'application/json');
+headers.append('Content-Type', 'application/json');
 
 const fetchApi = {
   getData(endpoint='', params = {}) {
@@ -34,7 +35,7 @@ const buildUrl = (base, endpoint, params = {}) => {
     }
   }
 
-  return `${base}${endpoint}.json${query}`
+  return `${base}${endpoint}${query}`
 };
 
 export const fetchInitialData = () => {
