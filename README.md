@@ -14,7 +14,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 `npm install` or `yarn install`
 
 ### Run the app locally
-`npm run start-dev` or `yarn start-dev` <br>
+`npm run start` or `yarn start` <br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.
