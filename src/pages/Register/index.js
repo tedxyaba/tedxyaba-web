@@ -1,35 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import moment from 'moment';
 import Section from '../../components/layout/Section';
 import withScrollToTop from '../withScrollToTop';
-import { showLoading, hideLoading } from 'react-redux-loading-bar';
-import fetchApi from '../../utils/fetch-api';
 import Loading from '../../components/Loading';
 
 // <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScpKrMTWwJKTnyjxUF5zA9CmezwKqolRZVuxIDSkmnKIR54yA/viewform?embedded=true" width="640" height="1498" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
 
-const Register = ({ futureEvents, loadingBar, dispatch }) => {
-  const [futureEvent, setFutureEvent] = useState({});
+const Register = ({ futureEvents, loadingBar }) => {
+  const event = futureEvents[0];
 
-  // useEffect(() => {
-  //   if (futureEvents[0]) {
-  //     async function fetchFutureEvent () {
-  //       dispatch(showLoading());
-
-  //       try {
-  //         const response = await fetchApi.getData(`/events/${futureEvents[0].id}`)
-  //         const data = await response.json();
-  //         setFutureEvent(data);
-  //         dispatch(hideLoading());
-  //       } catch (error) {
-  //         dispatch(hideLoading());
-  //         console.log('Error fetching future event for register with id:', futureEvents[0].id)
-  //       }
-  //     }
-  //     fetchFutureEvent()
-  //   }
-  // }, []);
+  const somethingCool = () => {
+    console.log('form loaded');
+    // let iframee = document.getElementsByClassName('freebirdLightBackground');
+    // console.log(iframee)
+  }
 
   if (loadingBar.default > 0) {
     return (
@@ -37,17 +23,33 @@ const Register = ({ futureEvents, loadingBar, dispatch }) => {
     )
   }
 
-  if (loadingBar.default === 0 && !Object.keys(futureEvent).length) {
+  console.log(futureEvents)
+
+  if (event && Object.keys(event).length > 0) {
+    return (
+      <iframe
+        title={event.title}
+        src={event.registration_link}
+        width="100%"
+        height="500"
+        frameBorder="0"
+        marginHeight="0"
+        marginWidth="0"
+        onLoad={somethingCool}>
+
+        Loading…
+      </iframe>
+    )
+  } else {
     return (
       <Section className="text-center">
-        <p className="loading-text">No Upcoming Events</p>
+        <>
+        <p className="loading-text">Registration Closed</p>
+        <p><Link to='/'>Watch Inspiring Talks</Link></p>
+        </>
       </Section>
     )
   }
-
-  return (
-    <div>register</div>
-  )
 };
 
 const isFutureEvent = (event) => {
