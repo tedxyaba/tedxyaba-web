@@ -8,8 +8,6 @@ import Events from './pages/Events';
 import Event from './pages/Event';
 import InnovationLounge from './pages/InnovationLounge';
 import Contact from './pages/Contact';
-import CustomRoute from './pages/CustomRoute';
-import LiveStream from './pages/LiveStream';
 import NotFound from './pages/NotFound';
 
 // load components
@@ -28,8 +26,6 @@ function App() {
           <Route path="/events" component={Events} />
           <Route path="/innovation-lounge" component={InnovationLounge} />
           <Route path="/contact" component={Contact} />
-          <Route path="/register" component={CustomRoute} />
-          <Route path="/live" component={LiveStream} />
           <Route component={NotFound} />
         </Switch>
       </BrowserRouter>
