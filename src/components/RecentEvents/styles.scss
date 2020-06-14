@@ -44,10 +44,13 @@ header.recent-events {
       text-align: center;
 
       @media (min-width: 767.98px) {
-        height: calc(100vh - 70px);
         padding: 150px 20px 250px;
         text-align: left;
         width: 50%;
+      }
+
+      @media (min-width: 767.98px) and (max-width: 1000px) {
+        width: 70%;
       }
     }
 

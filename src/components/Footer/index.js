@@ -7,10 +7,10 @@ import SocialIcons from '../SocialIcons';
 import Button from '../Button';
 import { connect } from 'react-redux';
 import fetchApi from '../../utils/fetch-api';
-import { showLoading, hideLoading } from 'react-redux-loading-bar';
 
 const Footer = ({ data, dispatch }) => {
   const [email, setEmail] = useState('');
+  const [loading, setLoading] = useState(false);
   const [formInvalid, setFormInvalid] = useState({
     email: false
   })
@@ -21,28 +21,38 @@ const Footer = ({ data, dispatch }) => {
 
     if (!email) {
       setFormInvalid(state => ({...state, email: true}));
+      setResponse(['fail', 'Your email address is required!']);
       return;
-    }
-
-    dispatch(showLoading());
-
-    try {
-      const response = await fetchApi.postData('post', '/newsletter_subscriptions', {email});
-      // const data = await response.json();
-
-      if (response.status < 300) {
-        setResponse(['success', 'Thank you. You’ve been added to the list!']);
-        setEmail('');
-      } else {
-        // setResponse(['fail', data[0]])
-        setResponse(['fail', `"${email}" is already subscribed to our list`]);
-        setFormInvalid(state => ({...state, email: true}));
+    } else {
+      if (formInvalid.email && response !== null) {
+        setFormInvalid(state => ({...state, email: false}));
+        setResponse(null)
       }
 
-      dispatch(hideLoading());
-    } catch (error) {
-      dispatch(hideLoading());
-      setResponse(['fail', 'Subscription to newsletter failed, please try again.'])
+      setLoading(true);
+
+      try {
+        const response = await fetchApi.postData('post', '/newsletter_subscriptions', {email});
+        const data = await response.json();
+
+        if (response.status < 300) {
+          setResponse(['success', 'Thank you. You’ve been added to the list!']);
+          setEmail('');
+        } else {
+          setFormInvalid(state => ({...state, email: true}));
+
+          if (data[0] === 'Email has already been taken') {
+            setResponse(['fail', `"${email}" is already subscribed to our list`]);
+          } else {
+            setResponse(['fail', data[0]])
+          }
+        }
+
+        setLoading(false);
+      } catch (error) {
+        setLoading(false);
+        setResponse(['fail', 'Subscription to newsletter failed, please try again.'])
+      }
     }
   }
 
@@ -64,6 +74,7 @@ const Footer = ({ data, dispatch }) => {
                     value={email}
                     onChange={e => setEmail(e.target.value)}
                   />
+                  {loading && <span className="spinner-grow" role="status" /> }
                 </div>
                 <div className="form-status-wrapped mb-3">
                   { response && <small className={response[0]}>{ response[1] }</small>}
