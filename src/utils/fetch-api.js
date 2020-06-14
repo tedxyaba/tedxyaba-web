@@ -1,4 +1,4 @@
-const BASE_URL = 'https://tedxyaba.herokuapp.com';
+console.log('BASE_URL:: ', process.env.NODE_ENV, process.env.REACT_APP_API_BASE_URL)
 
 let headers = new Headers();
 
@@ -7,13 +7,13 @@ headers.append('Content-Type', 'application/json');
 
 const fetchApi = {
   getData(endpoint='', params = {}) {
-    return fetch(buildUrl(BASE_URL, endpoint, params), {
+    return fetch(buildUrl(endpoint, params), {
       mode: "cors",
       headers: headers
     })
   },
   postData(method, endpoint = '', payload={}, params = {}) {
-    return fetch(buildUrl(BASE_URL, endpoint, params), {
+    return fetch(buildUrl(endpoint, params), {
       method: method.toUpperCase(),
       mode: "cors",// no-cors, cors, *same-origin
       cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
@@ -23,7 +23,7 @@ const fetchApi = {
   },
 };
 
-const buildUrl = (base, endpoint, params = {}) => {
+const buildUrl = (endpoint, params = {}) => {
   let query = '';
 
   if (Object.keys(params).length > 0) {
@@ -35,7 +35,7 @@ const buildUrl = (base, endpoint, params = {}) => {
     }
   }
 
-  return `${base}${endpoint}${query}`
+  return `${process.env.REACT_APP_API_BASE_URL}${endpoint}${query}`
 };
 
 export const fetchInitialData = () => {
