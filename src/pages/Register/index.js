@@ -1,20 +1,21 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import moment from 'moment';
 import Section from '../../components/layout/Section';
 import withScrollToTop from '../withScrollToTop';
 import Loading from '../../components/Loading';
 
-// <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScpKrMTWwJKTnyjxUF5zA9CmezwKqolRZVuxIDSkmnKIR54yA/viewform?embedded=true" width="640" height="1498" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+const Register = ({ eventFromStore, futureEvents, loadingBar }) => {
+  const [loadingForm, setLoadingForm] = useState(true);
+  let event = futureEvents[0];
 
-const Register = ({ futureEvents, loadingBar }) => {
-  const event = futureEvents[0];
+  if (eventFromStore && isFutureEvent(eventFromStore)) {
+    event = eventFromStore;
+  }
 
-  const somethingCool = () => {
-    console.log('form loaded');
-    // let iframee = document.getElementsByClassName('freebirdLightBackground');
-    // console.log(iframee)
+  const formLoaded = () => {
+    setLoadingForm(false);
   }
 
   if (loadingBar.default > 0) {
@@ -23,22 +24,24 @@ const Register = ({ futureEvents, loadingBar }) => {
     )
   }
 
-  console.log(futureEvents)
-
   if (event && Object.keys(event).length > 0) {
     return (
+      <>
+      { loadingForm && <div className="my-2 text-center">
+        Please wait...
+      </div> }
+
       <iframe
         title={event.title}
         src={event.registration_link}
         width="100%"
-        height="500"
+        height="1000"
         frameBorder="0"
         marginHeight="0"
         marginWidth="0"
-        onLoad={somethingCool}>
-
-        Loading…
+        onLoad={formLoaded}>
       </iframe>
+      </>
     )
   } else {
     return (
@@ -58,13 +61,18 @@ const isFutureEvent = (event) => {
   return sameOrAfter
 };
 
-const mapStateToProps = ({ events, loadingBar }) => {
+const mapStateToProps = ({ events, loadingBar }, {match}) => {
   const futureEvents = events.filter(event => isFutureEvent(event));
+  const { slug } = match.params;
 
   return {
+    eventFromStore: events.find(e => e.slug === slug),
     futureEvents,
     loadingBar,
   }
 };
 
-export default withScrollToTop(connect(mapStateToProps)(Register));
+export default withScrollToTop(
+  withRouter(
+    connect(
+      mapStateToProps)(Register)));

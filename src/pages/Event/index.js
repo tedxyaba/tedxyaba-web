@@ -109,11 +109,9 @@ const Event = ({ eventFromStore, socials, loadingBar, dispatch }) => {
           <div className="cta-button">
             { isNext() ? (
               <Button
-                type="link-external"
+                type="link"
                 text="Register"
-                href={event.registration_link}
-                target="_blank"
-                rel="noopener noreferrer"
+                linkTo={`/register/${event.slug}`}
                 btnType="primary"
               />
             ) : (
@@ -345,4 +343,7 @@ const mapStateToProps = ({ events, socials, loadingBar }, { match }) => {
   }
 }
 
-export default withScrollToTop(withRouter(connect(mapStateToProps)(Event)));
+export default withScrollToTop(
+  withRouter(
+    connect(
+      mapStateToProps)(Event)));
