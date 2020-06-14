@@ -10,6 +10,10 @@ header.recent-events {
   background-size: cover;
   position: relative;
 
+  @media (min-width: 767.98px) {
+    height: 930px;
+  }
+
   .big-x {
     position: absolute;
     bottom: 0;
@@ -44,7 +48,7 @@ header.recent-events {
       text-align: center;
 
       @media (min-width: 767.98px) {
-        padding: 150px 20px 250px;
+        padding: 100px 20px 250px;
         text-align: left;
         width: 50%;
       }

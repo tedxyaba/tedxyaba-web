@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Section from '../../components/layout/Section';
 import Button from '../../components/Button';
 import moment from 'moment-timezone';
-import { LaraNg, gCalendar, gMapPin, shareIcon, eventBg1, YoutubeLogo } from '../../utils/images';
+import { LaraNg, gMapPin, shareIcon, eventBg1, YoutubeLogo } from '../../utils/images';
 import SocialIcons from '../../components/SocialIcons';
 import withScrollToTop from '../withScrollToTop';
 import { withRouter } from 'react-router-dom';

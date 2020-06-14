@@ -8,6 +8,7 @@ const RecentEvents = ({ events }) => {
   const [listSettings, setListSettings] = useState({count: 6, col: 'col-md-2'});
   const [width, setWidth] = useState();
   const headerBg = currentEvent && currentEvent.theme_banner ? currentEvent.theme_banner : eventBg1;
+  const truncateAt = currentEvent.title && currentEvent.title.length < 25 ? 200 : 100;
 
   const checkViewport = () => {
     setWidth(window.innerWidth)
@@ -47,7 +48,7 @@ const RecentEvents = ({ events }) => {
           <div className="content">
             <p className="main-category">{currentEvent.category || <span>&nbsp;</span>}</p>
             <p className="main-title">{currentEvent.title}</p>
-            <p className="main-description">{currentEvent.description.split('.')[0]}.</p>
+            <p className="main-description">{currentEvent.description.substring(0,truncateAt)}&hellip;</p>
 
             <Button
               type="link"
