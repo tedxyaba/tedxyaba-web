@@ -19,8 +19,6 @@ import defaultData from './utils/default-data';
 
 const store = createStore(reducers, defaultData, middleware);
 
-console.log("store:: ", store.getState())
-
 ReactDOM.render(
   <Provider store={store}>
     <App />
