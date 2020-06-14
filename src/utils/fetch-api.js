@@ -1,5 +1,3 @@
-console.log('BASE_URL:: ', process.env.NODE_ENV, process.env.REACT_APP_API_BASE_URL)
-
 let headers = new Headers();
 
 headers.append('Accept', 'application/json');
