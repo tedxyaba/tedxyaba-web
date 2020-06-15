@@ -108,7 +108,7 @@ const About = ({ about, team }) => {
       <PersonModal
         id="teamProfileModal"
         person={{
-          image_url: person.image_url,
+          image_url: person.image_url || defaultPerson,
           name: `${ person.first_name } ${ person.last_name }`,
           linkedin_url: person.linkedin_url,
           twitter_handle: person.twitter_handle,

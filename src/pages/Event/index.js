@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Section from '../../components/layout/Section';
 import Button from '../../components/Button';
 import moment from 'moment-timezone';
-import { LaraNg, gMapPin, shareIcon, eventBg1, YoutubeLogo } from '../../utils/images';
+import { LaraNg, gMapPin, shareIcon, eventBg1, YoutubeLogo, defaultPerson } from '../../utils/images';
 import SocialIcons from '../../components/SocialIcons';
 import withScrollToTop from '../withScrollToTop';
 import { withRouter } from 'react-router-dom';
@@ -140,7 +140,7 @@ const Event = ({ eventFromStore, socials, loadingBar, dispatch }) => {
                 <div className="speakers-list">
                   { event.speakers.map(speaker => (
                     <div key={speaker.id} className="speaker-details" onClick={() => setSpeaker(speaker)} data-toggle="modal" data-target="#eventSpeakerProfile">
-                      <div className="speaker-image" style={{backgroundImage: `url(${speaker.image_url ? speaker.image_url : ''})`}} />
+                      <div className="speaker-image" style={{backgroundImage: `url(${speaker.image_url || defaultPerson})`}} />
                       <p className="speaker-name">{speaker.speaker_name}</p>
                     </div>
                   ))}
@@ -149,7 +149,7 @@ const Event = ({ eventFromStore, socials, loadingBar, dispatch }) => {
                 <PersonModal
                   id="eventSpeakerProfile"
                   person={{
-                    image_url: speaker.image_url,
+                    image_url: speaker.image_url || defaultPerson,
                     name: speaker.speaker_name,
                     linkedin_url: speaker.speaker_linkedin_url,
                     twitter_handle: speaker.speaker_twitter_handle,
@@ -269,15 +269,6 @@ const Event = ({ eventFromStore, socials, loadingBar, dispatch }) => {
                     </div>
                   ))}
                 </div>
-
-                <PartnersModal
-                  id="eventPartnersSponsors"
-                  data={{
-                    image_url: partner.logo_url,
-                    url: partner.partner_link,
-                    bio: partner.partner_bio
-                  }}
-                />
               </div>
             )) }
 
@@ -307,15 +298,6 @@ const Event = ({ eventFromStore, socials, loadingBar, dispatch }) => {
                     </div>
                   ))}
                 </div>
-
-                <PartnersModal
-                  id="eventPartnersSponsors"
-                  data={{
-                    image_url: partner.logo_url,
-                    url: partner.partner_link,
-                    bio: partner.partner_bio
-                  }}
-                />
               </div>
             ) }
 
@@ -329,6 +311,15 @@ const Event = ({ eventFromStore, socials, loadingBar, dispatch }) => {
           </div>
         </div>
       </Section>
+
+      <PartnersModal
+        id="eventPartnersSponsors"
+        data={{
+          image_url: partner.logo_url,
+          url: partner.partner_link,
+          bio: partner.partner_bio
+        }}
+      />
     </div>
   )
 };

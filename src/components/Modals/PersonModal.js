@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './styles.scss';
 import PropTypes from 'prop-types';
 import Icon from 'react-web-vector-icons';
 import { defaultPerson } from '../../utils/images';
 
 const PersonModal = ({ id, person }) => {
+  const [error, onError] = useState(false);
+
   return (
     <div className="modal tedxyaba-modal fade" id={id} tabIndex="-1" role="dialog" aria-labelledby={`${id}Title`} aria-hidden="true">
       <div className="modal-dialog modal-lg" role="document">
         <div className="modal-content">
-          <div className="modal-header" style={{backgroundImage: `url(${person.image_url ? person.image_url : ''})`}}>
+          <div className="modal-header" style={{backgroundImage: `url(${person.image_url})`}}>
             <div className="m-h-overlay" />
             <div className="modal-controls">
               <button type="button" className="close" data-dismiss="modal" aria-label="Close">
@@ -24,8 +26,9 @@ const PersonModal = ({ id, person }) => {
 
             <div className="person-image">
               <img
-                src={person.image_url || defaultPerson}
+                src={error ? defaultPerson : person.image_url}
                 alt="person-img"
+                onError={() => onError(true)}
               />
             </div>
           </div>
