@@ -4,7 +4,7 @@ import {ReactComponent as BackgroundX} from '../assets/images/TEDxYaba/X.svg';
 import {ReactComponent as BigX} from '../assets/images/TEDxYaba/big-X.svg';
 import {ReactComponent as AndelaLogo} from '../assets/images/andela.svg';
 import defaultImage from '../assets/images/default-image.png';
-import defaultPerson from '../assets/images/default-person.png';
+import defaultPerson from '../assets/images/image-default.png';
 import teamSamplePhoto from '../assets/images/team-sample-photo.png';
 import {ReactComponent as LaraNg} from '../assets/images/lara-ng.svg';
 import gMapPin from '../assets/images/google-map-pin.png';
