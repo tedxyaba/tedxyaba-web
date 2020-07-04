@@ -19,12 +19,12 @@ const Home = ({ loading, about, talks }) => {
         className="on-home"
       />
 
-      { loading ? <Loading text=" " /> : (
-          <>
-          <TalksPlayer talks={talks} />
-          <Talks talks={talks} />
-          </>
-        )}
+      { loading ? <Loading text="Please wait..." /> : (
+        <>
+        <TalksPlayer talks={talks} />
+        <Talks talksData={talks} />
+        </>
+      )}
 
       {/* <Section className="row home-about">
         <>

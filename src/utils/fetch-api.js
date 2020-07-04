@@ -1,3 +1,5 @@
+import { TALKS_PER_PAGE } from "./configs";
+
 let headers = new Headers();
 
 headers.append('Accept', 'application/json');
@@ -39,7 +41,7 @@ const buildUrl = (endpoint, params = {}) => {
 export const fetchInitialData = () => {
   return Promise.all([
     fetchApi.getData('/events'),
-    fetchApi.getData('/talks'),
+    fetchApi.getData('/talks', {filters: {per_page: TALKS_PER_PAGE}}),
     fetchApi.getData('/teams'),
     fetchApi.getData('/partners'),
   ])

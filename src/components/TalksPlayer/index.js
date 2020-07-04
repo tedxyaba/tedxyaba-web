@@ -18,7 +18,7 @@ const TalksPlayer = ({ talks }) => {
   }
 
   useEffect(() => {
-    setActiveTalk(talks[0])
+    setActiveTalk(talks.talks && talks.talks[0])
   }, [talks])
 
   useEffect(() => {
@@ -29,9 +29,9 @@ const TalksPlayer = ({ talks }) => {
     }
   })
 
-  const sliceTalks = () => talks.slice(0,6);
+  const sliceTalks = () => talks.talks.slice(0,6);
 
-  const currentIndex = () => talks.findIndex(item => item.id === activeTalk.id);
+  const currentIndex = () => talks.talks.findIndex(item => item.id === activeTalk.id);
 
   const onSetActiveTalk = (talk) => {
     setOnPause(false);
@@ -39,11 +39,11 @@ const TalksPlayer = ({ talks }) => {
   }
 
   const playPrev = () => {
-    onSetActiveTalk(talks[currentIndex()-1])
+    onSetActiveTalk(talks.talks[currentIndex()-1])
   };
 
   const playNext = () => {
-    onSetActiveTalk(talks[currentIndex()+1])
+    onSetActiveTalk(talks.talks[currentIndex()+1])
   }
 
   const pausePlayer = () => {

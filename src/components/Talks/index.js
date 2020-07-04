@@ -5,40 +5,21 @@ import { YoutubeThumbnail } from '../YoutubeEmbed';
 import moment from 'moment';
 import { YoutubeLogo } from '../../utils/images';
 import SearchAndFilters from '../SearchAndFilters';
-import Button from '../Button';
+import Paginate from '../Paginate';
+import { handleMoreTalks, setCurrentPage } from '../../actions/talks';
+import { connect } from 'react-redux';
+import { TALKS_PER_PAGE } from '../../utils/configs';
 
-const Talks = ({ talks }) => {
-  const desktop = 9;
-  const mobile = 6;
-
+const Talks = ({ talksData, dispatch }) => {
+  const [talks, setTalks] = useState([]);
   const [filtered, setFiltered] = useState(null);
-  const [showCount, setShowCount] = useState(desktop);
-
-  const checkViewport = () => {
-    if (window.innerWidth < 768) {
-      setShowCount(mobile)
-    } else {
-      setShowCount(desktop)
-    }
-  };
 
   useEffect(() => {
-    checkViewport();
-  }, [])
-
-  useEffect(() => {
-    window.addEventListener('resize', checkViewport);
-    return () => window.removeEventListener('resize', checkViewport);
-  });
+    setTalks(talksData[talksData.current_page])
+  }, [talksData])
 
   const filterTalks = (data) => {
-    checkViewport();
     setFiltered(data);
-  };
-
-  const loadMore = () => {
-    const increment = window.innerWidth < 768 ? mobile : desktop;
-    setShowCount(showCount + increment);
   };
 
   const filteredArrays = () => {
@@ -48,6 +29,16 @@ const Talks = ({ talks }) => {
       return filtered.findIndex(f => f.id === talk.id) >= 0;
     })
   };
+
+  const onLoadMoreTalks = (page) => {
+    setTalks(talksData[page])
+    
+    if (talksData[page]) {
+      dispatch(setCurrentPage(page))
+    } else {
+      dispatch(handleMoreTalks(page))
+    }
+  }
 
   return (
     <div className="talks">
@@ -65,7 +56,7 @@ const Talks = ({ talks }) => {
             </div>
           ) }
 
-          { filteredArrays().slice(0,showCount).map(talk => (
+          { filteredArrays().map(talk => (
             <a href={talk.video_url} target="_blank" rel="noopener noreferrer" key={talk.id} className="item-col col-sm-6 col-md-6 col-lg-4">
               <div className="talk-item">
                 <div className="top-bar">
@@ -86,13 +77,14 @@ const Talks = ({ talks }) => {
             </a>
           )) }
 
-          { (filteredArrays().length > 0 && showCount < filteredArrays().length) && (
-            <div className="col-12 mt-5 text-center">
-              <Button
-                type="button"
-                text="Load Past Talks"
-                btnType="primary"
-                onClick={loadMore}
+          { filteredArrays().length > 0 && (
+            <div className="col-12 mt-5">
+              <Paginate
+                total={talksData.total_count}
+                currentPage={talksData.current_page}
+                perPage={TALKS_PER_PAGE }
+                onPrev={onLoadMoreTalks}
+                onNext={onLoadMoreTalks}
               />
             </div>
           )}
@@ -102,4 +94,4 @@ const Talks = ({ talks }) => {
   )
 };
 
-export default Talks;
+export default connect()(Talks);
