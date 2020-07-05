@@ -9,7 +9,6 @@ export default function talks (state = {}, action) {
   switch (action.type) {
     case RECEIVE_TALKS:
       return {
-        ...state,
         ...action.talks,
         current_page: action.talks.page_count,
         [action.talks.page_count]: action.talks.talks

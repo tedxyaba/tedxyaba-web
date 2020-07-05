@@ -6,35 +6,28 @@ import moment from 'moment';
 import { YoutubeLogo } from '../../utils/images';
 import SearchAndFilters from '../SearchAndFilters';
 import Paginate from '../Paginate';
-import { handleMoreTalks, setCurrentPage } from '../../actions/talks';
+import { handleMoreTalks, setCurrentPage, handleSearchAndFilterTalks } from '../../actions/talks';
 import { connect } from 'react-redux';
 import { TALKS_PER_PAGE } from '../../utils/configs';
 
 const Talks = ({ talksData, dispatch }) => {
   const [talks, setTalks] = useState([]);
-  const [filtered, setFiltered] = useState(null);
+  const [filterParams, setFilterParams] = useState({});
 
   useEffect(() => {
     setTalks(talksData[talksData.current_page])
   }, [talksData])
 
-  const filterTalks = (data) => {
-    setFiltered(data);
-  };
-
-  const filteredArrays = () => {
-    if (filtered === null) return talks;
-
-    return talks.filter(talk => {
-      return filtered.findIndex(f => f.id === talk.id) >= 0;
-    })
+  const filterTalks = (params) => {
+    setFilterParams(params);
+    dispatch(handleSearchAndFilterTalks(params))
   };
 
   const onLoadMoreTalks = (page) => {
     if (talksData[page]) {
       dispatch(setCurrentPage(page))
     } else {
-      dispatch(handleMoreTalks(page))
+      dispatch(handleMoreTalks(page, filterParams))
     }
   }
 
@@ -48,13 +41,13 @@ const Talks = ({ talksData, dispatch }) => {
 
       <Section className="all-talks">
         <div className="row">
-          { (filtered && filtered.length === 0) && (
+          { talks.length === 0 && (
             <div className="col-md-12 no-results">
               <p>No talks found for your filters criteria.</p>
             </div>
           ) }
 
-          { filteredArrays().map(talk => (
+          { talks.map(talk => (
             <a href={talk.video_url} target="_blank" rel="noopener noreferrer" key={talk.id} className="item-col col-sm-6 col-md-6 col-lg-4">
               <div className="talk-item">
                 <div className="top-bar">
@@ -75,16 +68,18 @@ const Talks = ({ talksData, dispatch }) => {
             </a>
           )) }
 
-          <div className="col-12 mt-5">
-            <Paginate
-              total={talksData.total_count || 0}
-              currentPage={talksData.current_page || 0}
-              perPage={TALKS_PER_PAGE}
-              onPrev={onLoadMoreTalks}
-              onNext={onLoadMoreTalks}
-              loading={talksData.loading}
-            />
-          </div>
+          { talks.length > 0 && (
+            <div className="col-12 mt-5">
+              <Paginate
+                total={talksData.total_count || 0}
+                currentPage={talksData.current_page || 0}
+                perPage={TALKS_PER_PAGE}
+                onPrev={onLoadMoreTalks}
+                onNext={onLoadMoreTalks}
+                loading={talksData.loading}
+              />
+            </div>
+          )}
 
         </div>
       </Section>

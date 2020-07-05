@@ -21,7 +21,7 @@ const Home = ({ loading, about, talks }) => {
 
       { loading ? <Loading text="Please wait..." /> : (
         <>
-        <TalksPlayer talks={talks} />
+        {/* <TalksPlayer talks={talks} /> */}
         <Talks talksData={talks} />
         </>
       )}

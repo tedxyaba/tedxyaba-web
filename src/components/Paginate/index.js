@@ -13,7 +13,7 @@ const Paginate = ({ total, perPage, onPrev, currentPage, onNext, loading }) => {
 
   useEffect(() => {
     setCurrent(currentPage)
-  }, [])
+  }, [currentPage])
 
   const onLeftClick = () => {
     const prev = current - 1;

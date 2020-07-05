@@ -23,7 +23,8 @@ const fetchApi = {
   },
 };
 
-const buildUrl = (endpoint, params = {}) => {
+const buildUrl = (endpoint, p = {}) => {
+  const params = {filters: p};
   let query = '';
 
   if (Object.keys(params).length > 0) {
@@ -41,7 +42,7 @@ const buildUrl = (endpoint, params = {}) => {
 export const fetchInitialData = () => {
   return Promise.all([
     fetchApi.getData('/events'),
-    fetchApi.getData('/talks', {filters: {per_page: TALKS_PER_PAGE}}),
+    fetchApi.getData('/talks', {per_page: TALKS_PER_PAGE}),
     fetchApi.getData('/teams'),
     fetchApi.getData('/partners'),
   ])

@@ -6,7 +6,7 @@ import SelectDropdown from '../SelectDropdown';
 import fetchApi from '../../utils/fetch-api';
 
 const SearchAndFilters = ({type, onFilter, searchPlaceholder }) => {
-  const [searching, setSearching] = useState(false);
+  // const [searching, setSearching] = useState(false);
   const [sortCategory, setSortCategory] = useState(null);
   const [sortYear, setSortYear] = useState(null);
   const [searchText, setSearchText] = useState('');
@@ -37,7 +37,7 @@ const SearchAndFilters = ({type, onFilter, searchPlaceholder }) => {
   };
 
   const filterData = async () => {
-    setSearching(true);
+    // setSearching(true);
 
     const params = {
       event_year: sortYear && sortYear.value,
@@ -52,15 +52,17 @@ const SearchAndFilters = ({type, onFilter, searchPlaceholder }) => {
 
     const filters = cleanData(params);
 
-    try {
-      const response = await fetchApi.getData(`/${type}`, {filters});
-      const data = await response.json();
-      if (onFilter) onFilter(data);
-      setSearching(false);
-    } catch (error) {
-      setSearching(false);
-      console.log(`Error filtering ${type}.`, error)
-    }
+    onFilter(filters)
+
+    // try {
+    //   const response = await fetchApi.getData(`/${type}`, filters);
+    //   const data = await response.json();
+    //   if (onFilter) onFilter(data);
+    //   setSearching(false);
+    // } catch (error) {
+    //   setSearching(false);
+    //   console.log(`Error filtering ${type}.`, error)
+    // }
   };
 
   const onSearchKeyDown = (e) => {
@@ -113,9 +115,9 @@ const SearchAndFilters = ({type, onFilter, searchPlaceholder }) => {
           </div>
         </div>
 
-        { searching && <div className="col-md-12">
+        {/* { searching && <div className="col-md-12">
           <div className="is-searching spinner-grow" role="status" />
-        </div>}
+        </div>} */}
       </div>
     </SubHeader>
   )

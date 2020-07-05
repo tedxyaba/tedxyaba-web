@@ -28,25 +28,42 @@ function receiveMoreTalks (next) {
   }
 }
 
-function loadingMoreTalks (state) {
+function loadingTalks (state) {
   return {
     type: LOADING_MORE_TALKS,
     state
   }
 }
 
-export const handleMoreTalks = (page) => {
+export const handleSearchAndFilterTalks = (params) => {
   return async (dispatch) => {
-    dispatch(loadingMoreTalks(true));
+    dispatch(loadingTalks(true));
 
     try {
-      const talks = await fetchApi.getData('/talks', {filters: {per_page: TALKS_PER_PAGE, page_count: page}})
+      const talks = await fetchApi.getData('/talks', {per_page: TALKS_PER_PAGE, ...params})
+      const talksData = await talks.json();
+
+      dispatch(receiveTalks(talksData));
+      dispatch(loadingTalks(false));
+    } catch (error) {
+      dispatch(loadingTalks(false));
+      console.log(`Error filtering talks!, ${error}`)
+    }
+  }
+}
+
+export const handleMoreTalks = (page, params) => {
+  return async (dispatch) => {
+    dispatch(loadingTalks(true));
+
+    try {
+      const talks = await fetchApi.getData('/talks', {per_page: TALKS_PER_PAGE, page_count: page, ...params});
       const talksData = await talks.json();
 
       dispatch(receiveMoreTalks(talksData));
-      dispatch(loadingMoreTalks(false));
+      dispatch(loadingTalks(false));
     } catch (error) {
-      dispatch(loadingMoreTalks(false));
+      dispatch(loadingTalks(false));
       console.log(`Error fetching next page!, ${error}`)
     }
   }
