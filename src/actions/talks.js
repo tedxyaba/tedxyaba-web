@@ -1,9 +1,9 @@
 import {
   RECEIVE_TALKS,
   RECEIVE_MORE_TALKS,
+  LOADING_MORE_TALKS,
   SET_CURRENT_TALKS_PAGE,
 } from './constants';
-import { showLoading, hideLoading } from 'react-redux-loading-bar';
 import fetchApi from '../utils/fetch-api';
 import { TALKS_PER_PAGE } from '../utils/configs';
 
@@ -28,18 +28,25 @@ function receiveMoreTalks (next) {
   }
 }
 
+function loadingMoreTalks (state) {
+  return {
+    type: LOADING_MORE_TALKS,
+    state
+  }
+}
+
 export const handleMoreTalks = (page) => {
   return async (dispatch) => {
-    dispatch(showLoading());
+    dispatch(loadingMoreTalks(true));
 
     try {
       const talks = await fetchApi.getData('/talks', {filters: {per_page: TALKS_PER_PAGE, page_count: page}})
       const talksData = await talks.json();
 
       dispatch(receiveMoreTalks(talksData));
-      dispatch(hideLoading());
+      dispatch(loadingMoreTalks(false));
     } catch (error) {
-      dispatch(hideLoading());
+      dispatch(loadingMoreTalks(false));
       console.log(`Error fetching next page!, ${error}`)
     }
   }

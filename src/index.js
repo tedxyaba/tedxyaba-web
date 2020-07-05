@@ -1,5 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
+import 'three-dots/sass/three-dots.scss';
 
 // These can be imported and used, commenting out till when needed.
 // import $ from 'jquery';

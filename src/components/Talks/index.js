@@ -31,8 +31,6 @@ const Talks = ({ talksData, dispatch }) => {
   };
 
   const onLoadMoreTalks = (page) => {
-    setTalks(talksData[page])
-    
     if (talksData[page]) {
       dispatch(setCurrentPage(page))
     } else {
@@ -77,17 +75,17 @@ const Talks = ({ talksData, dispatch }) => {
             </a>
           )) }
 
-          { filteredArrays().length > 0 && (
-            <div className="col-12 mt-5">
-              <Paginate
-                total={talksData.total_count}
-                currentPage={talksData.current_page}
-                perPage={TALKS_PER_PAGE }
-                onPrev={onLoadMoreTalks}
-                onNext={onLoadMoreTalks}
-              />
-            </div>
-          )}
+          <div className="col-12 mt-5">
+            <Paginate
+              total={talksData.total_count || 0}
+              currentPage={talksData.current_page || 0}
+              perPage={TALKS_PER_PAGE}
+              onPrev={onLoadMoreTalks}
+              onNext={onLoadMoreTalks}
+              loading={talksData.loading}
+            />
+          </div>
+
         </div>
       </Section>
     </div>

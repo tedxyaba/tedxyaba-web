@@ -2,6 +2,7 @@ import {
   RECEIVE_TALKS,
   RECEIVE_MORE_TALKS,
   SET_CURRENT_TALKS_PAGE,
+  LOADING_MORE_TALKS,
 } from "../actions/constants"
 
 export default function talks (state = {}, action) {
@@ -20,13 +21,16 @@ export default function talks (state = {}, action) {
         current_page: action.next.page_count,
         [action.next.page_count]: action.next.talks,
         talks: state.talks.concat(action.next.talks)
-        // talks: state.talks.concat(action.next.talks),
-        // total_count: action.
       }
     case SET_CURRENT_TALKS_PAGE:
       return {
         ...state,
         current_page: action.page
+      }
+    case LOADING_MORE_TALKS:
+      return {
+        ...state,
+        loading: action.state
       }
     default:
       return state
