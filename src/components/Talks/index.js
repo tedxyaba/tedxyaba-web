@@ -80,7 +80,6 @@ const Talks = ({ talksData, dispatch }) => {
               />
             </div>
           )}
-
         </div>
       </Section>
     </div>

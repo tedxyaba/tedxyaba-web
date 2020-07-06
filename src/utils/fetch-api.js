@@ -1,4 +1,4 @@
-import { TALKS_PER_PAGE } from "./configs";
+import { TALKS_PER_PAGE, EVENTS_PER_PAGE } from "./configs";
 
 let headers = new Headers();
 
@@ -41,7 +41,7 @@ const buildUrl = (endpoint, p = {}) => {
 
 export const fetchInitialData = () => {
   return Promise.all([
-    fetchApi.getData('/events'),
+    fetchApi.getData('/events', {per_page: EVENTS_PER_PAGE}),
     fetchApi.getData('/talks', {per_page: TALKS_PER_PAGE}),
     fetchApi.getData('/teams'),
     fetchApi.getData('/partners'),

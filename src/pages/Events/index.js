@@ -9,55 +9,44 @@ import SearchAndFilters from '../../components/SearchAndFilters';
 import moment from 'moment';
 import { eventBg1 } from '../../utils/images';
 import Loading from '../../components/Loading';
-import Button from '../../components/Button';
+import Paginate from '../../components/Paginate';
+import { EVENTS_PER_PAGE } from '../../utils/configs';
+import { handleSearchAndFilterEvents, setCurrentPage, handleMoreEvents } from '../../actions/events';
 
-const Events = ({ loading, events }) => {
-  const desktop = 9;
-  const mobile = 5;
-
-  const [filtered, setFiltered] = useState(null);
-  const [showCount, setShowCount] = useState(desktop);
-
-  const checkViewport = () => {
-    if (window.innerWidth < 768) {
-      setShowCount(mobile)
-    } else {
-      setShowCount(desktop)
-    }
-  };
+const Events = ({ loading, eventsData, dispatch }) => {
+  const [events, setEvents] = useState([]);
+  const [filterParams, setFilterParams] = useState({});
 
   useEffect(() => {
-    checkViewport();
-  }, [])
+    setEvents(sortEvents(eventsData[eventsData.current_page]))
+  }, [eventsData])
 
-  useEffect(() => {
-    window.addEventListener('resize', checkViewport);
-    return () => window.removeEventListener('resize', checkViewport);
-  });
-
-  const filterEvents = (data) => {
-    checkViewport();
-    setFiltered(data);
-  };
-
-  const loadMore = () => {
-    const increment = window.innerWidth < 768 ? mobile : desktop;
-    setShowCount(showCount + increment);
-  };
-
-  const filteredArrays = () => {
-    if (filtered === null) return events;
-
-    return events.filter(event => {
-      return filtered.findIndex(e => e.id === event.id) >= 0;
+  const sortEvents = (events) => {
+    return events && events.sort((a, b) => {
+      if (moment(a.datetime).isAfter(b.datetime)) return -1
+      if (moment(a.datetime).isBefore(b.datetime)) return 1
+      return 0;
     })
+  }
+
+  const onEventsPaginate = (page) => {
+    if (eventsData[page]) {
+      dispatch(setCurrentPage(page))
+    } else {
+      dispatch(handleMoreEvents(page, filterParams))
+    }
+  }
+
+  const filterEvents = (params) => {
+    setFilterParams(params);
+    dispatch(handleSearchAndFilterEvents(params))
   };
 
   return (
     <div className="events">
       { loading ? <Loading /> : (
         <>
-        <RecentEvents events={events} />
+        <RecentEvents events={eventsData.recent_events || []} />
 
         <SearchAndFilters
           type="events"
@@ -67,13 +56,13 @@ const Events = ({ loading, events }) => {
 
         <Section className="event-list">
           <div className="row">
-          { (filtered && filtered.length === 0) && (
+          { events.length === 0 && (
             <div className="col-md-12 no-results">
               <p>No events found for your filters criteria.</p>
             </div>
           ) }
 
-            { filteredArrays().slice(0,showCount).map(event => (
+            { events.map(event => (
               <div key={event.id} className="event col-md-4">
                 <Link to={`/events/${event.slug}`} className="event-link">
                   <div className="event-content-wrapper" style={{backgroundImage: `url(${event.theme_banner ? event.theme_banner : eventBg1})`}}>
@@ -88,13 +77,15 @@ const Events = ({ loading, events }) => {
               </div>
             )) }
 
-            { (filteredArrays().length > 0 && showCount < filteredArrays().length) && (
-              <div className="col-12 mt-5 text-center">
-                <Button
-                  type="button"
-                  text="Load Past Events"
-                  btnType="primary"
-                  onClick={loadMore}
+            { events.length > 0 && (
+              <div className="col-12 mt-5">
+                <Paginate
+                  total={eventsData.total_count || 0}
+                  currentPage={eventsData.current_page || 0}
+                  perPage={EVENTS_PER_PAGE}
+                  onPrev={onEventsPaginate}
+                  onNext={onEventsPaginate}
+                  loading={eventsData.loading}
                 />
               </div>
             )}
@@ -109,11 +100,7 @@ const Events = ({ loading, events }) => {
 const mapStateToProps = ({ loadingBar, events }) => {
   return {
     loading: loadingBar.default > 0,
-    events: events.sort((a, b) => {
-      if (moment(a.datetime).isAfter(b.datetime)) return -1
-      if (moment(a.datetime).isBefore(b.datetime)) return 1
-      return 0;
-    })
+    eventsData: events
   }
 }
 

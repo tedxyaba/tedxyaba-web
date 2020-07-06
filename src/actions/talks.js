@@ -1,8 +1,9 @@
 import {
   RECEIVE_TALKS,
   RECEIVE_MORE_TALKS,
-  LOADING_MORE_TALKS,
+  LOADING_TALKS,
   SET_CURRENT_TALKS_PAGE,
+  RECEIVE_FILTERED_TALKS,
 } from './constants';
 import fetchApi from '../utils/fetch-api';
 import { TALKS_PER_PAGE } from '../utils/configs';
@@ -21,6 +22,13 @@ export function receiveTalks (talks) {
   }
 }
 
+function receiveFilteredTalks (talks) {
+  return {
+    type: RECEIVE_FILTERED_TALKS,
+    talks
+  }
+}
+
 function receiveMoreTalks (next) {
   return {
     type: RECEIVE_MORE_TALKS,
@@ -30,7 +38,7 @@ function receiveMoreTalks (next) {
 
 function loadingTalks (state) {
   return {
-    type: LOADING_MORE_TALKS,
+    type: LOADING_TALKS,
     state
   }
 }
@@ -43,7 +51,7 @@ export const handleSearchAndFilterTalks = (params) => {
       const talks = await fetchApi.getData('/talks', {per_page: TALKS_PER_PAGE, ...params})
       const talksData = await talks.json();
 
-      dispatch(receiveTalks(talksData));
+      dispatch(receiveFilteredTalks(talksData));
       dispatch(loadingTalks(false));
     } catch (error) {
       dispatch(loadingTalks(false));
@@ -64,7 +72,7 @@ export const handleMoreTalks = (page, params) => {
       dispatch(loadingTalks(false));
     } catch (error) {
       dispatch(loadingTalks(false));
-      console.log(`Error fetching next page!, ${error}`)
+      console.log(`Error fetching talks next page!, ${error}`)
     }
   }
 }

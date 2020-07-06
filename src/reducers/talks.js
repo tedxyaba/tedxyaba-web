@@ -2,7 +2,8 @@ import {
   RECEIVE_TALKS,
   RECEIVE_MORE_TALKS,
   SET_CURRENT_TALKS_PAGE,
-  LOADING_MORE_TALKS,
+  LOADING_TALKS,
+  RECEIVE_FILTERED_TALKS,
 } from "../actions/constants"
 
 export default function talks (state = {}, action) {
@@ -10,6 +11,14 @@ export default function talks (state = {}, action) {
     case RECEIVE_TALKS:
       return {
         ...action.talks,
+        recent_talks: action.talks.talks,
+        current_page: action.talks.page_count,
+        [action.talks.page_count]: action.talks.talks
+      }
+    case RECEIVE_FILTERED_TALKS:
+      return {
+        ...action.talks,
+        recent_talks: state.recent_talks,
         current_page: action.talks.page_count,
         [action.talks.page_count]: action.talks.talks
       }
@@ -26,7 +35,7 @@ export default function talks (state = {}, action) {
         ...state,
         current_page: action.page
       }
-    case LOADING_MORE_TALKS:
+    case LOADING_TALKS:
       return {
         ...state,
         loading: action.state
