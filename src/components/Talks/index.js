@@ -5,49 +5,31 @@ import { YoutubeThumbnail } from '../YoutubeEmbed';
 import moment from 'moment';
 import { YoutubeLogo } from '../../utils/images';
 import SearchAndFilters from '../SearchAndFilters';
-import Button from '../Button';
+import Paginate from '../Paginate';
+import { handleMoreTalks, setCurrentPage, handleSearchAndFilterTalks } from '../../actions/talks';
+import { connect } from 'react-redux';
+import { TALKS_PER_PAGE } from '../../utils/configs';
 
-const Talks = ({ talks }) => {
-  const desktop = 9;
-  const mobile = 6;
+const Talks = ({ talksData, dispatch }) => {
+  const [talks, setTalks] = useState([]);
+  const [filterParams, setFilterParams] = useState({});
 
-  const [filtered, setFiltered] = useState(null);
-  const [showCount, setShowCount] = useState(desktop);
+  useEffect(() => {
+    setTalks(talksData[talksData.current_page])
+  }, [talksData])
 
-  const checkViewport = () => {
-    if (window.innerWidth < 768) {
-      setShowCount(mobile)
+  const filterTalks = (params) => {
+    setFilterParams(params);
+    dispatch(handleSearchAndFilterTalks(params))
+  };
+
+  const onLoadMoreTalks = (page) => {
+    if (talksData[page]) {
+      dispatch(setCurrentPage(page))
     } else {
-      setShowCount(desktop)
+      dispatch(handleMoreTalks(page, filterParams))
     }
-  };
-
-  useEffect(() => {
-    checkViewport();
-  }, [])
-
-  useEffect(() => {
-    window.addEventListener('resize', checkViewport);
-    return () => window.removeEventListener('resize', checkViewport);
-  });
-
-  const filterTalks = (data) => {
-    checkViewport();
-    setFiltered(data);
-  };
-
-  const loadMore = () => {
-    const increment = window.innerWidth < 768 ? mobile : desktop;
-    setShowCount(showCount + increment);
-  };
-
-  const filteredArrays = () => {
-    if (filtered === null) return talks;
-
-    return talks.filter(talk => {
-      return filtered.findIndex(f => f.id === talk.id) >= 0;
-    })
-  };
+  }
 
   return (
     <div className="talks">
@@ -59,13 +41,13 @@ const Talks = ({ talks }) => {
 
       <Section className="all-talks">
         <div className="row">
-          { (filtered && filtered.length === 0) && (
+          { talks.length === 0 && (
             <div className="col-md-12 no-results">
               <p>No talks found for your filters criteria.</p>
             </div>
           ) }
 
-          { filteredArrays().slice(0,showCount).map(talk => (
+          { talks.map(talk => (
             <a href={talk.video_url} target="_blank" rel="noopener noreferrer" key={talk.id} className="item-col col-sm-6 col-md-6 col-lg-4">
               <div className="talk-item">
                 <div className="top-bar">
@@ -86,13 +68,15 @@ const Talks = ({ talks }) => {
             </a>
           )) }
 
-          { (filteredArrays().length > 0 && showCount < filteredArrays().length) && (
-            <div className="col-12 mt-5 text-center">
-              <Button
-                type="button"
-                text="Load Past Talks"
-                btnType="primary"
-                onClick={loadMore}
+          { talks.length > 0 && (
+            <div className="col-12 mt-5">
+              <Paginate
+                total={talksData.total_count || 0}
+                currentPage={talksData.current_page || 0}
+                perPage={TALKS_PER_PAGE}
+                onPrev={onLoadMoreTalks}
+                onNext={onLoadMoreTalks}
+                loading={talksData.loading}
               />
             </div>
           )}
@@ -102,4 +86,4 @@ const Talks = ({ talks }) => {
   )
 };
 
-export default Talks;
+export default connect()(Talks);

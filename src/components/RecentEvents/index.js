@@ -8,7 +8,7 @@ const RecentEvents = ({ events }) => {
   const [listSettings, setListSettings] = useState({count: 6, col: 'col-md-2'});
   const [width, setWidth] = useState();
   const headerBg = currentEvent && currentEvent.theme_banner ? currentEvent.theme_banner : eventBg1;
-  const truncateAt = currentEvent.title && currentEvent.title.length < 25 ? 200 : 100;
+  const truncateAt = currentEvent && currentEvent.title && currentEvent.title.length < 25 ? 200 : 100;
 
   const checkViewport = () => {
     setWidth(window.innerWidth)

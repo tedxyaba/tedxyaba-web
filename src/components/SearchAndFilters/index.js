@@ -3,10 +3,8 @@ import './styles.scss';
 import PropTypes from 'prop-types';
 import SubHeader from '../layout/SubHeader';
 import SelectDropdown from '../SelectDropdown';
-import fetchApi from '../../utils/fetch-api';
 
 const SearchAndFilters = ({type, onFilter, searchPlaceholder }) => {
-  const [searching, setSearching] = useState(false);
   const [sortCategory, setSortCategory] = useState(null);
   const [sortYear, setSortYear] = useState(null);
   const [searchText, setSearchText] = useState('');
@@ -37,8 +35,6 @@ const SearchAndFilters = ({type, onFilter, searchPlaceholder }) => {
   };
 
   const filterData = async () => {
-    setSearching(true);
-
     const params = {
       event_year: sortYear && sortYear.value,
       category: sortCategory && sortCategory.value
@@ -50,17 +46,7 @@ const SearchAndFilters = ({type, onFilter, searchPlaceholder }) => {
       params.query = searchText
     }
 
-    const filters = cleanData(params);
-
-    try {
-      const response = await fetchApi.getData(`/${type}`, {filters});
-      const data = await response.json();
-      if (onFilter) onFilter(data);
-      setSearching(false);
-    } catch (error) {
-      setSearching(false);
-      console.log(`Error filtering ${type}.`, error)
-    }
+    onFilter(cleanData(params))
   };
 
   const onSearchKeyDown = (e) => {
@@ -112,10 +98,6 @@ const SearchAndFilters = ({type, onFilter, searchPlaceholder }) => {
             />
           </div>
         </div>
-
-        { searching && <div className="col-md-12">
-          <div className="is-searching spinner-grow" role="status" />
-        </div>}
       </div>
     </SubHeader>
   )

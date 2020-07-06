@@ -16,9 +16,9 @@ const about = [
   }
 ];
 
-const events = [];
+const events = {};
 
-const talks = [];
+const talks = {};
 
 const team = [
   {
