@@ -83,8 +83,7 @@ const Events = ({ loading, eventsData, dispatch }) => {
                   total={eventsData.total_count || 0}
                   currentPage={eventsData.current_page || 0}
                   perPage={EVENTS_PER_PAGE}
-                  onPrev={onEventsPaginate}
-                  onNext={onEventsPaginate}
+                  onPageChange={onEventsPaginate}
                   loading={eventsData.loading}
                 />
               </div>
