@@ -11,58 +11,170 @@
   display: flex;
   justify-content: center;
   margin: 20px auto;
+  padding: 0px;
 
-  .main {
-    align-items: center;
-    background: rgba(#474350, 0.3);
-    border-radius: 20px;
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    margin: 0 10px;
-    padding: 7px 18px;
+  // .main {
+  //   align-items: center;
+  //   background: rgba(#474350, 0.3);
+  //   border-radius: 20px;
+  //   color: #fff;
+  //   display: flex;
+  //   justify-content: center;
+  //   margin: 0 10px;
+  //   padding: 7px 18px;
 
-    .page {
+  //   .page {
+  //     @include button;
+  //     border-radius: 5px;
+  //     margin: 0 5px;
+  //     padding: 4px 10px;
+  //     transition: all ease-in-out 0.25s;
+
+  //     &:not(.dots):hover {
+  //       background: rgba(#474350, 0.4);
+  //       cursor: pointer;
+  //     }
+
+  //     &.current {
+  //       background-color: $primary;
+  //     }
+  //   }
+  // }
+
+  // .ctrl {
+  //   align-items: center;
+  //   background: rgba(#474350, 0.3);
+  //   border: none;
+  //   border-radius: 20px;
+  //   display: flex;
+  //   height: 40px;
+  //   justify-content: center;
+  //   width: 40px;
+  //   transition: all ease-in-out 0.25s;
+
+  //   &:not(:disabled):hover {
+  //     background: rgba(#474350, 0.5);
+  //     cursor: pointer;
+  //   }
+
+  //   &:focus {
+  //     outline: none;
+  //   }
+
+  //   &:disabled {
+  //     i {
+  //       color: #fff !important;
+  //     }
+  //   }
+  // }
+
+  li {
+    list-style: none;
+
+    &.page {
       @include button;
-      border-radius: 5px;
-      margin: 0 5px;
-      padding: 4px 10px;
-      transition: all ease-in-out 0.25s;
+      background: rgba(#474350, 0.3);
+      color: #fff;
+      padding: 5.5px 6px;
 
-      &:not(.dots):hover {
-        background: rgba(#474350, 0.4);
-        cursor: pointer;
+      a.page-link {
+        background: transparent;
+        border: none;
+        border-radius: 5px;
+        padding: 6px 10px;
+        transition: all ease-in-out 0s;
+
+        &:hover {
+          background: rgba(#474350, 0.4);
+          cursor: pointer;
+        }
       }
 
       &.current {
-        background-color: $primary;
+        a.page-link {
+          background-color: $primary;
+
+          &:focus {
+            box-shadow: none;
+          }
+        }
       }
     }
-  }
 
-  .ctrl {
-    align-items: center;
-    background: rgba(#474350, 0.3);
-    border: none;
-    border-radius: 20px;
-    display: flex;
-    height: 40px;
-    justify-content: center;
-    width: 40px;
-    transition: all ease-in-out 0.25s;
-
-    &:not(:disabled):hover {
-      background: rgba(#474350, 0.5);
-      cursor: pointer;
+    &:nth-child(2) {
+      border-top-left-radius: 20px;
+      border-bottom-left-radius: 20px;
+      padding-left: 20px;
     }
 
-    &:focus {
-      outline: none;
+    &:nth-last-child(2) {
+      border-top-right-radius: 20px;
+      border-bottom-right-radius: 20px;
+      padding-right: 20px;
     }
 
-    &:disabled {
-      i {
-        color: #fff !important;
+    &.dots {
+      @include button;
+      background: rgba(#474350, 0.3);
+      color: #fff;
+      padding: 9.5px 6px;
+
+      a {
+        background: transparent;
+        border: none;
+
+        &:hover {
+          background: transparent;
+          cursor: pointer;
+        }
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+
+    &.ctrl {
+      align-items: center;
+      background: rgba(#474350, 0.3);
+      border: none;
+      border-radius: 20px;
+      display: flex;
+      height: 40px;
+      justify-content: center;
+      width: 40px;
+      transition: all ease-in-out 0.25s;
+
+      a {
+        &:focus {
+          outline: none;
+        }
+      }
+
+      &:not(:disabled):hover {
+        background: rgba(#474350, 0.5);
+        cursor: pointer;
+      }
+
+      &.disabled {
+        background: rgba(#474350, 0.3);
+
+        &:hover {
+          background: rgba(#474350, 0.3);
+          cursor: default;
+        }
+
+        a i {
+          color: #fff !important;
+        }
+      }
+
+      &.p-left {
+        margin-right: 10px;
+      }
+
+      &.p-right {
+        margin-left: 10px;
       }
     }
   }

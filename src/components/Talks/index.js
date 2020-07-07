@@ -74,8 +74,7 @@ const Talks = ({ talksData, dispatch }) => {
                 total={talksData.total_count || 0}
                 currentPage={talksData.current_page || 0}
                 perPage={TALKS_PER_PAGE}
-                onPrev={onLoadMoreTalks}
-                onNext={onLoadMoreTalks}
+                onPageChange={onLoadMoreTalks}
                 loading={talksData.loading}
               />
             </div>

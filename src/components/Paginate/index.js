@@ -2,34 +2,24 @@ import React, { useState, useEffect } from 'react';
 import './styles.scss';
 import PropTypes from 'prop-types';
 import Icon from 'react-web-vector-icons';
+import ReactPaginate from 'react-paginate';
 
 const range = (start, stop, step) => (
   Array.from({ length: (stop - start) / step + 1}, (_, i) => start + (i * step))
 );
 
-const Paginate = ({ total, perPage, onPrev, currentPage, onNext, loading }) => {
-  const [current, setCurrent] = useState(1);
+const Paginate = ({ total, perPage, onPageChange, currentPage, loading }) => {
+  const [current, setCurrent] = useState(0);
   const pages = Math.ceil(total/perPage)
 
   useEffect(() => {
     setCurrent(currentPage)
   }, [currentPage])
 
-  const onLeftClick = () => {
-    const prev = current - 1;
-    setCurrent(prev)
-    onPrev(prev)
-  }
-
-  const onRightClick = () => {
-    const next = current + 1;
-    setCurrent(next)
-    onNext(next)
-  }
-
-  const onPageClick = (page) => {
+  const onPageClick = (selector) => {
+    const page = selector.selected + 1
     setCurrent(page)
-    onNext(page)
+    onPageChange(page)
   }
 
   return (
@@ -39,7 +29,41 @@ const Paginate = ({ total, perPage, onPrev, currentPage, onNext, loading }) => {
         <div className="dot-carousel" />
       </div>
     )}
-    <div className="paginate">
+
+    <ReactPaginate
+      previousLabel={
+        <Icon
+          font="Entypo"
+          name="chevron-thin-left"
+          color="#0a0a0a"
+          size={20}
+        />
+      }
+      nextLabel={
+        <Icon
+          font="Entypo"
+          name="chevron-thin-right"
+          color="#0a0a0a"
+          size={20}
+        />
+      }
+      breakLabel="&hellip;"
+      breakClassName={'dots'}
+      pageCount={pages}
+      marginPagesDisplayed={1}
+      pageRangeDisplayed={2}
+      initialPage={current}
+      onPageChange={onPageClick}
+      containerClassName={'paginate'}
+      pageClassName={'page'}
+      pageLinkClassName={'page-link'}
+      activeClassName={'current'}
+      previousClassName={'ctrl p-left'}
+      nextClassName={'ctrl p-right'}
+    />
+
+
+    {/* <div className="paginate">
       <button className="ctrl p-left" disabled={current <= 1} onClick={onLeftClick}>
         <Icon
           font="Entypo"
@@ -80,7 +104,7 @@ const Paginate = ({ total, perPage, onPrev, currentPage, onNext, loading }) => {
           size={20}
         />
       </button>
-    </div>
+    </div> */}
     </>
   )
 }
@@ -88,9 +112,8 @@ const Paginate = ({ total, perPage, onPrev, currentPage, onNext, loading }) => {
 Paginate.propTypes = {
   total: PropTypes.number.isRequired,
   perPage: PropTypes.number.isRequired,
-  onPrev: PropTypes.func.isRequired,
+  onPageChange: PropTypes.func.isRequired,
   currentPage: PropTypes.number.isRequired,
-  onNext: PropTypes.func.isRequired,
   loading: PropTypes.bool,
 };
 
