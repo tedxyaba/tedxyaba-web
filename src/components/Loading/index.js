@@ -6,7 +6,8 @@ const Loading = ({ text }) => {
   return (
     <Section className="page-loading text-center">
       <>
-      <div className="spinner-grow" role="status" />
+      <div className="loading-text dot-carousel" role="loading" />
+      {/* <div className="spinner-grow" role="status" /> */}
       <p className="loading-text">{text || 'Loading...'}</p>
       </>
     </Section>
