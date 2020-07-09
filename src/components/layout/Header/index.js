@@ -4,9 +4,9 @@ import './styles.scss';
 import Section from '../Section';
 import { BackgroundX } from '../../../utils/images';
 
-const Header = ({ title, subtitle, className }) => {
+const Header = ({ id, title, subtitle, className }) => {
   return (
-    <Section className={`page-header ${className}`}>
+    <Section id={id} className={`page-header ${className}`}>
       <>
       <div className="content">
         <h1 className="title">{ title }</h1>
@@ -23,6 +23,7 @@ Header.propTypes = {
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string,
   className: PropTypes.string,
+  id: PropTypes.string,
 };
 
 export default Header;

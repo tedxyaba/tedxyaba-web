@@ -13,6 +13,7 @@ import { TALKS_PER_PAGE } from '../../utils/configs';
 const Talks = ({ talksData, dispatch }) => {
   const [talks, setTalks] = useState([]);
   const [filterParams, setFilterParams] = useState({});
+  const [initialScrollTo, setInitialScrollTo] = useState(0);
 
   useEffect(() => {
     setTalks(talksData[talksData.current_page])
@@ -23,7 +24,25 @@ const Talks = ({ talksData, dispatch }) => {
     dispatch(handleSearchAndFilterTalks(params))
   };
 
+  const scrollToTop = (page) => {
+    const headerId = document.getElementById('home-header');
+    const talksPlayerId = document.getElementById('talks-player');
+    let scrollToPoint = 0;
+
+    if (initialScrollTo === 0 && page === 1) {
+      setInitialScrollTo(null)
+      scrollToPoint = 0
+    } else {
+      scrollToPoint = headerId.scrollHeight + talksPlayerId.scrollHeight;
+    }
+
+    document.body.scrollTop = scrollToPoint; // For Safari
+    document.documentElement.scrollTop = scrollToPoint; // For Chrome, Firefox, IE and Opera
+  }
+
   const onLoadMoreTalks = (page) => {
+    scrollToTop(page)
+
     if (talksData[page]) {
       dispatch(setCurrentPage(page))
     } else {
@@ -41,6 +60,12 @@ const Talks = ({ talksData, dispatch }) => {
 
       <Section className="all-talks">
         <div className="row">
+          {talksData.loading && (
+            <div className="col-md-12 loading-dots mb-3">
+              <div className="dot-carousel" />
+            </div>
+          )}
+
           { talks.length === 0 && (
             <div className="col-md-12 no-results">
               <p>No talks found for your filters criteria.</p>
