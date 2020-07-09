@@ -58,7 +58,7 @@ const TalksPlayer = ({ talks }) => {
   }
 
   return (
-    <Section className="talks-player">
+    <Section id="talks-player" className="talks-player">
       <div className="content">
         <div className="main-talk row">
           { (!isPlaying) && (

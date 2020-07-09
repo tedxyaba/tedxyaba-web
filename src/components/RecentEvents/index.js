@@ -40,7 +40,7 @@ const RecentEvents = ({ events }) => {
 
   if (currentEvent && Object.keys(currentEvent).length > 0) {
     return (
-      <header className="recent-events container-fluid" style={{backgroundImage: `url(${headerBg})`}}>
+      <header id="events-page-header" className="recent-events container-fluid" style={{backgroundImage: `url(${headerBg})`}}>
         <div className="big-x"><BigX /></div>
         <div className="event-top-overlay" />
 

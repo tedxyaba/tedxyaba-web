@@ -16,6 +16,7 @@ import { handleSearchAndFilterEvents, setCurrentPage, handleMoreEvents } from '.
 const Events = ({ loading, eventsData, dispatch }) => {
   const [events, setEvents] = useState([]);
   const [filterParams, setFilterParams] = useState({});
+  const [initialScrollTo, setInitialScrollTo] = useState(0);
 
   useEffect(() => {
     setEvents(sortEvents(eventsData[eventsData.current_page]))
@@ -29,7 +30,24 @@ const Events = ({ loading, eventsData, dispatch }) => {
     })
   }
 
+  const scrollToTop = (page) => {
+    const headerId = document.getElementById('events-page-header');
+    let scrollToPoint = 0;
+
+    if (initialScrollTo === 0 && page === 1) {
+      setInitialScrollTo(null)
+      scrollToPoint = 0
+    } else {
+      scrollToPoint = headerId.scrollHeight
+    }
+
+    document.body.scrollTop = scrollToPoint; // For Safari
+    document.documentElement.scrollTop = scrollToPoint; // For Chrome, Firefox, IE and Opera
+  }
+
   const onEventsPaginate = (page) => {
+    scrollToTop(page)
+
     if (eventsData[page]) {
       dispatch(setCurrentPage(page))
     } else {
@@ -56,6 +74,12 @@ const Events = ({ loading, eventsData, dispatch }) => {
 
         <Section className="event-list">
           <div className="row">
+          {eventsData.loading && (
+            <div className="col-md-12 loading-dots mb-3">
+              <div className="dot-carousel" />
+            </div>
+          )}
+
           { events.length === 0 && (
             <div className="col-md-12 no-results">
               <p>No events found for your filters criteria.</p>

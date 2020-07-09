@@ -2,15 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './styles.scss';
 
-const Section = ({ children, className }) => {
+const Section = ({ id, children, className }) => {
   return (
-    <section className={`page-section container-fluid ${className || ''}`}>
+    <section id={id} className={`page-section container-fluid ${className || ''}`}>
       {children}
     </section>
   )
 }
 
 Section.propTypes = {
+  id: PropTypes.string,
   className: PropTypes.string,
   children: PropTypes.element.isRequired
 }
