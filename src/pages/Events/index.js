@@ -64,7 +64,7 @@ const Events = ({ loading, eventsData, dispatch }) => {
     <div className="events">
       { loading ? <Loading /> : (
         <>
-        <RecentEvents events={eventsData.recent_events || []} />
+        <RecentEvents events={sortEvents(eventsData.recent_events) || []} />
 
         <SearchAndFilters
           type="events"
