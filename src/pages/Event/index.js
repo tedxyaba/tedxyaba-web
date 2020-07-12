@@ -16,29 +16,29 @@ import PartnersModal from '../../components/Modals/PartnersModal';
 import { YoutubeThumbnail } from '../../components/YoutubeEmbed';
 import Loading from '../../components/Loading';
 
-const Event = ({ eventFromStore, socials, loadingBar, dispatch }) => {
+const Event = ({ slug, socials, loadingBar, dispatch }) => {
   const [event, setEvent] = useState({});
   const [speaker, setSpeaker] = useState({});
   const [partner, setPartner] = useState({});
 
   useEffect(() => {
-    if (eventFromStore && eventFromStore.id) {
+    if (slug) {
       async function fetchEvent () {
         dispatch(showLoading());
 
         try {
-          const response = await fetchApi.getData(`/events/${eventFromStore.id}`)
+          const response = await fetchApi.getData(`/events/${slug}`)
           const data = await response.json();
           setEvent(data);
           dispatch(hideLoading());
         } catch (error) {
           dispatch(hideLoading());
-          console.log('Error fetching event with id:', eventFromStore.id)
+          console.log('Error fetching event with slug:', slug)
         }
       }
       fetchEvent()
     }
-  }, [eventFromStore, dispatch]);
+  }, [slug, dispatch]);
 
   const isNext = () => {
     const formattedDate = moment(event.datetime).format('YYYY-MM-DD');
@@ -324,11 +324,11 @@ const Event = ({ eventFromStore, socials, loadingBar, dispatch }) => {
   )
 };
 
-const mapStateToProps = ({ events, socials, loadingBar }, { match }) => {
+const mapStateToProps = ({ socials, loadingBar }, { match }) => {
   const { slug } = match.params;
 
   return {
-    eventFromStore: events.find(e => e.slug === slug),
+    slug,
     socials,
     loadingBar,
   }
