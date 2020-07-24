@@ -6,13 +6,8 @@ import Section from '../../components/layout/Section';
 import withScrollToTop from '../withScrollToTop';
 import Loading from '../../components/Loading';
 
-const Register = ({ eventFromStore, futureEvents, loadingBar }) => {
+const Register = ({ event, loadingBar }) => {
   const [loadingForm, setLoadingForm] = useState(true);
-  let event = futureEvents[0];
-
-  if (eventFromStore && isFutureEvent(eventFromStore)) {
-    event = eventFromStore;
-  }
 
   const formLoaded = () => {
     setLoadingForm(false);
@@ -27,9 +22,7 @@ const Register = ({ eventFromStore, futureEvents, loadingBar }) => {
   if (event && Object.keys(event).length > 0) {
     return (
       <>
-      { loadingForm && <div className="my-2 text-center">
-        Please wait...
-      </div> }
+      { loadingForm && <Loading /> }
 
       <iframe
         title={event.title}
@@ -58,17 +51,25 @@ const Register = ({ eventFromStore, futureEvents, loadingBar }) => {
 const isFutureEvent = (event) => {
   const formattedDate = moment(event.datetime).format('YYYY-MM-DD');
   const sameOrAfter = moment(formattedDate).isSameOrAfter(moment().format('YYYY-MM-DD'));
-  return sameOrAfter
+  return sameOrAfter && event.registration_link;
 };
 
 const mapStateToProps = ({ events, loadingBar }, {match}) => {
-  const futureEvents = events.filter(event => isFutureEvent(event));
+  let futureEvents, event;
   const { slug } = match.params;
 
+  if (({ events } = events) && events) {
+    futureEvents = events.filter(event => isFutureEvent(event))
+    if (slug) {
+      event = futureEvents.find(e => e.slug === slug)
+    } else {
+      event = futureEvents[0]
+    }
+  }
+
   return {
-    eventFromStore: events.find(e => e.slug === slug),
-    futureEvents,
-    loadingBar,
+    event,
+    loadingBar
   }
 };
 
