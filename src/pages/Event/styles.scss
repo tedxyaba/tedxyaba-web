@@ -18,7 +18,7 @@
     }
 
     .details-wrapper {
-      background-position: center;
+      background-position: right center;
       background-repeat: no-repeat;
       background-size: cover;
       border-radius: 15px;
@@ -27,6 +27,17 @@
       position: relative;
       text-align: center;
       overflow: hidden;
+
+      .overlay {
+        background-color: rgba($dark-bg, .6);
+        border-radius: 10px;
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 0;
+      }
 
       .left-x,
       .right-x {
@@ -73,7 +84,7 @@
     }
 
     .details-wrapper {
-      background-position: center;
+      background-position: right center;
       background-repeat: no-repeat;
       background-size: cover;
       color: #fff;

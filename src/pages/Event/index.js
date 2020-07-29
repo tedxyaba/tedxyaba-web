@@ -80,6 +80,7 @@ const Event = ({ slug, socials, loadingBar, dispatch }) => {
                 <p className="event-title">{event.title}</p>
                 <p className="event-datetime">{moment.tz(event.datetime, 'Africa/Lagos').format("D MMMM YYYY, h:mm A z")}</p>
               </div>
+              <div className="overlay" />
               <div className="left-x"><BackgroundX /></div>
               <div className="right-x"><BackgroundX /></div>
             </div>
