@@ -14,6 +14,7 @@ import Event from './pages/Event';
 import Events from './pages/Events';
 import About from './pages/About';
 import Register from './pages/Register';
+import Live from './pages/Live';
 import NotFound from './pages/NotFound';
 
 // load components
@@ -39,6 +40,7 @@ const App = ({ socials, dispatch }) => {
             <Route path="/events/:slug" component={Event} />
             <Route path="/events" component={Events} />
             <Route path="/register/:slug?" component={Register} />
+            <Route path="/live" component={Live} />
             <Route component={NotFound} />
           </Switch>
 
