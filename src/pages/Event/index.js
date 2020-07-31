@@ -190,6 +190,7 @@ const Event = ({ slug, socials, loadingBar, dispatch }) => {
             )) }
 
             { isNext() && event.partners.length > 0 && (
+              <>
               <div className="e-partners d-none d-md-block">
                 <p className="e-page-title">SPONSORS & PARTNERS</p>
 
@@ -201,16 +202,16 @@ const Event = ({ slug, socials, loadingBar, dispatch }) => {
                     </div>
                   ))}
                 </div>
-
-                <PartnersModal
-                  id="eventPartnersSponsors"
-                  data={{
-                    image_url: partner.logo_url,
-                    url: partner.partner_link,
-                    bio: partner.partner_bio
-                  }}
-                />
               </div>
+              <PartnersModal
+                id="eventPartnersSponsors"
+                data={{
+                  image_url: partner.logo_url,
+                  url: partner.partner_link,
+                  bio: partner.partner_bio
+                }}
+              />
+              </>
             ) }
           </div>
 
