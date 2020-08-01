@@ -15,6 +15,12 @@
       }
     }
 
+    .youtube-stream {
+      iframe {
+        border-radius: 10px;
+      }
+    }
+
     .summary {
       .e-category {
         @include subtitle;
@@ -35,23 +41,6 @@
         @include subtitle;
       }
     }
-
-    // .prep-bg {
-    //   background-position: center center;
-    //   background-repeat: no-repeat;
-    //   background-size: contain;
-    //   border-radius: 15px;
-    //   color: #fff;
-    //   // height: 1000px;
-    //   position: relative;
-    //   text-align: center;
-    //   overflow: hidden;
-    //   width: 100%;
-
-    //   @media (max-width: 991.98px) { font-size: 3rem; }
-    //   @media (max-width: 767.98px) { font-size: 3rem; }
-    //   @media (max-width: 575.98px) { padding: 6rem; }
-    // }
   }
 
   .e-speakers {
