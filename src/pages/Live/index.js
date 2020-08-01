@@ -12,7 +12,7 @@ import { showLoading, hideLoading } from 'react-redux-loading-bar';
 import fetchApi from '../../utils/fetch-api';
 import PartnersModal from '../../components/Modals/PartnersModal';
 
-const liveStreamLink = 'https://www.youtube.com/embed/XbKBxqNftqQ';
+const liveStreamLink = 'https://www.youtube.com/embed/D-ODtAWUcyE';
 
 const Live = ({ liveEvent={}, loadingBar, dispatch }) => {
   const [speaker, setSpeaker] = useState({});
@@ -65,11 +65,11 @@ const Live = ({ liveEvent={}, loadingBar, dispatch }) => {
         <Section className="streaming">
           <div className="row">
             <div className="col-12">
-              <div className="prep-img">
+              {/* <div className="prep-img">
                 <img src={rapeCultureLivePrep} alt="live-prep" />
-              </div>
+              </div> */}
 
-              {/* <div className="youtube-stream">
+              <div className="youtube-stream">
                 <iframe
                   title={event.title}
                   width="100%"
@@ -79,7 +79,7 @@ const Live = ({ liveEvent={}, loadingBar, dispatch }) => {
                   allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                   allowfullscreen
                 />
-              </div> */}
+              </div>
             </div>
 
             <div className="col-12 summary">

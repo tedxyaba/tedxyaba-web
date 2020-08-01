@@ -17,6 +17,11 @@ const mainRoutes = [
     show: true
   },
   {
+    name: 'Watch Live',
+    path: '/live',
+    show: true
+  },
+  {
     name: 'Blog',
     path: 'https://medium.com/tedxyaba',
     show: true
