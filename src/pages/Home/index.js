@@ -14,8 +14,8 @@ const Home = ({ loading, about, talks, copies }) => {
     <div className="page-container">
       <Header
         id="home-header"
-        title={ copies.find(c => c.key === 'dash_copy_header' ).copy }
-        subtitle={ copies.find(c => c.key === 'dash_copy_desc' ).copy }
+        title={ (copies.find(c => c.key === 'dash_copy_header' ) || {}).copy }
+        subtitle={ (copies.find(c => c.key === 'dash_copy_desc' ) || {}).copy }
         // subtitle="Enjoy all our talks from inception"
         className="on-home"
       />
