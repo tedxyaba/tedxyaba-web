@@ -5,7 +5,9 @@ import {
 export default function copies (state = {}, action) {
   switch (action.type) {
     case RECEIVE_COPIES:
-      return action.copiesData.copies
+      // get new copy data from action
+      action.copiesData.copies.map(nc => state.find(ec => ec.key === nc.key ).copy = nc.copy )
+      return state
     default:
       return state
   }
