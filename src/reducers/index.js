@@ -7,6 +7,7 @@ import blog from './blog';
 import partners from './partners';
 import team from './team';
 import socials from './socials';
+import copies from './copies';
 
 export default combineReducers({
   loadingBar: loadingBarReducer,
@@ -17,4 +18,5 @@ export default combineReducers({
   partners,
   team,
   socials,
+  copies,
 })

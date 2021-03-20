@@ -9,13 +9,13 @@ import Header from '../../components/layout/Header';
 import Talks from '../../components/Talks';
 import Loading from '../../components/Loading';
 
-const Home = ({ loading, about, talks }) => {
+const Home = ({ loading, about, talks, copies }) => {
   return (
     <div className="page-container">
       <Header
         id="home-header"
-        title="Welcome to TEDxYaba"
-        subtitle="At Convergence, we had an opportunity to curate conversations that have the potential to catalyse change on the continent. Thank you for attending. Enjoy all the talks and more!"
+        title={ copies.find(c => c.key === 'dash_copy_header' ).copy }
+        subtitle={ copies.find(c => c.key === 'dash_copy_desc' ).copy }
         // subtitle="Enjoy all our talks from inception"
         className="on-home"
       />
@@ -55,11 +55,12 @@ const Home = ({ loading, about, talks }) => {
   )
 }
 
-const mapStateToProps = ({ loadingBar, about, talks }) => {
+const mapStateToProps = ({ loadingBar, about, talks, copies }) => {
   return {
     loading: loadingBar.default > 0,
     about,
     talks,
+    copies,
   }
 }
 

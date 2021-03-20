@@ -1,3 +1,14 @@
+const copies = [
+  {
+    key: 'dash_copy_header',
+    copy: 'Welcome to TEDxYaba',
+  },
+  {
+    key: 'dash_copy_desc',
+    copy: ''
+  },
+];
+
 const about = [
   {
     id: 'ted',
@@ -56,6 +67,7 @@ const socials = [
 ];
 
 export default {
+  copies,
   about,
   events,
   talks,
