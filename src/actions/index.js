@@ -1,4 +1,5 @@
 import { fetchInitialData } from '../utils/fetch-api';
+import { receiveDynamicCopies } from './copies';
 import { receiveEvents } from './events';
 import { receiveTeams } from './teams';
 import { receivePartners } from './partners';
@@ -10,12 +11,14 @@ export const handleInitialData = () => {
     dispatch(showLoading());
 
     try {
-      const { events, talks, teams, partners } = await fetchInitialData();
+      const { dynamicCopies, events, talks, teams, partners } = await fetchInitialData();
+      const dynamicCopiesData = await dynamicCopies.json();
       const eventsData = await events.json();
       const talksData = await talks.json();
       const teamsData = await teams.json();
       const partnersData = await partners.json();
 
+      dispatch(receiveDynamicCopies(dynamicCopiesData));
       dispatch(receiveEvents(eventsData));
       dispatch(receiveTalks(talksData));
       dispatch(receiveTeams(teamsData));
