@@ -41,13 +41,15 @@ const buildUrl = (endpoint, p = {}) => {
 
 export const fetchInitialData = () => {
   return Promise.all([
+    fetchApi.getData('/dynamic_copies'),
     fetchApi.getData('/events', {per_page: EVENTS_PER_PAGE}),
     fetchApi.getData('/talks', {per_page: TALKS_PER_PAGE}),
     fetchApi.getData('/teams'),
     fetchApi.getData('/partners'),
   ])
-  .then(([events, talks, teams, partners]) => {
+  .then(([dynamicCopies, events, talks, teams, partners]) => {
     return {
+      dynamicCopies,
       events,
       talks,
       teams,
